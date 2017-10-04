@@ -7,30 +7,37 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+const ipc=electron.ipcMain;
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mMainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mMainWindow = new BrowserWindow({width: 1000, height: 700})
 
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  // mMainWindow.loadURL(url.format({
+  //   pathname: path.join(__dirname, 'title/title.html'),
+  //   protocol: 'file:',
+  //   slashes: true
+  // }))
+  //テスト用
+  mMainWindow.loadURL("file://"+__dirname+'/setting/setting.html?member='+"1");
+  //スタート画面
+  // mMainWindow.loadURL("file://"+__dirname+'/title/title.html');
+
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mMainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
+  mMainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
+    mMainWindow = null
   })
 }
 
@@ -51,10 +58,24 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
+  if (mMainWindow === null) {
     createWindow()
   }
 })
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+ipc.on("start",function(e,aNum){//スタート画面でプレイヤーの人数を選択後、キャラ選択画面へ
+    mMainWindow.loadURL("file://"+__dirname+'/setting/setting.html?member='+aNum);
+  // mMainWindow.loadURL(url.format({
+  //   pathname: path.join(__dirname, 'setting/setting.html/?member='+aNum),
+  //   protocol: 'file:',
+  //   slashes: true
+  // }))
+})
+ipc.on("selected",function(e,aChara){//キャラ選択画面でキャラを選択後、バトル画面へ
+  mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+aChara);
+
+})

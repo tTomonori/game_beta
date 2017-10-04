@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>battle</title>
+</head>
+<script>
+	// You can also require other files to run in this process
+	require('../renderer.js')
+	const $=require("jquery");
+	const electron=require("electron");
+	const ipc=electron.ipcRenderer;
+</script>
+<body style="margin:0">
+<div id="left" style="width:80vw;height:100vh;float:left">
+<div id="battleArea" style="width:100%;height:90%;">
+	<div id="field" style="height:100%;width:100%;padding-left:19vw">
+		<p style="height:40px;font-size:33px;margin:5px">text</p>
+		<table id="cardTable" style=""></table>
+	</div>
+</div>
+<div id="deckArea" style="width:100%;height:10%;border:solid 1px #000000"></div>
+<div id="order" style="position:fixed;width:15%;height:80%;top:2vh;left:2vw;"></div>
+</div>
+
+<div id="right" style="width:20vw;height:100vh;float:right">
+<div id="log" style="width:100%;height:20%;border:solid 1px #000000"></div>
+<div id="status" style="width:100%;height:80%;border:solid 1px #000000"></div>
+</div>
+</body>
+<script src="./delay.js"></script>
+<script src="./move.js"></script>
+<script src="./Chara.js"></script>
+<script src="../charaData/charaData.js"></script>
+<script src="./battle.js"></script>
+</html>

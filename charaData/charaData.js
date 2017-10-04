@@ -1,0 +1,34 @@
+function loadChara() {
+	return [{NAME:"test1",
+					HP:1,
+					MP:1,
+					ATK:1,
+					DEF:1,
+					SPD:1,
+					TYPE:"SPADES"
+	},
+	{NAME:"test2",
+					HP:2,
+					MP:2,
+					ATK:2,
+					DEF:2,
+					SPD:2,
+					TYPE:"CLUBS"
+	},
+	{NAME:"test3",
+					HP:3,
+					MP:3,
+					ATK:3,
+					DEF:3,
+					SPD:3,
+					TYPE:"DIAMONDS"
+	},
+	{NAME:"test4",
+					HP:4,
+					MP:4,
+					ATK:4,
+					DEF:4,
+					SPD:4,
+					TYPE:"HEARTS"
+	},]
+}
