@@ -1,6 +1,7 @@
 //URLから引数を取得
 //[[選択されたキャラクター,チーム],...]
-const mSelectedCharas=location.search.substring(1).split("=")[1].split(",");
+const mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");
+const mPlayerNum=location.search.substring(1).split("&")[1].split("=")[1].split(",");
 
 //flag==trueのとき操作不能
 var mEventFlag=true;
@@ -198,7 +199,16 @@ function battleMain(){
 
 
 	//操作
-	mEventFlag = false;//操作可能に
+	if(mPlayerNum==0){
+		mEventFlag = false;//操作可能に
+	}
+	else{
+		com();
+	}
+}
+
+function com(){
+	battleMain();
 }
 
 function ClickCards(aX,aY){//ボタン未実装

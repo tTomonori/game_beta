@@ -5,7 +5,8 @@ function loadChara() {
 					ATK:1,
 					DEF:1,
 					SPD:1,
-					TYPE:"SPADES"
+					TYPE:"SPADES",
+					IMAGE:1345010001
 	},
 	{NAME:"test2",
 					HP:2,
@@ -13,7 +14,8 @@ function loadChara() {
 					ATK:2,
 					DEF:2,
 					SPD:2,
-					TYPE:"CLUBS"
+					TYPE:"CLUBS",
+					IMAGE:1055010001
 	},
 	{NAME:"test3",
 					HP:3,
@@ -21,7 +23,8 @@ function loadChara() {
 					ATK:3,
 					DEF:3,
 					SPD:3,
-					TYPE:"DIAMONDS"
+					TYPE:"DIAMONDS",
+					IMAGE:1464010001
 	},
 	{NAME:"test4",
 					HP:4,
@@ -29,6 +32,7 @@ function loadChara() {
 					ATK:4,
 					DEF:4,
 					SPD:4,
-					TYPE:"HEARTS"
+					TYPE:"HEARTS",
+					IMAGE:1240010001
 	},]
 }

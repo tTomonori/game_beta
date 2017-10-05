@@ -14,13 +14,13 @@
 	const ipc=electron.ipcRenderer;
 </script>
 <body style="margin:0;width:100vw;height:100vh;">
-<div id="left" style="width:60%;height:100%;float:left">
-<div id="player">プレイヤー1のキャラを選んでください</div>
-<div class="pointorLeft">◀️</div>
-<div>
-画像
-</div>
-<div class="pointorRight">▶️</div>
+<div id="left" style="width:60%;height:100%;float:left;position:relative">
+<div id="player">プレイヤー1のキャラ1を選んでください</div>
+<img src="../image/arrow/0093_3.png" class="pointorLeft" style="position:absolute;left:5%;top:45%;transform:rotate(180deg);width:10%">
+<center>
+<img id="charaImage" style="margin-top:-90px;z-index:-1;">
+</center>
+<img src="../image/arrow/0093_3.png" class="pointorRight" style="position:absolute;right:5%;top:45%;width:10%">
 <div id="charaNumber"></div>
 <input type="button" name="" value="戻る" onclick="back()">
 </div>

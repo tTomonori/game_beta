@@ -17,6 +17,7 @@ function displayCharaData(aNum){
 	for(let i=0;i<tStatus.length;i++){
 		tStatus[i].innerHTML=tData[mStatusList[i]];
 	}
+	$("#charaImage")[0].src="../image/chara/2_stand/"+(tData.IMAGE+200)+".png";
 	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
 }
 
@@ -33,31 +34,35 @@ $(".pointorRight").on("click",function(){
 
 //選択ボタン
 function selectChara() {
-	mSelectedCharas.push([mSelectPointor,mTeam]);
-	if(mSelectedCharas.length==1){
-		if(mPlayerNum==1){
-			$("#player")[0].innerHTML="COMのキャラを選んでください"
-		}
-		else{
-			$("#player")[0].innerHTML="プレイヤー2のキャラを選んでください"
-		}
+	if(mSelectedCharas.length<2){
+		mSelectedCharas.push([mSelectPointor,"T"]);
+		chageLabel();
 	}
-	else if(mSelectedCharas.length==2){
-		ipc.send("selected",mSelectedCharas);
+	else if(mSelectedCharas.length<4){
+		mSelectedCharas.push([mSelectPointor,"F"]);
+		chageLabel();
+	}
+	if(mSelectedCharas.length==4){
+		ipc.send("selected",mSelectedCharas,mPlayerNum);
 	}
 }
 //戻るボタン
 function back() {
-	mSelectedCharas.pop(mSelectPointor);
-	if(mSelectedCharas.length==1){
-		if(mPlayerNum==1){
-			$("#player")[0].innerHTML="COMのキャラを選んでください"
-		}
-		else{
-			$("#player")[0].innerHTML="プレイヤー2のキャラを選んでください"
-		}
+	if(mSelectedCharas.length>0){
+		mSelectedCharas.pop(mSelectPointor);
+		chageLabel();
 	}
-	else if(mSelectedCharas.length==0){
-		$("#player")[0].innerHTML="プレイヤー1のキャラを選んでください"
+}
+
+function chageLabel(){
+	let tLabel="";
+	if(mPlayerNum==0||mSelectedCharas.length<2){
+		tLabel+="プレイヤー"+Math.floor(((mSelectedCharas.length/2)+1))+"の";
 	}
+	else{
+		tLabel+="COMの";
+	}
+	tLabel+="キャラ"+((mSelectedCharas.length%2)+1)+"を選んでください";
+	$("#player")[0].innerHTML=tLabel;
+
 }

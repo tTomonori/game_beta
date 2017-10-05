@@ -16,7 +16,7 @@
 <body>
 	<input id="start" type="button" value="START" onclick="start()">
 	<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none">
-	<input class="member" type="button" value="二人で遊ぶ" onclick="member(2)" style="display:none">
+	<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
 </body>
 <script>
 function start(){
@@ -24,6 +24,7 @@ function start(){
 	$("#start")[0].style.display="none";
 	$(".member").css("display","block")
 }
+//2Pは 0:プレイヤー,他:AIの番号
 function member(aNum){
 	ipc.send("start",aNum);
 }
