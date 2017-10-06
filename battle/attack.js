@@ -26,7 +26,11 @@ function attack(aChara) {
 			for(var j=0;j<tRange.length;j++){				
 				if(mFalseTeam[i].x==tRange[j][0]&&mFalseTeam[i].y==tRange[j][1]){
 					//ダメージ計算
-					var tDamege = 1;//test
+					var tDamege = Math.floor(aChara.ATK*5/mFalseTeam[i].DEF);//test
+
+					if(tCard[1]==aChara.TYPE){
+						tDamege *= Math.floor(tDamege*1.5);
+					}
 
 					mFalseTeam[i].HP-=tDamege;
 					displayStatus();
@@ -43,7 +47,11 @@ function attack(aChara) {
 			for(var j=0;j<tRange.length;j++){
 				if(mTrueTeam[i].x==tRange[j][0]&&mTrueTeam[i].y==tRange[j][1]){
 					//ダメージ計算
-					var tDamege = 1;//test
+					var tDamege = Math.floor(aChara.ATK*5/mFalseTeam[i].DEF);
+
+					if(tCard[1]==aChara.TYPE){
+						tDamege *= Math.floor(tDamege*1.5);
+					}
 
 					mTrueTeam[i].HP-=tDamege;
 					displayStatus();
