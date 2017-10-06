@@ -16,7 +16,9 @@ function attack(aChara) {
 	//技取り出し
 	tSkill=mSkillList[tSkill];
 
-	//補助効果適用(B)
+	//補助効果適用(B
+	Support_B_M(tSkill.SUPPORT_Be_Myself);
+	Support_B_E(tSkill.SUPPORT_Be_Enemy);
 
 
 	//攻撃
@@ -65,6 +67,9 @@ function attack(aChara) {
 	}
 
 	//補助効果適用(A)
+	Support_A_M(tSkill.SUPPORT_Af_Myself);
+	Support_A_E(tSkill.SUPPORT_Af_Enemy);
+	Support_O(tSkill.SUPPORT_Otherwise);
 
 	//delay計算
 	var tDelay = 100000/aChara.SPD;//初期値
