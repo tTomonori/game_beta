@@ -8,13 +8,15 @@ function getAttackRange(aSkillRange) {
 		tPosition={x:mFalseTeam[mDelayChara[2]].x,y:mFalseTeam[mDelayChara[2]].y}
 	}
 	switch (aSkillRange) {
+		case 0://攻撃しない
+			break;
 		case 1://周囲4マス
 			tRange.push([tPosition.x-1,tPosition.y]);
 			tRange.push([tPosition.x+1,tPosition.y]);
 			tRange.push([tPosition.x,tPosition.y-1]);
 			tRange.push([tPosition.x,tPosition.y+1]);
 			break;
-		case 2://
+		case 2://２マス隣
 			tRange.push([tPosition.x-2,tPosition.y]);
 			tRange.push([tPosition.x+2,tPosition.y]);
 			tRange.push([tPosition.x,tPosition.y-2]);

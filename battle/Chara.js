@@ -108,7 +108,7 @@ class Chara{
 		this.display();
 	}
 	addDelay(aDelay){
-		this.delay+=aDelay;
+		this.Delay+=aDelay;
 	}
 }
 var mTTeamColor="rgba(0, 136, 255,0.6)";

@@ -151,6 +151,10 @@ function battleMain(){
 	}
 }
 
+function winner(aWinner){
+	console.log("winner is "+aWinner+"team");//勝者
+}
+
 function com(){
 	battleMain();
 }
