@@ -28,6 +28,7 @@ class Chara{
 		else{
 			this.teamColor=mFTeamColor;
 		}
+		this.deck=aData.DECK;
 	}
 	getDelay(){
 		return this.Delay;
@@ -105,6 +106,9 @@ class Chara{
 		this.x=aX;
 		this.y=aY;
 		this.display();
+	}
+	addDelay(aDelay){
+		this.delay+=aDelay;
 	}
 }
 var mTTeamColor="rgba(0, 136, 255,0.6)";

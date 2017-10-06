@@ -7,7 +7,8 @@ function loadChara() {
 					SPD:1,
 					MOV:2,
 					TYPE:"spade",
-					IMAGE:1345010001
+					IMAGE:1345010001,
+					DECK:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,0]
 	},
 	{NAME:"ランスロット",
 					HP:2,
@@ -17,7 +18,8 @@ function loadChara() {
 					SPD:2,
 					MOV:2,
 					TYPE:"club",
-					IMAGE:1055010001
+					IMAGE:1055010001,
+					DECK:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,0]
 	},
 	{NAME:"オオクニヌシ",
 					HP:3,
@@ -27,7 +29,8 @@ function loadChara() {
 					SPD:3,
 					MOV:2,
 					TYPE:"diamond",
-					IMAGE:1464010001
+					IMAGE:1464010001,
+					DECK:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,0]
 	},
 	{NAME:"シルフェ",
 					HP:4,
@@ -37,6 +40,7 @@ function loadChara() {
 					SPD:4,
 					MOV:2,
 					TYPE:"heart",
-					IMAGE:1235010001
+					IMAGE:1235010001,
+					DECK:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,0]
 	},]
 }

@@ -4,33 +4,34 @@ function displayCard() {
 	for(let i=0;i<7;i++){
 		tTable+="<tr>";
 		for(let j=0;j<8;j++){
-			tTable+="<td style='width:70px;height:20px:position:relative'>";
+			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")'>";
+			let tCard=mCard[j+i*8];
 
-			let tMark=mCard[i*8+j]/13;
-			let tNum=mCard[i*8+j]%13;
-			if(tMark>=4){
-				if(tNum<=1){
-					tNum="JOKER";
-				}
-				else{
-					tNum="";
-				}
-				tMark="";
-			}
-			else {
+			// let tMark=mCard[i*8+j]/13;
+			let tNum=tCard[0];
+			// if(tMark>=4){
+			// 	if(tNum<=1){
+			// 		tNum="JOKER";
+			// 	}
+			// 	else{
+			// 		tNum="";
+			// 	}
+			// 	tMark="";
+			// }
+			// else {
 				//マーク
-				if(tMark<=1){
-					tMark="spade.png";
-				}
-				if(tMark<=2){
-					tMark="club.png";
-				}
-				if(tMark<=3){
-					tMark="diamond.png";
-				}
-				if(tMark<=4){
-					tMark="heart.png";
-				}
+				// if(tMark<=1){
+				// 	tMark="spade.png";
+				// }
+				// if(tMark<=2){
+				// 	tMark="club.png";
+				// }
+				// if(tMark<=3){
+				// 	tMark="diamond.png";
+				// }
+				// if(tMark<=4){
+				// 	tMark="heart.png";
+				// }
 				//数字
 				if(tNum==0){
 					tNum="A";
@@ -47,14 +48,13 @@ function displayCard() {
 				else {
 					tNum=tNum+1;
 				}
-			}
 			tTable+="<img src='../image/card.png' style='width:70px;height:70px;'>";
-			if(tMark!=""){
-				tTable+="<img src='../image/"+tMark+"' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
+			if(tCard[1]!="joker"&&tCard[1]!="suka"){
+				tTable+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
 				tTable+="<p style='position:absolute;margin-top:-63px;margin-left:12px'>"+tNum+"</p>";
 				// tTable+=mCard[i*7+j];
 			}
-			else if(tNum=="JOKER"){
+			else if(tCard[1]=="joker"){
 				tTable+="<p style='position:absolute;margin-top:-63px;margin-left:12px'>"+"JOKER"+"</p>";
 
 			}
@@ -108,5 +108,20 @@ function displayDelay(){
 			tOrder.innerHTML+="<img src='"+mFalseTeam[tPickChara[2]].getFaceUrl()+"' style='width:50%;border-radius:144px;border:solid 3px "+mFalseTeam[tPickChara[2]].teamColor+";background:"+mFalseTeam[tPickChara[2]].teamColor+"'>"
 		}
 		tOrder.innerHTML+="<br>";
+	}
+}
+
+function displayMoveable(aMoveable) {
+	for(let i=0;i<aMoveable.length;i++){
+		let tCard=$("#cardTable")[0].getElementsByTagName("tr")[aMoveable[i][1]].getElementsByTagName("td")[aMoveable[i][0]].getElementsByTagName("img")[0];
+		tCard.src="../image/card_canMove.png";
+	}
+}
+function returnMoveable() {
+	let tCard=$("#cardTable")[0].getElementsByTagName("img");
+	for(let i=0;i<tCard.length;i++){
+		if(tCard[i].src.match(/card_canMove.png/)){
+			tCard[i].src="../image/card.png";
+		}
 	}
 }

@@ -25,3 +25,15 @@ function delayMinus(aTeamList,aDelay){
 	}
 	return aTeamList;
 }
+
+function sortDelay(aDelayList){
+	let tDelay=aDelayList.shift();
+	let i;
+	for(i=0;i<aDelayList.length;i++){
+		if(aDelayList[i][0].Delay>tDelay[0]){
+			break;
+		}
+	}
+	aDelayList.splice(i,0,tDelay);
+	return aDelayList;
+}

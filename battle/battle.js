@@ -2,7 +2,8 @@
 //[[選択されたキャラクター,チーム],...]
 const mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");
 const mPlayerNum=location.search.substring(1).split("&")[1].split("=")[1].split(",");
-
+var mDelayChara = new Array();//選択キャラ[[delay],[チーム],[番号]]
+var mMovable = new Array();//移動可能リスト
 //flag==trueのとき操作不能
 var mEventFlag=true;
 //キャラクターのデータを取得
@@ -15,13 +16,21 @@ var mCard=new Array();
 // var mBattleBoard=new Array();
 //トランプ＋２枚生成
 for(let i=0;i<56;i++){
-	mCard.push(i);
+	let tMark;
 	//0から12がスペード
+	if(0<=i&&i<=12) tMark="spade";
 	//13から25がクラブ
+	if(13<=i&&i<=25) tMark="club";
 	//26から38がダイヤ
+	if(26<=i&&i<=38) tMark="diamond";
 	//39から51がハート
+	if(39<=i&&i<=51) tMark="heart";
 	//52,53がジョーカー
+	if(52<=i&&i<=53) tMark="joker";
 	//54,55がスカ
+	if(54<=i&&i<=55) tMark="suka";
+
+	mCard.push([i%13,tMark]);
 }
 //シャッフルする
 mCard=shuffle(mCard);
@@ -111,8 +120,7 @@ function shuffle(aCard){
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-var mDelayChara = new Array();//選択キャラ[[delay],[チーム],[番号]]
-var mMovable = new Array();//移動可能リスト
+
 function battleMain(){
 	//ターン管理
 	//行動キャラの選択
@@ -139,26 +147,10 @@ function battleMain(){
 	}
 	else{
 		mEventFlag = false;//操作可能に
+		displayMoveable(mMovable);
 	}
 }
 
 function com(){
-	battleMain();
-}
-
-function ClickCards(aX,aY){//ボタン未実装
-	if(mEventFlag==true)//操作不可
-		return;
-	if(mMovable.indexOf([aX,aY])<0)//移動できない
-		return;
-	mEventFlag = true;//操作不可能に
-
-
-
-
-	//以下、行動後に実装
-	//Delay変動
-	//判定
-
 	battleMain();
 }
