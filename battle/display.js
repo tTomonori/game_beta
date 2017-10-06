@@ -4,7 +4,7 @@ function displayCard() {
 	for(let i=0;i<7;i++){
 		tTable+="<tr>";
 		for(let j=0;j<8;j++){
-			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")'>";
+			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")' onmouseover='attackable("+j+","+i+")' onmouseout='returnAttackable()'>";
 			let tCard=mCard[j+i*8];
 
 			// let tMark=mCard[i*8+j]/13;
@@ -124,4 +124,59 @@ function returnMoveable() {
 			tCard[i].src="../image/card.png";
 		}
 	}
+}
+
+function attackable(aX,aY){
+	if(mEventFlag==true)//操作不可
+		return;
+
+	for(let i=0;i<mMovable.length;i++){
+		if(mMovable[i][0]!=aX||mMovable[i][1]!=aY){
+			continue;
+		}
+
+		//カードの確認
+		var tCard=mCard[aX+aY*8];
+
+		var tChara = new Object();
+		if(mDelayChara[1]=="T"){
+			tChara = mTrueTeam[mDelayChara[2]];
+		}
+		else{
+			tChara = mFalseTeam[mDelayChara[2]];
+		}
+		//デッキの確認
+		var tSkill;
+		if(tCard[1]=="joker"){
+			tSkill=tChara.deck[13];
+		}
+		else if(tCard[1]=="suka"){
+			tSkill=tChara.deck[14];
+		}
+		else{
+			tSkill=tChara.deck[tCard[0]];
+		}
+
+		//技取り出し
+		tSkill=mSkillList[tSkill];
+		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
+
+		for(let i=0;i<tRange.length;i++){
+			let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
+			tCard.src="../image/card_canAttack.png";
+		}
+		return;
+	}
+
+
+}
+function returnAttackable() {
+	let tCard=$("#cardTable")[0].getElementsByTagName("img");
+	for(let i=0;i<tCard.length;i++){
+		if(tCard[i].src.match(/card_canAttack.png/)){
+			tCard[i].src="../image/card.png";
+		}
+	}
+
+	displayMoveable(mMovable);
 }
