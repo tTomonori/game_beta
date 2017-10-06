@@ -1,9 +1,10 @@
 function Support_B_M(aSupportnums,aChara) {
 	for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnums[i]) {
-			case 0:
-				var tDamege = calcDamage(aChara.ATK,aChara.DEF);
+			case 0://自傷　威力１
+				var tDamege = calcDamage(aChara.ATK,aChara.DEF,1);
 
+				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
 					tDamege *= Math.floor(tDamege*1.5);
 				}
@@ -35,6 +36,14 @@ function Support_A_M(aSupportnums,aChara) {
 	for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnums[i]) {
 			case 0:
+				var tDamege = calcDamage(aChara.ATK,aChara.DEF,5);
+				var tCard=mCard[aChara.x+aChara.y*8];
+				if(tCard[1]==aChara.TYPE){
+					tDamege *= Math.floor(tDamege*1.5);
+				}
+
+				aChara.HP+=tDamege;
+				displayStatus();
 				break;
 			case 1:
 				break;
@@ -47,7 +56,7 @@ function Support_A_M(aSupportnums,aChara) {
 		}
 	}
 }
-function Support_B_E(aSupportnums) {
+function Support_B_E(aSupportnums,aChara) {
 	for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnums[i]) {
 			case 0:
@@ -63,7 +72,7 @@ function Support_B_E(aSupportnums) {
 		}
 	}
 }
-function Support_A_E(aSupportnums) {
+function Support_A_E(aSupportnums,aChara) {
 	for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnums[i]) {
 			case 0:

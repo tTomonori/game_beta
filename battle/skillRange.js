@@ -85,7 +85,7 @@ function calcRange(aSkillRange,tPosition){
 			tRange.push([tPosition.x,tPosition.y-1]);
 			tRange.push([tPosition.x,tPosition.y+1]);
 		break;
-		case 11://
+		case 11://周囲１２マス
 			tRange.push([tPosition.x-2,tPosition.y]);
 			tRange.push([tPosition.x+2,tPosition.y]);
 			tRange.push([tPosition.x,tPosition.y-2]);
@@ -99,7 +99,19 @@ function calcRange(aSkillRange,tPosition){
 			tRange.push([tPosition.x+1,tPosition.y-1]);
 			tRange.push([tPosition.x-1,tPosition.y+1]);
 		break;
-		case 10://
+		case 13://味方に
+			if(mDelayChara[1]=="F"){
+				for (var i=0;i<mFalseTeam.length;i++) {
+					tRange.push([mFalseTeam[i].x,mFalseTeam[i].y]);
+				}
+			}
+			else{
+				for (var i=0;i<mTrueTeam.length;i++) {
+					tRange.push([mTrueTeam[i].x,mTrueTeam[i].y]);
+				}
+			}
+		break;
+		case 10://テンプレート
 
 		break;
 		default:
