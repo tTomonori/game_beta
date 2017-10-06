@@ -1,6 +1,6 @@
 const mPlayerNum=location.search.substring(1).split("=")[1];
 var mSelectedCharas=new Array();
-var mStatusList=["NAME","HP","MP","ATK","DEF","SPD","TYPE"];
+var mStatusList=["NAME","HP","MP","ATK","DEF","SPD","MOV","TYPE"];
 
 var mTeam="T";
 

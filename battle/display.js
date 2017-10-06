@@ -66,7 +66,30 @@ function displayCard() {
 	$("#cardTable")[0].innerHTML=tTable;
 }
 
-//全てのキャラを表示する
-function displayAllChara(aCharaList){
+//キャラの表示
+function initDisplay(){
+	for(let i=0;i<mTrueTeam.length;i++){
+		mTrueTeam[i].initDisplay();
+	}
+	for(let i=0;i<mFalseTeam.length;i++){
+		mFalseTeam[i].initDisplay();
+	}
+}
 
+//HP表示
+function displayStatus(){
+	let tTag=document.getElementById("status");
+	tTag.innerHTML="";
+	displayTeamStatus(tTag,mTrueTeam);
+	displayTeamStatus(tTag,mFalseTeam);
+}
+function displayTeamStatus(aTag,aTeam){
+	for(let i=0;i<aTeam.length;i++){
+		aTag.innerHTML+="<div style='width:64px;height:64px;overflow:hidden;'><img src='"+aTeam[i].getActorUrl()+"' style=''>";
+		aTag.innerHTML+="<div style='float:right;margin-right:80px;margin-top:-40px;'>HP:"+aTeam[i].HP+"/"+aTeam[i].originalHP+"<br>"+"MP:"+aTeam[i].MP+"/"+aTeam[i].originalMP+"</div>";
+		aTag.innerHTML+="</div>"
+		aTag.innerHTML+=aTeam[i].getHPBar();
+		aTag.innerHTML+="<div style='height:2px'>";
+		aTag.innerHTML+=aTeam[i].getMPBar();
+	}
 }

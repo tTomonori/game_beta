@@ -5,6 +5,7 @@ function loadChara() {
 					ATK:1,
 					DEF:1,
 					SPD:1,
+					MOV:2,
 					TYPE:"SPADES",
 					IMAGE:1345010001
 	},
@@ -14,6 +15,7 @@ function loadChara() {
 					ATK:2,
 					DEF:2,
 					SPD:2,
+					MOV:2,
 					TYPE:"CLUBS",
 					IMAGE:1055010001
 	},
@@ -23,6 +25,7 @@ function loadChara() {
 					ATK:3,
 					DEF:3,
 					SPD:3,
+					MOV:2,
 					TYPE:"DIAMONDS",
 					IMAGE:1464010001
 	},
@@ -32,7 +35,8 @@ function loadChara() {
 					ATK:4,
 					DEF:4,
 					SPD:4,
+					MOV:2,
 					TYPE:"HEARTS",
-					IMAGE:1240010001
+					IMAGE:1235010001
 	},]
 }

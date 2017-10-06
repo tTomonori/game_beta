@@ -69,19 +69,19 @@ else if(tFNum==3){
 //実際に配置
 for(let i=0;i<mSelectedCharas.length;i+=2){
 	if(mSelectedCharas[i+1]=="T"){
-		mTrueTeam.push(new Chara(mCharaData[mSelectedCharas[i]],tTCharaPosition[0][0],tTCharaPosition[0][1]))
+		mTrueTeam.push(new Chara(mCharaData[mSelectedCharas[i]],tTCharaPosition[0][0],tTCharaPosition[0][1],"T",i/2))
 		tTCharaPosition.shift()
 	}
 	else{
-		mFalseTeam.push(new Chara(mCharaData[mSelectedCharas[i]],tFCharaPosition[0][0],tFCharaPosition[0][1]))
+		mFalseTeam.push(new Chara(mCharaData[mSelectedCharas[i]],tFCharaPosition[0][0],tFCharaPosition[0][1],"F",i/2))
 		tFCharaPosition.shift()
 	}
 }
 //初期delayを設定
 mDelayList = initDelay(mTrueTeam,mFalseTeam);
 
-//キャラの表示
-let tCharaList=new Array();
+initDisplay();
+displayStatus();
 
 //ここまでで初期設定が完了
 //バトルのメイン関数
@@ -106,7 +106,6 @@ function shuffle(aCard){
 	}
 	return aCard;
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -134,11 +133,11 @@ function battleMain(){
 
 
 	//操作
-	if(mPlayerNum==0){
-		mEventFlag = false;//操作可能に
+	if(mPlayerNum==0&&mDelayChara.team=="F"){
+		com(mPlayerNum);
 	}
 	else{
-		com();
+		mEventFlag = false;//操作可能に
 	}
 }
 
