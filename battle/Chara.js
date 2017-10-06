@@ -1,6 +1,7 @@
 var mSetDelay=100000;
 class Chara{
 	constructor(aData,aX,aY,aTeam,aNum){
+		this.NAME=aData.NAME;
 		this.originalHP=aData.HP;
 		this.originalMP=aData.MP;
 		this.originalATK=aData.ATK;
@@ -21,6 +22,12 @@ class Chara{
 		this.y=aY;
 		this.team=aTeam;
 		this.num=aNum;
+		if(this.team=="T"){
+			this.teamColor=mTTeamColor;
+		}
+		else{
+			this.teamColor=mFTeamColor;
+		}
 	}
 	getDelay(){
 		return this.Delay;
@@ -62,14 +69,17 @@ class Chara{
 	setMouseOver(){
 		this.container.onmouseover=()=>{
 			$("#status")[0].innerHTML=
+			"<div style='background:"+this.teamColor+";color:#ffffff;width:85%;border-radius:10px;padding:5px'>"+
+			this.NAME+"<br>"+
 			"HP:"+this.HP+"/"+this.originalHP+"<br>"+this.getHPBar()+
 			"MP:"+this.MP+"/"+this.originalMP+"<br>"+this.getMPBar()+
 			"ATK:"+this.ATK+"<br>"+
 			"DEF:"+this.DEF+"<br>"+
 			"SPD:"+this.SPD+"<br>"+
-			"TYPE:"+this.TYPE+"<br>"+
+			"TYPE:"+"<img src='../image/"+this.TYPE+".png' style='height:18px;margin-top:0px;position:absolute'>"+"<br>"+
 			"MOV:"+this.MOV+"<br>"+
-			"<img src="+this.getFaceUrl()+">"
+			"<img src="+this.getFaceUrl()+">"+
+			"</div>"
 		}
 		this.container.onmouseout=()=>{
 			displayStatus();
@@ -97,3 +107,5 @@ class Chara{
 		this.display();
 	}
 }
+var mTTeamColor="rgba(0, 136, 255,0.6)";
+var mFTeamColor="rgba(255, 90, 0, 0.6)";

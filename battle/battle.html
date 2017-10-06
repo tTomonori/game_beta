@@ -13,8 +13,8 @@
 	const electron=require("electron");
 	const ipc=electron.ipcRenderer;
 </script>
-<body style="margin:0;width:100vw;height:100vh;">
-<div id="left" style="width:80%;height:100%;float:left">
+<body style="margin:0;width:100vw;height:100vh;overflow:hidden;background-image:url(../image/background/sakaba0331_800.jpg);background-repeat:no-repeat;background-size:cover;">
+<div id="left" style="width:80%;height:100%;float:left;">
 <div id="battleArea" style="width:100%;height:90%;">
 	<div id="field" style="height:100%;width:100%;padding-left:19%">
 		<p style="height:40px;font-size:33px;margin:5px">text</p>
@@ -22,13 +22,13 @@
 		<div id="charaImages" style="position:fixed;top:0;left:0;"></div>
 	</div>
 </div>
-<div id="deckArea" style="width:100%;height:10%;border:solid 1px #000000"></div>
-<div id="order" style="position:fixed;width:15%;height:80%;top:2%;left:2%;"></div>
+<div id="deckArea" style="width:100%;height:10%;"></div>
+<div id="order" style="position:fixed;width:15%;height:80%;top:5%;left:2%;padding:10px"></div>
 </div>
 
 <div id="right" style="width:20%;height:100%;float:right">
-<div id="log" style="width:100%;height:20%;border:solid 1px #000000"></div>
-<div id="status" style="width:100%;height:80%;border:solid 1px #000000;padding:15px"></div>
+<div id="log" style="width:100%;height:20%;"></div>
+<div id="status" style="width:100%;height:80%;"></div>
 </div>
 </body>
 <script src="./delay.js"></script>

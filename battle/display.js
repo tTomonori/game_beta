@@ -76,7 +76,7 @@ function initDisplay(){
 	}
 }
 
-//HP表示
+//ステータス表示
 function displayStatus(){
 	let tTag=document.getElementById("status");
 	tTag.innerHTML="";
@@ -85,11 +85,28 @@ function displayStatus(){
 }
 function displayTeamStatus(aTag,aTeam){
 	for(let i=0;i<aTeam.length;i++){
-		aTag.innerHTML+="<div style='width:64px;height:64px;overflow:hidden;'><img src='"+aTeam[i].getActorUrl()+"' style=''>";
-		aTag.innerHTML+="<div style='float:right;margin-right:80px;margin-top:-40px;'>HP:"+aTeam[i].HP+"/"+aTeam[i].originalHP+"<br>"+"MP:"+aTeam[i].MP+"/"+aTeam[i].originalMP+"</div>";
-		aTag.innerHTML+="</div>"
-		aTag.innerHTML+=aTeam[i].getHPBar();
-		aTag.innerHTML+="<div style='height:2px'>";
-		aTag.innerHTML+=aTeam[i].getMPBar();
+		aTag.innerHTML+="<div style='background:"+aTeam[i].teamColor+";margin:2px;width:90%;border-radius:10px;margin-bottom:10px;padding-bottom:5px'>"
+		+"<table style='width:100%;color:#ffffff'><tr><td rowspan='3' style='width:64px'><div style='width:64px;height:64px;overflow:hidden;'><img src='"+aTeam[i].getActorUrl()+"' style=''></div><img src='../image/"+aTeam[i].TYPE+".png' style='width:20px;margin-top:-20px;position:absolute'></td>"
+		+"<td>"+aTeam[i].NAME+"</td></tr>"
+		+"<tr><td>HP:"+aTeam[i].HP+"/"+aTeam[i].originalHP
+		+"</td><tr><td>"+"MP:"+aTeam[i].MP+"/"+aTeam[i].originalMP+"</td></tr>"
+		+"<tr><td colspan='2'>"+aTeam[i].getHPBar()+"</td></tr>"
+		+"<tr><td colspan='2'>"+aTeam[i].getMPBar()+"</td></tr>"
+		+"</div>"
+	}
+}
+
+function displayDelay(){
+	let tOrder=document.getElementById("order");
+	tOrder.innerHTML="";
+	for(let i=0;i<mDelayList.length;i++){
+		let tPickChara=mDelayList[i];
+		if(tPickChara[1]=="T"){
+			tOrder.innerHTML+="<img src='"+mTrueTeam[tPickChara[2]].getFaceUrl()+"' style='width:50%;border-radius:144px;border:solid 3px "+mTrueTeam[tPickChara[2]].teamColor+";background:"+mTrueTeam[tPickChara[2]].teamColor+"'>"
+		}
+		else if(tPickChara[1]=="F"){
+			tOrder.innerHTML+="<img src='"+mFalseTeam[tPickChara[2]].getFaceUrl()+"' style='width:50%;border-radius:144px;border:solid 3px "+mFalseTeam[tPickChara[2]].teamColor+";background:"+mFalseTeam[tPickChara[2]].teamColor+"'>"
+		}
+		tOrder.innerHTML+="<br>";
 	}
 }

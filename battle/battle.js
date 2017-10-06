@@ -82,6 +82,7 @@ mDelayList = initDelay(mTrueTeam,mFalseTeam);
 
 initDisplay();
 displayStatus();
+displayDelay();
 
 //ここまでで初期設定が完了
 //バトルのメイン関数
