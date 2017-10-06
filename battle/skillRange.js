@@ -102,12 +102,14 @@ function calcRange(aSkillRange,tPosition){
 		case 13://味方に
 			if(mDelayChara[1]=="F"){
 				for (var i=0;i<mFalseTeam.length;i++) {
-					tRange.push([mFalseTeam[i].x,mFalseTeam[i].y]);
+					if(mDelayChara[2]!=i)
+						tRange.push([mFalseTeam[i].x,mFalseTeam[i].y]);
 				}
 			}
 			else{
 				for (var i=0;i<mTrueTeam.length;i++) {
-					tRange.push([mTrueTeam[i].x,mTrueTeam[i].y]);
+					if(mDelayChara[2]!=i)
+						tRange.push([mTrueTeam[i].x,mTrueTeam[i].y]);
 				}
 			}
 		break;

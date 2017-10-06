@@ -35,7 +35,7 @@ function Support_B_M(aSupportnums,aChara) {
 function Support_A_M(aSupportnums,aChara) {
 	for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnums[i]) {
-			case 0:
+			case 0://威力５の回復
 				var tDamege = calcDamage(aChara.ATK,aChara.DEF,5);
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
@@ -43,9 +43,14 @@ function Support_A_M(aSupportnums,aChara) {
 				}
 
 				aChara.HP+=tDamege;
+				if(aChara.HP>aChara.originalHP){
+					aChara.HP = aChara.originalHP;
+				}
 				displayStatus();
 				break;
 			case 1:
+				var tDelay = Math.floor(100000/aChara.SPD);//初期値
+				aChara.Delay= (-tDelay);
 				break;
 			case 2:
 				break;

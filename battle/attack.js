@@ -42,6 +42,9 @@ function attack(aChara) {
 						mFalseTeam[i].HP=0;
 						winner("T");
 					}
+					if(mFalseTeam[i].HP>mFalseTeam[i].originalHP){//威力がマイナスだと回復する
+						mFalseTeam[i].HP = mFalseTeam[i].originalHP;
+					}
 
 					//サポート効果敵　後
 					Support_A_E(tSkill.SUPPORT_Af_Enemy,mFalseTeam[i]);
@@ -67,6 +70,9 @@ function attack(aChara) {
 					if(mTrueTeam[i].HP<=0){
 						mTrueTeam[i].HP=0;
 						winner("F");
+					}
+					if(mTrueTeam[i].HP>mTrueTeam[i].originalHP){//威力がマイナスだと回復する
+						mTrueTeam[i].HP = mTrueTeam[i].originalHP;
 					}
 					//サポート効果敵　後
 					Support_A_E(tSkill.SUPPORT_Af_Enemy,mFalseTeam[i]);
