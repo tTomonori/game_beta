@@ -37,16 +37,24 @@ function move(aX,aY){
 
 		if(!mMovable.indexOf([aX,aY])) return;
 		returnMoveable();
+		returnAttackable();
 		if(mDelayChara[1]=="T"){
-			mTrueTeam[mDelayChara[2]].move(aX,aY);
-			attack(mTrueTeam[mDelayChara[2]])
+			mTrueTeam[mDelayChara[2]].move(aX,aY,()=>{
+				attack(mTrueTeam[mDelayChara[2]])
+				battleMain();
+				returnMoveable();
+				returnAttackable();
+			});
 		}
 		else if(mDelayChara[1]=="F"){
-			mFalseTeam[mDelayChara[2]].move(aX,aY);
-			attack(mFalseTeam[mDelayChara[2]])
+			mFalseTeam[mDelayChara[2]].move(aX,aY,()=>{
+				attack(mFalseTeam[mDelayChara[2]])
+				battleMain();
+				returnMoveable();
+				returnAttackable();
+			});
 		}
-		//移動完了
-		battleMain();
+
 		return;
 	}
 }

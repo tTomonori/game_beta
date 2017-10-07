@@ -40,6 +40,7 @@ class Chara{
 			this.img.style.transform="scale(-1, 1)"
 		}
 		this.container=document.createElement("div");
+		this.container.id="chara"+this.team+this.num;
 		this.container.style.width="64px";
 		this.container.style.height="64px";
 		this.container.style.overflow="hidden";
@@ -101,11 +102,17 @@ class Chara{
 	getMPBar(){
 		return "<div style='width:80%;height:5px;background:#cf03d4;'><div style='width:"+(this.MP/this.originalMP*100)+"%;height:100%;background:#30d4ff;'></div></div>"
 	}
-	move(aX,aY){
-		//瞬間移動
-		this.x=aX;
-		this.y=aY;
-		this.display();
+	move(aX,aY,aCallback){
+		$("#"+this.container.id).animate({
+			marginLeft:"+="+((aX-this.x)*72),
+			marginTop:"+="+((aY-this.y)*76)
+		},500,()=>{
+			//移動アニメーション終了時の処理
+			this.x=aX;
+			this.y=aY;
+			this.display();
+			aCallback();
+		})
 	}
 	addDelay(aDelay){
 		this.Delay+=aDelay;
