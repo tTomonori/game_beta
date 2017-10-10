@@ -22,7 +22,7 @@ function createWindow () {
     height: 700,
     maxHeight: 700,
     minHeight: 700,
-    // scrollable: false,
+    // scrollable: false,g
   })
 
   // and load the index.html of the app.

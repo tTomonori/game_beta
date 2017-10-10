@@ -217,3 +217,23 @@ function displayDeck(aNum){
 function returnDeck(){
 	$("#cardText").css("display","none")
 }
+
+//ログ追加
+function addLog(aLog){
+	let tLogTag=document.getElementById("log");
+	if(tLogTag.innerHTML!="")
+		tLogTag.innerHTML+="<hr>";
+	tLogTag.innerHTML+=aLog+"<br>";
+	tLogTag.scrollTop="";
+}
+//ダメージのログ
+function damageLog(aChara,aDamage){
+	let tLog="";
+	if(aDamage<0){
+		tLog+="<span style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</span>"+"が"+(-aDamage)+"回復";
+	}
+	else{
+		tLog+="<span style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</span>"+"に"+aDamage+"ダメージ";
+	}
+	addLog(tLog);
+}

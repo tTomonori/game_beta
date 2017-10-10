@@ -44,16 +44,15 @@ $(".pointorRight").on("click",function(){
 function selectChara() {
 	if(mSelectedCharas.length<2){
 		mSelectedCharas.push([mSelectPointor,"T"]);
-		chageLabel();
 	}
 	else if(mSelectedCharas.length<4){
 		mSelectedCharas.push([mSelectPointor,"F"]);
-		chageLabel();
 	}
 	if(mSelectedCharas.length==4){
 		ipc.send("selected",mSelectedCharas,mPlayerNum);
 		return;
 	}
+	chageLabel();
 }
 //戻るボタン
 function back() {

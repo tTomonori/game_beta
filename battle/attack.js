@@ -1,4 +1,5 @@
 function attack(aChara) {
+	let tLogTag="";
 	//カードの確認
 	var tCard=mCard[aChara.x+aChara.y*8];
 
@@ -52,6 +53,7 @@ function attack(aChara) {
 					}
 
 					mFalseTeam[i].HP-=tDamage;
+					damageLog(aChara,tDamage);
 					if(mFalseTeam[i].HP<=0){
 						mFalseTeam[i].HP=0;
 						winner("T");
@@ -80,9 +82,8 @@ function attack(aChara) {
 						tDamage = Math.floor(tDamage*1.5);
 					}
 
-					console.log(mTrueTeam[i].HP,tDamage);
 					mTrueTeam[i].HP-=tDamage;
-					console.log(mTrueTeam[i].HP);
+					damageLog(aChara,tDamage);
 					if(mTrueTeam[i].HP<=0){
 						mTrueTeam[i].HP=0;
 						winner("F");
@@ -110,6 +111,7 @@ function attack(aChara) {
 	// mDelayList=sortDelay(mDelayList);
 	mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
 	displayDelay();
+
 }
 
 function calcDamage(aATK,aDEF,aPOWER){
