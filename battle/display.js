@@ -169,19 +169,20 @@ function attackable(aX,aY){
 		//技取り出し
 		tSkill=mSkillList[tSkill];
 		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
-
-		for(let i=0;i<tRange.length;i++){
-			// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
-			let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
-			let tCard=document.createElement("img");
-			tCard.style.position="absolute";
-			tCard.style.pointerEvents="none";
-			tCard.style.marginLeft="-70px";
-			tCard.style.width="70px";
-			tCard.style.height="70px";
-			tCard.style.opacity="0.6";
-			tCard.src="../image/card_canAttack.png";
-			tCardCell.appendChild(tCard);
+		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
+			for(let i=0;i<tRange.length;i++){
+				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
+				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
+				let tCard=document.createElement("img");
+				tCard.style.position="absolute";
+				tCard.style.pointerEvents="none";
+				tCard.style.marginLeft="-70px";
+				tCard.style.width="70px";
+				tCard.style.height="70px";
+				tCard.style.opacity="0.6";
+				tCard.src="../image/card_canAttack.png";
+				tCardCell.appendChild(tCard);
+			}
 		}
 		return;
 	}
