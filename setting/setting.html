@@ -27,6 +27,7 @@
 
 
 <div id="right" style="width:40%;height:100%;float:right">
+<div id="status_information" style="width:100%;height:100%;display:block;">
 <table>
 	<tr><td>NAME</td><td>:</td><td class="status"></td></tr>
 	<tr><td>HP</td><td>:</td><td class="status"></td></tr>
@@ -37,10 +38,16 @@
 	<tr><td>MOV</td><td>:</td><td class="status"></td></tr>
 	<tr><td>TYPE</td><td>:</td><td class="status"></td></tr>
 </table>
-<div>デッキ</div>
+<div>デッキ:<button onclick="changeInformation()">確認</button></div>
 <input type="button" name="" value="このキャラにする" onclick="selectChara()">
 </div>
+<div id="deck_information" style="width:100%;height:100%;display:none;">
+<div id="card_status"></div>
+<button onclick="changeInformation()">戻る</button>
+</div>
+</div>
 </body>
+<script src="../battle/skillList.js"></script>
 <script src="../charaData/charaData.js"></script>
 <script src="./setting.js"></script>
 </html>

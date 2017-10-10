@@ -8,6 +8,7 @@ var charas=loadChara();
 var mSelectPointor=0;
 var mCharaMaxNum=charas.length
 displayCharaData(mSelectPointor)
+displayDeckData()
 
 //キャラ表示
 function displayCharaData(aNum){
@@ -15,7 +16,12 @@ function displayCharaData(aNum){
 	let tStatus=$(".status");
 
 	for(let i=0;i<tStatus.length;i++){
-		tStatus[i].innerHTML=tData[mStatusList[i]];
+		if(mStatusList[i]=="TYPE"){
+			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:18px;'>"
+		}
+		else{
+			tStatus[i].innerHTML=tData[mStatusList[i]];
+		}
 	}
 	$("#charaImage")[0].src="../image/chara/2_stand/"+(tData.IMAGE+200)+".png";
 	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
@@ -66,4 +72,58 @@ function chageLabel(){
 	tLabel+="キャラ"+((mSelectedCharas.length%2)+1)+"を選んでください";
 	$("#player")[0].innerHTML=tLabel;
 
+}
+
+//キャラ情報とデッキ情報の切り替え
+function changeInformation(){
+	let tStatus=document.getElementById("status_information");
+	let tDeck=document.getElementById("deck_information");
+	console.log(tStatus.style.display)
+	if(tStatus.style.display=="block"){
+		tStatus.style.display="none"
+	}
+	else{
+		tStatus.style.display="block"
+	}
+	if(tDeck.style.display=="block"){
+		tDeck.style.display="none"
+	}
+	else{
+		tDeck.style.display="block"
+	}
+}
+//デッキ情報欄生成
+function displayDeckData(){
+	let tTag=document.getElementById("card_status");
+	let tTable=document.createElement("table");
+	tTag.appendChild(tTable);
+	let tContents="";
+	for(let i=0;i<15;i++){
+		let tCardNum=i;
+		if(i=="0") tCardNum="A";
+		else if(i=="10") tCardNum="J";
+		else if(i=="11") tCardNum="Q";
+		else if(i=="12") tCardNum="K";
+		else if(i=="13") tCardNum="JKR"
+		else if(i=="14") tCardNum="";
+		if(i%2==0){
+			//左のセル
+			tContents+="<tr><td>";
+			tContents+="<img src='../image/card.png' style='width:35px;'>";
+			tContents+="<span style='position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			tContents+="</td><td>";
+			tContents+=mSkillList[charas[mSelectPointor].DECK[i]].TEXT;
+			tContents+="</td>";
+		}
+		else{
+			//右のセル
+			tContents+="<td>";
+			tContents+="<img src='../image/card.png' style='width:35px;'>";
+			tContents+="<span style='position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			tContents+="</td><td>";
+			tContents+=mSkillList[charas[mSelectPointor].DECK[i]].TEXT;
+			tContents+="</td></tr>";
+		}
+		tTable.innerHTML=tContents;
+	}
 }
