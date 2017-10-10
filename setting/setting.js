@@ -17,12 +17,13 @@ function displayCharaData(aNum){
 
 	for(let i=0;i<tStatus.length;i++){
 		if(mStatusList[i]=="TYPE"){
-			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:18px;'>"
+			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:40px;'>"
 		}
 		else{
 			tStatus[i].innerHTML=tData[mStatusList[i]];
 		}
 	}
+	$("#face_image")[0].src="../image/chara/1_face/"+(tData.IMAGE+100)+".png";
 	$("#charaImage")[0].src="../image/chara/2_stand/"+(tData.IMAGE+200)+".png";
 	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
 }
