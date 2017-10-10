@@ -42,10 +42,6 @@ $(".pointorRight").on("click",function(){
 
 //選択ボタン
 function selectChara() {
-	if(mSelectedCharas.length==4){
-		ipc.send("selected",mSelectedCharas,mPlayerNum);
-		return;
-	}
 	if(mSelectedCharas.length<2){
 		mSelectedCharas.push([mSelectPointor,"T"]);
 		chageLabel();
@@ -53,6 +49,10 @@ function selectChara() {
 	else if(mSelectedCharas.length<4){
 		mSelectedCharas.push([mSelectPointor,"F"]);
 		chageLabel();
+	}
+	if(mSelectedCharas.length==4){
+		ipc.send("selected",mSelectedCharas,mPlayerNum);
+		return;
 	}
 }
 //戻るボタン
