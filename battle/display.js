@@ -224,16 +224,19 @@ function addLog(aLog){
 	if(tLogTag.innerHTML!="")
 		tLogTag.innerHTML+="<hr>";
 	tLogTag.innerHTML+=aLog+"<br>";
-	tLogTag.scrollTop="";
+	// tLogTag.scrollTop="";
+	$("#log").delay(100).animate({
+		scrollTop: $("#log")[0].scrollHeight
+	},1500)
 }
 //ダメージのログ
 function damageLog(aChara,aDamage){
 	let tLog="";
 	if(aDamage<0){
-		tLog+="<span style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</span>"+"が"+(-aDamage)+"回復";
+		tLog+="<b style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</b>"+"が"+(-aDamage)+"回復";
 	}
 	else{
-		tLog+="<span style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</span>"+"に"+aDamage+"ダメージ";
+		tLog+="<b style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</b>"+"に"+aDamage+"ダメージ";
 	}
 	addLog(tLog);
 }

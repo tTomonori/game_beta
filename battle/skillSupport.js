@@ -10,6 +10,7 @@ function Support_B_M(aSupportnums,aChara) {
 				}
 
 				aChara.HP-=tDamege;
+				damageLog(aChara,tDamege);
 				displayStatus();
 				if(aChara.HP<=0){
 					aChara.HP=0;
@@ -43,6 +44,7 @@ function Support_A_M(aSupportnums,aChara) {
 				}
 
 				aChara.HP+=tDamege;
+				damageLog(aChara,-tDamege);
 				if(aChara.HP>aChara.originalHP){
 					aChara.HP = aChara.originalHP;
 				}
@@ -101,6 +103,7 @@ function Support_O(aSupportnums,aChara) {
 				mCard=shuffle(mCard);
 				//トランプを並べる
 				displayCard();
+				addLog("シャッフル");
 				break;
 			case 1://裏カードを表に向ける
 				$("#cardTable")[0].getElementsByTagName("tr")[aChara.y].getElementsByTagName("td")[aChara.x].getElementsByTagName("img")[0].src="../image/card.png";

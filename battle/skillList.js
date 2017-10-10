@@ -107,7 +107,7 @@ var mSkillList=[
 		RANGE:0,
 		POWER:0,
 		DELAY:0,
-		MAGIC:0,
+		MAGIC:1,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[1],
 		SUPPORT_Be_Enemy:[],
