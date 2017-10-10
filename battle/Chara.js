@@ -10,7 +10,7 @@ class Chara{
 		this.originalTYPE=aData.TYPE;
 		this.originalMOV=aData.MOV;
 		this.HP=this.originalHP;
-		this.MP=this.originalMP;
+		this.MP=0;
 		this.ATK=this.originalATK;
 		this.DEF=this.originalDEF;
 		this.SPD=this.originalSPD;

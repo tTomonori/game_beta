@@ -136,10 +136,15 @@ function battleMain(){
 		tCharaTeam = mFalseTeam;
 	}
 
+	//MPの回復
+	if(tCharaTeam[mDelayChara[2]].MP<tCharaTeam[mDelayChara[2]].originalMP){
+		tCharaTeam[mDelayChara[2]].MP++;
+	}
 	//移動
 	mMovable = movableSquares(tCharaTeam[mDelayChara[2]]);//移動先のリスト
 	//移動先のトランプの色を変えたい
 
+	displayStatus();
 
 	//操作
 	if(mPlayerNum==0&&mDelayChara.team=="F"){

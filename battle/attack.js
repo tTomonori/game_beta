@@ -13,8 +13,23 @@ function attack(aChara) {
 	else{
 		tSkill=aChara.deck[tCard[0]];
 	}
+
+
 	//技取り出し
 	tSkill=mSkillList[tSkill];
+
+	if(aChara.MP<tSkill.MAGIC){
+		//delay計算
+		var tDelay = Math.floor(100000/aChara.SPD);//初期値
+		// tDelay+=Math.floor(tSkill.DELAY/aChara.SPD)//追加delay
+
+		aChara.addDelay(tDelay);
+		// mDelayList=sortDelay(mDelayList);
+		mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
+		displayDelay();
+		return;
+	}
+	aChara.MP -= tSkill.MAGIC;
 
 	//補助効果適用(B)
 	Support_B_M(tSkill.SUPPORT_Be_Myself,aChara);
