@@ -25,7 +25,7 @@ function attack(aChara) {
 	let tRange=getAttackRange(tSkill.RANGE);
 	if(aChara.team=="T"||tSkill.F_ATTACK==true){
 		for(var i=0;i<mFalseTeam.length;i++){
-			for(var j=0;j<tRange.length;j++){				
+			for(var j=0;j<tRange.length;j++){
 				if(mFalseTeam[i].x==tRange[j][0]&&mFalseTeam[i].y==tRange[j][1]){
 					//サポート効果敵　前
 					Support_B_E(tSkill.SUPPORT_Be_Enemy,mFalseTeam[i]);
@@ -33,11 +33,10 @@ function attack(aChara) {
 					var tDamage = calcDamage(aChara.ATK,mFalseTeam[i].DEF,tSkill.POWER);
 
 					if(tCard[1]==aChara.TYPE){
-						tDamage *= Math.floor(tDamage*1.5);
+						tDamage = Math.floor(tDamage*1.5);
 					}
 
 					mFalseTeam[i].HP-=tDamage;
-					displayStatus();
 					if(mFalseTeam[i].HP<=0){
 						mFalseTeam[i].HP=0;
 						winner("T");
@@ -48,6 +47,7 @@ function attack(aChara) {
 
 					//サポート効果敵　後
 					Support_A_E(tSkill.SUPPORT_Af_Enemy,mFalseTeam[i]);
+					displayStatus();
 				}
 			}
 		}
@@ -57,16 +57,17 @@ function attack(aChara) {
 			for(var j=0;j<tRange.length;j++){
 				if(mTrueTeam[i].x==tRange[j][0]&&mTrueTeam[i].y==tRange[j][1]){
 					//サポート効果敵　前
-					Support_B_E(tSkill.SUPPORT_Be_Enemy,mFalseTeam[i]);
+					Support_B_E(tSkill.SUPPORT_Be_Enemy,mTrueTeam[i]);
 					//ダメージ計算
-					var tDamage = calcDamage(aChara.ATK,mFalseTeam[i].DEF,tSkill.POWER);
+					var tDamage = calcDamage(aChara.ATK,mTrueTeam[i].DEF,tSkill.POWER);
 
 					if(tCard[1]==aChara.TYPE){
-						tDamage *= Math.floor(tDamage*1.5);
+						tDamage = Math.floor(tDamage*1.5);
 					}
 
+					console.log(mTrueTeam[i].HP,tDamage);
 					mTrueTeam[i].HP-=tDamage;
-					displayStatus();
+					console.log(mTrueTeam[i].HP);
 					if(mTrueTeam[i].HP<=0){
 						mTrueTeam[i].HP=0;
 						winner("F");
@@ -76,6 +77,7 @@ function attack(aChara) {
 					}
 					//サポート効果敵　後
 					Support_A_E(tSkill.SUPPORT_Af_Enemy,mFalseTeam[i]);
+					displayStatus();
 				}
 			}
 		}
