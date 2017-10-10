@@ -13,10 +13,11 @@
 	const electron=require("electron");
 	const ipc=electron.ipcRenderer;
 </script>
-<body style="margin:0;width:100vw;height:100vh;">
+<link rel="stylesheet" href="../public.css">
+<body style="margin:0;width:100vw;height:100vh;background-image:url(../image/background/20150102022852_5c404eda.jpg);background-repeat:no-repeat;background-size:cover">
 <div id="left" style="width:60%;height:100%;float:left;position:relative">
-<div id="player">プレイヤー1のキャラ1を選んでください</div>
-<img src="../image/arrow/0093_3.png" class="pointorLeft" style="position:absolute;left:5%;top:45%;transform:rotate(180deg);width:10%">
+<h1 id="player">プレイヤー1のキャラ1を選んでください</h1>
+<img src="../image/arrow/0093_3.png" class="pointorLeft" style="position:absolute;left:5%;top:45%;transform:scale(-1, 1);width:10%">
 <center>
 <img id="charaImage" style="margin-top:-90px;z-index:-1;">
 </center>
@@ -26,8 +27,8 @@
 </div>
 
 
-<div id="right" style="width:40%;height:100%;float:right">
-<div id="status_information" style="width:100%;height:100%;display:block;">
+<div id="right" style="width:38%;height:98%;float:right;margin:1%;background:#ffffff;">
+<div id="status_information" style="width:100%;height:100%;display:block;margin:7px">
 <table>
 	<tr><td>NAME</td><td>:</td><td class="status"></td></tr>
 	<tr><td>HP</td><td>:</td><td class="status"></td></tr>
