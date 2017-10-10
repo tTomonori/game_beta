@@ -8,7 +8,7 @@ var charas=loadChara();
 var mSelectPointor=0;
 var mCharaMaxNum=charas.length
 displayCharaData(mSelectPointor)
-displayDeckData()
+displayDeckData(mSelectPointor)
 
 //キャラ表示
 function displayCharaData(aNum){
@@ -31,11 +31,13 @@ $(".pointorLeft").on("click",function(){
 	mSelectPointor+=(mCharaMaxNum-1);
 	mSelectPointor%=mCharaMaxNum;
 	displayCharaData(mSelectPointor);
+	displayDeckData(mSelectPointor);
 })
 $(".pointorRight").on("click",function(){
 	mSelectPointor+=1;
 	mSelectPointor%=mCharaMaxNum;
 	displayCharaData(mSelectPointor);
+	displayDeckData(mSelectPointor);
 })
 
 //選択ボタン
@@ -78,7 +80,6 @@ function chageLabel(){
 function changeInformation(){
 	let tStatus=document.getElementById("status_information");
 	let tDeck=document.getElementById("deck_information");
-	console.log(tStatus.style.display)
 	if(tStatus.style.display=="block"){
 		tStatus.style.display="none"
 	}
@@ -93,8 +94,9 @@ function changeInformation(){
 	}
 }
 //デッキ情報欄生成
-function displayDeckData(){
+function displayDeckData(aNum){
 	let tTag=document.getElementById("card_status");
+	tTag.innerHTML="";
 	let tTable=document.createElement("table");
 	tTag.appendChild(tTable);
 	let tContents="";
@@ -112,7 +114,7 @@ function displayDeckData(){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			tContents+=mSkillList[charas[mSelectPointor].DECK[i]].TEXT;
+			tContents+=mSkillList[charas[aNum].DECK[i]].TEXT;
 			tContents+="</td>";
 		}
 		else{
@@ -121,7 +123,7 @@ function displayDeckData(){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			tContents+=mSkillList[charas[mSelectPointor].DECK[i]].TEXT;
+			tContents+=mSkillList[charas[aNum].DECK[i]].TEXT;
 			tContents+="</td></tr>";
 		}
 		tTable.innerHTML=tContents;
