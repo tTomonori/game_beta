@@ -93,7 +93,7 @@ function Support_A_E(aSupportnums,aChara) {
 		}
 	}
 }
-function Support_O(aSupportnums) {
+function Support_O(aSupportnums,aChara) {
 	for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnums[i]) {
 			case 0:
@@ -102,7 +102,8 @@ function Support_O(aSupportnums) {
 				//トランプを並べる
 				displayCard();
 				break;
-			case 1:
+			case 1://裏カードを表に向ける
+				$("#cardTable")[0].getElementsByTagName("tr")[aChara.y].getElementsByTagName("td")[aChara.x].getElementsByTagName("img")[0].src="../image/card.png";
 				break;
 			case 2:
 				break;

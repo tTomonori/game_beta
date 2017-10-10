@@ -83,7 +83,7 @@ function attack(aChara) {
 
 	//補助効果適用(A)
 	Support_A_M(tSkill.SUPPORT_Af_Myself,aChara);
-	Support_O(tSkill.SUPPORT_Otherwise);
+	Support_O(tSkill.SUPPORT_Otherwise,aChara);
 
 	//delay計算
 	var tDelay = Math.floor(100000/aChara.SPD);//初期値
