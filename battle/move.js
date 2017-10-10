@@ -28,16 +28,16 @@ function movableSquares(aChara){
 function move(aX,aY){
 	if(mEventFlag==true)//操作不可
 		return;
-	mEventFlag = true;//操作不可能に
 
 	for(let i=0;i<mMovable.length;i++){
 		if(mMovable[i][0]!=aX||mMovable[i][1]!=aY){
 			continue;
 		}
 
-		if(!mMovable.indexOf([aX,aY])) return;
+		// if(!mMovable.indexOf([aX,aY])) return;
 		returnMoveable();
 		returnAttackable();
+		mEventFlag = true;//操作不可能に
 		if(mDelayChara[1]=="T"){
 			mTrueTeam[mDelayChara[2]].move(aX,aY,()=>{
 				attack(mTrueTeam[mDelayChara[2]])

@@ -41,4 +41,32 @@
 <script src="../charaData/charaData.js"></script>
 <script src="./display.js"></script>
 <script src="./battle.js"></script>
+<script>
+	var tDeck = "";
+	for(var i=0;i<15;i++){
+		tDeck+="<img src='../image/card.png' style='width:50px;height:50px;'>";
+		// tDeck+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
+		tNum = i+1;
+		if(tNum==1) {
+			tNum = "A"
+		}
+		else if(tNum==11){
+			tNum = "J"
+		}
+		else if(tNum==12){
+			tNum = "Q"
+		}
+		else if(tNum==13){
+			tNum = "K"
+		}
+		else if(tNum==14){
+			tNum = "JOKER"
+		}
+		else if(tNum==15){
+			tNum = ""
+		}
+		tDeck+="<p style='position:absolute;margin-top:-43px;margin-left:"+(12+i*50)+"px'>"+tNum+"</p>";
+	}
+	$("#deckArea")[0].innerHTML = tDeck;
+</script>
 </html>

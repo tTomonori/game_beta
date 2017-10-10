@@ -96,7 +96,7 @@ function attack(aChara) {
 }
 
 function calcDamage(aATK,aDEF,aPOWER){
-	var tDamage = Math.floor((aATK+30)/(aDEF+30)*aPOWER)
+	var tDamage = Math.floor((aATK+30)*5/(aDEF+30)*aPOWER)
 
 	return tDamage
 }
