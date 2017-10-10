@@ -201,3 +201,18 @@ function returnAttackable() {
 
 	displayMoveable(mMovable);
 }
+
+function displayDeck(aNum){
+	if(mDelayChara[1]=="T"){
+		$("#cardText")[0].textContent=mSkillList[mTrueTeam[mDelayChara[2]].deck[aNum]].TEXT;
+	}
+	else if(mDelayChara[1]=="F"){
+		$("#cardText")[0].textContent=mSkillList[mFalseTeam[mDelayChara[2]].deck[aNum]].TEXT;
+	}
+	$("#cardText").css("left",aNum*50+"px");
+	$("#cardText").css("display","block");
+}
+
+function returnDeck(){
+	$("#cardText").css("display","none")
+}
