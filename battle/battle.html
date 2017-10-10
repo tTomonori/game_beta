@@ -44,7 +44,7 @@
 <script>
 	var tDeck = "";
 	for(var i=0;i<15;i++){
-		tDeck+="<img src='../image/card.png' style='width:50px;height:50px;'>";
+		tDeck+="<img id='Card-"+i+"' src='../image/card.png' style='width:50px;height:50px;' onmouseover='displayDeck("+i+")' onmouseout='returnDeck()>";
 		// tDeck+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
 		tNum = i+1;
 		if(tNum==1) {
