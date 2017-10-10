@@ -48,15 +48,15 @@ function displayCard() {
 				else {
 					tNum=tNum+1;
 				}
-			tTable+="<img src='../image/card.png' style='width:70px;height:70px;'>";
+
 			if(tCard[1]!="joker"&&tCard[1]!="suka"){
+				tTable+="<img src='../image/card.png' style='width:70px;height:70px;'>";
 				tTable+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
 				tTable+="<p style='position:absolute;margin-top:-63px;margin-left:12px'>"+tNum+"</p>";
 				// tTable+=mCard[i*7+j];
 			}
-			else if(tCard[1]=="joker"){
-				tTable+="<p style='position:absolute;margin-top:-63px;margin-left:12px'>"+"JOKER"+"</p>";
-
+			else if(tCard[1]=="joker"||tCard[1]=="suka"){
+				tTable+="<img src='../image/card_back.png' style='width:70px;height:70px;'>";
 			}
 
 			tTable+="</td>";
@@ -113,11 +113,20 @@ function displayDelay(){
 
 function displayMoveable(aMoveable) {
 	for(let i=0;i<aMoveable.length;i++){
-		let tCard=$("#cardTable")[0].getElementsByTagName("tr")[aMoveable[i][1]].getElementsByTagName("td")[aMoveable[i][0]].getElementsByTagName("img")[0];
+		let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[aMoveable[i][1]].getElementsByTagName("td")[aMoveable[i][0]];
+		let tCard=document.createElement("img");
+		tCard.style.position="absolute";
+		tCard.style.pointerEvents="none";
+		tCard.style.marginLeft="-70px";
+		tCard.style.width="70px";
+		tCard.style.height="70px";
+		tCard.style.opacity="0.6";
 		tCard.src="../image/card_canMove.png";
+		tCardCell.appendChild(tCard);
 	}
 }
 function returnMoveable() {
+	return;
 	let tCard=$("#cardTable")[0].getElementsByTagName("img");
 	for(let i=0;i<tCard.length;i++){
 		if(tCard[i].src.match(/card_canMove.png/)){
@@ -162,8 +171,17 @@ function attackable(aX,aY){
 		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
 
 		for(let i=0;i<tRange.length;i++){
-			let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
+			// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
+			let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
+			let tCard=document.createElement("img");
+			tCard.style.position="absolute";
+			tCard.style.pointerEvents="none";
+			tCard.style.marginLeft="-70px";
+			tCard.style.width="70px";
+			tCard.style.height="70px";
+			tCard.style.opacity="0.6";
 			tCard.src="../image/card_canAttack.png";
+			tCardCell.appendChild(tCard);
 		}
 		return;
 	}
@@ -171,10 +189,13 @@ function attackable(aX,aY){
 
 }
 function returnAttackable() {
-	let tCard=$("#cardTable")[0].getElementsByTagName("img");
+	let tCard=document.getElementsByTagName("img");
 	for(let i=0;i<tCard.length;i++){
 		if(tCard[i].src.match(/card_canAttack.png/)){
-			tCard[i].src="../image/card.png";
+			tCard[i].remove()
+		}
+		if(tCard[i].src.match(/card_canMove.png/)){
+			tCard[i].remove()
 		}
 	}
 
