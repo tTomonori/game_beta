@@ -112,7 +112,7 @@ function displayDeckData(aNum){
 			//左のセル
 			tContents+="<tr><td>";
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
-			tContents+="<span style='position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
 			tContents+=mSkillList[charas[aNum].DECK[i]].TEXT;
 			tContents+="</td>";
@@ -121,7 +121,7 @@ function displayDeckData(aNum){
 			//右のセル
 			tContents+="<td>";
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
-			tContents+="<span style='position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			tContents+="<span style='color:#000; position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
 			tContents+=mSkillList[charas[aNum].DECK[i]].TEXT;
 			tContents+="</td></tr>";
