@@ -157,6 +157,7 @@ function battleMain(){
 }
 
 function winner(aWinner){
+	addLog("winner is "+aWinner+" team");
 	console.log("winner is "+aWinner+" team");//勝者
 }
 
