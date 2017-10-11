@@ -76,23 +76,20 @@ function chageLabel(){
 
 }
 
-//キャラ情報とデッキ情報の切り替え
-function changeInformation(){
-	let tStatus=document.getElementById("status_information");
-	let tDeck=document.getElementById("deck_information");
-	if(tStatus.style.display=="block"){
-		tStatus.style.display="none"
+// //キャラ情報とデッキ情報の切り替え
+$(".change_information").on("click",(e)=>{
+	let tVal=$(".change_information:checked").val();
+	let tInformation=document.getElementsByClassName("information_tab");
+	for(let i=0;i<tInformation.length;i++){
+		if(tInformation[i].id==tVal+"_information"){
+			tInformation[i].style.display="block";
+		}
+		else{
+			tInformation[i].style.display="none";
+		}
 	}
-	else{
-		tStatus.style.display="block"
-	}
-	if(tDeck.style.display=="block"){
-		tDeck.style.display="none"
-	}
-	else{
-		tDeck.style.display="block"
-	}
-}
+})
+
 //デッキ情報欄生成
 function displayDeckData(aNum){
 	let tTag=document.getElementById("card_status");

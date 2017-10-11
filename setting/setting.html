@@ -18,6 +18,50 @@
 	background: -webkit-gradient(linear, left top, right bottom, from(rgb(100, 10, 255)),color-stop(0.3,rgb(150,20,255)),color-stop(0.6,rgb(100,10,255)), to(rgb(150,20,255)));
 	color: #fff;
 }
+.information_button input {
+	display: none;
+}
+.information_button label{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 60px;
+	margin: 0;
+	padding: 10px;
+	background: #bdc3c7;
+	color: #869198;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.information_button label:first-of-type{
+	border-radius: 3px 0 0 3px;
+}
+.information_button label:last-of-type{
+	border-radius: 0 3px 3px 0;
+}
+.information_button input[type="radio"]:checked + .switch-on {
+	background-color: #a1b91d;
+	color: #fff;
+}
+.information_button input[type="radio"]:checked + .switch-off {
+	background-color: #e67168;
+	color: #fff;
+}
+.square_btn {
+background: #67c5ff;
+display: inline-block;
+padding: 0.3em 1em;
+text-decoration: none;
+color: #fff;
+/*border: solid 2px #67c5ff;*/
+border-radius: 3px;
+transition: .4s;
+}.square_btn:hover {
+background: #678dff;
+color: white;
+}
 </style>
 <link rel="stylesheet" href="../public.css">
 <body style="margin:0;width:100vw;height:100vh;background-image:url(../image/background/20150102022852_5c404eda.jpg);background-repeat:no-repeat;background-size:cover">
@@ -28,13 +72,20 @@
 <img id="charaImage" style="margin-top:-90px;z-index:-1;">
 </center>
 <img src="../image/arrow/0093_3.png" class="pointorRight" style="position:absolute;right:5%;top:45%;width:10%">
-<div id="charaNumber" style="position:absolute;bottom:35px;color:#fff"></div>
-<input type="button" name="" value="戻る" onclick="back()" style="position:absolute;bottom:5px">
+<div id="charaNumber" style="position:absolute;bottom:35px;color:#fff;font-size:40px"></div>
 </div>
 
 
-<div id="right" style="width:36%;height:98%;float:right;margin:1%;border:double;border-radius: 10px">
-<div id="status_information" style="width:100%;height:100%;display:block;margin:7px">
+<div id="right" style="width:36%;height:98%;float:right;margin:1%;border:double;border-radius: 10px;position:relative">
+	<div class="information_button" style="margin-top:10px;margin-left:10px;text-align:center">
+	    <input class="change_information" type="radio" name="s2" id="on" value="status" checked="">
+	    <label for="on" class="switch-on">STATUS</label>
+	    <input class="change_information" type="radio" name="s2" id="off" value="deck">
+	    <label for="off" class="switch-off">DECK</label>
+	</div>
+	<br><br>
+	<hr>
+<div class="information_tab" id="status_information" style="width:100%;height:100%;display:block;margin:7px">
 <table style="font-size:20px;width:90%">
 	<tr><td colspan="3" class="status" style="border-bottom:solid 1px #bbf"></td></tr>
 	<tr><td colspan="3" style="border-bottom:solid 1px #bbf"><img id="face_image" style="height:200px"></td></tr>
@@ -48,12 +99,13 @@
 	<!-- <tr><td>TYPE</td><td>:</td><td class="status"></td></tr> -->
 </table>
 <div class="status" style="position:absolute;background:#fff;width:40px;height:40px;border:solid 1px #000;border-radius:40px;margin-top:-215px;margin-left:160px"></div>
-<div>デッキ:<button onclick="changeInformation()">確認</button></div>
-<input type="button" name="" value="このキャラにする" onclick="selectChara()">
 </div>
-<div id="deck_information" style="width:100%;height:100%;display:none;">
+<div class="information_tab" id="deck_information" style="width:100%;height:100%;display:none;">
 <div id="card_status"></div>
-<button onclick="changeInformation()">戻る</button>
+</div>
+<div style="position:absolute;bottom:20px;left:10px;">
+<input class="square_btn" type="button" name="" value="このキャラにする" onclick="selectChara()" style="font-size:25px">
+<input class="square_btn" type="button" name="" value="戻る" onclick="back()" style="font-size:25px">
 </div>
 </div>
 </body>

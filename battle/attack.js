@@ -1,4 +1,5 @@
 function attack(aChara) {
+	let tDamagedCharas=new Array()//ダメージを受けたキャラ
 	let tLogTag="";
 	//カードの確認
 	var tCard=mCard[aChara.x+aChara.y*8];
@@ -53,7 +54,8 @@ function attack(aChara) {
 					}
 
 					mFalseTeam[i].HP-=tDamage;
-					damageLog(aChara,tDamage);
+					damageLog(mFalseTeam[i],tDamage);
+					tDamagedCharas.push(mFalseTeam[i]);
 					if(mFalseTeam[i].HP<=0){
 						mFalseTeam[i].HP=0;
 						winner("T");
@@ -83,7 +85,8 @@ function attack(aChara) {
 					}
 
 					mTrueTeam[i].HP-=tDamage;
-					damageLog(aChara,tDamage);
+					damageLog(mTrueTeam[i],tDamage);
+					tDamagedCharas.push(mTrueTeam[i]);
 					if(mTrueTeam[i].HP<=0){
 						mTrueTeam[i].HP=0;
 						winner("F");
@@ -111,6 +114,7 @@ function attack(aChara) {
 	// mDelayList=sortDelay(mDelayList);
 	mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
 	displayDelay();
+	attackAnimate(aChara,tDamagedCharas,tSkill.ANIMATION,()=>{});
 
 }
 
