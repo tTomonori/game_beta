@@ -211,7 +211,7 @@ function displayDeck(aNum){
 		$("#cardText")[0].textContent=mSkillList[mFalseTeam[mDelayChara[2]].deck[aNum]].TEXT;
 	}
 	$("#cardText").css("left",aNum*50+"px");
-	$("#cardText").css("display","block");
+	$("#cardText").css("display","inline-block");
 }
 
 function returnDeck(){
