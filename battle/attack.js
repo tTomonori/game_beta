@@ -29,6 +29,7 @@ function attack(aChara) {
 			// mDelayList=sortDelay(mDelayList);
 			mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
 			displayDelay();
+			freeLog(aChara,"MP","足りない")
 			attacRes();
 			// return;
 		}
@@ -146,69 +147,3 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 		}
 	})
 }
-
-
-///////////////////////////////
-// //攻撃
-	// let tRange=getAttackRange(aSkill.RANGE);
-	// if(aChara.team=="T"||tSkill.F_ATTACK==true){
-	// 	for(var i=0;i<mFalseTeam.length;i++){
-	// 		for(var j=0;j<tRange.length;j++){
-	// 			if(mFalseTeam[i].x==tRange[j][0]&&mFalseTeam[i].y==tRange[j][1]){
-	// 				//サポート効果敵　前
-	// 				Support_B_E(tSkill.SUPPORT_Be_Enemy,mFalseTeam[i]);
-	// 				//ダメージ計算
-	// 				var tDamage = calcDamage(aChara.ATK,mFalseTeam[i].DEF,tSkill.POWER);
-	//
-	// 				if(tCard[1]==aChara.TYPE){
-	// 					tDamage = Math.floor(tDamage*1.5);
-	// 				}
-	//
-	// 				mFalseTeam[i].HP-=tDamage;
-	// 				damageLog(mFalseTeam[i],tDamage);
-	// 				tDamagedCharas.push(mFalseTeam[i]);
-	// 				if(mFalseTeam[i].HP<=0){
-	// 					mFalseTeam[i].HP=0;
-	// 					winner("T");
-	// 				}
-	// 				if(mFalseTeam[i].HP>mFalseTeam[i].originalHP){//威力がマイナスだと回復する
-	// 					mFalseTeam[i].HP = mFalseTeam[i].originalHP;
-	// 				}
-	//
-	// 				//サポート効果敵　後
-	// 				Support_A_E(tSkill.SUPPORT_Af_Enemy,mFalseTeam[i]);
-	// 				displayStatus();
-	// 			}
-	// 		}
-	// 	}
-	// }
-	// if(aChara.team=="F"||tSkill.F_ATTACK==true){
-	// 	for(var i=0;i<mTrueTeam.length;i++){
-	// 		for(var j=0;j<tRange.length;j++){
-	// 			if(mTrueTeam[i].x==tRange[j][0]&&mTrueTeam[i].y==tRange[j][1]){
-	// 				//サポート効果敵　前
-	// 				Support_B_E(tSkill.SUPPORT_Be_Enemy,mTrueTeam[i]);
-	// 				//ダメージ計算
-	// 				var tDamage = calcDamage(aChara.ATK,mTrueTeam[i].DEF,tSkill.POWER);
-	//
-	// 				if(tCard[1]==aChara.TYPE){
-	// 					tDamage = Math.floor(tDamage*1.5);
-	// 				}
-	//
-	// 				mTrueTeam[i].HP-=tDamage;
-	// 				damageLog(mTrueTeam[i],tDamage);
-	// 				tDamagedCharas.push(mTrueTeam[i]);
-	// 				if(mTrueTeam[i].HP<=0){
-	// 					mTrueTeam[i].HP=0;
-	// 					winner("F");
-	// 				}
-	// 				if(mTrueTeam[i].HP>mTrueTeam[i].originalHP){//威力がマイナスだと回復する
-	// 					mTrueTeam[i].HP = mTrueTeam[i].originalHP;
-	// 				}
-	// 				//サポート効果敵　後
-	// 				Support_A_E(tSkill.SUPPORT_Af_Enemy,mFalseTeam[i]);
-	// 				displayStatus();
-	// 			}
-	// 		}
-	// 	}
-	// }

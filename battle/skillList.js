@@ -208,7 +208,7 @@ var mSkillList=[
 		ANIMATION:[7]
 	},
 	{NUMBER:14,
-		TEXT:"JOKER 相手全体に威力5のダメージ",
+		TEXT:"相手全体に威力5のダメージ その後シャッフル",
 		RANGE:8,
 		POWER:5,
 		DELAY:0,
@@ -234,9 +234,9 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		F_ATTACK:false,
 		ANIMATION:[15]
-	},	
+	},
 	{NUMBER:16,
-		TEXT:"JOKER 相手全体に威力２０のダメージ 消費MP２０",
+		TEXT:"相手全体に威力２０のダメージ その後シャッフル 消費MP２０",
 		RANGE:8,
 		POWER:20,
 		DELAY:0,
@@ -247,9 +247,9 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[0,1],
 		F_ATTACK:false,
-		ANIMATION:[0]
-	},	
-	{NUMBER:15,
+		ANIMATION:[23]
+	},
+	{NUMBER:-1,
 		TEXT:"",
 		RANGE:2,
 		POWER:1,
