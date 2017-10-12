@@ -22,10 +22,10 @@ function loadChara() {
 					DECK:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,0]
 	},
 	{NAME:"オオクニヌシ",
-					HP:150,
+					HP:120,
 					MP:5,
 					ATK:25,
-					DEF:18,
+					DEF:20,
 					SPD:15,
 					MOV:2,
 					TYPE:"diamond",
@@ -42,5 +42,16 @@ function loadChara() {
 					TYPE:"heart",
 					IMAGE:1235010001,
 					DECK:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,0]
+	},
+	{NAME:"ファーブニル",
+					HP:150,
+					MP:20,
+					ATK:30,
+					DEF:20,
+					SPD:20,
+					MOV:1,
+					TYPE:"spade",
+					IMAGE:1011010002,
+					DECK:[15,15,15,15,15,15,7,15,15,15,15,15,15,16,0]
 	},]
 }
