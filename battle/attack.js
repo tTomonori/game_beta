@@ -116,7 +116,7 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 						aDamagedTeam[aI].HP-=tDamage;
 						damageLog(aDamagedTeam[aI],tDamage);
 						new Promise((res,rej)=>{
-							attackAnimate(aAttackChara,[aDamagedTeam[aI]],aSkill.ANIMATION,()=>{res();});
+							attackAnimate(aAttackChara,aDamagedTeam[aI],aSkill.ANIMATION,()=>{res();});
 						}).then(()=>{
 							tDamagedCharas.push(aDamagedTeam[aI]);
 							if(aDamagedTeam[aI].HP<=0){

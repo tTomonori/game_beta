@@ -4,7 +4,7 @@ function displayCard() {
 	for(let i=0;i<7;i++){
 		tTable+="<tr>";
 		for(let j=0;j<8;j++){
-			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")' onmouseover='attackable("+j+","+i+")' onmouseout='returnAttackable()'>";
+			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")' onmouseover='attackable("+j+","+i+")' onmouseout='if(mEventFlag)returnMoveable();else returnAttackable()'>";
 			let tCard=mCard[j+i*8];
 
 			// let tMark=mCard[i*8+j]/13;
