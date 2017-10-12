@@ -117,6 +117,14 @@ class Chara{
 	addDelay(aDelay){
 		this.Delay+=aDelay;
 	}
+	MpMinus(aMp){
+		this.MP-=aMp;
+		if(this.MP>this.originalMP)
+			this.MP=this.originalMP;
+		return new Promise((res,rej)=>{
+			res();
+		})
+	}
 }
 var mTTeamColor="rgba(0, 136, 255,0.6)";
 var mFTeamColor="rgba(255, 90, 0, 0.6)";

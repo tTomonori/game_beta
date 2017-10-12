@@ -126,18 +126,22 @@ function displayMoveable(aMoveable) {
 	}
 }
 function returnMoveable() {
-	return;
-	let tCard=$("#cardTable")[0].getElementsByTagName("img");
+	let tCard=document.getElementsByTagName("img");
 	for(let i=0;i<tCard.length;i++){
+		if(tCard[i].src.match(/card_canAttack.png/)){
+			tCard[i].remove()
+		}
 		if(tCard[i].src.match(/card_canMove.png/)){
-			tCard[i].src="../image/card.png";
+			tCard[i].remove()
 		}
 	}
 }
 
 function attackable(aX,aY){
-	if(mEventFlag==true)//操作不可
+	if(mEventFlag==true){//操作不可
+		returnMoveable();
 		return;
+	}
 
 	for(let i=0;i<mMovable.length;i++){
 		if(mMovable[i][0]!=aX||mMovable[i][1]!=aY){
@@ -199,7 +203,6 @@ function returnAttackable() {
 			tCard[i].remove()
 		}
 	}
-
 	displayMoveable(mMovable);
 }
 

@@ -1,12 +1,18 @@
 function Support_B_M(aSupportnums,aChara){
-	if(aSupportnums.length>0){
-		Support_B_M_Play(aSupportnums[0],aChara);
-		Support_B_M(aSupportnums.shift,aChara)
-	}
-	return;
+	return new Promise((res,rej)=>{
+		if(aSupportnums.length>0){
+			Support_B_M_Play(aSupportnums[0],aChara).then(()=>{
+				Support_B_M(aSupportnums.shift,aChara).then(()=>{
+					res();
+				})
+			})
+		}
+		res();
+	})
 }
 
 function Support_B_M_Play(aSupportnum,aChara) {
+	return new Promise((res,rej)=>{
 	// if(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0://自傷　威力１
@@ -40,17 +46,24 @@ function Support_B_M_Play(aSupportnum,aChara) {
 			default:
 
 		}
-	// }
+		res();
+	})
 }
 
 function Support_A_M(aSupportnums,aChara){
-	if(aSupportnums.length>0){
-		Support_A_M_Play(aSupportnums[0],aChara);
-		Support_A_M(aSupportnums.shift,aChara)
-	}
-	return;
+	return new Promise((res,rej)=>{
+		if(aSupportnums.length>0){
+			Support_A_M_Play(aSupportnums[0],aChara).then(()=>{
+				Support_A_M(aSupportnums.shift,aChara).then(()=>{
+					res();
+				})
+			})
+		}
+		res();
+	})
 }
 function Support_A_M_Play(aSupportnum,aChara) {
+	return new Promise((res,rej)=>{
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0://威力５の回復
@@ -78,17 +91,24 @@ function Support_A_M_Play(aSupportnum,aChara) {
 			default:
 
 		}
-	// }
+		res();
+	})
 }
 
 function Support_B_E(aSupportnums,aChara){
-	if(aSupportnums.length>0){
-		Support_B_E_Play(aSupportnums[0],aChara);
-		Support_B_E(aSupportnums.shift,aChara)
-	}
-	return;
+	return new Promise((res,rej)=>{
+		if(aSupportnums.length>0){
+			Support_B_E_Play(aSupportnums[0],aChara).then(()=>{
+				Support_B_E(aSupportnums.shift,aChara).then(()=>{
+					res();
+				})
+			})
+		}
+		res();
+	})
 }
 function Support_B_E_Play(aSupportnum,aChara) {
+	return new Promise((res,rej)=>{
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0:
@@ -102,17 +122,24 @@ function Support_B_E_Play(aSupportnum,aChara) {
 			default:
 
 		}
-	// }
+		res();
+	})
 }
 
 function Support_A_E(aSupportnums,aChara){
-	if(aSupportnums.length>0){
-		Support_A_E_Play(aSupportnums[0],aChara);
-		Support_A_E(aSupportnums.shift,aChara)
-	}
-	return;
+	return new Promise((res,rej)=>{
+		if(aSupportnums.length>0){
+			Support_A_E_Play(aSupportnums[0],aChara).then(()=>{
+				Support_A_E(aSupportnums.shift,aChara).then(()=>{
+					res();
+				})
+			})
+		}
+		res();
+	})
 }
 function Support_A_E_Play(aSupportnum,aChara) {
+	new Promise((res,rej)=>{
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0:
@@ -126,17 +153,24 @@ function Support_A_E_Play(aSupportnum,aChara) {
 			default:
 
 		}
-	// }
+		res();
+	})
 }
 
 function Support_O(aSupportnums,aChara){
-	if(aSupportnums.length>0){
-		Support_O_Play(aSupportnums[0],aChara);
-		Support_O(aSupportnums.shift,aChara)
-	}
-	return;
+	return new Promise((res,rej)=>{
+		if(aSupportnums.length>0){
+			Support_O_Play(aSupportnums[0],aChara).then(()=>{
+				Support_O(aSupportnums.shift,aChara).then(()=>{
+					res();
+				})
+			})
+		}
+		res();
+	})
 }
 function Support_O_Play(aSupportnum,aChara) {
+	return new Promise((res,rej)=>{
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0:
@@ -156,5 +190,6 @@ function Support_O_Play(aSupportnum,aChara) {
 			default:
 
 		}
-	// }
+		res();
+	})
 }

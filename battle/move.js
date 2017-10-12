@@ -35,15 +35,13 @@ function move(aX,aY){
 		}
 
 		// if(!mMovable.indexOf([aX,aY])) return;
-		returnMoveable();
-		returnAttackable();
 		mEventFlag = true;//操作不可能に
+		returnAttackable();
+		returnMoveable();
 		if(mDelayChara[1]=="T"){
 			mTrueTeam[mDelayChara[2]].move(aX,aY,()=>{
 				attack(mTrueTeam[mDelayChara[2]]).then(()=>{
 					battleMain();
-					returnMoveable();
-					returnAttackable();
 				})
 			});
 		}
@@ -51,8 +49,6 @@ function move(aX,aY){
 			mFalseTeam[mDelayChara[2]].move(aX,aY,()=>{
 				attack(mFalseTeam[mDelayChara[2]]).then(()=>{
 					battleMain();
-					returnMoveable();
-					returnAttackable();
 				})
 			});
 		}
