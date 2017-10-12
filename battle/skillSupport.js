@@ -6,7 +6,7 @@ function Support_B_M(aSupportnums,aChara) {
 
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
-					tDamege *= Math.floor(tDamege*1.5);
+					tDamege = Math.floor(tDamege*1.5);
 				}
 
 				aChara.HP-=tDamege;
@@ -40,7 +40,7 @@ function Support_A_M(aSupportnums,aChara) {
 				var tDamege = calcDamage(aChara.ATK,aChara.DEF,5);
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
-					tDamege *= Math.floor(tDamege*1.5);
+					tDamege = Math.floor(tDamege*1.5);
 				}
 
 				aChara.HP+=tDamege;
