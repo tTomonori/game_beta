@@ -102,7 +102,6 @@ battleMain();
 // for(let i=0;i<7;i++){
 // 	mBattleBoard.push(mCard.slice(i*8,i*8+8));
 // }
-
 //トランプシャッフル
 function shuffle(aCard){
 	//取り出す範囲(箱の中)を末尾から狭める繰り返し
