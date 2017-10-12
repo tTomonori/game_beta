@@ -233,7 +233,7 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		F_ATTACK:false,
-		ANIMATION:[0]
+		ANIMATION:[15]
 	},	
 	{NUMBER:16,
 		TEXT:"JOKER 相手全体に威力２０のダメージ 消費MP２０",

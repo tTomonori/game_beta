@@ -243,3 +243,9 @@ function damageLog(aChara,aDamage){
 	}
 	addLog(tLog);
 }
+//汎用ログ
+function freeLog(aChara,aStatus,aText){
+	let tLog="";
+	tLog+="<b style='color:"+aChara.teamColor+"'>"+aChara.NAME+"</b>"+"の"+aStatus+"が"+aText;
+	addLog(tLog);	
+}

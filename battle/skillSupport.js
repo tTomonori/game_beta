@@ -7,6 +7,7 @@ function Support_B_M(aSupportnums,aChara){
 				})
 			})
 		}
+		else
 		res();
 	})
 }
@@ -35,18 +36,22 @@ function Support_B_M_Play(aSupportnum,aChara) {
 						winner("T");
 					}
 				}
+
+				res();
 				break;
 			case 1://MPを3回復
 				aChara.MP += 3;
+				freeLog(aChara,"MP","3回復")
+				attackAnimate(aChara,aChara,[7],()=>{
+				 res()})
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			default:
-
+				res();
 		}
-		res();
 	})
 }
 
@@ -59,6 +64,7 @@ function Support_A_M(aSupportnums,aChara){
 				})
 			})
 		}
+		else
 		res();
 	})
 }
@@ -104,6 +110,7 @@ function Support_B_E(aSupportnums,aChara){
 				})
 			})
 		}
+		else
 		res();
 	})
 }
@@ -135,6 +142,7 @@ function Support_A_E(aSupportnums,aChara){
 				})
 			})
 		}
+		else
 		res();
 	})
 }
@@ -166,6 +174,7 @@ function Support_O(aSupportnums,aChara){
 				})
 			})
 		}
+		else
 		res();
 	})
 }
