@@ -163,7 +163,7 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		F_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[4,3]
 	},
 	{NUMBER:11,
 		TEXT:"周囲１２マスに威力５のダメージ（自傷　威力１）",
@@ -191,7 +191,7 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		F_ATTACK:false,
-		ANIMATION:[0]
+		ANIMATION:[7]
 	},
 	{NUMBER:13,
 		TEXT:"味方に威力３の回復（消費MP４）",
@@ -205,7 +205,7 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		F_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[7]
 	},
 	{NUMBER:14,
 		TEXT:"JOKER 相手全体に威力5のダメージ",
@@ -219,7 +219,7 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[0,1],
 		F_ATTACK:false,
-		ANIMATION:[0]
+		ANIMATION:[34]
 	},
 	{NUMBER:15,
 		TEXT:"",

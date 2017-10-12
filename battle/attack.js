@@ -114,7 +114,7 @@ function attack(aChara) {
 	// mDelayList=sortDelay(mDelayList);
 	mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
 	displayDelay();
-	attackAnimate(aChara,tDamagedCharas,tSkill.ANIMATION,()=>{});
+	attackAnimate(aChara,tDamagedCharas,tSkill.ANIMATION,()=>{/*アニメーション終了後に実行する関数*/});
 
 }
 
