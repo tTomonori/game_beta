@@ -1,6 +1,14 @@
-function Support_B_M(aSupportnums,aChara) {
-	for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnums[i]) {
+function Support_B_M(aSupportnums,aChara){
+	if(aSupportnums.length>0){
+		Support_B_M_Play(aSupportnums[0],aChara);
+		Support_B_M(aSupportnums.shift,aChara)
+	}
+	return;
+}
+
+function Support_B_M_Play(aSupportnum,aChara) {
+	// if(var i=0;i<aSupportnums.length;i++){
+		switch (aSupportnum) {
 			case 0://自傷　威力１
 				var tDamege = calcDamage(aChara.ATK,aChara.DEF,1);
 
@@ -31,11 +39,19 @@ function Support_B_M(aSupportnums,aChara) {
 			default:
 
 		}
-	}
+	// }
 }
-function Support_A_M(aSupportnums,aChara) {
-	for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnums[i]) {
+
+function Support_A_M(aSupportnums,aChara){
+	if(aSupportnums.length>0){
+		Support_A_M_Play(aSupportnums[0],aChara);
+		Support_A_M(aSupportnums.shift,aChara)
+	}
+	return;
+}
+function Support_A_M_Play(aSupportnum,aChara) {
+	// for(var i=0;i<aSupportnums.length;i++){
+		switch (aSupportnum) {
 			case 0://威力５の回復
 				var tDamege = calcDamage(aChara.ATK,aChara.DEF,5);
 				var tCard=mCard[aChara.x+aChara.y*8];
@@ -61,11 +77,19 @@ function Support_A_M(aSupportnums,aChara) {
 			default:
 
 		}
-	}
+	// }
 }
-function Support_B_E(aSupportnums,aChara) {
-	for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnums[i]) {
+
+function Support_B_E(aSupportnums,aChara){
+	if(aSupportnums.length>0){
+		Support_B_E_Play(aSupportnums[0],aChara);
+		Support_B_E(aSupportnums.shift,aChara)
+	}
+	return;
+}
+function Support_B_E_Play(aSupportnum,aChara) {
+	// for(var i=0;i<aSupportnums.length;i++){
+		switch (aSupportnum) {
 			case 0:
 				break;
 			case 1:
@@ -77,11 +101,19 @@ function Support_B_E(aSupportnums,aChara) {
 			default:
 
 		}
-	}
+	// }
 }
-function Support_A_E(aSupportnums,aChara) {
-	for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnums[i]) {
+
+function Support_A_E(aSupportnums,aChara){
+	if(aSupportnums.length>0){
+		Support_A_E_Play(aSupportnums[0],aChara);
+		Support_A_E(aSupportnums.shift,aChara)
+	}
+	return;
+}
+function Support_A_E_Play(aSupportnum,aChara) {
+	// for(var i=0;i<aSupportnums.length;i++){
+		switch (aSupportnum) {
 			case 0:
 				break;
 			case 1:
@@ -93,11 +125,19 @@ function Support_A_E(aSupportnums,aChara) {
 			default:
 
 		}
-	}
+	// }
 }
-function Support_O(aSupportnums,aChara) {
-	for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnums[i]) {
+
+function Support_O(aSupportnums,aChara){
+	if(aSupportnums.length>0){
+		Support_O_Play(aSupportnums[0],aChara);
+		Support_O(aSupportnums.shift,aChara)
+	}
+	return;
+}
+function Support_O_Play(aSupportnum,aChara) {
+	// for(var i=0;i<aSupportnums.length;i++){
+		switch (aSupportnum) {
 			case 0:
 				//シャッフルする
 				mCard=shuffle(mCard);
@@ -115,5 +155,5 @@ function Support_O(aSupportnums,aChara) {
 			default:
 
 		}
-	}
+	// }
 }
