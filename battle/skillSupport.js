@@ -30,7 +30,8 @@ function Support_B_M_Play(aSupportnum,aChara) {
 					}
 				}
 				break;
-			case 1:
+			case 1://MPを3回復
+				aChara.MP += 3;
 				break;
 			case 2:
 				break;
