@@ -40,18 +40,20 @@ function move(aX,aY){
 		mEventFlag = true;//操作不可能に
 		if(mDelayChara[1]=="T"){
 			mTrueTeam[mDelayChara[2]].move(aX,aY,()=>{
-				attack(mTrueTeam[mDelayChara[2]])
-				battleMain();
-				returnMoveable();
-				returnAttackable();
+				attack(mTrueTeam[mDelayChara[2]]).then(()=>{
+					battleMain();
+					returnMoveable();
+					returnAttackable();
+				})
 			});
 		}
 		else if(mDelayChara[1]=="F"){
 			mFalseTeam[mDelayChara[2]].move(aX,aY,()=>{
-				attack(mFalseTeam[mDelayChara[2]])
-				battleMain();
-				returnMoveable();
-				returnAttackable();
+				attack(mFalseTeam[mDelayChara[2]]).then(()=>{
+					battleMain();
+					returnMoveable();
+					returnAttackable();
+				})
 			});
 		}
 

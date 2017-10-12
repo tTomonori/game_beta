@@ -16,7 +16,6 @@ function attack(aChara) {
 		tSkill=aChara.deck[tCard[0]];
 	}
 
-
 	//技取り出し
 	tSkill=mSkillList[tSkill];
 
@@ -29,8 +28,9 @@ function attack(aChara) {
 		// mDelayList=sortDelay(mDelayList);
 		mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
 		displayDelay();
-		return;
+		// return;
 	}
+	else{
 	aChara.MP -= tSkill.MAGIC;
 
 	//補助効果適用(B)
@@ -114,8 +114,10 @@ function attack(aChara) {
 	// mDelayList=sortDelay(mDelayList);
 	mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
 	displayDelay();
-	attackAnimate(aChara,tDamagedCharas,tSkill.ANIMATION,()=>{/*アニメーション終了後に実行する関数*/});
-
+}
+	return new Promise((res,rej)=>{
+		attackAnimate(aChara,tDamagedCharas,tSkill.ANIMATION,()=>{res();});
+	})
 }
 
 function calcDamage(aATK,aDEF,aPOWER){

@@ -17,7 +17,6 @@ function attackAnimate(aAttackChara,aDamagedCharas,aAnimationNumList,aCallback){
 function battleEffectAnimate(){
 	//アニメーション再生中
 	if(mAnimatingNum!=0) return;
-
 	//アニメーションが全て終了
 	if(mAnimationNumList.length<=mAnimationNum) mCallbackOfAnimation();
 
@@ -53,6 +52,7 @@ function battleEffectAnimate(){
 }
 //list内の全てのキャラ対してアニメーションを再生
 function animateAllChara(aTargetCharaList,aAnimationFunction){
+	if(aTargetCharaList.length==0) battleEffectAnimate();
 	for(let i=0;i<aTargetCharaList.length;i++){
 		mAnimatingNum++;
 		aAnimationFunction(aTargetCharaList[i]);
