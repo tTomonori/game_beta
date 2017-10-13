@@ -101,6 +101,23 @@ function Support_A_M_Play(aSupportnum,aChara) {
 				res();
 				break;
 			case 2:
+				var tRandom = Math.floor(Math.random()*4)
+				if(tRandom==0){
+					tRandom = "spade";
+				}
+				else if(tRandom==1){
+					tRandom = "club";
+				}
+				else if(tRandom==2){
+					tRandom = "diamond";
+				}
+				else if(tRandom==3){
+					tRandom = "heart";
+				}
+				aChara.TYPE = tRandom;
+				freeLog(aChara,"タイプ",tRandom+"に変わった")
+				attackAnimate(aChara,aChara,[10],()=>{
+				res()})
 				break;
 			case 3:
 				break;
@@ -160,6 +177,9 @@ function Support_A_E_Play(aSupportnum,aChara) {
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0:
+				aChara.Delay-=50000;
+				attackAnimate(aChara,aChara,[7],()=>{
+				res()})
 				break;
 			case 1:
 				break;
@@ -168,9 +188,8 @@ function Support_A_E_Play(aSupportnum,aChara) {
 			case 3:
 				break;
 			default:
-
+			res();
 		}
-		res();
 	})
 }
 
