@@ -37,7 +37,6 @@ mCard=shuffle(mCard);
 //トランプを並べる
 displayCard();
 
-
 //チームのリスト
 var mTrueTeam=new Array();
 var mFalseTeam=new Array();
@@ -95,7 +94,11 @@ displayDelay();
 
 //ここまでで初期設定が完了
 //バトルのメイン関数
-battleMain();
+shuffleAnimate(mCard).then(()=>{
+	flowBand("バトルスタート");
+	// strongBand("バトルスタート");
+	battleMain();
+})
 
 
 
@@ -134,6 +137,7 @@ function battleMain(){
 	else{
 		tCharaTeam = mFalseTeam;
 	}
+	document.getElementById("text").innerHTML="<strong style='color:"+tCharaTeam[mDelayChara[2]].teamColor+";-webkit-text-stroke-color: #fff;-webkit-text-stroke-width: 0.5px;'>"+tCharaTeam[mDelayChara[2]].NAME+"</strong>"+"のターン"
 
 	//MPの回復
 	if(tCharaTeam[mDelayChara[2]].MP<tCharaTeam[mDelayChara[2]].originalMP){
