@@ -36,8 +36,8 @@ function Support_B_M_Play(aSupportnum,aChara) {
 						winner("T");
 					}
 				}
-
-				res();
+				attackAnimate(aChara,aChara,[2],()=>{
+				 res()})
 				break;
 			case 1://MPを3回復
 				aChara.MP += 3;
@@ -92,19 +92,21 @@ function Support_A_M_Play(aSupportnum,aChara) {
 					aChara.HP = aChara.originalHP;
 				}
 				displayStatus();
+				attackAnimate(aChara,aChara,[7],()=>{
+				res()})
 				break;
 			case 1:
 				var tDelay = Math.floor(100000/aChara.SPD);//初期値
 				aChara.Delay= (-tDelay);
+				res();
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			default:
-
+			res();
 		}
-		res();
 	})
 }
 
