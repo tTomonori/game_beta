@@ -13,10 +13,18 @@
 	const electron=require("electron");
 	const ipc=electron.ipcRenderer;
 </script>
-<body>
-	<input id="start" type="button" value="START" onclick="start()">
-	<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none">
-	<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
+<body style="margin:0;width:100vw;height:100vh;background-image:url(../image/background/gatag-00006359.jpg);background-repeat:no-repeat;background-size:cover">
+	<div id="logo">
+		<img src="../image/cooltext262030964255809.png">
+	</div>
+	<div id="mainChara">
+		<img src="../image/chara/2_stand/1345010201.png" style="margin-top: -40px;margin-left: -40px">
+	</div>
+	<div id="menu" style="position: fixed; top:400px;left: 600px">
+		<input id="start" type="button" value="START" onclick="start()">
+		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none" disabled>
+		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
+	</div>
 </body>
 <script>
 function start(){
