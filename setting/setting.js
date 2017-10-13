@@ -125,7 +125,10 @@ function displayDeckData(aNum){
 			//右のセル
 			tContents+="<td>";
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
+			if(i!=13)
 			tContents+="<span style='color:#000; position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			else
+			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
 			var tSkillText = "";
 			for(var j=0;j<mSkillList.length;j++){
