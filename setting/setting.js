@@ -37,12 +37,14 @@ $(".pointorLeft").on("click",function(){
 	mSelectPointor%=mCharaMaxNum;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
+	judSelectedChara(mSelectPointor);
 })
 $(".pointorRight").on("click",function(){
 	mSelectPointor+=1;
 	mSelectPointor%=mCharaMaxNum;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
+	judSelectedChara(mSelectPointor);
 })
 
 //選択ボタン
@@ -64,6 +66,7 @@ function selectChara() {
 	mSelectPointor=0;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
+	judSelectedChara(mSelectPointor);
 	chageLabel();
 }
 //戻るボタン
@@ -81,6 +84,7 @@ function back() {
 	mSelectPointor=0;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
+	judSelectedChara(mSelectPointor);
 }
 
 function chageLabel(){
@@ -162,5 +166,34 @@ function displayDeckData(aNum){
 			tContents+="</td></tr>";
 		}
 		tTable.innerHTML=tContents;
+	}
+}
+
+function judSelectedChara(aNum){
+	if(mSelectedCharas.length<mTrueTeamNum){
+		for(var i=0;i<mSelectedCharas.length;i++){
+			if(mSelectedCharas[i][0]==aNum){
+				$("#decide")[0].value="選択済みです";
+				$("#decide").prop("disabled",true);
+				break;
+			}
+			else{
+				$("#decide")[0].value="このキャラにする";	
+				$("#decide").prop("disabled",false);
+			}
+		}
+	}
+	else{
+		for(var i=mTrueTeamNum;i<mSelectedCharas.length;i++){
+			if(mSelectedCharas[i][0]==aNum){
+				$("#decide")[0].value="選択済みです";
+				$("#decide").prop("disabled",true);
+				break;
+			}
+			else{
+				$("#decide")[0].value="このキャラにする";
+				$("#decide").prop("disabled",false);	
+			}
+		}	
 	}
 }
