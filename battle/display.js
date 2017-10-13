@@ -280,25 +280,28 @@ function shuffleAnimate(aCard){
 }
 
 function flowBand(aMessage){
-	let tBand=document.createElement("b");
-	tBand.id="flowBand";
-	tBand.innerHTML=aMessage;
-	tBand.style.whiteSpace="nowrap";
-	tBand.style.color="#ff0000";
-	tBand.style.webkitTextStrokeColor="#8f0000";
-	tBand.style.webkitTextStrokeWidth="5px";
-	tBand.style.position="fixed";
-	tBand.style.top=0;
-	tBand.style.left=0;
-	tBand.style.zIndex="1";
-	tBand.style.marginLeft=document.getElementsByTagName("body")[0].offsetWidth+"px";
-	tBand.style.marginTop="20%";
-	tBand.style.fontSize="200px";
-	document.getElementsByTagName("body")[0].appendChild(tBand);
-	$("#"+tBand.id).animate({
-		marginLeft:"-"+tBand.offsetWidth+"px"
-	},3000,"linear",()=>{
-		$("#"+tBand.id).remove();
+	return new Promise((res,rej)=>{
+		let tBand=document.createElement("b");
+		tBand.id="flowBand";
+		tBand.innerHTML=aMessage;
+		tBand.style.whiteSpace="nowrap";
+		tBand.style.color="#ff0000";
+		tBand.style.webkitTextStrokeColor="#8f0000";
+		tBand.style.webkitTextStrokeWidth="5px";
+		tBand.style.position="fixed";
+		tBand.style.top=0;
+		tBand.style.left=0;
+		tBand.style.zIndex="1";
+		tBand.style.marginLeft=document.getElementsByTagName("body")[0].offsetWidth+"px";
+		tBand.style.marginTop="20%";
+		tBand.style.fontSize="200px";
+		document.getElementsByTagName("body")[0].appendChild(tBand);
+		$("#"+tBand.id).animate({
+			marginLeft:"-"+tBand.offsetWidth+"px"
+		},3000,"linear",()=>{
+			$("#"+tBand.id).remove();
+			res();
+		})
 	})
 }
 function strongBand(aMessage){

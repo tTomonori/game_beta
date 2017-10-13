@@ -136,7 +136,6 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 							//サポート効果敵　後
 							Support_A_E(aSkill.SUPPORT_Af_Enemy,aDamagedTeam[aI]).then(()=>{
 								displayStatus();
-								console.log("anime fin")
 								damageRes();
 							})
 						})
@@ -144,7 +143,6 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 				}
 				else{
 					if(i==aDamagedTeam.length-1&&j==tRange.length-1&&!tAttackFlag){
-						console.log("範囲外")
 						damageRes();
 					}
 				}

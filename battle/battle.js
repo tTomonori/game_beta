@@ -95,9 +95,9 @@ displayDelay();
 //ここまでで初期設定が完了
 //バトルのメイン関数
 shuffleAnimate(mCard).then(()=>{
-	flowBand("バトルスタート");
-	// strongBand("バトルスタート");
-	battleMain();
+	flowBand("バトルスタート").then(()=>{
+			battleMain();
+	})
 })
 
 
@@ -160,8 +160,16 @@ function battleMain(){
 }
 
 function winner(aWinner){
-	addLog("winner is "+aWinner+" team");
-	console.log("winner is "+aWinner+" team");//勝者
+	mEventFlag=true;
+	let tWinnerTeam;
+	if(aWinner=="T") tWinnerTeam=mTrueTeam;
+	else tWinnerTeam=mFalseTeam;
+
+	let tLog="winner is "+aWinner+" team"
+	addLog(tLog);
+	console.log(tLog);//勝者
+	flowBand(tLog);
+	document.getElementById("text").innerHTML="winner is "+"<b style='color:"+tWinnerTeam[0].teamColor+"'>"+aWinner+"</b> team";
 }
 
 function com(){
