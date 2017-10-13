@@ -241,6 +241,35 @@ function attackable(aX,aY){
 						tCardCell.appendChild(tPreDamage);
 					}
 				}
+				if(tSkill.M_ATTACK==0) continue;
+				var tDamage = calcDamage(tChara.ATK,tChara.DEF,tSkill.M_ATTACK);
+
+				if(tCard[1]==tChara.TYPE){//属性補正
+					tDamage = Math.floor(tDamage*1.5);
+				}
+				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tChara.x].getElementsByTagName("td")[tChara.y];
+				var tPreDamage=document.createElement("div");
+				tPreDamage.style.position="absolute";
+				tPreDamage.style.pointerEvents="none";
+				tPreDamage.style.marginTop="-70px";
+				tPreDamage.style.marginLeft="-16px";
+				tPreDamage.style.width="70px";
+				tPreDamage.style.height="70px";
+				tPreDamage.style.textAlign="center"
+				tPreDamage.style.color="#f00";
+				tPreDamage.style.fontSize="30px";
+				tPreDamage.classList.add("predamege")
+				tPreDamage.style.webkitTextStrokeColor="#fff";
+				tPreDamage.style.webkitTextStrokeWidth="0.5px";
+				tPreDamage.style.zIndex="5";
+				tPreDamage.style.zoom="2";
+				tPreDamage.style.pointerEvents="none";
+				if(tDamage<0){
+					tPreDamage.style.color="#0f0";
+					tDamage *= (-1);
+				}				
+				tPreDamage.textContent=tDamage;
+				tCardCell.appendChild(tPreDamage);
 			}
 		}
 		return;

@@ -22,6 +22,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -38,6 +39,7 @@ var mSkillList=[
 	// 	SUPPORT_Be_Enemy:[]敵にかける妨害　範囲はRANGE 先
 	// 	SUPPORT_Af_Enemy:[]敵にかける妨害　後
 	// 	SUPPORT_Otherwise:[]その他
+	// M_Attack:0;自分への攻撃
 	// 	F_ATTACK:フレンドアタック
 	// },
 	{NUMBER:0,
@@ -51,6 +53,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[1],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},	
@@ -65,6 +68,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[0],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -79,6 +83,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -93,6 +98,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -107,6 +113,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -121,6 +128,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -135,6 +143,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -149,6 +158,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -163,6 +173,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -177,6 +188,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -191,20 +203,22 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:111,
 		TEXT:"周囲１２マスに威力５のダメージ（自傷　威力１）",
 		RANGE:11,
-		POWER:1,
+		POWER:5,
 		DELAY:0,
 		MAGIC:0,
-		SUPPORT_Be_Myself:[0],
+		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:1;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -219,6 +233,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:-5;
 		F_ATTACK:false,
 		ANIMATION:[7]
 	},
@@ -233,6 +248,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:true,
 		ANIMATION:[7]
 	},
@@ -247,6 +263,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[0,1],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[34]
 	},
@@ -261,6 +278,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -275,6 +293,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -289,6 +308,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -303,6 +323,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -317,6 +338,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -331,6 +353,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -345,6 +368,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -359,6 +383,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -373,6 +398,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:true,
 		ANIMATION:[4,3]
 	},
@@ -382,11 +408,12 @@ var mSkillList=[
 		POWER:1,
 		DELAY:0,
 		MAGIC:0,
-		SUPPORT_Be_Myself:[0],
+		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[2],
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:1;
 		F_ATTACK:false,
 		ANIMATION:[0]
 	},
@@ -401,6 +428,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:-5;
 		F_ATTACK:false,
 		ANIMATION:[7]
 	},
@@ -415,6 +443,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:true,
 		ANIMATION:[7]
 	},
@@ -429,6 +458,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[0,1],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[34]
 	},
@@ -443,6 +473,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[15]
 	},
@@ -457,6 +488,7 @@ var mSkillList=[
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[0,1],
+		M_Attack:0;
 		F_ATTACK:false,
 		ANIMATION:[23]
 	},
