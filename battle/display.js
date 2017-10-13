@@ -198,15 +198,15 @@ function attackable(aX,aY){
 			for(let i=0;i<tRange.length;i++){
 				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
 				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
-				let tCard=document.createElement("img");
-				tCard.style.position="absolute";
-				tCard.style.pointerEvents="none";
-				tCard.style.marginLeft="-70px";
-				tCard.style.width="70px";
-				tCard.style.height="70px";
-				tCard.style.opacity="0.6";
-				tCard.src="../image/card_canAttack.png";
-				tCardCell.appendChild(tCard);
+				let tCardImg=document.createElement("img");
+				tCardImg.style.position="absolute";
+				tCardImg.style.pointerEvents="none";
+				tCardImg.style.marginLeft="-70px";
+				tCardImg.style.width="70px";
+				tCardImg.style.height="70px";
+				tCardImg.style.opacity="0.6";
+				tCardImg.src="../image/card_canAttack.png";
+				tCardCell.appendChild(tCardImg);
 
 				for(var j=0;j<tDamegeCharas.length;j++){
 					if(tDamegeCharas[j].x==tChara.x&&tDamegeCharas[j].y==tChara.y) continue;

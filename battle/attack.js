@@ -95,10 +95,19 @@ function attackMyself(aChara,aSkill,aCard){
 		}
 		//ダメージ計算
 		let tDamage = calcDamage(aChara.ATK,aChara.DEF,aSkill.M_ATTACK);
-		if(aCard==aChara.TYPE){//属性補正
+		if(aCard[1]==aChara.TYPE){//属性補正
 			tDamage = Math.floor(tDamage*1.5);
 		}
 		aChara.HP-=tDamage;
+		if(aChara.HP<=0){
+			let tTeam;
+			if(aChara.team=="T") tTeam="F";
+			else tTeam="T";
+			winner(tTeam);
+		}
+		else if(aChara.HP>aChara.originalHP){
+			aChara.HP=aChara.originalHP;
+		}
 		damageLog(aChara,tDamage);
 		if(tDamage>0)//自傷
 			attackAnimate(aChara,aChara,[2],()=>{res();});
