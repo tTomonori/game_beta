@@ -138,18 +138,22 @@ function returnMoveable() {
 }
 
 function attackable(aX,aY){
+		//カードの確認
+
 	if(mEventFlag==true){//操作不可
 		returnMoveable();
 		return;
 	}
+		var tCard=mCard[aX+aY*8];
+		if(tCard[1]!="joker"&&tCard[1]!="suka"){
+			displayDeck(tCard[0]);
+		}
 
 	for(let i=0;i<mMovable.length;i++){
 		if(mMovable[i][0]!=aX||mMovable[i][1]!=aY){
 			continue;
 		}
 
-		//カードの確認
-		var tCard=mCard[aX+aY*8];
 
 		var tChara = new Object();
 		if(mDelayChara[1]=="T"){
@@ -290,6 +294,7 @@ function returnAttackable() {
 	}
 	$(".predamege").remove();
 	displayMoveable(mMovable);
+	returnDeck();
 }
 
 function displayDeck(aNum){

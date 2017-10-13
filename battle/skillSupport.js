@@ -59,21 +59,7 @@ function Support_A_M_Play(aSupportnum,aChara) {
 	return new Promise((res,rej)=>{
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
-			case 0://威力５の回復
-				var tDamege = calcDamage(aChara.ATK,aChara.DEF,5);
-				var tCard=mCard[aChara.x+aChara.y*8];
-				if(tCard[1]==aChara.TYPE){
-					tDamege = Math.floor(tDamege*1.5);
-				}
-
-				aChara.HP+=tDamege;
-				damageLog(aChara,-tDamege);
-				if(aChara.HP>aChara.originalHP){
-					aChara.HP = aChara.originalHP;
-				}
-				displayStatus();
-				attackAnimate(aChara,aChara,[7],()=>{
-				res()})
+			case 0:
 				break;
 			case 1:
 				var tDelay = Math.floor(100000/aChara.SPD);//初期値
@@ -155,7 +141,7 @@ function Support_A_E(aSupportnums,aChara){
 function Support_A_E_Play(aSupportnum,aChara) {
 	new Promise((res,rej)=>{
 	// for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) {
+		switch (aSupportnum) { //ディレイを50下げる
 			case 0:
 				aChara.Delay-=50000;
 				attackAnimate(aChara,aChara,[7],()=>{
