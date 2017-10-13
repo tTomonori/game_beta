@@ -171,7 +171,13 @@ function attackable(aX,aY){
 		}
 
 		//技取り出し
-		tSkill=mSkillList[tSkill];
+		for(var j=0;j<mSkillList.length;j++){
+			if(mSkillList[j].NUMBER==tSkill){
+				tSkill=mSkillList[j];
+				break;
+			}
+		}
+		// tSkill=mSkillList[tSkill];
 		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
 		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
 			for(let i=0;i<tRange.length;i++){
@@ -208,10 +214,20 @@ function returnAttackable() {
 
 function displayDeck(aNum){
 	if(mDelayChara[1]=="T"){
-		$("#cardText")[0].textContent=mSkillList[mTrueTeam[mDelayChara[2]].deck[aNum]].TEXT;
+		for(var j=0;j<mSkillList.length;j++){
+			if(mSkillList[j].NUMBER==mTrueTeam[mDelayChara[2]].deck[aNum]){
+				$("#cardText")[0].textContent=mSkillList[j].TEXT;
+				break;
+			}
+		}
 	}
 	else if(mDelayChara[1]=="F"){
-		$("#cardText")[0].textContent=mSkillList[mFalseTeam[mDelayChara[2]].deck[aNum]].TEXT;
+		for(var j=0;j<mSkillList.length;j++){
+			if(mSkillList[j].NUMBER==mFalseTeam[mDelayChara[2]].deck[aNum]){
+				$("#cardText")[0].textContent=mSkillList[j].TEXT;
+				break;
+			}
+		}
 	}
 	$("#cardText").css("left",aNum*50+"px");
 	$("#cardText").css("display","inline-block");

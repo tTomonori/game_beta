@@ -111,7 +111,14 @@ function displayDeckData(aNum){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			tContents+=mSkillList[charas[aNum].DECK[i]].TEXT;
+			var tSkillText = "";
+			for(var j=0;j<mSkillList.length;j++){
+				if(mSkillList[j].NUMBER==charas[aNum].DECK[i]){
+					tSkillText=mSkillList[j].TEXT;
+					break;
+				}
+			}
+			tContents+=tSkillText;
 			tContents+="</td>";
 		}
 		else{
@@ -120,7 +127,14 @@ function displayDeckData(aNum){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000; position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			tContents+=mSkillList[charas[aNum].DECK[i]].TEXT;
+			var tSkillText = "";
+			for(var j=0;j<mSkillList.length;j++){
+				if(mSkillList[j].NUMBER==charas[aNum].DECK[i]){
+					tSkillText=mSkillList[j].TEXT;
+					break;
+				}
+			}
+			tContents+=tSkillText;
 			tContents+="</td></tr>";
 		}
 		tTable.innerHTML=tContents;
