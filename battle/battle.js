@@ -1,3 +1,5 @@
+Math.seed=0;
+console.log(Math.random())
 //URLから引数を取得
 //[[選択されたキャラクター,チーム],...]
 const mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");

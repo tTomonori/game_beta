@@ -95,6 +95,7 @@ function displayDeckData(aNum){
 	let tTag=document.getElementById("card_status");
 	tTag.innerHTML="";
 	let tTable=document.createElement("table");
+	tTable.style.borderCollapse="collapse";
 	tTag.appendChild(tTable);
 	let tContents="";
 	for(let i=0;i<15;i++){
@@ -107,7 +108,7 @@ function displayDeckData(aNum){
 		else if(i=="14") tCardNum="";
 		if(i%2==0){
 			//左のセル
-			tContents+="<tr><td>";
+			tContents+="<tr style='border-bottom:solid 1px #bbf'><td>";
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
