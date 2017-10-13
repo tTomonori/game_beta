@@ -18,7 +18,12 @@ function attack(aChara) {
 		}
 
 		//技取り出し
-		tSkill=mSkillList[tSkill];
+		for(var j=0;j<mSkillList.length;j++){
+			if(mSkillList[j].NUMBER==tSkill){
+				tSkill=mSkillList[j];
+				break;
+			}
+		}
 
 		if(aChara.MP<tSkill.MAGIC){
 			//delay計算
