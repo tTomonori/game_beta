@@ -192,13 +192,62 @@ function attackable(aX,aY){
 				tCard.style.opacity="0.6";
 				tCard.src="../image/card_canAttack.png";
 				tCardCell.appendChild(tCard);
+
+				if(tChara.MP<tSkill.MAGIC){
+					continue;
+				}
+				var tDamegeCharas = new Array();
+				if(tSkill.F_ATTACK==true){
+					tDamegeCharas = mTrueTeam.concat(mFalseTeam);
+				}
+				else{
+					if(mDelayChara[1]=="T"){
+						tDamegeCharas = mFalseTeam;
+					}
+					else{
+						tDamegeCharas = mTrueTeam;
+					}
+				}
+				for(var j=0;j<tDamegeCharas.length;j++){
+					if(tDamegeCharas[j].x==tChara.x&&tDamegeCharas[j].y==tChara.y) continue;
+					if(tRange[i][0]==tDamegeCharas[j].x&&tRange[i][1]==tDamegeCharas[j].y){
+						var tDamage = calcDamage(tChara.ATK,tDamegeCharas[j].DEF,tSkill.POWER);
+
+						if(tCard[1]==tChara.TYPE){//属性補正
+							tDamage = Math.floor(tDamage*1.5);
+						}
+						let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
+						var tPreDamage=document.createElement("div");
+						tPreDamage.style.position="absolute";
+						tPreDamage.style.pointerEvents="none";
+						tPreDamage.style.marginTop="-70px";
+						tPreDamage.style.marginLeft="-16px";
+						tPreDamage.style.width="70px";
+						tPreDamage.style.height="70px";
+						tPreDamage.style.textAlign="center"
+						tPreDamage.style.color="#f00";
+						tPreDamage.style.fontSize="30px";
+						tPreDamage.classList.add("predamege")
+						tPreDamage.style.webkitTextStrokeColor="#fff";
+						tPreDamage.style.webkitTextStrokeWidth="0.5px";
+						tPreDamage.style.zIndex="5";
+						tPreDamage.style.zoom="2";
+						tPreDamage.style.pointerEvents="none";
+						if(tDamage<0){
+							tPreDamage.style.color="#0f0";
+							tDamage *= (-1);
+						}				
+						tPreDamage.textContent=tDamage;
+						tCardCell.appendChild(tPreDamage);
+					}
+				}
 			}
 		}
 		return;
 	}
-
-
 }
+
+
 function returnAttackable() {
 	let tCard=document.getElementsByTagName("img");
 	for(let i=0;i<tCard.length;i++){
@@ -209,6 +258,7 @@ function returnAttackable() {
 			tCard[i].remove()
 		}
 	}
+	$(".predamege").remove();
 	displayMoveable(mMovable);
 }
 

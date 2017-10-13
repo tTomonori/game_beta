@@ -16,29 +16,29 @@ function Support_B_M_Play(aSupportnum,aChara) {
 	return new Promise((res,rej)=>{
 	// if(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
-			case 0://自傷　威力１
-				var tDamege = calcDamage(aChara.ATK,aChara.DEF,1);
+			// case 0://自傷　威力１
+			// 	var tDamege = calcDamage(aChara.ATK,aChara.DEF,1);
 
-				var tCard=mCard[aChara.x+aChara.y*8];
-				if(tCard[1]==aChara.TYPE){
-					tDamege = Math.floor(tDamege*1.5);
-				}
+			// 	var tCard=mCard[aChara.x+aChara.y*8];
+			// 	if(tCard[1]==aChara.TYPE){
+			// 		tDamege = Math.floor(tDamege*1.5);
+			// 	}
 
-				aChara.HP-=tDamege;
-				damageLog(aChara,tDamege);
-				displayStatus();
-				if(aChara.HP<=0){
-					aChara.HP=0;
-					if(aChara.team=="T"){
-						winner("F");
-					}
-					else{
-						winner("T");
-					}
-				}
-				attackAnimate(aChara,aChara,[2],()=>{
-				 res()})
-				break;
+			// 	aChara.HP-=tDamege;
+			// 	damageLog(aChara,tDamege);
+			// 	displayStatus();
+			// 	if(aChara.HP<=0){
+			// 		aChara.HP=0;
+			// 		if(aChara.team=="T"){
+			// 			winner("F");
+			// 		}
+			// 		else{
+			// 			winner("T");
+			// 		}
+			// 	}
+			// 	attackAnimate(aChara,aChara,[2],()=>{
+			// 	 res()})
+			// 	break;
 			case 1://MPを3回復
 				aChara.MP += 3;
 
@@ -212,21 +212,22 @@ function Support_O_Play(aSupportnum,aChara) {
 		switch (aSupportnum) {
 			case 0:
 				//シャッフルする
-				mCard=shuffle(mCard);
-				//トランプを並べる
-				displayCard();
+				shuffleAnimate(mCard).then(()=>{
 				addLog("シャッフル");
+				res();
+				})
+
 				break;
 			case 1://裏カードを表に向ける
 				$("#cardTable")[0].getElementsByTagName("tr")[aChara.y].getElementsByTagName("td")[aChara.x].getElementsByTagName("img")[0].src="../image/card.png";
+				res();
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			default:
-
+			res();
 		}
-		res();
 	})
 }
