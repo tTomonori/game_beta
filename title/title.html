@@ -13,16 +13,17 @@
 	const electron=require("electron");
 	const ipc=electron.ipcRenderer;
 </script>
-<body style="margin:0;width:100vw;height:100vh;background-image:url(../image/background/gatag-00006359.jpg);background-repeat:no-repeat;background-size:cover">
+<link rel="stylesheet" href="./title.css">
+<body style="margin:0;width:100vw;height:100vh;background-image:url(../image/background/gatag-00006359.jpg);background-repeat:no-repeat;background-size:cover;overflow:hidden">
 	<div id="logo">
-		<img src="../image/cooltext262030964255809.png">
+		<img src="../image/cooltext262030964255809.png" style="width:100%;margin-top:2%">
 	</div>
 	<div id="mainChara">
-		<img src="../image/chara/2_stand/1345010201.png" style="margin-top: -40px;margin-left: -40px">
+		<img src="../image/chara/2_stand/1345010201.png" style="margin-top: -22%;margin-left: -15%;width:70%">
 	</div>
-	<div id="menu" style="position: fixed; top:400px;left: 600px">
+	<div id="menu" style="position: fixed; top:400px;left: 500px;text-align:center">
 		<input id="start" type="button" value="START" onclick="start()">
-		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none" disabled>
+		<input class="member" type="button" value="一人(開発中)" onclick="member(1)" style="display:none;position:relative;margin-left:-18px;margin-top:-100px" disabled>
 		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
 	</div>
 </body>

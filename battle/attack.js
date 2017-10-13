@@ -127,7 +127,11 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 							tDamagedCharas.push(aDamagedTeam[aI]);
 							if(aDamagedTeam[aI].HP<=0){
 								aDamagedTeam[aI].HP=0;
-								winner(aDamagedTeam[0].team);
+								let tTeam;
+								if(aDamagedTeam[0].team=="T") tTeam="F";
+								else tTeam="T";
+								winner(tTeam);
+								return;
 							}
 							if(aDamagedTeam[aI].HP>aDamagedTeam[aI].originalHP){//威力がマイナスだと回復する
 								aDamagedTeam[aI].HP = aDamagedTeam[aI].originalHP;
