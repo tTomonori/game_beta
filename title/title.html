@@ -35,7 +35,7 @@ function start(){
 }
 //2Pは 0:プレイヤー,他:AIの番号
 function member(aNum){
-	ipc.send("start",aNum);
+	ipc.send("start",[aNum,2,2]);
 }
 </script>
 </html>

@@ -1,10 +1,12 @@
-const mPlayerNum=location.search.substring(1).split("=")[1];
+const mPlayerNum=location.search.substring(1).split("=")[1].split(",")[0];
+const mTrueTeamNum=Number(location.search.substring(1).split("=")[1].split(",")[1]);
+const mFalseTeamNum=Number(location.search.substring(1).split("=")[1].split(",")[2]);
 var mSelectedCharas=new Array();
 var mStatusList=["NAME","HP","MP","ATK","DEF","SPD","MOV","TYPE"];
 
 var mTeam="T";
-var mTrueTeamNum=2;
-var mFalseTeamNum=2;
+// var mTrueTeamNum=2;
+// var mFalseTeamNum=2;
 
 var charas=loadChara();
 var mSelectPointor=0;
