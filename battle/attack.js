@@ -52,21 +52,23 @@ function attack(aChara) {
 						tMyTeam=mFalseTeam;
 						tEnemyTeam=mTrueTeam;
 					}
-					addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard[1]).then(()=>{
-						//補助効果適用(A)
-						Support_A_M(tSkill.SUPPORT_Af_Myself,aChara).then(()=>{
+					attackMyself(aChara,tSkill,tCard).then(()=>{
+						addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard[1]).then(()=>{
+							//補助効果適用(A)
+							Support_A_M(tSkill.SUPPORT_Af_Myself,aChara).then(()=>{
 
-							Support_O(tSkill.SUPPORT_Otherwise,aChara).then(()=>{
+								Support_O(tSkill.SUPPORT_Otherwise,aChara).then(()=>{
 
-								//delay計算
-								var tDelay = Math.floor(100000/aChara.SPD);//初期値
-								tDelay+=Math.floor(tSkill.DELAY/aChara.SPD)//追加delay
+									//delay計算
+									var tDelay = Math.floor(100000/aChara.SPD);//初期値
+									tDelay+=Math.floor(tSkill.DELAY/aChara.SPD)//追加delay
 
-								aChara.addDelay(tDelay);
-								// mDelayList=sortDelay(mDelayList);
-								mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
-								displayDelay();
-								attacRes();
+									aChara.addDelay(tDelay);
+									// mDelayList=sortDelay(mDelayList);
+									mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
+									displayDelay();
+									attacRes();
+								})
 							})
 						})
 					})
@@ -84,7 +86,27 @@ function calcDamage(aATK,aDEF,aPOWER){
 
 	return tDamage
 }
-
+//自傷,自己回復
+function attackMyself(aChara,aSkill,aCard){
+	return new Promise((res,rej)=>{
+		if(aSkill.M_ATTACK==0){
+			res();
+			return;
+		}
+		//ダメージ計算
+		let tDamage = calcDamage(aChara.ATK,aChara.DEF,aSkill.M_ATTACK);
+		if(aCard==aChara.TYPE){//属性補正
+			tDamage = Math.floor(tDamage*1.5);
+		}
+		aChara.HP-=tDamage;
+		damageLog(aChara,tDamage);
+		if(tDamage>0)//自傷
+			attackAnimate(aChara,aChara,[2],()=>{res();});
+		else if(tDamage<0)//自己回復
+			attackAnimate(aChara,aChara,[7],()=>{res();});
+		else res();
+	})
+}
 function addDamage(aAttackChara,aMyTeam,aEnemyTeam,aSkill,aCard){
 	return new Promise((res,rej)=>{
 		damage(aAttackChara,aEnemyTeam,aSkill,aCard).then(()=>{

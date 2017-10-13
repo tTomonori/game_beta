@@ -180,6 +180,21 @@ function attackable(aX,aY){
 		// tSkill=mSkillList[tSkill];
 		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
 		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
+			if(tChara.MP<tSkill.MAGIC){
+				return;
+			}
+			var tDamegeCharas = new Array();
+			if(tSkill.F_ATTACK==true){
+				tDamegeCharas = mTrueTeam.concat(mFalseTeam);
+			}
+			else{
+				if(mDelayChara[1]=="T"){
+					tDamegeCharas = mFalseTeam;
+				}
+				else{
+					tDamegeCharas = mTrueTeam;
+				}
+			}
 			for(let i=0;i<tRange.length;i++){
 				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
 				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
@@ -193,21 +208,6 @@ function attackable(aX,aY){
 				tCard.src="../image/card_canAttack.png";
 				tCardCell.appendChild(tCard);
 
-				if(tChara.MP<tSkill.MAGIC){
-					continue;
-				}
-				var tDamegeCharas = new Array();
-				if(tSkill.F_ATTACK==true){
-					tDamegeCharas = mTrueTeam.concat(mFalseTeam);
-				}
-				else{
-					if(mDelayChara[1]=="T"){
-						tDamegeCharas = mFalseTeam;
-					}
-					else{
-						tDamegeCharas = mTrueTeam;
-					}
-				}
 				for(var j=0;j<tDamegeCharas.length;j++){
 					if(tDamegeCharas[j].x==tChara.x&&tDamegeCharas[j].y==tChara.y) continue;
 					if(tRange[i][0]==tDamegeCharas[j].x&&tRange[i][1]==tDamegeCharas[j].y){
@@ -236,18 +236,19 @@ function attackable(aX,aY){
 						if(tDamage<0){
 							tPreDamage.style.color="#0f0";
 							tDamage *= (-1);
-						}				
+						}
 						tPreDamage.textContent=tDamage;
 						tCardCell.appendChild(tPreDamage);
 					}
 				}
-				if(tSkill.M_ATTACK==0) continue;
+			}
+			if(tSkill.M_ATTACK!=0){
 				var tDamage = calcDamage(tChara.ATK,tChara.DEF,tSkill.M_ATTACK);
 
 				if(tCard[1]==tChara.TYPE){//属性補正
 					tDamage = Math.floor(tDamage*1.5);
 				}
-				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tChara.x].getElementsByTagName("td")[tChara.y];
+				tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tChara.y].getElementsByTagName("td")[tChara.x];
 				var tPreDamage=document.createElement("div");
 				tPreDamage.style.position="absolute";
 				tPreDamage.style.pointerEvents="none";
@@ -267,7 +268,7 @@ function attackable(aX,aY){
 				if(tDamage<0){
 					tPreDamage.style.color="#0f0";
 					tDamage *= (-1);
-				}				
+				}
 				tPreDamage.textContent=tDamage;
 				tCardCell.appendChild(tPreDamage);
 			}
