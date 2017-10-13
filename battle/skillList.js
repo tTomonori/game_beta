@@ -463,7 +463,7 @@ var mSkillList=[
 		ANIMATION:[34]
 	},
 	{NUMBER:501,
-		TEXT:"MPを３回復",
+		TEXT:"MPを３回復 (タイプ一致時４回復)",
 		RANGE:0,
 		POWER:0,
 		DELAY:0,

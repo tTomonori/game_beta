@@ -3,6 +3,8 @@ var mSelectedCharas=new Array();
 var mStatusList=["NAME","HP","MP","ATK","DEF","SPD","MOV","TYPE"];
 
 var mTeam="T";
+var mTrueTeamNum=2;
+var mFalseTeamNum=2;
 
 var charas=loadChara();
 var mSelectPointor=0;
@@ -43,35 +45,51 @@ $(".pointorRight").on("click",function(){
 
 //選択ボタン
 function selectChara() {
-	if(mSelectedCharas.length<2){
+	if(mSelectedCharas.length<mTrueTeamNum){
 		mSelectedCharas.push([mSelectPointor,"T"]);
+		var tImag = "<img src='../image/chara/1_face/"+(charas[mSelectPointor].IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
+		$("#SelectedMember")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[mSelectedCharas.length].innerHTML = tImag;
 	}
-	else if(mSelectedCharas.length<4){
+	else if(mSelectedCharas.length<mTrueTeamNum+mFalseTeamNum){
 		mSelectedCharas.push([mSelectPointor,"F"]);
+		var tImag = "<img src='../image/chara/1_face/"+(charas[mSelectPointor].IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
+		$("#SelectedMember")[0].getElementsByTagName("tr")[2].getElementsByTagName("td")[mSelectedCharas.length-mTrueTeamNum].innerHTML = tImag;
 	}
-	if(mSelectedCharas.length==4){
+	if(mSelectedCharas.length==mTrueTeamNum+mFalseTeamNum){
 		ipc.send("selected",mSelectedCharas,mPlayerNum);
 		return;
 	}
+	mSelectPointor=0;
+	displayCharaData(mSelectPointor);
+	displayDeckData(mSelectPointor);
 	chageLabel();
 }
 //戻るボタン
 function back() {
 	if(mSelectedCharas.length>0){
-		mSelectedCharas.pop(mSelectPointor);
+		if(mSelectedCharas.length<=mTrueTeamNum){
+			$("#SelectedMember")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[mSelectedCharas.length].innerHTML = "";
+		}
+		else if(mSelectedCharas.length<=mTrueTeamNum+mFalseTeamNum){
+			$("#SelectedMember")[0].getElementsByTagName("tr")[2].getElementsByTagName("td")[mSelectedCharas.length-mTrueTeamNum].innerHTML = "";
+		}
+		mSelectedCharas.pop(mSelectedCharas);
 		chageLabel();
 	}
+	mSelectPointor=0;
+	displayCharaData(mSelectPointor);
+	displayDeckData(mSelectPointor);
 }
 
 function chageLabel(){
 	let tLabel="";
-	if(mPlayerNum==0||mSelectedCharas.length<2){
-		tLabel+="プレイヤー"+Math.floor(((mSelectedCharas.length/2)+1))+"の";
+	if(mPlayerNum==0||mSelectedCharas.length<mTrueTeamNum){
+		tLabel+="プレイヤー"+Math.floor(((mSelectedCharas.length/mTrueTeamNum)+1))+"の";
 	}
 	else{
 		tLabel+="COMの";
 	}
-	tLabel+="キャラ"+((mSelectedCharas.length%2)+1)+"を選んでください";
+	tLabel+="キャラ"+((mSelectedCharas.length%mTrueTeamNum)+1)+"を選んでください";
 	$("#player")[0].innerHTML=tLabel;
 
 }

@@ -20,15 +20,16 @@ function Support_B_M_Play(aSupportnum,aChara) {
 
 				break;
 			case 1://MPを3回復
-				aChara.MP += 3;
-
+				var tGainMP = 3;
+				
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
-					aChara.MP+=1;//同タイプでさらに１回復
+					tGainMP++;//同タイプでさらに１回復
 				}
+				aChara.MP += tGainMP;
 
 				if(aChara.MP>aChara.originalMP) aChara.MP=aChara.originalMP;
-				freeLog(aChara,"MP","3回復")
+				freeLog(aChara,"MP",tGainMP+"回復")
 				attackAnimate(aChara,aChara,[15],()=>{
 				 res()})
 				break;
