@@ -185,6 +185,26 @@ function attackable(aX,aY){
 		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
 		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
 			if(tChara.MP<tSkill.MAGIC){
+				tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tChara.y].getElementsByTagName("td")[tChara.x];
+				var tPreDamage=document.createElement("div");
+				tPreDamage.style.position="absolute";
+				tPreDamage.style.pointerEvents="none";
+				tPreDamage.style.marginTop="-70px";
+				tPreDamage.style.marginLeft="-16px";
+				tPreDamage.style.width="70px";
+				tPreDamage.style.height="70px";
+				tPreDamage.style.textAlign="center"
+				tPreDamage.style.color="#f00";
+				tPreDamage.style.fontSize="15px";
+				tPreDamage.classList.add("predamege")
+				tPreDamage.style.webkitTextStrokeColor="#fff";
+				tPreDamage.style.webkitTextStrokeWidth="0.5px";
+				tPreDamage.style.zIndex="5";
+				tPreDamage.style.zoom="2";
+				tPreDamage.style.pointerEvents="none";
+				tDamage="MP不足"
+				tPreDamage.textContent=tDamage;
+				tCardCell.appendChild(tPreDamage);
 				return;
 			}
 			var tDamegeCharas = new Array();
