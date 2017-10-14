@@ -2,7 +2,8 @@ function Support_B_M(aSupportnums,aChara){
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_B_M_Play(aSupportnums[0],aChara).then(()=>{
-				Support_B_M(aSupportnums.shift,aChara).then(()=>{
+				aSupportnums.shift()
+				Support_B_M(aSupportnums,aChara).then(()=>{
 					res();
 				})
 			})
@@ -47,7 +48,8 @@ function Support_A_M(aSupportnums,aChara){
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_A_M_Play(aSupportnums[0],aChara).then(()=>{
-				Support_A_M(aSupportnums.shift,aChara).then(()=>{
+				aSupportnums.shift();
+				Support_A_M(aSupportnums,aChara).then(()=>{
 					res();
 				})
 			})
@@ -146,7 +148,8 @@ function Support_B_E(aSupportnums,aChara){
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_B_E_Play(aSupportnums[0],aChara).then(()=>{
-				Support_B_E(aSupportnums.shift,aChara).then(()=>{
+				aSupportnums.shift();
+				Support_B_E(aSupportnums,aChara).then(()=>{
 					res();
 				})
 			})
@@ -178,7 +181,8 @@ function Support_A_E(aSupportnums,aChara){
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_A_E_Play(aSupportnums[0],aChara).then(()=>{
-				Support_A_E(aSupportnums.shift,aChara).then(()=>{
+				aSupportnums.shift();
+				Support_A_E(aSupportnums,aChara).then(()=>{
 					res();
 				})
 			})
@@ -222,7 +226,8 @@ function Support_O(aSupportnums,aChara){
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_O_Play(aSupportnums[0],aChara).then(()=>{
-				Support_O(aSupportnums.shift,aChara).then(()=>{
+				aSupportnums.shift();
+				Support_O(aSupportnums,aChara).then(()=>{
 					res();
 				})
 			})

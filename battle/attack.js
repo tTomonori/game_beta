@@ -144,7 +144,7 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 						}).then(()=>{
 							aDamagedTeam[aI].addDamage(tDamage)
 							//サポート効果敵　後
-							Support_A_E(aSkill.SUPPORT_Af_Enemy,aDamagedTeam[aI]).then(()=>{
+							Support_A_E(aSkill.SUPPORT_Af_Enemy.concat(),aDamagedTeam[aI]).then(()=>{
 								displayStatus();
 								damageRes();
 							})
