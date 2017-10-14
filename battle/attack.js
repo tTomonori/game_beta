@@ -41,7 +41,7 @@ function attack(aChara) {
 		else{
 			aChara.MpMinus(tSkill.MAGIC).then(()=>{
 				//補助効果適用(B)
-				Support_B_M(tSkill.SUPPORT_Be_Myself,aChara).then(()=>{
+				Support_B_M(tSkill.SUPPORT_Be_Myself.concat(),aChara).then(()=>{
 					let tMyTeam;
 					let tEnemyTeam;
 					if(aChara.team=="T"){
@@ -55,9 +55,9 @@ function attack(aChara) {
 					attackMyself(aChara,tSkill,tCard).then(()=>{
 						addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard[1]).then(()=>{
 							//補助効果適用(A)
-							Support_A_M(tSkill.SUPPORT_Af_Myself,aChara).then(()=>{
+							Support_A_M(tSkill.SUPPORT_Af_Myself.concat(),aChara).then(()=>{
 
-								Support_O(tSkill.SUPPORT_Otherwise,aChara).then(()=>{
+								Support_O(tSkill.SUPPORT_Otherwise.concat(),aChara).then(()=>{
 
 									//delay計算
 									var tDelay = Math.floor(100000/aChara.SPD);//初期値
@@ -133,7 +133,7 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 					tAttackFlag=true;
 					//サポート効果敵　前
 					let aI=i;
-					Support_B_E(aSkill.SUPPORT_Be_Enemy,aDamagedTeam[i]).then(()=>{
+					Support_B_E(aSkill.SUPPORT_Be_Enemy.concat(),aDamagedTeam[i]).then(()=>{
 						//ダメージ計算
 						var tDamage = calcDamage(aAttackChara.ATK,aDamagedTeam[aI].DEF,aSkill.POWER);
 						if(aCard==aAttackChara.TYPE){//属性補正

@@ -44,7 +44,6 @@ function Support_B_M_Play(aSupportnum,aChara) {
 }
 
 function Support_A_M(aSupportnums,aChara){
-	console.log(aSupportnums)
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_A_M_Play(aSupportnums[0],aChara).then(()=>{
@@ -63,6 +62,11 @@ function Support_A_M_Play(aSupportnum,aChara) {
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0:
+				var tDelay = Math.floor(50000/aChara.SPD);//効果値50
+				aChara.Delay= (-tDelay);
+				freeLog(aChara,"DELAY","50下がった")
+				attackAnimate(aChara,aChara,[7],()=>{
+				res()})
 				break;
 			case 1:
 				var tDelay = Math.floor(100000/aChara.SPD);//初期値
@@ -92,7 +96,7 @@ function Support_A_M_Play(aSupportnum,aChara) {
 				var tUp = 2;
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
-					tGainMP++;//同タイプでさらに１アップ
+					tUp++;//同タイプでさらに１アップ
 				}
 				aChara.ATK += tUp;
 				freeLog(aChara,"ATK",tUp+"アップ")
@@ -103,7 +107,7 @@ function Support_A_M_Play(aSupportnum,aChara) {
 				var tUp = 2;
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
-					tGainMP++;//同タイプでさらに１アップ
+					tUp++;//同タイプでさらに１アップ
 				}
 				aChara.DEF += tUp;
 				freeLog(aChara,"DEF",tUp+"アップ")
@@ -114,7 +118,7 @@ function Support_A_M_Play(aSupportnum,aChara) {
 				var tUp = 2;
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
-					tGainMP++;//同タイプでさらに１アップ
+					tUp++;//同タイプでさらに１アップ
 				}
 				aChara.SPD += tUp;
 				freeLog(aChara,"SPD",tUp+"アップ")
@@ -222,7 +226,6 @@ function Support_A_E_Play(aSupportnum,aChara) {
 }
 
 function Support_O(aSupportnums,aChara){
-	console.log(aSupportnums)
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_O_Play(aSupportnums[0],aChara).then(()=>{

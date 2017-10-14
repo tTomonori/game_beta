@@ -170,7 +170,11 @@ function displayDeckData(aNum){
 }
 
 function judSelectedChara(aNum){
-	if(mSelectedCharas.length<mTrueTeamNum){
+	if(mSelectedCharas.length==0){
+		$("#decide")[0].value="このキャラにする";
+		$("#decide").prop("disabled",false);
+	}
+	else if(mSelectedCharas.length<mTrueTeamNum){
 		for(var i=0;i<mSelectedCharas.length;i++){
 			if(mSelectedCharas[i][0]==aNum){
 				$("#decide")[0].value="選択済みです";
