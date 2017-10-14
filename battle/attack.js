@@ -136,7 +136,6 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 					Support_B_E(aSkill.SUPPORT_Be_Enemy,aDamagedTeam[i]).then(()=>{
 						//ダメージ計算
 						var tDamage = calcDamage(aAttackChara.ATK,aDamagedTeam[aI].DEF,aSkill.POWER);
-
 						if(aCard==aAttackChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
