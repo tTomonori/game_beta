@@ -43,6 +43,7 @@ function Support_B_M_Play(aSupportnum,aChara) {
 }
 
 function Support_A_M(aSupportnums,aChara){
+	console.log(aSupportnums)
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_A_M_Play(aSupportnums[0],aChara).then(()=>{
@@ -52,7 +53,7 @@ function Support_A_M(aSupportnums,aChara){
 			})
 		}
 		else
-		res();
+			res();
 	})
 }
 function Support_A_M_Play(aSupportnum,aChara) {
@@ -92,8 +93,8 @@ function Support_A_M_Play(aSupportnum,aChara) {
 					tGainMP++;//同タイプでさらに１アップ
 				}
 				aChara.ATK += tUp;
-				freeLog(aChara,"ATK",tGainMP+"アップ")
-				attackAnimate(aChara,aChara,[15],()=>{
+				freeLog(aChara,"ATK",tUp+"アップ")
+				attackAnimate(aChara,aChara,[19],()=>{
 				 res()})
 				break;
 			case 4:
@@ -102,9 +103,9 @@ function Support_A_M_Play(aSupportnum,aChara) {
 				if(tCard[1]==aChara.TYPE){
 					tGainMP++;//同タイプでさらに１アップ
 				}
-				aChara.ATK += tUp;
-				freeLog(aChara,"DEF",tGainMP+"アップ")
-				attackAnimate(aChara,aChara,[15],()=>{
+				aChara.DEF += tUp;
+				freeLog(aChara,"DEF",tUp+"アップ")
+				attackAnimate(aChara,aChara,[19],()=>{
 				 res()})
 				break;
 			case 5:
@@ -114,29 +115,29 @@ function Support_A_M_Play(aSupportnum,aChara) {
 					tGainMP++;//同タイプでさらに１アップ
 				}
 				aChara.SPD += tUp;
-				freeLog(aChara,"SPD",tGainMP+"アップ")
-				attackAnimate(aChara,aChara,[15],()=>{
+				freeLog(aChara,"SPD",tUp+"アップ")
+				attackAnimate(aChara,aChara,[19],()=>{
 				 res()})
 				break;
 			case 6:
 				var tUp = 1;
 				aChara.MOV += tUp;
-				freeLog(aChara,"MOV",tGainMP+"アップ")
-				attackAnimate(aChara,aChara,[15],()=>{
+				freeLog(aChara,"MOV",tUp+"アップ")
+				attackAnimate(aChara,aChara,[19],()=>{
 				 res()})
 				break;
 			case 7:
 				var tUp = 1;
-				aChara.ATK += aChara.originalATK;
-				aChara.MOV += aChara.originalDEF;
-				aChara.MOV += aChara.originalSPD;
-				aChara.MOV += aChara.originalMOV;
+				aChara.ATK = aChara.originalATK;
+				aChara.DEF = aChara.originalDEF;
+				aChara.SPD = aChara.originalSPD;
+				aChara.MOV = aChara.originalMOV;
 				freeLog(aChara,"ステータス","元に戻った")
-				attackAnimate(aChara,aChara,[15],()=>{
+				attackAnimate(aChara,aChara,[20],()=>{
 				 res()})
 				break;
 			default:
-			res();
+				res();
 		}
 	})
 }
@@ -217,6 +218,7 @@ function Support_A_E_Play(aSupportnum,aChara) {
 }
 
 function Support_O(aSupportnums,aChara){
+	console.log(aSupportnums)
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
 			Support_O_Play(aSupportnums[0],aChara).then(()=>{
