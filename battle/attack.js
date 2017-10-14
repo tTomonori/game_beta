@@ -88,9 +88,9 @@ function calcDamage(aATK,aDEF,aPOWER){
 }
 //自傷,自己回復
 function attackMyself(aChara,aSkill,aCard){
-	return new Promise((res,rej)=>{
+	return new Promise((MAres,MArej)=>{
 		if(aSkill.M_ATTACK==0){
-			res();
+			MAres();
 			return;
 		}
 		//ダメージ計算
@@ -98,22 +98,13 @@ function attackMyself(aChara,aSkill,aCard){
 		if(aCard[1]==aChara.TYPE){//属性補正
 			tDamage = Math.floor(tDamage*1.5);
 		}
-		aChara.HP-=tDamage;
-		if(aChara.HP<=0){
-			let tTeam;
-			if(aChara.team=="T") tTeam="F";
-			else tTeam="T";
-			winner(tTeam);
-		}
-		else if(aChara.HP>aChara.originalHP){
-			aChara.HP=aChara.originalHP;
-		}
-		damageLog(aChara,tDamage);
-		if(tDamage>0)//自傷
-			attackAnimate(aChara,aChara,[2],()=>{res();});
-		else if(tDamage<0)//自己回復
-			attackAnimate(aChara,aChara,[7],()=>{res();});
-		else res();
+		let tAnimation=(tDamage>0)?[2]:[7];
+		new Promise((res,rej)=>{
+			attackAnimate(aChara,aChara,tAnimation,()=>{res();})
+		}).then(()=>{
+			aChara.addDamage(tDamage);
+			MAres();
+		})
 	})
 }
 function addDamage(aAttackChara,aMyTeam,aEnemyTeam,aSkill,aCard){
@@ -149,25 +140,10 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 						if(aCard==aAttackChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
-
-						aDamagedTeam[aI].HP-=tDamage;
-						damageLog(aDamagedTeam[aI],tDamage);
 						new Promise((res,rej)=>{
 							attackAnimate(aAttackChara,aDamagedTeam[aI],aSkill.ANIMATION,()=>{res();});
 						}).then(()=>{
-							tDamagedCharas.push(aDamagedTeam[aI]);
-							if(aDamagedTeam[aI].HP<=0){
-								aDamagedTeam[aI].HP=0;
-								let tTeam;
-								if(aDamagedTeam[0].team=="T") tTeam="F";
-								else tTeam="T";
-								winner(tTeam);
-								return;
-							}
-							if(aDamagedTeam[aI].HP>aDamagedTeam[aI].originalHP){//威力がマイナスだと回復する
-								aDamagedTeam[aI].HP = aDamagedTeam[aI].originalHP;
-							}
-
+							aDamagedTeam[aI].addDamage(tDamage)
 							//サポート効果敵　後
 							Support_A_E(aSkill.SUPPORT_Af_Enemy,aDamagedTeam[aI]).then(()=>{
 								displayStatus();

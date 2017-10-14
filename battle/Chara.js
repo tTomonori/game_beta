@@ -55,10 +55,10 @@ class Chara{
 	}
 	setImgaeNum(aX,aY){
 		if(this.team=="T"){
-			aY=8-aY;
+			aX=8-aX;
 		}
-		this.img.style.marginTop=-aX*64+"px";
-		this.img.style.marginLeft=-aY*64+"px";
+		this.img.style.marginTop=-aY*64+"px";
+		this.img.style.marginLeft=-aX*64+"px";
 	}
 	display(){
 		let tMas=$("#cardTable")[0].getElementsByTagName("tr")[this.y].getElementsByTagName("td")[this.x];
@@ -124,6 +124,68 @@ class Chara{
 		return new Promise((res,rej)=>{
 			res();
 		})
+	}
+	//ダメージを与える(引数が負なら回復)
+	addDamage(aDamage){
+		let tBar=this.getHPBar();
+		this.HP-=aDamage;
+		//HP超過
+		if(this.HP>this.originalHP) this.HP=this.originalHP;
+		if(this.HP<=0){
+			//戦闘不能
+			this.down();
+			return;
+		}
+		//ログ
+		damageLog(this,aDamage);
+		//HP変化アニメーション
+		let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[this.y].getElementsByTagName("td")[this.x];
+		let tPosition=tCardCell.getBoundingClientRect();
+		let tBarContainer=document.createElement("div");
+		tBarContainer.id=this.NAME+this.team+"HPBarAnimation";
+		tBarContainer.style.zIndex="1";
+		tBarContainer.style.position="absolute";
+		tBarContainer.style.pointerEvents="none";
+		tBarContainer.style.marginLeft=(tPosition.left+5)+"px";
+		tBarContainer.style.marginTop=(tPosition.top-5)+"px";
+		tBarContainer.style.top="0";
+		tBarContainer.style.left="0";
+		tBarContainer.style.width="64px";
+		tBarContainer.style.height="70px";
+		tBarContainer.innerHTML=tBar;
+		tBarContainer.firstChild.style.width="100%";
+		$("#field")[0].appendChild(tBarContainer);
+		let tBarId=tBarContainer.id+"CurrentHPBar";
+		tBarContainer.firstChild.firstChild.id=tBarId;
+		let tDamageChar=document.createElement("b");
+		tDamageChar.id=this.NAME+this.team+"DamageChar";
+		tDamageChar.innerHTML=-aDamage;
+		tDamageChar.style.position="absolute";
+		tDamageChar.style.top="0";
+		tDamageChar.style.left="0";
+		tDamageChar.style.width="100%";
+		tDamageChar.style.height="100%";
+		tDamageChar.style.fontSize="30px";
+		tDamageChar.style.textAlign="center";
+		tDamageChar.style.color=(aDamage>0)?"#f00":"#0f0";
+		tBarContainer.appendChild(tDamageChar);
+		//アニメーションの実行
+		(aDamage>0)?this.setImgaeNum(0,4):this.setImgaeNum(5,5);
+		$("#"+tDamageChar.id).animate({
+			top:"-20px"
+		},1000,"linear",()=>{
+			tDamageChar.remove();
+		});
+		$("#"+tBarId).animate({
+			width:(this.HP/this.originalHP*100)+"%"
+		},700,"linear",()=>{
+			this.setImgaeNum(0,0);
+			setTimeout(()=>{tBarContainer.remove()},500);
+		})
+	}
+	down(){
+		this.setImgaeNum(6,5);
+		this.team=="T"?winner("F"):winner("T");
 	}
 }
 var mTTeamColor="rgba(0, 136, 255,0.6)";
