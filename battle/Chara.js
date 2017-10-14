@@ -34,6 +34,7 @@ class Chara{
 		return this.Delay;
 	}
 	initDisplay(){
+		//キャラ画像
 		this.img=document.createElement("img");
 		this.img.src=this.getActorUrl();
 		if(this.team=="T"){
@@ -47,7 +48,21 @@ class Chara{
 		this.container.style.position="fixed";
 		this.container.style.zIndex="1";
 		this.setImgaeNum(0,0);
+		//チーム色強調
+		this.teamMerker=document.createElement("div");
+		this.teamMerker.style.position="absolute";
+		this.teamMerker.style.zIndex="-1";
+		this.teamMerker.style.top="0";
+		this.teamMerker.style.left="0";
+		this.teamMerker.style.width="60%";
+		this.teamMerker.style.height="65%";
+		this.teamMerker.style.marginTop="27%";
+		this.teamMerker.style.marginLeft="21%";
+		this.teamMerker.style.opacity="0.6"
+		this.teamMerker.style.background=this.teamColor;
+		this.teamMerker.style.borderRadius="70px";
 
+		this.container.appendChild(this.teamMerker);
 		this.container.appendChild(this.img);
 		$("#charaImages")[0].appendChild(this.container);
 		this.display();
