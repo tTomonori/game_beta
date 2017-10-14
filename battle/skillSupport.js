@@ -21,7 +21,7 @@ function Support_B_M_Play(aSupportnum,aChara) {
 				break;
 			case 1://MPを3回復
 				var tGainMP = 3;
-				
+
 				var tCard=mCard[aChara.x+aChara.y*8];
 				if(tCard[1]==aChara.TYPE){
 					tGainMP++;//同タイプでさらに１回復
@@ -140,17 +140,26 @@ function Support_A_E(aSupportnums,aChara){
 	})
 }
 function Support_A_E_Play(aSupportnum,aChara) {
-	new Promise((res,rej)=>{
+	return new Promise((res,rej)=>{
+		console.log(aSupportnum)
 	// for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) { //ディレイを50下げる
-			case 0:
-				aChara.Delay-=50000;
-				attackAnimate(aChara,aChara,[7],()=>{
+		switch (aSupportnum) {
+			case 0://ディレイを50下げる
+				aChara.minusDelay(50000);
+				attackAnimate(aChara,aChara,[9],()=>{
+				sortDelayList();
 				res()})
 				break;
-			case 1:
+			case 1://ディレイを50下げる
+				aChara.minusDelay(100000);
+				attackAnimate(aChara,aChara,[9],()=>{
+				sortDelayList();
+				res()})
 				break;
-			case 2:
+			case 2://MPを2回復
+				aChara.addMp(2)
+				attackAnimate(aChara,aChara,[15],()=>{
+				res()})
 				break;
 			case 3:
 				break;

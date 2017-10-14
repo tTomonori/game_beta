@@ -241,6 +241,19 @@ function attackable(aX,aY){
 							tPreDamage.style.color="#0f0";
 							tDamage *= (-1);
 						}
+						else if(tDamage==0){//補助効果のみのスキル
+							tPreDamage.style.fontSize="17px";
+							tPreDamage.style.marginTop="-50px"
+							if(tChara.team==tDamegeCharas[j].team){
+								//攻撃相手が味方でダメージが0
+								tDamage="↑";
+								tPreDamage.style.color="#0f0";
+							}
+							else{
+								//攻撃相手が敵でダメージが0
+								tDamage="↓";
+							}
+						}
 						tPreDamage.textContent=tDamage;
 						tCardCell.appendChild(tPreDamage);
 					}

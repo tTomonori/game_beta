@@ -37,3 +37,15 @@ function sortDelay(aDelayList){
 	aDelayList.splice(i,0,tDelay);
 	return aDelayList;
 }
+
+function sortDelayList(){
+	mDelayList.sort((a,b)=>{
+		let tADelay=(a[1]=="T")?mTrueTeam[a[2]].Delay:mFalseTeam[a[2]].Delay;
+		let tBDelay=(b[1]=="T")?mTrueTeam[b[2]].Delay:mFalseTeam[b[2]].Delay;
+
+		if(tADelay<tBDelay) return -1;
+		if(tADelay>tBDelay) return 1;
+		return 0;
+	})
+	// displayDelay();
+}

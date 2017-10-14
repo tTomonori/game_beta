@@ -48,7 +48,7 @@ class Chara{
 		this.container.style.position="fixed";
 		this.container.style.zIndex="1";
 		this.setImgaeNum(0,0);
-		//チーム色強調
+		//チーム色でキャラを強調
 		this.teamMerker=document.createElement("div");
 		this.teamMerker.style.position="absolute";
 		this.teamMerker.style.zIndex="-1";
@@ -132,6 +132,13 @@ class Chara{
 	addDelay(aDelay){
 		this.Delay+=aDelay;
 	}
+	minusDelay(aDelay){
+		this.Delay-=aDelay;
+		if(this.Delay<0) this.Delay=0;
+	}
+	initDelay(aAddDelay){
+		this.Delay=Math.floor(100000/this.SPD)+aAddDelay;//初期値+追加ディレイ
+	}
 	MpMinus(aMp){
 		this.MP-=aMp;
 		if(this.MP>this.originalMP)
@@ -140,8 +147,15 @@ class Chara{
 			res();
 		})
 	}
+	addMp(aMp){
+		if(aMp==0) return;
+		this.MP+=aMp;
+		if(this.MP>this.originalMP) this.MP=this.originalMP;
+		if(this.MP<0) this.MP=0;
+	}
 	//ダメージを与える(引数が負なら回復)
 	addDamage(aDamage){
+		if(aDamage==0) return;
 		let tBar=this.getHPBar();
 		this.HP-=aDamage;
 		//HP超過

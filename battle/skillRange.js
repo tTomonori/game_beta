@@ -113,6 +113,18 @@ function calcRange(aSkillRange,tPosition){
 				}
 			}
 		break;
+		case 14://周囲8マスの味方に
+			let tMyTeam=(mDelayChara[1]=="T")?mTrueTeam:mFalseTeam;
+			let tMyX=tPosition.x;
+			let tMyY=tPosition.y;
+			for(let i=0;i<tMyTeam.length;i++){
+				if(tMyTeam[i]==tMyTeam[mDelayChara[2]]) continue;//自分は対象外
+				let tAllyX=tMyTeam[i].x;
+				let tAllyY=tMyTeam[i].y;
+				if(-1<=tAllyX-tMyX&&tAllyX-tMyX<=1&&-1<=tAllyY-tMyY&&tAllyX-tMyX<=1)
+				tRange.push([tAllyX,tAllyY]);
+			}
+		break;
 		case 10://テンプレート
 
 		break;
