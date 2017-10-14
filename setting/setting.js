@@ -123,7 +123,7 @@ function displayDeckData(aNum){
 	tTag.appendChild(tTable);
 	let tContents="";
 	for(let i=0;i<15;i++){
-		let tCardNum=i;
+		let tCardNum=i+1;
 		if(i=="0") tCardNum="A";
 		else if(i=="10") tCardNum="J";
 		else if(i=="11") tCardNum="Q";
@@ -178,7 +178,7 @@ function judSelectedChara(aNum){
 				break;
 			}
 			else{
-				$("#decide")[0].value="このキャラにする";	
+				$("#decide")[0].value="このキャラにする";
 				$("#decide").prop("disabled",false);
 			}
 		}
@@ -192,8 +192,8 @@ function judSelectedChara(aNum){
 			}
 			else{
 				$("#decide")[0].value="このキャラにする";
-				$("#decide").prop("disabled",false);	
+				$("#decide").prop("disabled",false);
 			}
-		}	
+		}
 	}
 }
