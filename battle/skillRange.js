@@ -121,7 +121,7 @@ function calcRange(aSkillRange,tPosition){
 				if(tMyTeam[i]==tMyTeam[mDelayChara[2]]) continue;//自分は対象外
 				let tAllyX=tMyTeam[i].x;
 				let tAllyY=tMyTeam[i].y;
-				if(-1<=tAllyX-tMyX&&tAllyX-tMyX<=1&&-1<=tAllyY-tMyY&&tAllyX-tMyX<=1)
+				if(-1<=tAllyX-tMyX&&tAllyX-tMyX<=1&&-1<=tAllyY-tMyY&&tAllyY-tMyY<=1)
 				tRange.push([tAllyX,tAllyY]);
 			}
 		break;
