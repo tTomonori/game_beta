@@ -201,23 +201,67 @@ function Support_A_E_Play(aSupportnum,aChara) {
 	// for(var i=0;i<aSupportnums.length;i++){
 		switch (aSupportnum) {
 			case 0://ディレイを50下げる
-				aChara.minusDelay(50000);
+				aChara.minusDelay(50000/aChara.SPD);
 				attackAnimate(aChara,aChara,[9],()=>{
+				freeLog(aChara,"DELAY","50下がった");
 				sortDelayList();
 				res()})
 				break;
-			case 1://ディレイを50下げる
-				aChara.minusDelay(100000);
+			case 1://ディレイを100下げる
+				aChara.minusDelay(100000/aChara.SPD);
 				attackAnimate(aChara,aChara,[9],()=>{
+				freeLog(aChara,"DELAY","100下がった");
 				sortDelayList();
 				res()})
 				break;
 			case 2://MPを2回復
-				aChara.addMp(2)
+				aChara.addMp(2);
+				freeLog(aChara,"MP","2回復");
 				attackAnimate(aChara,aChara,[15],()=>{
 				res()})
 				break;
-			case 3:
+			case 3://ディレイを25かける
+				aChara.minusDelay(-25000/aChara.SPD);
+				attackAnimate(aChara,aChara,[9],()=>{
+				freeLog(aChara,"DELAY","25上がった");
+				sortDelayList();
+				res()})
+				break;
+			case 4:
+				aChara.minusDelay(-50000/aChara.SPD);
+				attackAnimate(aChara,aChara,[9],()=>{
+				freeLog(aChara,"DELAY","50上がった");
+				sortDelayList();
+				res()})
+				break;
+			case 5:
+				var tUp = 2;
+				aChara.ATK -= tUp;
+				freeLog(aChara,"ATK",tUp+"ダウン")
+				attackAnimate(aChara,aChara,[20],()=>{
+				 res()})
+				break;
+			case 6:
+				var tUp = 2;
+				aChara.DEF -= tUp;
+				freeLog(aChara,"DEF",tUp+"ダウン")
+				attackAnimate(aChara,aChara,[20],()=>{
+				 res()})
+				break;
+			case 7:
+				var tUp = 2;
+				aChara.SPD -= tUp;
+				freeLog(aChara,"SPD",tUp+"ダウン")
+				attackAnimate(aChara,aChara,[20],()=>{
+				 res()})
+				break;
+			case -1:
+				break;
+			case -1:
+				break;
+			case -1:
+				break;
+			case -1:
 				break;
 			default:
 			res();

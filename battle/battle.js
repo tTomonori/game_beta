@@ -126,6 +126,12 @@ function shuffle(aCard){
 
 
 function battleMain(){
+	for(var i=0;i<mTrueTeam.length;i++){
+		console.log(mTrueTeam[i].Delay)
+	}
+	for(var i=0;i<mFalseTeam.length;i++){
+		console.log(mFalseTeam[i].Delay)
+	}
 	//ターン管理
 	//行動キャラの選択
 	mDelayChara = mDelayList[0];//先頭のキャラが一番delayの値が少ない
