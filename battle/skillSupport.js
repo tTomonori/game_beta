@@ -58,8 +58,10 @@ function SupportPlay(aSupportnums,aChara){
 				aChara.resetStatus(aSupportnums[1]);
 				res()})
 				break;
-			case 6:
-
+			case "transform"://変身する
+				attackAnimate(tTurnChara,aChara,[7],()=>{
+					aChara.transform(aSupportnums[1]);
+					res()})
 				break;
 			case 6:
 

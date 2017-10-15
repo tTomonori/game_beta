@@ -250,6 +250,31 @@ class Chara{
 		this.setImgaeNum(6,5);
 		this.team=="T"?winner("F"):winner("T");
 	}
+	transform(aCharaNum){
+		let tChara=mFunnel[aCharaNum]
+		this.NAME=tChara.NAME;
+		this.ATK=tChara.ATK;
+		this.DEF=tChara.DEF;
+		this.SPD=tChara.SPD;
+		this.MOV=tChara.MOV;
+		this.TYPE=tChara.TYPE;
+		this.originalHP=tChara.HP;
+		this.originalMP=tChara.MP;
+		this.originalATK=tChara.ATK;
+		this.originalDEF=tChara.DEF;
+		this.originalSPD=tChara.SPD;
+		this.originalMOV=tChara.MOV;
+		this.originalTYPE=tChara.TYPE;
+		this.image=tChara.IMAGE;
+		this.deck=tChara.DECK;
+
+		this.HP+=(tChara.HP-this.originalHP);
+		this.ATK+=(tChara.ATK-this.originalATK);
+		this.DEF+=(tChara.DEF-this.originalDEF);
+		this.SPD+=(tChara.SPD-this.originalSPD);
+		this.MOV+=(tChara.MOV-this.originalMOV);
+		this.img.src=this.getActorUrl();
+	}
 }
 var mTTeamColor="rgba(0, 136, 255,0.6)";
 var mFTeamColor="rgba(255, 90, 0, 0.6)";
