@@ -252,11 +252,11 @@ class Chara{
 	}
 	transform(aCharaNum){
 		let tChara=mFunnel[aCharaNum]
-		this.NAME=tChara.NAME;
-		this.ATK=tChara.ATK;
-		this.DEF=tChara.DEF;
-		this.SPD=tChara.SPD;
-		this.MOV=tChara.MOV;
+		this.HP+=(tChara.HP-this.originalHP);
+		this.ATK+=(tChara.ATK-this.originalATK);
+		this.DEF+=(tChara.DEF-this.originalDEF);
+		this.SPD+=(tChara.SPD-this.originalSPD);
+		this.MOV+=(tChara.MOV-this.originalMOV);
 		this.TYPE=tChara.TYPE;
 		this.originalHP=tChara.HP;
 		this.originalMP=tChara.MP;
@@ -268,11 +268,7 @@ class Chara{
 		this.image=tChara.IMAGE;
 		this.deck=tChara.DECK;
 
-		this.HP+=(tChara.HP-this.originalHP);
-		this.ATK+=(tChara.ATK-this.originalATK);
-		this.DEF+=(tChara.DEF-this.originalDEF);
-		this.SPD+=(tChara.SPD-this.originalSPD);
-		this.MOV+=(tChara.MOV-this.originalMOV);
+
 		this.img.src=this.getActorUrl();
 	}
 }
