@@ -1,310 +1,71 @@
-function Support_B_M(aSupportnums,aChara){
+function Support(aSupportnums,aChara){
 	return new Promise((res,rej)=>{
 		if(aSupportnums.length>0){
-			Support_B_M_Play(aSupportnums[0],aChara).then(()=>{
-				aSupportnums.shift()
-				Support_B_M(aSupportnums,aChara).then(()=>{
-					res();
-				})
-			})
-		}
-		else
-		res();
-	})
-}
-
-function Support_B_M_Play(aSupportnum,aChara) {
-	return new Promise((res,rej)=>{
-	// if(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) {
-			case 0:
-				break;
-			case 1://MPを3回復
-				var tGainMP = 3;
-
-				var tCard=mCard[aChara.x+aChara.y*8];
-				if(tCard[1]==aChara.TYPE){
-					tGainMP++;//同タイプでさらに１回復
-				}
-				aChara.MP += tGainMP;
-
-				if(aChara.MP>aChara.originalMP) aChara.MP=aChara.originalMP;
-				freeLog(aChara,"MP",tGainMP+"回復")
-				attackAnimate(aChara,aChara,[15],()=>{
-				 res()})
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			default:
-				res();
-		}
-	})
-}
-
-function Support_A_M(aSupportnums,aChara){
-	return new Promise((res,rej)=>{
-		if(aSupportnums.length>0){
-			Support_A_M_Play(aSupportnums[0],aChara).then(()=>{
+			SupportPlay(aSupportnums[0],aChara).then(()=>{
 				aSupportnums.shift();
-				Support_A_M(aSupportnums,aChara).then(()=>{
+				Support(aSupportnums,aChara).then(()=>{
 					res();
 				})
 			})
 		}
-		else
-			res();
+		else res();
 	})
 }
-function Support_A_M_Play(aSupportnum,aChara) {
+function SupportPlay(aSupportnums,aChara){
+	let tTurnChara=(mDelayChara[0][1]=="T")?mTrueTeam[mDelayChara[0][2]]:mFalseTeam[mDelayChara[0][2]];
+	let tMyselfFlag=(tTurnChara==aChara);//trueならスキル使用者と受け手が同じ
+	var tCard=mCard[aChara.x+aChara.y*8];//使用者がいるマス
+	if(aSupportnums[2]!=undefined){
+		if(aChara.TYPE==tCard[1])aSupportnums[1]+=aSupportnums[2];
+	}
 	return new Promise((res,rej)=>{
-	// for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) {
-			case 0:
-				var tDelay = Math.floor(50000/aChara.SPD);//効果値50
-				aChara.Delay= (-tDelay);
-				freeLog(aChara,"DELAY","50下がった")
-				attackAnimate(aChara,aChara,[7],()=>{
-				res()})
-				break;
-			case 1:
-				var tDelay = Math.floor(100000/aChara.SPD);//初期値
-				aChara.Delay= (-tDelay);
-				res();
-				break;
-			case 2:
-				var tRandom = Math.floor(Math.random()*4)
-				if(tRandom==0){
-					tRandom = "spade";
-				}
-				else if(tRandom==1){
-					tRandom = "club";
-				}
-				else if(tRandom==2){
-					tRandom = "diamond";
-				}
-				else if(tRandom==3){
-					tRandom = "heart";
-				}
-				aChara.TYPE = tRandom;
-				freeLog(aChara,"タイプ",tRandom+"に変わった")
-				attackAnimate(aChara,aChara,[10],()=>{
-				res()})
-				break;
-			case 3:
-				var tUp = 2;
-				var tCard=mCard[aChara.x+aChara.y*8];
-				if(tCard[1]==aChara.TYPE){
-					tUp++;//同タイプでさらに１アップ
-				}
-				aChara.ATK += tUp;
-				freeLog(aChara,"ATK",tUp+"アップ")
-				attackAnimate(aChara,aChara,[19],()=>{
-				 res()})
-				break;
-			case 4:
-				var tUp = 2;
-				var tCard=mCard[aChara.x+aChara.y*8];
-				if(tCard[1]==aChara.TYPE){
-					tUp++;//同タイプでさらに１アップ
-				}
-				aChara.DEF += tUp;
-				freeLog(aChara,"DEF",tUp+"アップ")
-				attackAnimate(aChara,aChara,[19],()=>{
-				 res()})
-				break;
-			case 5:
-				var tUp = 2;
-				var tCard=mCard[aChara.x+aChara.y*8];
-				if(tCard[1]==aChara.TYPE){
-					tUp++;//同タイプでさらに１アップ
-				}
-				aChara.SPD += tUp;
-				freeLog(aChara,"SPD",tUp+"アップ")
-				attackAnimate(aChara,aChara,[19],()=>{
-				 res()})
-				break;
-			case 6:
-				var tUp = 1;
-				aChara.MOV += tUp;
-				freeLog(aChara,"MOV",tUp+"アップ")
-				attackAnimate(aChara,aChara,[19],()=>{
-				 res()})
-				break;
-			case 7:
-				var tUp = 1;
-				aChara.ATK = aChara.originalATK;
-				aChara.DEF = aChara.originalDEF;
-				aChara.SPD = aChara.originalSPD;
-				aChara.MOV = aChara.originalMOV;
-				freeLog(aChara,"ステータス","元に戻った")
-				attackAnimate(aChara,aChara,[20],()=>{
-				 res()})
-				break;
-			default:
-				res();
-		}
-	})
-}
-
-function Support_B_E(aSupportnums,aChara){
-	return new Promise((res,rej)=>{
-		if(aSupportnums.length>0){
-			Support_B_E_Play(aSupportnums[0],aChara).then(()=>{
-				aSupportnums.shift();
-				Support_B_E(aSupportnums,aChara).then(()=>{
-					res();
-				})
-			})
-		}
-		else
-		res();
-	})
-}
-function Support_B_E_Play(aSupportnum,aChara) {
-	return new Promise((res,rej)=>{
-	// for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) {
-			case 0:
-				break;
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			default:
-
-		}
-		res();
-	})
-}
-
-function Support_A_E(aSupportnums,aChara){
-	return new Promise((res,rej)=>{
-		if(aSupportnums.length>0){
-			Support_A_E_Play(aSupportnums[0],aChara).then(()=>{
-				aSupportnums.shift();
-				Support_A_E(aSupportnums,aChara).then(()=>{
-					res();
-				})
-			})
-		}
-		else
-		res();
-	})
-}
-function Support_A_E_Play(aSupportnum,aChara) {
-	return new Promise((res,rej)=>{
-		console.log(aSupportnum)
-	// for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) {
-			case 0://ディレイを50下げる
-				aChara.minusDelay(50000/aChara.SPD);
-				attackAnimate(aChara,aChara,[9],()=>{
-				freeLog(aChara,"DELAY","50下がった");
-				sortDelayList();
-				res()})
-				break;
-			case 1://ディレイを100下げる
-				aChara.minusDelay(100000/aChara.SPD);
-				attackAnimate(aChara,aChara,[9],()=>{
-				freeLog(aChara,"DELAY","100下がった");
-				sortDelayList();
-				res()})
-				break;
-			case 2://MPを2回復
-				aChara.addMp(2);
-				freeLog(aChara,"MP","2回復");
-				attackAnimate(aChara,aChara,[15],()=>{
-				res()})
-				break;
-			case 3://ディレイを25かける
-				aChara.minusDelay(-25000/aChara.SPD);
-				attackAnimate(aChara,aChara,[9],()=>{
-				freeLog(aChara,"DELAY","25上がった");
-				sortDelayList();
-				res()})
-				break;
-			case 4:
-				aChara.minusDelay(-50000/aChara.SPD);
-				attackAnimate(aChara,aChara,[9],()=>{
-				freeLog(aChara,"DELAY","50上がった");
-				sortDelayList();
-				res()})
-				break;
-			case 5:
-				var tUp = 2;
-				aChara.ATK -= tUp;
-				freeLog(aChara,"ATK",tUp+"ダウン")
-				attackAnimate(aChara,aChara,[20],()=>{
-				 res()})
-				break;
-			case 6:
-				var tUp = 2;
-				aChara.DEF -= tUp;
-				freeLog(aChara,"DEF",tUp+"ダウン")
-				attackAnimate(aChara,aChara,[20],()=>{
-				 res()})
-				break;
-			case 7:
-				var tUp = 2;
-				aChara.SPD -= tUp;
-				freeLog(aChara,"SPD",tUp+"ダウン")
-				attackAnimate(aChara,aChara,[20],()=>{
-				 res()})
-				break;
-			case -1:
-				break;
-			case -1:
-				break;
-			case -1:
-				break;
-			case -1:
-				break;
-			default:
-			res();
-		}
-	})
-}
-
-function Support_O(aSupportnums,aChara){
-	return new Promise((res,rej)=>{
-		if(aSupportnums.length>0){
-			Support_O_Play(aSupportnums[0],aChara).then(()=>{
-				aSupportnums.shift();
-				Support_O(aSupportnums,aChara).then(()=>{
-					res();
-				})
-			})
-		}
-		else
-		res();
-	})
-}
-function Support_O_Play(aSupportnum,aChara) {
-	return new Promise((res,rej)=>{
-	// for(var i=0;i<aSupportnums.length;i++){
-		switch (aSupportnum) {
-			case 0:
-				//シャッフルする
-				shuffleAnimate(mCard).then(()=>{
+		switch (aSupportnums[0]) {
+			case "shuffle"://シャッフルする
 				addLog("シャッフル");
-				res();
-				})
-
-				break;
-			case 1://裏カードを表に向ける
+				shuffleAnimate(mCard).then(()=>{
+					res();})
+					break;
+			case "revers"://裏カードを表に向ける
 				$("#cardTable")[0].getElementsByTagName("tr")[aChara.y].getElementsByTagName("td")[aChara.x].getElementsByTagName("img")[0].src="../image/card.png";
 				res();
 				break;
-			case 2:
+			case "mp"://MP
+				attackAnimate(tTurnChara,aChara,[15],()=>{
+					aChara.addMp(aSupportnums[1]);
+					res()})
 				break;
-			case 3:
+			case "delay"://delay
+				attackAnimate(tTurnChara,aChara,[9],()=>{
+					aChara.minusDelay(aSupportnums[1]);
+					res()})
+				break;
+			case "type"://タイプ変更
+				attackAnimate(tTurnChara,aChara,[10],()=>{
+					aChara.changeType(aSupportnums[1])
+					res()})
+				break;
+			case "atk"://at変化
+			case "def"://def変化
+			case "spd"://spd変化
+			case "mov"://mov変化
+				let tAnimation=(aSupportnums[1]>0)?[19]:[20];
+				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
+					aChara.plusStatus(aSupportnums[0],aSupportnums[1]);
+					res()})
+				break;
+			case "resetStatus"://ステーテスを初期値に戻す
+			attackAnimate(tTurnChara,aChara,[20],()=>{
+				aChara.resetStatus(aSupportnums[1]);
+				res()})
+				break;
+			case 6:
+
+				break;
+			case 6:
+
 				break;
 			default:
-			res();
+
 		}
 	})
 }

@@ -132,12 +132,44 @@ class Chara{
 	addDelay(aDelay){
 		this.Delay+=aDelay;
 	}
+	//ディレイを減少させる(引数は効果値)
 	minusDelay(aDelay){
-		this.Delay-=aDelay;
-		if(this.Delay<0) this.Delay=0;
+		let tDelay = Math.floor((aDelay*1000)/this.SPD);
+		this.Delay-=tDelay;
+		(aDelay>0)?freeLog(this,"DELAY",aDelay+"下がった"):freeLog(this,"DELAY",-aDelay+"上がった");
+	}
+	changeType(aType){
+		if(aType=="random"){
+			var tRandom = Math.floor(Math.random()*4)
+			if(tRandom==0) aType = "spade";
+			else if(tRandom==1) aType = "club";
+			else if(tRandom==2) aType = "diamond";
+			else if(tRandom==3) aType = "heart";
+		}
+		this.TYPE=aType;
+		freeLog(this,"タイプ",aType+"に変わった")
 	}
 	initDelay(aAddDelay){
 		this.Delay=Math.floor(100000/this.SPD)+aAddDelay;//初期値+追加ディレイ
+	}
+	plusStatus(aStatus,aValue){
+		aStatus=aStatus.toUpperCase();
+		this[aStatus]+=aValue;
+		(aValue>0)?freeLog(this,aStatus,aValue+"アップ"):freeLog(this,aStatus,-aValue+"ダウン");
+	}
+	resetStatus(aStatus){
+		aStatus=aStatus.toUpperCase();
+		if(aStatus=="All"){
+			this.AP=this.originalAP;
+			this.DEF=this.originalDEF;
+			this.SPD=this.originalSPD;
+			this.MOV=this.originalMOV;
+			freeLog(this,"ステータス","元に戻った")
+		}
+		else{
+			this[aStatus]=this["original"+aStatus];
+			freeLog(this,aStatus,"元に戻った")
+		}
 	}
 	MpMinus(aMp){
 		this.MP-=aMp;
@@ -152,6 +184,8 @@ class Chara{
 		this.MP+=aMp;
 		if(this.MP>this.originalMP) this.MP=this.originalMP;
 		if(this.MP<0) this.MP=0;
+
+		(aMp>0)?freeLog(this,"MP",aMp+"回復"):freeLog(this,"MP",-aMp+"減少");
 	}
 	//ダメージを与える(引数が負なら回復)
 	addDamage(aDamage){
