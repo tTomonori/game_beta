@@ -26,7 +26,7 @@ function movableSquares(aChara){
 }
 
 function move(aX,aY){
-	if(mEventFlag==true)//操作不可
+	if(mEventFlag==true&&mPlayerNum==0)//操作不可
 		return;
 
 	for(let i=0;i<mMovable.length;i++){

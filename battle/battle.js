@@ -3,7 +3,7 @@ console.log(Math.random())
 //URLから引数を取得
 //[[選択されたキャラクター,チーム],...]
 const mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");
-const mPlayerNum=location.search.substring(1).split("&")[1].split("=")[1].split(",");
+const mPlayerNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
 var mDelayChara = new Array();//選択キャラ[[delay],[チーム],[番号]]
 var mMovable = new Array();//移動可能リスト
 //flag==trueのとき操作不能
@@ -126,12 +126,7 @@ function shuffle(aCard){
 
 
 function battleMain(){
-	for(var i=0;i<mTrueTeam.length;i++){
-		console.log(mTrueTeam[i].Delay)
-	}
-	for(var i=0;i<mFalseTeam.length;i++){
-		console.log(mFalseTeam[i].Delay)
-	}
+
 	//ターン管理
 	//行動キャラの選択
 	mDelayChara = mDelayList[0];//先頭のキャラが一番delayの値が少ない
@@ -158,7 +153,7 @@ function battleMain(){
 	displayStatus();
 
 	//操作
-	if(mPlayerNum==0&&mDelayChara.team=="F"){
+	if(mPlayerNum!=0&&tCharaTeam[0].team=="F"){
 		com(mPlayerNum);
 	}
 	else{
@@ -180,6 +175,3 @@ function winner(aWinner){
 	document.getElementById("text").innerHTML="winner is "+"<b style='color:"+tWinnerTeam[0].teamColor+"'>"+aWinner+"</b> team";
 }
 
-function com(){
-	battleMain();
-}
