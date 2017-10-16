@@ -68,12 +68,14 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 				}
 			}
 			if(tSkill.M_ATTACK!=0){
-				var tDamage = calcDamage(tChara.ATK,tChara.DEF,tSkill.M_ATTACK);
+				if(tChara.MP>tSkill.MAGIC){
+					var tDamage = calcDamage(tChara.ATK,tChara.DEF,tSkill.M_ATTACK);
 
-				if(tCard[1]==tChara.TYPE){//属性補正
-					tDamage = Math.floor(tDamage*1.5);
+					if(tCard[1]==tChara.TYPE){//属性補正
+						tDamage = Math.floor(tDamage*1.5);
+					}
+					tPriority-=tDamage;
 				}
-				tPriority-=tDamage;
 			}
 			tPriority*=100;
 			for(var m=0;m<tDamegeCharas.length;m++){

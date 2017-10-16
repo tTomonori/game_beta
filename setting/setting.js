@@ -21,6 +21,7 @@ for(var i=0;i<mCharaMaxNum;i++){
 }
 
 function list(aNum){
+	mSelectPointor=aNum;
 	displayCharaData(aNum);
 	displayDeckData(aNum);
 	mSelectPointor=aNum;
