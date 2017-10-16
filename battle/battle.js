@@ -164,6 +164,7 @@ function battleMain(){
 
 function winner(aWinner){
 	mEventFlag=true;
+	displayStatus();
 	let tWinnerTeam;
 	if(aWinner=="T") tWinnerTeam=mTrueTeam;
 	else tWinnerTeam=mFalseTeam;
@@ -173,5 +174,6 @@ function winner(aWinner){
 	console.log(tLog);//勝者
 	flowBand(tLog);
 	document.getElementById("text").innerHTML="winner is "+"<b style='color:"+tWinnerTeam[0].teamColor+"'>"+aWinner+"</b> team";
-}
 
+	$("#finishButton")[0].style.display="block"
+}

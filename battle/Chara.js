@@ -196,8 +196,9 @@ class Chara{
 		if(this.HP>this.originalHP) this.HP=this.originalHP;
 		if(this.HP<=0){
 			//戦闘不能
+			this.HP=0
 			this.down();
-			return;
+			return "down";
 		}
 		//ログ
 		damageLog(this,aDamage);

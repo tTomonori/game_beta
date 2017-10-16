@@ -24,6 +24,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 */
@@ -55,6 +56,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:7,
@@ -70,6 +72,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:101,
@@ -85,6 +88,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:102,
@@ -100,6 +104,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:103,
@@ -115,6 +120,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:104,
@@ -130,6 +136,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:105,
@@ -145,6 +152,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:106,
@@ -160,6 +168,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:108,
@@ -175,6 +184,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:109,
@@ -190,6 +200,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:110,
@@ -205,6 +216,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:111,
@@ -220,6 +232,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:112,
@@ -235,6 +248,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-5,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:113,
@@ -250,6 +264,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:114,
@@ -265,6 +280,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[34]
 	},
 	{NUMBER:301,
@@ -280,6 +296,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:302,
@@ -295,6 +312,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:303,
@@ -310,6 +328,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:304,
@@ -325,6 +344,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:305,
@@ -340,6 +360,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:306,
@@ -355,6 +376,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:308,
@@ -370,6 +392,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:309,
@@ -385,6 +408,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:310,
@@ -400,6 +424,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:311,
@@ -415,6 +440,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:312,
@@ -430,6 +456,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-5,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:313,
@@ -445,6 +472,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:314,
@@ -460,6 +488,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[34]
 	},
 	{NUMBER:401,
@@ -475,6 +504,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:402,
@@ -490,6 +520,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:403,
@@ -505,6 +536,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:404,
@@ -520,6 +552,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:405,
@@ -535,6 +568,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:406,
@@ -550,6 +584,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:408,
@@ -565,6 +600,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:409,
@@ -580,6 +616,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:410,
@@ -595,6 +632,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:411,
@@ -610,6 +648,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:412,
@@ -625,6 +664,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-5,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:413,
@@ -640,6 +680,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:414,
@@ -655,6 +696,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:501,
@@ -670,6 +712,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[15]
 	},
 	{NUMBER:514,
@@ -685,6 +728,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[23]
 	},
 	{NUMBER:600,
@@ -700,51 +744,55 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:601,
-		TEXT:"攻撃力２アップ　その後DELAYを50下げる（タイプ一致時３アップ）",
+		TEXT:"攻撃力3アップ　その後DELAYを50下げる（タイプ一致時4アップ）",
 		RANGE:[],
 		POWER:0,
 		DELAY:0,
 		MAGIC:0,
 		SUPPORT_Be_Myself:[],
-		SUPPORT_Af_Myself:[["atk",2,1],["delay",50]],
+		SUPPORT_Af_Myself:[["atk",3,1],["delay",50]],
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:611,
-		TEXT:"防御力２アップ　その後DELAYを50下げる（タイプ一致時３アップ）",
+		TEXT:"防御力3アップ　その後DELAYを50下げる（タイプ一致時4アップ）",
 		RANGE:[],
 		POWER:0,
 		DELAY:0,
 		MAGIC:0,
 		SUPPORT_Be_Myself:[],
-		SUPPORT_Af_Myself:[["def",2,1],["delay",50]],
+		SUPPORT_Af_Myself:[["def",3,1],["delay",50]],
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:612,
-		TEXT:"スピード２アップ　その後DELAYを50下げる（タイプ一致時３アップ）（消費MP２）",
+		TEXT:"スピード3アップ　その後DELAYを50下げる（タイプ一致時4アップ）（消費MP２）",
 		RANGE:[],
 		POWER:0,
 		DELAY:0,
 		MAGIC:2,
 		SUPPORT_Be_Myself:[],
-		SUPPORT_Af_Myself:[["spd",2,1],["delay",50]],
+		SUPPORT_Af_Myself:[["spd",3,1],["delay",50]],
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:613,
@@ -760,21 +808,23 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:614,
-		TEXT:"攻撃力が２アップ　防御力が２アップ　スピードが２アップ　移動力が１アップ　その後DELAYを50下げる その後シャッフル",
+		TEXT:"攻撃力が3アップ　防御力が3アップ　スピードが3アップ　移動力が１アップ　その後DELAYを50下げる その後シャッフル",
 		RANGE:[],
 		POWER:0,
 		DELAY:0,
 		MAGIC:0,
 		SUPPORT_Be_Myself:[],
-		SUPPORT_Af_Myself:[["atk",2],["def",2],["spd",2],["mov",1],["delay",50]],
+		SUPPORT_Af_Myself:[["atk",3],["def",3],["spd",3],["mov",1],["delay",50]],
 		SUPPORT_Be_Enemy:[],
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:700,
@@ -790,6 +840,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"]],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:701,
@@ -805,6 +856,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:702,
@@ -820,6 +872,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:703,
@@ -835,6 +888,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:704,
@@ -850,6 +904,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:705,
@@ -865,6 +920,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:706,
@@ -880,6 +936,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:708,
@@ -895,11 +952,12 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:709,
 		TEXT:"周囲８マスに威力４のダメージ（自傷　威力１）",
-		RANGE:[["squ"]],
+		RANGE:[["square"]],
 		POWER:4,
 		DELAY:0,
 		MAGIC:0,
@@ -910,6 +968,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:710,
@@ -925,6 +984,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:1,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:711,
@@ -940,6 +1000,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:2,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:714,
@@ -955,6 +1016,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:-3,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[34]
 	},
 	{NUMBER:801,
@@ -970,6 +1032,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:802,
@@ -985,6 +1048,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:803,
@@ -1000,6 +1064,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:804,
@@ -1015,6 +1080,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:805,
@@ -1030,6 +1096,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:808,
@@ -1045,6 +1112,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:814,
@@ -1060,6 +1128,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:901,
@@ -1075,6 +1144,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:902,
@@ -1090,6 +1160,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:903,
@@ -1105,6 +1176,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:904,
@@ -1120,6 +1192,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:905,
@@ -1135,11 +1208,12 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:906,
 		TEXT:"十字に威力1ダメージ(覚醒により威力,範囲強化)",
-		RANGE:[["vertical",1]["horizontal",1]],
+		RANGE:[["vertical",1],["horizontal",1]],
 		POWER:1,
 		DELAY:0,
 		MAGIC:0,
@@ -1150,6 +1224,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:908,
@@ -1165,6 +1240,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:909,
@@ -1180,6 +1256,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:910,
@@ -1195,6 +1272,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:911,
@@ -1210,6 +1288,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:912,
@@ -1225,6 +1304,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-1,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:913,
@@ -1240,6 +1320,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:914,
@@ -1255,6 +1336,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[]
 	},
 	{NUMBER:921,
@@ -1270,6 +1352,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:922,
@@ -1285,6 +1368,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:923,
@@ -1300,6 +1384,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:924,
@@ -1315,6 +1400,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:925,
@@ -1330,11 +1416,12 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:926,
 		TEXT:"十字に威力2ダメージ(覚醒により威力,範囲強化)",
-		RANGE:[["vertical",1]["horizontal",1]],
+		RANGE:[["vertical",1],["horizontal",1]],
 		POWER:2,
 		DELAY:0,
 		MAGIC:0,
@@ -1345,6 +1432,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:928,
@@ -1360,6 +1448,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:929,
@@ -1375,6 +1464,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:930,
@@ -1390,6 +1480,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:931,
@@ -1405,6 +1496,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:932,
@@ -1420,6 +1512,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-2,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:933,
@@ -1435,6 +1528,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:934,
@@ -1450,6 +1544,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:941,
@@ -1465,6 +1560,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:942,
@@ -1480,6 +1576,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:943,
@@ -1495,6 +1592,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:944,
@@ -1510,6 +1608,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:945,
@@ -1525,11 +1624,12 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:946,
 		TEXT:"縦三列横三列の十字に4のダメージ(消費MP4)(覚醒により威力,範囲強化)",
-		RANGE:[["vertical",3]["horizontal",3]],
+		RANGE:[["vertical",3],["horizontal",3]],
 		POWER:4,
 		DELAY:0,
 		MAGIC:4,
@@ -1540,6 +1640,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:948,
@@ -1555,6 +1656,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:949,
@@ -1570,6 +1672,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:950,
@@ -1585,6 +1688,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:951,
@@ -1600,6 +1704,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:952,
@@ -1615,6 +1720,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-2,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:953,
@@ -1630,6 +1736,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:954,
@@ -1645,6 +1752,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:961,
@@ -1660,6 +1768,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:962,
@@ -1675,6 +1784,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:963,
@@ -1690,6 +1800,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:964,
@@ -1705,6 +1816,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:965,
@@ -1720,11 +1832,12 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:966,
 		TEXT:"縦三列横三列の十字に6のダメージ(消費MP4)(覚醒により威力,範囲強化)",
-		RANGE:[["vertical",3]["horizontal",3]],
+		RANGE:[["vertical",3],["horizontal",3]],
 		POWER:6,
 		DELAY:0,
 		MAGIC:4,
@@ -1735,6 +1848,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:968,
@@ -1750,6 +1864,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:969,
@@ -1765,6 +1880,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:970,
@@ -1780,6 +1896,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:true,
 		ANIMATION:[4,3]
 	},
 	{NUMBER:971,
@@ -1795,6 +1912,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:972,
@@ -1810,6 +1928,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:-2,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[7]
 	},
 	{NUMBER:973,
@@ -1825,6 +1944,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:true,
+    E_ATTACK:false,
 		ANIMATION:[7]
 	},
 	{NUMBER:974,
@@ -1840,6 +1960,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[["revers"],["shuffle"]],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[12]
 	},
 	{NUMBER:-1,
@@ -1855,6 +1976,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 	{NUMBER:-1,
@@ -1870,6 +1992,7 @@ var mSkillList=[
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
 		F_ATTACK:false,
+    E_ATTACK:true,
 		ANIMATION:[0]
 	},
 ]

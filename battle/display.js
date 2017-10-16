@@ -207,18 +207,33 @@ function attackable(aX,aY){
 				tCardCell.appendChild(tPreDamage);
 				return;
 			}
-			var tDamegeCharas = new Array();
-			if(tSkill.F_ATTACK==true){
-				tDamegeCharas = mTrueTeam.concat(mFalseTeam);
+			let tDamageCharas;
+			let t;
+			let tMyTeam=(mDelayChara[1]=="T")?mTrueTeam:mFalseTeam;
+			let tEnemyTeam=(mDelayChara[1]=="T")?mFalseTeam:mTrueTeam;
+			let tCardImage;
+			if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==true){
+				tDamageCharas=tMyTeam.concat(tEnemyTeam);
+				tCardImage="../image/card_indiscriminate.png";
 			}
-			else{
-				if(mDelayChara[1]=="T"){
-					tDamegeCharas = mFalseTeam;
-				}
-				else{
-					tDamegeCharas = mTrueTeam;
-				}
+			else if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==false){
+				tDamageCharas=tMyTeam.concat();
+				console.log(tMyTeam.concat())
+				console.log(tEnemyTeam.concat())
+				console.log(tEnemyTeam.concat(tMyTeam))
+				console.log(tDamageCharas)
+				t=10;
+				tCardImage="../image/card_friend.png";
 			}
+			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==true){
+				tDamageCharas=tEnemyTeam.concat();
+				tCardImage="../image/card_canAttack.png";
+			}
+			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==false){
+				return;
+			}
+			console.log(tDamageCharas)
+			console.log(t)
 			for(let i=0;i<tRange.length;i++){
 				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
 				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
@@ -229,17 +244,22 @@ function attackable(aX,aY){
 				tCardImg.style.width="70px";
 				tCardImg.style.height="70px";
 				tCardImg.style.opacity="0.6";
-				tCardImg.src="../image/card_canAttack.png";
+				tCardImg.src=tCardImage;
 				tCardCell.appendChild(tCardImg);
+				console.log("a")
+				console.log(tDamageCharas)
+					console.log(tDamageCharas.length)
 
-				for(var j=0;j<tDamegeCharas.length;j++){
-					if(tDamegeCharas[j].x==tChara.x&&tDamegeCharas[j].y==tChara.y) continue;
-					if(tRange[i][0]==tDamegeCharas[j].x&&tRange[i][1]==tDamegeCharas[j].y){
-						var tDamage = calcDamage(tChara.ATK,tDamegeCharas[j].DEF,tSkill.POWER);
+				for(let j=0;j<tDamageCharas.length;j++){
+					console.log("a")
+					if(tDamageCharas[j].x==tChara.x&&tDamageCharas[j].y==tChara.y) continue;
+					if(tRange[i][0]==tDamageCharas[j].x&&tRange[i][1]==tDamageCharas[j].y){
+						var tDamage = calcDamage(tChara.ATK,tDamageCharas[j].DEF,tSkill.POWER);
 
 						if(tCard[1]==tChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
+						console.log("b")
 						let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
 						var tPreDamage=document.createElement("div");
 						tPreDamage.style.position="absolute";
@@ -264,7 +284,7 @@ function attackable(aX,aY){
 						else if(tDamage==0){//補助効果のみのスキル
 							tPreDamage.style.fontSize="17px";
 							tPreDamage.style.marginTop="-50px"
-							if(tChara.team==tDamegeCharas[j].team){
+							if(tChara.team==tDamageCharas[j].team){
 								//攻撃相手が味方でダメージが0
 								tDamage="↑";
 								tPreDamage.style.color="#0f0";
@@ -322,6 +342,12 @@ function returnAttackable() {
 			tCard[i].remove()
 		}
 		if(tCard[i].src.match(/card_canMove.png/)){
+			tCard[i].remove()
+		}
+		if(tCard[i].src.match(/card_friend.png/)){
+			tCard[i].remove()
+		}
+		if(tCard[i].src.match(/card_indiscriminate.png/)){
 			tCard[i].remove()
 		}
 	}
