@@ -207,36 +207,25 @@ function attackable(aX,aY){
 				tCardCell.appendChild(tPreDamage);
 				return;
 			}
-			var tDamegeCharas = new Array();
+			let tDamegeCharas;
 			let tMyTeam=(mDelayChara[1]=="T")?mTrueTeam:mFalseTeam;
 			let tEnemyTeam=(mDelayChara[1]=="T")?mFalseTeam:mTrueTeam;
 			let tCardImage;
 			if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==true){
-				tDamagedCharas=tMyTeam.concat(tEnemyTeam);
+				tDamageCharas=tMyTeam.concat(tEnemyTeam);
 				tCardImage="../image/card_indiscriminate.png";
 			}
 			else if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==false){
-				tDamagedCharas=tMyTeam.concat();
+				tDamageCharas=tMyTeam.concat();
 				tCardImage="../image/card_friend.png";
 			}
 			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==true){
-				tDamagedCharas=tEnemyTeam.concat();
+				tDamegeCharas=tEnemyTeam.concat();
 				tCardImage="../image/card_canAttack.png";
 			}
 			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==false){
 				return;
 			}
-			// if(tSkill.F_ATTACK==true){
-			// 	tDamegeCharas = mTrueTeam.concat(mFalseTeam);
-			// }
-			// else{
-			// 	if(mDelayChara[1]=="T"){
-			// 		tDamegeCharas = mFalseTeam;
-			// 	}
-			// 	else{
-			// 		tDamegeCharas = mTrueTeam;
-			// 	}
-			// }
 			for(let i=0;i<tRange.length;i++){
 				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
 				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
@@ -249,8 +238,11 @@ function attackable(aX,aY){
 				tCardImg.style.opacity="0.6";
 				tCardImg.src=tCardImage;
 				tCardCell.appendChild(tCardImg);
+				console.log("a")
+				console.log(tDamegeCharas,tDamegeCharas.length)
 
-				for(var j=0;j<tDamegeCharas.length;j++){
+				for(let j=0;j<tDamegeCharas.length;j++){
+					console.log("a")
 					if(tDamegeCharas[j].x==tChara.x&&tDamegeCharas[j].y==tChara.y) continue;
 					if(tRange[i][0]==tDamegeCharas[j].x&&tRange[i][1]==tDamegeCharas[j].y){
 						var tDamage = calcDamage(tChara.ATK,tDamegeCharas[j].DEF,tSkill.POWER);
@@ -258,6 +250,7 @@ function attackable(aX,aY){
 						if(tCard[1]==tChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
+						console.log("b")
 						let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
 						var tPreDamage=document.createElement("div");
 						tPreDamage.style.position="absolute";
