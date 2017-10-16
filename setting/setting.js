@@ -14,6 +14,28 @@ var mCharaMaxNum=charas.length
 displayCharaData(mSelectPointor)
 displayDeckData(mSelectPointor)
 
+for(var i=0;i<mCharaMaxNum;i++){
+	var tImg="";
+	tImg += "<img src='../image/chara/1_face/"+(charas[i].IMAGE+100)+".png' style='width:18%' onclick='list("+i+")';>";
+	$("#Charalist")[0].innerHTML+=tImg;
+}
+
+function list(aNum){
+	displayCharaData(aNum);
+	displayDeckData(aNum);
+	mSelectPointor=aNum;
+}
+$("#changeList").on("click",function(){
+	if($("#Charalist")[0].style.display=="none"){
+		$("#Charalist")[0].style.display="block";
+		$("#selector")[0].style.display="none";
+	}
+	else{
+		$("#Charalist")[0].style.display="none";
+		$("#selector")[0].style.display="block";
+	}
+});
+
 //キャラ表示
 function displayCharaData(aNum){
 	let tData=charas[aNum];
@@ -30,6 +52,8 @@ function displayCharaData(aNum){
 	$("#face_image")[0].src="../image/chara/1_face/"+(tData.IMAGE+100)+".png";
 	$("#charaImage")[0].src="../image/chara/2_stand/"+(tData.IMAGE+200)+".png";
 	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
+
+	judSelectedChara(mSelectPointor);
 }
 
 $(".pointorLeft").on("click",function(){
@@ -37,14 +61,14 @@ $(".pointorLeft").on("click",function(){
 	mSelectPointor%=mCharaMaxNum;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
-	judSelectedChara(mSelectPointor);
+	// judSelectedChara(mSelectPointor);
 })
 $(".pointorRight").on("click",function(){
 	mSelectPointor+=1;
 	mSelectPointor%=mCharaMaxNum;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
-	judSelectedChara(mSelectPointor);
+	// judSelectedChara(mSelectPointor);
 })
 
 //選択ボタン
@@ -66,7 +90,7 @@ function selectChara() {
 	mSelectPointor=0;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
-	judSelectedChara(mSelectPointor);
+	// judSelectedChara(mSelectPointor);
 	chageLabel();
 }
 //戻るボタン
@@ -84,7 +108,7 @@ function back() {
 	mSelectPointor=0;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
-	judSelectedChara(mSelectPointor);
+	// judSelectedChara(mSelectPointor);
 }
 
 function chageLabel(){
