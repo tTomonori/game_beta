@@ -102,22 +102,29 @@ function attackMyself(aChara,aSkill,aCard){
 		new Promise((res,rej)=>{
 			attackAnimate(aChara,aChara,tAnimation,()=>{res();})
 		}).then(()=>{
-			aChara.addDamage(tDamage);
+			if(aChara.addDamage(tDamage)=="down") return;
 			MAres();
 		})
 	})
 }
 function addDamage(aAttackChara,aMyTeam,aEnemyTeam,aSkill,aCard){
 	return new Promise((res,rej)=>{
-		damage(aAttackChara,aEnemyTeam,aSkill,aCard).then(()=>{
-			console.log("敵に攻撃")
+		if(aSkill.E_ATTACK==true){
+			damage(aAttackChara,aEnemyTeam,aSkill,aCard).then(()=>{
+				if(aSkill.F_ATTACK==true)
+				damage(aAttackChara,aMyTeam,aSkill,aCard).then(()=>{
+					res();
+				})
+				else res();
+			})
+		}
+		else{
 			if(aSkill.F_ATTACK==true)
 			damage(aAttackChara,aMyTeam,aSkill,aCard).then(()=>{
-				console.log("味方に攻撃")
 				res();
 			})
 			else res();
-		})
+		}
 	})
 }
 function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
@@ -142,7 +149,7 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 						new Promise((res,rej)=>{
 							attackAnimate(aAttackChara,aDamagedTeam[aI],aSkill.ANIMATION,()=>{res();});
 						}).then(()=>{
-							aDamagedTeam[aI].addDamage(tDamage)
+							if(aDamagedTeam[aI].addDamage(tDamage)=="down") return;
 							//サポート効果敵　後
 							Support(aSkill.SUPPORT_Af_Enemy.concat(),aDamagedTeam[aI]).then(()=>{
 								displayStatus();

@@ -208,17 +208,35 @@ function attackable(aX,aY){
 				return;
 			}
 			var tDamegeCharas = new Array();
-			if(tSkill.F_ATTACK==true){
-				tDamegeCharas = mTrueTeam.concat(mFalseTeam);
+			let tMyTeam=(mDelayChara[1]=="T")?mTrueTeam:mFalseTeam;
+			let tEnemyTeam=(mDelayChara[1]=="T")?mFalseTeam:mTrueTeam;
+			let tCardImage;
+			if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==true){
+				tDamagedCharas=tMyTeam.concat(tEnemyTeam);
+				tCardImage="../image/card_indiscriminate.png";
 			}
-			else{
-				if(mDelayChara[1]=="T"){
-					tDamegeCharas = mFalseTeam;
-				}
-				else{
-					tDamegeCharas = mTrueTeam;
-				}
+			else if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==false){
+				tDamagedCharas=tMyTeam.concat();
+				tCardImage="../image/card_friend.png";
 			}
+			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==true){
+				tDamagedCharas=tEnemyTeam.concat();
+				tCardImage="../image/card_canAttack.png";
+			}
+			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==false){
+				return;
+			}
+			// if(tSkill.F_ATTACK==true){
+			// 	tDamegeCharas = mTrueTeam.concat(mFalseTeam);
+			// }
+			// else{
+			// 	if(mDelayChara[1]=="T"){
+			// 		tDamegeCharas = mFalseTeam;
+			// 	}
+			// 	else{
+			// 		tDamegeCharas = mTrueTeam;
+			// 	}
+			// }
 			for(let i=0;i<tRange.length;i++){
 				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
 				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
@@ -229,7 +247,7 @@ function attackable(aX,aY){
 				tCardImg.style.width="70px";
 				tCardImg.style.height="70px";
 				tCardImg.style.opacity="0.6";
-				tCardImg.src="../image/card_canAttack.png";
+				tCardImg.src=tCardImage;
 				tCardCell.appendChild(tCardImg);
 
 				for(var j=0;j<tDamegeCharas.length;j++){
@@ -322,6 +340,12 @@ function returnAttackable() {
 			tCard[i].remove()
 		}
 		if(tCard[i].src.match(/card_canMove.png/)){
+			tCard[i].remove()
+		}
+		if(tCard[i].src.match(/card_friend.png/)){
+			tCard[i].remove()
+		}
+		if(tCard[i].src.match(/card_indiscriminate.png/)){
 			tCard[i].remove()
 		}
 	}
