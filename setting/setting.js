@@ -207,6 +207,9 @@ function back() {
 		mSelectedCharas.pop(mSelectedCharas);
 		chageLabel();
 	}
+	else{
+		location.href="../title/title.html"
+	}
 	mSelectPointor=0;
 	displayCharaData(mSelectPointor);
 	displayDeckData(mSelectPointor);
