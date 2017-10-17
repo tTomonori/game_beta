@@ -73,6 +73,7 @@ $(".pointorRight").on("click",function(){
 
 //選択ボタン
 function selectChara() {
+	console.log(mTrueTeamNum,mFalseTeamNum)
 	if(mSelectedCharas.length<mTrueTeamNum){
 		mSelectedCharas.push([mSelectPointor,"T"]);
 		var tImag = "<img src='../image/chara/1_face/"+(charas[mSelectPointor].IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";

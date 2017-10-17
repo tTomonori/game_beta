@@ -17,7 +17,7 @@ class Chara{
 		this.TYPE=this.originalTYPE;
 		this.MOV=this.originalMOV;
 		this.image=aData.IMAGE;
-		this.Delay=Math.floor(mSetDelay/(this.SPD*(Math.random(0.2)+0.9)));
+		this.Delay=Math.floor(mSetDelay/(this.SPD*(makeRandom()*0.2+0.9)));
 		this.x=aX;
 		this.y=aY;
 		this.team=aTeam;
@@ -140,7 +140,7 @@ class Chara{
 	}
 	changeType(aType){
 		if(aType=="random"){
-			var tRandom = Math.floor(Math.random()*4)
+			var tRandom = Math.floor(makeRandom()*4)
 			if(tRandom==0) aType = "spade";
 			else if(tRandom==1) aType = "club";
 			else if(tRandom==2) aType = "diamond";

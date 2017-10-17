@@ -1,9 +1,8 @@
-Math.seed=0;
-console.log(Math.random())
 //URLから引数を取得
 //[[選択されたキャラクター,チーム],...]
-const mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");
+var mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");
 const mPlayerNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
+var mCommunicationFlag=(mPlayerNum==-1)?true:false;
 var mDelayChara = new Array();//選択キャラ[[delay],[チーム],[番号]]
 var mMovable = new Array();//移動可能リスト
 //flag==trueのとき操作不能
@@ -15,6 +14,13 @@ var mDelayList = new Array();
 
 //トランプ
 var mCard=new Array();
+
+var mMyTeam="T";
+
+//チームのリスト
+var mTrueTeam=new Array();
+var mFalseTeam=new Array();
+
 // var mBattleBoard=new Array();
 //トランプ＋２枚生成
 for(let i=0;i<56;i++){
@@ -34,15 +40,18 @@ for(let i=0;i<56;i++){
 
 	mCard.push([i%13,tMark]);
 }
+// if(mCommunicationFlag){
+// 	connectServer("localhost");
+// }
+// else{
+// 	start();
+// }
+
+function start(){
 //シャッフルする
 mCard=shuffle(mCard);
 //トランプを並べる
 displayCard();
-
-//チームのリスト
-var mTrueTeam=new Array();
-var mFalseTeam=new Array();
-
 //チームの人数を数える
 let tTNum=0;
 let tFNum=0;
@@ -93,7 +102,6 @@ mDelayList = initDelay(mTrueTeam,mFalseTeam);
 initDisplay();
 displayStatus();
 displayDelay();
-
 //ここまでで初期設定が完了
 //バトルのメイン関数
 shuffleAnimate(mCard).then(()=>{
@@ -101,6 +109,8 @@ shuffleAnimate(mCard).then(()=>{
 			battleMain();
 	})
 })
+}
+
 
 
 
@@ -112,7 +122,7 @@ function shuffle(aCard){
 	//取り出す範囲(箱の中)を末尾から狭める繰り返し
 	for(let i = aCard.length -1;i>0;i--){
 	    //乱数生成を使ってランダムに取り出す値を決める
-	    let r = Math.floor(Math.random()*(i+1));
+	    let r = Math.floor(makeRandom()*(i+1));
 	    //取り出した値と箱の外の先頭の値を交換する
 	    let tmp = aCard[i];
 	    aCard[i] = aCard[r];
@@ -153,8 +163,9 @@ function battleMain(){
 	displayStatus();
 
 	//操作
-	if(mPlayerNum!=0&&tCharaTeam[0].team=="F"){
-		com(mPlayerNum);
+	if(mPlayerNum!=0&&tCharaTeam[0].team!=mMyTeam){
+		if(!mCommunicationFlag)
+			com(mPlayerNum);
 	}
 	else{
 		mEventFlag = false;//操作可能に
@@ -176,4 +187,14 @@ function winner(aWinner){
 	document.getElementById("text").innerHTML="winner is "+"<b style='color:"+tWinnerTeam[0].teamColor+"'>"+aWinner+"</b> team";
 
 	$("#finishButton")[0].style.display="block"
+}
+
+function makeRandom(){
+	if(mCommunicationFlag){
+		//通信対戦時
+		return getRandom();
+	}
+	else{
+		return Math.random();
+	}
 }

@@ -34,6 +34,7 @@ function createWindow () {
   //テスト用
   // mMainWindow.loadURL("file://"+__dirname+'/setting/setting.html?member='+"0");
   // mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+[0,'T',1,'T',2,'F',3,'F']+'&num='+0);
+  // mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+[0,'T',1,'T']+'&num='+(-1));
 
   // スタート画面
   mMainWindow.loadURL("file://"+__dirname+'/title/title.html');

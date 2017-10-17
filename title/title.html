@@ -25,6 +25,7 @@
 		<input id="start" type="button" value="START" onclick="start()">
 		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none;">
 		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
+		<input class="member" type="button" value="通信対戦" onclick="member(-1)" style="display:none">
 	</div>
 </body>
 <script>
@@ -35,6 +36,10 @@ function start(){
 }
 //2Pは 0:プレイヤー,他:AIの番号
 function member(aNum){
+	if(aNum==-1){
+		ipc.send("start",[aNum,2,0])
+		return;
+	}
 	ipc.send("start",[aNum,2,2]);
 }
 </script>

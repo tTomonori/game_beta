@@ -25,11 +25,18 @@ function movableSquares(aChara){
 	return tMovable;
 }
 
-function move(aX,aY){
-	if(mPlayerNum==0||mDelayChara[1]!="F"){//AIでない
-		if(mEventFlag)//イベント中
+function move(aX,aY,aInfoFlag){
+	if(mPlayerNum==0||mDelayChara[1]==mMyTeam){//AIでない
+			if(mEventFlag)//イベント中
 			return;
 	}
+	if(mCommunicationFlag&&mDelayChara[1]!=mMyTeam&&aInfoFlag!="receive_move"){//通信中
+		return;
+	}
+	//対戦相手に通知
+	if(mCommunicationFlag&&aInfoFlag!="receive_move"){
+		informMove({x:aX,y:aY})
+	};
 
 	for(let i=0;i<mMovable.length;i++){
 		if(mMovable[i][0]!=aX||mMovable[i][1]!=aY){

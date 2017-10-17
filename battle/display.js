@@ -218,10 +218,6 @@ function attackable(aX,aY){
 			}
 			else if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==false){
 				tDamageCharas=tMyTeam.concat();
-				console.log(tMyTeam.concat())
-				console.log(tEnemyTeam.concat())
-				console.log(tEnemyTeam.concat(tMyTeam))
-				console.log(tDamageCharas)
 				t=10;
 				tCardImage="../image/card_friend.png";
 			}
@@ -232,8 +228,6 @@ function attackable(aX,aY){
 			else if(tSkill.F_ATTACK==false&&tSkill.E_ATTACK==false){
 				return;
 			}
-			console.log(tDamageCharas)
-			console.log(t)
 			for(let i=0;i<tRange.length;i++){
 				// let tCard=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]].getElementsByTagName("img")[0];
 				let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
@@ -246,12 +240,8 @@ function attackable(aX,aY){
 				tCardImg.style.opacity="0.6";
 				tCardImg.src=tCardImage;
 				tCardCell.appendChild(tCardImg);
-				console.log("a")
-				console.log(tDamageCharas)
-					console.log(tDamageCharas.length)
 
 				for(let j=0;j<tDamageCharas.length;j++){
-					console.log("a")
 					if(tDamageCharas[j].x==tChara.x&&tDamageCharas[j].y==tChara.y) continue;
 					if(tRange[i][0]==tDamageCharas[j].x&&tRange[i][1]==tDamageCharas[j].y){
 						var tDamage = calcDamage(tChara.ATK,tDamageCharas[j].DEF,tSkill.POWER);
@@ -259,7 +249,6 @@ function attackable(aX,aY){
 						if(tCard[1]==tChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
-						console.log("b")
 						let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
 						var tPreDamage=document.createElement("div");
 						tPreDamage.style.position="absolute";
@@ -413,6 +402,7 @@ function freeLog(aChara,aStatus,aText){
 function shuffleAnimate(aCard){
 	return new Promise((res,rej)=>{
 		let tTimes=20;
+		console.log(aCard)
 		for(let i=0;i<tTimes;i++){
 			setTimeout(()=>{
 				shuffle(aCard);
