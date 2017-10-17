@@ -66,9 +66,17 @@ function informMove(aPosition){
 
 //通信か通信でないかで異なる関数を実行
 if(mCommunicationFlag){
-	$("#text")[0].textContent="マッチング中です"
-	connectServer("localhost");
+	$("#text")[0].textContent="サーバのIPアドレスを入力してください"
+	$("#adressForm")[0].style.display="block";
+	// connectServer("localhost");
 }
 else{
 	start();
+}
+
+function connect(){
+	$("#text")[0].textContent="マッチング中です"
+	$("#adressForm")[0].style.display="none";
+	let tAdress=$("#adressText")[0].value;
+	connectServer(tAdress);
 }
