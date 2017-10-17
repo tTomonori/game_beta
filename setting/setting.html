@@ -18,7 +18,7 @@
 	background: -webkit-gradient(linear, left top, right bottom, from(rgb(100, 10, 255)),color-stop(0.3,rgb(150,20,255)),color-stop(0.6,rgb(100,10,255)), to(rgb(150,20,255)));
 	color: #fff;
 }
-.information_button input {
+.information_button input[type="radio"] {
 	display: none;
 }
 .information_button label{
@@ -30,6 +30,34 @@
 	padding: 10px;
 	background: #bdc3c7;
 	color: #869198;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.change{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 60px;
+	margin: 0;
+	padding: 10px;
+	background: #67c5ff;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.return{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 60px;
+	margin: 0;
+	padding: 10px;
+	background: #67c5ff;
+	color: #fff;
 	font-size: 16px;
 	text-align: center;
 	line-height: 1;
@@ -102,6 +130,8 @@ color: white;
 	    <label for="on" class="switch-on">STATUS</label>
 	    <input class="change_information" type="radio" name="s2" id="off" value="deck">
 	    <label for="off" class="switch-off">DECK</label>
+	    <div class="change">CHANGE</div>
+	    <div class="return" style="display: none">RETURN</div>
 	</div>
 	<br><br>
 	<hr>
@@ -133,5 +163,6 @@ color: white;
 </body>
 <script src="../battle/skillList.js"></script>
 <script src="../charaData/charaData.js"></script>
+<script src="../charaData/funnelData.js"></script>
 <script src="./setting.js"></script>
 </html>
