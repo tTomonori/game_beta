@@ -2473,7 +2473,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[25]
+		ANIMATION:[37]
 	},
 	{NUMBER:1106,
 		TEXT:"十字に威力２ダメージ",
@@ -2489,7 +2489,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[25]
+		ANIMATION:[37]
 	},
 	{NUMBER:1108,
 		TEXT:"相手全体に威力２のダメージ",
@@ -2505,7 +2505,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[24]
+		ANIMATION:[37]
 	},
 	{NUMBER:1109,
 		TEXT:"外周マスに威力４のダメージ",
@@ -2521,7 +2521,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[24]
+		ANIMATION:[37]
 	},
 	{NUMBER:1110,
 		TEXT:"外周から１マス内側のマスに威力３のダメージ",
@@ -2537,7 +2537,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:true,
     E_ATTACK:true,
-		ANIMATION:[25]
+		ANIMATION:[37]
 	},
 	{NUMBER:1111,
 		TEXT:"敵全体に威力５のダメージ（消費MP５）",
@@ -2553,7 +2553,23 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[24]
+		ANIMATION:[36]
+	},
+	{NUMBER:1114,
+		TEXT:"相手全体に威力5のダメージ その後シャッフル",
+		RANGE:[["enemy"]],
+		POWER:5,
+		DELAY:0,
+		MAGIC:0,
+		SUPPORT_Be_Myself:[],
+		SUPPORT_Af_Myself:[],
+		SUPPORT_Be_Enemy:[],
+		SUPPORT_Af_Enemy:[],
+		SUPPORT_Otherwise:[["revers"],["shuffle"]],
+		M_ATTACK:0,
+		F_ATTACK:false,
+    E_ATTACK:true,
+		ANIMATION:[36]
 	},
 	{NUMBER:-1,
 		TEXT:"",

@@ -64,6 +64,12 @@ function battleEffectAnimate(aData){
 		case 34:
 			pipoEffect(aData.Defence.x,aData.Defence.y,"034",aData);
 			break;
+		case 36:
+			pipoEffect(aData.Defence.x,aData.Defence.y,"036",aData);
+			break;
+		case 37:
+			pipoEffect(aData.Defence.x,aData.Defence.y,"037",aData);
+			break;
 		default:
 
 	}
@@ -124,6 +130,12 @@ function pipoEffect(aX,aY,aNum,aData){
 			break;
 		case "034":
 			pipo(aX,aY,aNum,8,"height",{width:320,height:960},"center",-20,aData);
+			break;
+		case "036":
+			pipo(aX,aY,aNum,7,"width",{width:840,height:120},"center","center",aData);
+			break
+		case "037":
+			pipo(aX,aY,aNum,8,"width",{width:960,height:120},"center","center",aData);
 			break;
 		default:
 
