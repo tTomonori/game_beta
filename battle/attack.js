@@ -82,7 +82,11 @@ function attack(aChara) {
 }
 
 function calcDamage(aATK,aDEF,aPOWER){
-	var tDamage = Math.floor((aATK+30)*5/(aDEF+30)*aPOWER)
+	var FixedValueAttack = 40;//ここの値が大きいほど能力値の恩恵が減る
+	var FixedValueDefense = 40;
+	var FixedMagnification = 5;//ここの値が大きいほどゲームの長さが短くなる
+
+	var tDamage = Math.floor((aATK+FixedValueAttack)*FixedMagnification/(aDEF+FixedValueDefense)*aPOWER);
 
 	return tDamage
 }
