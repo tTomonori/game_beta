@@ -143,17 +143,14 @@ $(".change").on("click",function(){
 	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
 
 	if(tData.CHANGE==undefined){
-		console.log("un")
 		$(".change").css("display","none");
 		$(".return").css("display","none");
 	}
 	else if(tData.CHANGE==Infinity){
-		console.log("in")
 		$(".change").css("display","none");
 		$(".return").css("display","block");	
 	}
 	else{
-		console.log("el")
 		$(".change").css("display","block");
 		$(".return").css("display","none");
 	}
