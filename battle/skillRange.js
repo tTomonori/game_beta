@@ -73,6 +73,16 @@ function calcRange(aSkillRange,aPosition){
 					}
 				}
 				break;
+			case "around"://外周からx列目
+					for(var j=0;j<8;j++){
+						tRange.push([tX-1,j]);
+						tRange.push([tX+6,j]);
+					}
+					for(var j=0;j<7;j++){
+						tRange.push([j,tX-1]);
+						tRange.push([j,tX+5]);
+					}
+				break;
 			default:
 		}
 	}
