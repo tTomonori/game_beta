@@ -26,8 +26,10 @@ function movableSquares(aChara){
 }
 
 function move(aX,aY){
-	if(mEventFlag==true&&mPlayerNum==0)//操作不可
-		return;
+	if(mPlayerNum==0||mDelayChara[1]!="F"){//AIでない
+		if(mEventFlag)//イベント中
+			return;
+	}
 
 	for(let i=0;i<mMovable.length;i++){
 		if(mMovable[i][0]!=aX||mMovable[i][1]!=aY){
