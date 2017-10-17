@@ -57,9 +57,11 @@ function displayCharaData(aNum){
 
 	if(tData.CHANGE==undefined){
 		$(".change").css("display","none");
+		$(".return").css("display","none");
 	}
 	else{
 		$(".change").css("display","block");
+		$(".return").css("display","none");
 		mChangeChara=tData.CHANGE;
 	}
 
