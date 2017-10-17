@@ -13,6 +13,7 @@ var mSelectPointor=0;
 var mCharaMaxNum=charas.length
 displayCharaData(mSelectPointor)
 displayDeckData(mSelectPointor)
+var mChangeChara = -1;
 
 for(var i=0;i<mCharaMaxNum;i++){
 	var tImg="";
@@ -21,6 +22,7 @@ for(var i=0;i<mCharaMaxNum;i++){
 }
 
 function list(aNum){
+	mSelectPointor=aNum;
 	displayCharaData(aNum);
 	displayDeckData(aNum);
 	mSelectPointor=aNum;
@@ -53,8 +55,108 @@ function displayCharaData(aNum){
 	$("#charaImage")[0].src="../image/chara/2_stand/"+(tData.IMAGE+200)+".png";
 	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
 
+	if(tData.CHANGE==undefined){
+		$(".change").css("display","none");
+		$(".return").css("display","none");
+	}
+	else{
+		$(".change").css("display","block");
+		$(".return").css("display","none");
+		mChangeChara=tData.CHANGE;
+	}
+
 	judSelectedChara(mSelectPointor);
 }
+$(".return").on("click",function(){
+	displayCharaData(mSelectPointor);
+	displayDeckData(mSelectPointor);
+	$(".return").css("display","none");
+});
+//キャラ表示
+$(".change").on("click",function(){
+
+	let tTag=document.getElementById("card_status");
+	tTag.innerHTML="";
+	let tTable=document.createElement("table");
+	tTable.style.borderCollapse="collapse";
+	tTag.appendChild(tTable);
+	let tContents="";
+	for(let i=0;i<15;i++){
+		let tCardNum=i+1;
+		if(i=="0") tCardNum="A";
+		else if(i=="10") tCardNum="J";
+		else if(i=="11") tCardNum="Q";
+		else if(i=="12") tCardNum="K";
+		else if(i=="13") tCardNum="JKR"
+		else if(i=="14") tCardNum="";
+		if(i%2==0){
+			//左のセル
+			tContents+="<tr style='border-bottom:solid 1px #bbf'><td>";
+			tContents+="<img src='../image/card.png' style='width:35px;'>";
+			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			tContents+="</td><td>";
+			var tSkillText = "";
+			for(var j=0;j<mSkillList.length;j++){
+				if(mSkillList[j].NUMBER==mFunnel[mChangeChara].DECK[i]){
+					tSkillText=mSkillList[j].TEXT;
+					break;
+				}
+			}
+			tContents+=tSkillText;
+			tContents+="</td>";
+		}
+		else{
+			//右のセル
+			tContents+="<td>";
+			tContents+="<img src='../image/card.png' style='width:35px;'>";
+			if(i!=13)
+			tContents+="<span style='color:#000; position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
+			else
+			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
+			tContents+="</td><td>";
+			var tSkillText = "";
+			for(var j=0;j<mSkillList.length;j++){
+				if(mSkillList[j].NUMBER==mFunnel[mChangeChara].DECK[i]){
+					tSkillText=mSkillList[j].TEXT;
+					break;
+				}
+			}
+			tContents+=tSkillText;
+			tContents+="</td></tr>";
+		}
+		tTable.innerHTML=tContents;
+	}
+	let tData=mFunnel[mChangeChara];
+	mChangeChara=tData.CHANGE;
+	let tStatus=$(".status");
+
+	for(let i=0;i<tStatus.length;i++){
+		if(mStatusList[i]=="TYPE"){
+			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:40px;'>"
+		}
+		else{
+			tStatus[i].innerHTML=tData[mStatusList[i]];
+		}
+	}
+	$("#face_image")[0].src="../image/chara/1_face/"+(tData.IMAGE+100)+".png";
+	$("#charaImage")[0].src="../image/chara/2_stand/"+(tData.IMAGE+200)+".png";
+	$("#charaNumber")[0].innerHTML=(mSelectPointor+1)+"/"+mCharaMaxNum;
+
+	if(tData.CHANGE==undefined){
+		$(".change").css("display","none");
+		$(".return").css("display","none");
+	}
+	else if(tData.CHANGE==Infinity){
+		$(".change").css("display","none");
+		$(".return").css("display","block");	
+	}
+	else{
+		$(".change").css("display","block");
+		$(".return").css("display","none");
+	}
+
+	judSelectedChara(mSelectPointor);
+});
 
 $(".pointorLeft").on("click",function(){
 	mSelectPointor+=(mCharaMaxNum-1);
@@ -105,6 +207,9 @@ function back() {
 		}
 		mSelectedCharas.pop(mSelectedCharas);
 		chageLabel();
+	}
+	else{
+		location.href="../title/title.html"
 	}
 	mSelectPointor=0;
 	displayCharaData(mSelectPointor);
