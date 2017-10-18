@@ -174,6 +174,9 @@ function battleMain(){
 }
 
 function winner(aWinner){
+	if(mCommunicationFlag){//通信中ならサーバに終了通知
+		informFinish();
+	}
 	mEventFlag=true;
 	displayStatus();
 	let tWinnerTeam;
