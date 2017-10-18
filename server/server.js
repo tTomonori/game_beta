@@ -1,3 +1,5 @@
+version=require("../version.js");
+
 const http = require('http');
 var socketio = require('socket.io');
 var server = http.createServer(function(req, res) {
@@ -12,21 +14,23 @@ var mBattleNum=0;
 var mBattles=new Map();//対戦中の試合の情報
 
 io.sockets.on('connection', function(socket) {
-  console.log("connect");
   //idの通知
   io.to(socket.id).emit("inform_id",{id:socket.id});
-  let tUserData={socket:socket,id:socket.id}
-  if(mMatchingUser==null){//一人目
-    console.log("one user")
-    mMatchingUser=tUserData;
-  }
-  else if(mMatchingUser!=null){//二人目
-    console.log("twee user")
-    let tPartnerData=mMatchingUser;
-    mMatchingUser=null;
-    matching(tUserData,tPartnerData);
-
-  }
+  socket.on("inform_version",(aVersion,aSocket)=>{//バージョンを確認する
+    if(aVersion!=version.version){//バージョンが異なる
+      io.to(aSocket.id).emit("not_match_version");
+      return;
+    }
+    let tUserData={id:aSocket.id}
+    if(mMatchingUser==null){//一人目
+      mMatchingUser=tUserData;
+    }
+    else if(mMatchingUser!=null){//二人目
+      let tPartnerData=mMatchingUser;
+      mMatchingUser=null;
+      matching(tUserData,tPartnerData);
+    }
+  })
   socket.on("inform_character",(data)=>{//使用するキャラの通知
     informChara(data.battleNum,data.id,data.charas);
     let tBattle=mBattles.get(data.battleNum);
@@ -40,6 +44,9 @@ io.sockets.on('connection', function(socket) {
   })
   socket.on("get_random",(data)=>{//乱数取得
     getRandom(data.battleNum,data.id);
+  })
+  socket.on("finish",(data)=>{//バトル終了
+    mBattles.delete(data.battleNum);
   })
 });
 //試合番号生成
@@ -80,7 +87,6 @@ function informChara(aBattleNum,aId,aCharas){
 }
 //キャラ移動
 function move(aBattleNum,aId,aPosition){
-  console.log("move")
   let tPartnerId=getPartnerId(aBattleNum,aId);
   io.to(tPartnerId).emit("move",aPosition);
 }
