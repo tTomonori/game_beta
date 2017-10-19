@@ -74,7 +74,12 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 					if(tCard[1]==tChara.TYPE){//属性補正
 						tDamage = Math.floor(tDamage*1.5);
 					}
-					tPriority-=tDamage;
+					if(tChara.originalHP>tChara.HP-tDamage){
+						tPriority-=tDamage;
+					}
+					if(tChara.HP-tDamage<0){
+						tPriority = Infinity
+					}
 				}
 			}
 			tPriority*=100;

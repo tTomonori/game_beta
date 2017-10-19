@@ -2535,7 +2535,7 @@ var mSkillList=[
 		SUPPORT_Af_Enemy:[],
 		SUPPORT_Otherwise:[],
 		M_ATTACK:0,
-		F_ATTACK:true,
+		F_ATTACK:false,
     E_ATTACK:true,
 		ANIMATION:[37]
 	},
