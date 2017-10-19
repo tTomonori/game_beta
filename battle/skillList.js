@@ -89,7 +89,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[4]
 	},
 	{NUMBER:102,
 		TEXT:"２マス隣に威力４のダメージ",
@@ -185,7 +185,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:109,
 		TEXT:"周囲８マスに威力３のダメージ",
@@ -201,7 +201,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:110,
 		TEXT:"隣のマスに敵味方無視の威力７のダメージ（DELAY　５）",
@@ -233,7 +233,7 @@ var mSkillList=[
 		M_ATTACK:1,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:112,
 		TEXT:"自分に威力５の回復（消費MP３）",
@@ -297,7 +297,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[4]
 	},
 	{NUMBER:302,
 		TEXT:"２マス隣に威力４のダメージ その後自分のタイプをランダムに変更する",
@@ -393,7 +393,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:309,
 		TEXT:"周囲８マスに威力３のダメージ その後自分のタイプをランダムに変更する",
@@ -409,7 +409,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:310,
 		TEXT:"隣のマスに敵味方無視の威力７のダメージ その後自分のタイプをランダムに変更する（DELAY　５）",
@@ -441,7 +441,7 @@ var mSkillList=[
 		M_ATTACK:1,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:312,
 		TEXT:"自分に威力５の回復 その後自分のタイプをランダムに変更する（消費MP３）",
@@ -601,7 +601,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:409,
 		TEXT:"周囲８マスに威力３のダメージ",
@@ -617,7 +617,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:410,
 		TEXT:"味方のMPを2回復（消費MP2）",
@@ -857,7 +857,7 @@ var mSkillList=[
 		M_ATTACK:1,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[4]
 	},
 	{NUMBER:702,
 		TEXT:"２マス隣に威力５のダメージ（自傷　威力１）",
@@ -953,7 +953,7 @@ var mSkillList=[
 		M_ATTACK:1,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:709,
 		TEXT:"周囲８マスに威力４のダメージ（自傷　威力１）",
@@ -969,7 +969,7 @@ var mSkillList=[
 		M_ATTACK:1,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:710,
 		TEXT:"隣のマスに敵味方無視の威力８のダメージ（自傷　威力１）（DELAY　５）",
@@ -1001,7 +1001,7 @@ var mSkillList=[
 		M_ATTACK:2,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:714,
 		TEXT:"相手全体に威力3のダメージ その後自分に威力３の回復　その後シャッフル",
@@ -1081,7 +1081,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[17]
 	},
 	{NUMBER:805,
 		TEXT:"隣のマスにいる相手のDELAYを５０上げ、威力２のダメージ（消費MP２）",
@@ -1097,7 +1097,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[17]
 	},
 	{NUMBER:808,
 		TEXT:"相手全体のDELAYを２５上げ、威力１のダメージ",
@@ -1113,7 +1113,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[17]
 	},
 	{NUMBER:814,
 		TEXT:"相手全体のDELAYを５０上げ、威力３のダメージ　その後シャッフルする",
@@ -1129,7 +1129,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[17]
 	},
 	{NUMBER:901,
 		TEXT:"隣のマスに威力1のダメージ(覚醒により威力強化)",
@@ -1449,7 +1449,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:929,
 		TEXT:"周囲8マスに威力2のダメージ(覚醒により威力,範囲強化)",
@@ -1465,7 +1465,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:930,
 		TEXT:"周囲4マスに威力2のダメージ(覚醒により威力,範囲強化)",
@@ -1481,7 +1481,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:true,
     E_ATTACK:true,
-		ANIMATION:[4,3]
+		ANIMATION:[6]
 	},
 	{NUMBER:931,
 		TEXT:"MPを2回復(覚醒により威力強化)",
@@ -1561,7 +1561,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:942,
 		TEXT:"2マス隣に威力4のダメージ(覚醒により威力強化)",
@@ -1577,7 +1577,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:943,
 		TEXT:"３マス隣に威力4のダメージ(覚醒により威力強化)",
@@ -1593,14 +1593,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:944,
-		TEXT:"縦三列に威力4のダメージ(消費MP3)(覚醒により威力,範囲強化)",
+		TEXT:"縦三列に威力4のダメージ(消費MP1)(覚醒により威力,範囲強化)",
 		RANGE:[["vertical",3]],
 		POWER:4,
 		DELAY:0,
-		MAGIC:3,
+		MAGIC:1,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1609,14 +1609,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:945,
-		TEXT:"横三列に威力4のダメージ(消費MP3)(覚醒により威力,範囲強化)",
+		TEXT:"横三列に威力4のダメージ(消費MP1)(覚醒により威力,範囲強化)",
 		RANGE:[["horizontal",3]],
 		POWER:4,
 		DELAY:0,
-		MAGIC:3,
+		MAGIC:1,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1625,44 +1625,12 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:946,
-		TEXT:"縦三列横三列の十字に4のダメージ(消費MP4)(覚醒により威力,範囲強化)",
+		TEXT:"縦三列横三列の十字に4のダメージ(消費MP2)(覚醒により威力,範囲強化)",
 		RANGE:[["vertical",3],["horizontal",3]],
 		POWER:4,
-		DELAY:0,
-		MAGIC:4,
-		SUPPORT_Be_Myself:[],
-		SUPPORT_Af_Myself:[],
-		SUPPORT_Be_Enemy:[],
-		SUPPORT_Af_Enemy:[],
-		SUPPORT_Otherwise:[],
-		M_ATTACK:0,
-		F_ATTACK:false,
-    E_ATTACK:true,
-		ANIMATION:[0]
-	},
-	{NUMBER:948,
-		TEXT:"相手全体に威力4のダメージ（DELAY　2０）(消費MP4)(覚醒により威力強化)",
-		RANGE:[["enemy"]],
-		POWER:4,
-		DELAY:20000,
-		MAGIC:4,
-		SUPPORT_Be_Myself:[],
-		SUPPORT_Af_Myself:[],
-		SUPPORT_Be_Enemy:[],
-		SUPPORT_Af_Enemy:[],
-		SUPPORT_Otherwise:[],
-		M_ATTACK:0,
-		F_ATTACK:false,
-    E_ATTACK:true,
-		ANIMATION:[0]
-	},
-	{NUMBER:949,
-		TEXT:"周囲12マスに威力3のダメージ(消費MP2)(覚醒により威力,範囲強化)",
-		RANGE:[["circumference",2]],
-		POWER:3,
 		DELAY:0,
 		MAGIC:2,
 		SUPPORT_Be_Myself:[],
@@ -1673,12 +1641,44 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
+	},
+	{NUMBER:948,
+		TEXT:"相手全体に威力4のダメージ（DELAY　2０）(消費MP2)(覚醒により威力強化)",
+		RANGE:[["enemy"]],
+		POWER:4,
+		DELAY:20000,
+		MAGIC:2,
+		SUPPORT_Be_Myself:[],
+		SUPPORT_Af_Myself:[],
+		SUPPORT_Be_Enemy:[],
+		SUPPORT_Af_Enemy:[],
+		SUPPORT_Otherwise:[],
+		M_ATTACK:0,
+		F_ATTACK:false,
+    E_ATTACK:true,
+		ANIMATION:[6]
+	},
+	{NUMBER:949,
+		TEXT:"周囲12マスに威力3のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+		RANGE:[["circumference",2]],
+		POWER:3,
+		DELAY:0,
+		MAGIC:1,
+		SUPPORT_Be_Myself:[],
+		SUPPORT_Af_Myself:[],
+		SUPPORT_Be_Enemy:[],
+		SUPPORT_Af_Enemy:[],
+		SUPPORT_Otherwise:[],
+		M_ATTACK:0,
+		F_ATTACK:false,
+    E_ATTACK:true,
+		ANIMATION:[39]
 	},
 	{NUMBER:950,
-		TEXT:"周囲8マスに威力3のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+		TEXT:"周囲8マスに威力4のダメージ(消費MP1)(覚醒により威力,範囲強化)",
 		RANGE:[["square",3]],
-		POWER:3,
+		POWER:4,
 		DELAY:0,
 		MAGIC:1,
 		SUPPORT_Be_Myself:[],
@@ -1689,7 +1689,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:true,
     E_ATTACK:true,
-		ANIMATION:[4,3]
+		ANIMATION:[39]
 	},
 	{NUMBER:951,
 		TEXT:"MPを2回復(覚醒により威力強化)",
@@ -1756,11 +1756,11 @@ var mSkillList=[
 		ANIMATION:[0]
 	},
 	{NUMBER:961,
-		TEXT:"隣のマスに威力8のダメージ(消費MP1)(覚醒により威力強化)",
+		TEXT:"隣のマスに威力8のダメージ(覚醒により威力強化)",
 		RANGE:[["distance",1]],
 		POWER:8,
 		DELAY:0,
-		MAGIC:1,
+		MAGIC:0,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1769,7 +1769,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
    		E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:962,
 		TEXT:"2マス隣に威力6のダメージ(覚醒により威力強化)",
@@ -1785,7 +1785,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:963,
 		TEXT:"３マス隣に威力6のダメージ(覚醒により威力強化)",
@@ -1801,14 +1801,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[6]
 	},
 	{NUMBER:964,
-		TEXT:"縦三列に威力6のダメージ(消費MP3)(覚醒により威力,範囲強化)",
+		TEXT:"縦三列に威力6のダメージ(消費MP1)(覚醒により威力,範囲強化)",
 		RANGE:[["vertical",3]],
 		POWER:6,
 		DELAY:0,
-		MAGIC:3,
+		MAGIC:1,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1817,14 +1817,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:965,
-		TEXT:"横三列に威力6のダメージ(消費MP3)(覚醒により威力,範囲強化)",
+		TEXT:"横三列に威力6のダメージ(消費MP1)(覚醒により威力,範囲強化)",
 		RANGE:[["horizontal",3]],
 		POWER:6,
 		DELAY:0,
-		MAGIC:3,
+		MAGIC:1,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1833,14 +1833,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:966,
-		TEXT:"縦三列横三列の十字に6のダメージ(消費MP4)(覚醒により威力,範囲強化)",
+		TEXT:"縦三列横三列の十字に6のダメージ(消費MP2)(覚醒により威力,範囲強化)",
 		RANGE:[["vertical",3],["horizontal",3]],
 		POWER:6,
 		DELAY:0,
-		MAGIC:4,
+		MAGIC:2,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1849,14 +1849,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:968,
-		TEXT:"相手全体に威力6のダメージ（DELAY　2０）(消費MP5)(覚醒により威力強化)",
+		TEXT:"相手全体に威力6のダメージ（DELAY　2０）(消費MP2)(覚醒により威力強化)",
 		RANGE:[["enemy"]],
 		POWER:6,
 		DELAY:20000,
-		MAGIC:5,
+		MAGIC:2,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1865,14 +1865,14 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:969,
-		TEXT:"周囲16マスに威力4のダメージ(消費MP3)(覚醒により威力,範囲強化)",
+		TEXT:"周囲16マスに威力4のダメージ(消費MP2)(覚醒により威力,範囲強化)",
 		RANGE:[["square",4]],
 		POWER:4,
 		DELAY:0,
-		MAGIC:3,
+		MAGIC:2,
 		SUPPORT_Be_Myself:[],
 		SUPPORT_Af_Myself:[],
 		SUPPORT_Be_Enemy:[],
@@ -1881,12 +1881,12 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[39]
 	},
 	{NUMBER:970,
-		TEXT:"周囲12マスに威力4のダメージ(消費MP2)(覚醒により威力,範囲強化)",
+		TEXT:"周囲12マスに威力5のダメージ(消費MP2)(覚醒により威力,範囲強化)",
 		RANGE:[["circumference",2]],
-		POWER:4,
+		POWER:5,
 		DELAY:0,
 		MAGIC:2,
 		SUPPORT_Be_Myself:[],
@@ -1897,7 +1897,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:true,
     E_ATTACK:true,
-		ANIMATION:[4,3]
+		ANIMATION:[39]
 	},
 	{NUMBER:971,
 		TEXT:"MPを3回復(覚醒により威力強化)",
@@ -1993,7 +1993,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[4]
 	},
 	{NUMBER:1003,
 		TEXT:"２マス隣に威力３のダメージ　その後MPを３回復",
@@ -2073,7 +2073,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:1009,
 		TEXT:"周囲８マスに威力２のダメージ その後MPを３回復",
@@ -2089,7 +2089,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:1010,
 		TEXT:"隣のマスに敵味方無視の威力４のダメージ その後MPを３回復",
@@ -2121,8 +2121,8 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
-	},	
+		ANIMATION:[3]
+	},
 	{NUMBER:1012,
 		TEXT:"自分に威力３の回復（消費MP３）",
 		RANGE:[],
@@ -2217,7 +2217,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[4]
 	},
 	{NUMBER:1023,
 		TEXT:"２マス隣に威力６のダメージ (消費MP5)",
@@ -2297,7 +2297,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[5]
 	},
 	{NUMBER:1029,
 		TEXT:"周囲８マスに威力４のダメージ (消費MP5)",
@@ -2313,7 +2313,7 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
+		ANIMATION:[3]
 	},
 	{NUMBER:1030,
 		TEXT:"隣のマスに敵味方無視の威力9のダメージ (消費MP5)",
@@ -2345,8 +2345,8 @@ var mSkillList=[
 		M_ATTACK:0,
 		F_ATTACK:false,
     E_ATTACK:true,
-		ANIMATION:[0]
-	},	
+		ANIMATION:[3]
+	},
 	{NUMBER:1032,
 		TEXT:"自分に威力８の回復（消費MP5）",
 		RANGE:[],

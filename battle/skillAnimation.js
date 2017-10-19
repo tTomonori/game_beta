@@ -31,6 +31,12 @@ function battleEffectAnimate(aData){
 		case 4:
 			pipoEffect(aData.Defence.x,aData.Defence.y,"004",aData);
 			break;
+		case 5:
+			pipoEffect(aData.Defence.x,aData.Defence.y,"005",aData);
+			break;
+		case 6:
+			pipoEffect(aData.Defence.x,aData.Defence.y,"006",aData);
+			break;
 		case 7:
 			pipoEffect(aData.Defence.x,aData.Defence.y,"007",aData);
 			break;
@@ -45,6 +51,9 @@ function battleEffectAnimate(aData){
 			break;
 		case 15:
 			pipoEffect(aData.Defence.x,aData.Defence.y,"015",aData);
+			break;
+		case 17:
+			pipoEffect(aData.Defence.x,aData.Defence.y,"017",aData);
 			break;
 		case 19:
 			pipoEffect(aData.Defence.x,aData.Defence.y,"019",aData);
@@ -69,6 +78,9 @@ function battleEffectAnimate(aData){
 			break;
 		case 37:
 			pipoEffect(aData.Defence.x,aData.Defence.y,"037",aData);
+			break;
+		case 39:
+			pipoEffect(aData.Defence.x,aData.Defence.y,"039",aData);
 			break;
 		default:
 
@@ -98,6 +110,12 @@ function pipoEffect(aX,aY,aNum,aData){
 		case "004":
 			pipo(aX,aY,aNum,7,"width",{width:840,height:120},"center","center",aData);
 			break;
+		case "005":
+			pipo(aX,aY,aNum,9,"width",{width:1080,height:120},"center","center",aData,"revers");
+			break;
+		case "006":
+			pipo(aX,aY,aNum,7,"width",{width:840,height:120},"center","center",aData,"revers");
+			break;
 		case "007":
 			pipo(aX,aY,aNum,14,"width",{width:1680,height:120},"center","center",aData);
 			break;
@@ -111,6 +129,9 @@ function pipoEffect(aX,aY,aNum,aData){
 			pipo(aX,aY,aNum,9,"height",{width:320,height:1080},"center","center",aData);
 			break;
 		case "015":
+			pipo(aX,aY,aNum,8,"width",{width:960,height:120},"center","center",aData);
+			break;
+		case "017":
 			pipo(aX,aY,aNum,8,"width",{width:960,height:120},"center","center",aData);
 			break;
 		case "019":
@@ -137,15 +158,21 @@ function pipoEffect(aX,aY,aNum,aData){
 		case "037":
 			pipo(aX,aY,aNum,8,"width",{width:960,height:120},"center","center",aData);
 			break;
+		case "039":
+			pipo(aX,aY,aNum,8,"width",{width:960,height:120},"center","center",aData);
+			break;
 		default:
 
 	}
 }
 //pipo-btleffectを再生
 //再生するx座標,再生するy座標,画像の番号,コマ数,コマが並んでいる方向,画像サイズ,マスから右にずらす距離,マスから下にずらす距離
-function pipo(aX,aY,aNum,aComa,aComaDir,aSize,aMarginLeft,aMarginTop,aData) {
+function pipo(aX,aY,aNum,aComa,aComaDir,aSize,aMarginLeft,aMarginTop,aData,aRevers) {
 	let tAnimationTag=document.createElement("div");
 	let tEffectTag=document.createElement("img");
+	if(aRevers=="revers"){//画像を上下反転
+		tEffectTag.style.transform="scale(1, -1)";
+	}
 	let tMargin="marginTop";
 	let aNotComaDir="width";//コマが並んでいる方向の逆方向
 	if(aComaDir=="width"){

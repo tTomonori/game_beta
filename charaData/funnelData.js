@@ -3,8 +3,8 @@ const mFunnel=[
 					HP:100,
 					MP:10,
 					ATK:20,
-					DEF:20,
-					SPD:20,
+					DEF:22,
+					SPD:22,
 					MOV:2,
 					TYPE:"heart",
 					TEXT:"エンハンス：<br>覚醒し変身を繰り返すことにより強力なスキルを放てるようになる",
@@ -17,7 +17,7 @@ const mFunnel=[
 					MP:15,
 					ATK:30,
 					DEF:25,
-					SPD:22,
+					SPD:24,
 					MOV:2,
 					TYPE:"heart",
 					TEXT:"エンハンス：<br>覚醒し変身を繰り返すことにより強力なスキルを放てるようになる",
@@ -37,7 +37,7 @@ const mFunnel=[
 					IMAGE:1227010004,
 					DECK:[961,962,963,964,965,966,7,968,969,970,971,972,973,974,0],
 					CHANGE:Infinity
-	},	
+	},
 	{NAME:"ガーベラ",//通常
 					HP:100,
 					MP:20,
