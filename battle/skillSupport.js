@@ -63,6 +63,14 @@ function SupportPlay(aSupportnums,aChara){
 					aChara.transform(aSupportnums[1]);
 					res()})
 				break;
+			case "originalHP":
+			case "originalMP":
+				let tAnimation=(aSupportnums[1]>0)?[19]:[20];
+				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
+				aChara.plusOriginStatus(aSupportnums[0],aSupportnums[1]);
+				res()})
+				break;
+			default:
 			case 6:
 
 				break;
