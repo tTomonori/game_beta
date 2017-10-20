@@ -1,5 +1,33 @@
-function com(aPlayerNum){
-	console.log(aPlayerNum);
+var mAIMovable;
+var mAIChara;
+var mAIEnemyCharas;
+var mAISkill;
+var mAISkillList;
+var mAICard;
+var mAICardMark;
+var mAICardNum;
+var mAIPrioritys;
+
+
+function AIConstructor(){
+	mAIMovable=mMovable.concat();
+	mAICard=mCard.concat();
+	mAICardMark=new Array();
+	mAICardNum=new Array();
+	mAISkillList=mSkillList.concat();
+	mAISkill=new Object();
+	if(mDelayChara[1]=="T"){
+		mAIChara = mTrueTeam[mDelayChara[2]];
+		mAIEnemyCharas = mFalseTeam.concat();
+	}
+	else{
+		mAIChara = mFalseTeam[mDelayChara[2]];
+		mAIEnemyCharas = mTrueTeam.concat();
+	}
+	mAIPrioritys=new Array();
+}
+
+function com(aPlayerNum){//
 	switch(aPlayerNum){
 		case 1:
 			AI_1();
@@ -9,96 +37,74 @@ function com(aPlayerNum){
 }
 
 function AI_1(){//最大火力のマスを選択する簡単なAI
-	var tPrioritys = new Array();
-	for(var i=0;i<mMovable.length;i++){
+	AIConstructor();
+	for(var i=0;i<mAIMovable.length;i++){
+		var tX = mAIMovable[i][0];
+		var tY = mAIMovable[i][1];
+		mAICardNum=mAICard[tX+tY*8][0]
+		mAICardMark=mAICard[tX+tY*8][1]
 
-		var tPriority = 0;
-
-		var tCard=mCard[mMovable[i][0]+mMovable[i][1]*8];
-
-		var tChara = new Object();
-		if(mDelayChara[1]=="T"){
-			tChara = mTrueTeam[mDelayChara[2]];
-		}
-		else{
-			tChara = mFalseTeam[mDelayChara[2]];
-		}
 		//デッキの確認
 		var tSkill;
-		if(tCard[1]=="joker"){
-			tSkill=tChara.deck[13];
-		}
-		else if(tCard[1]=="suka"){
-			tSkill=tChara.deck[14];
-		}
-		else{
-			tSkill=tChara.deck[tCard[0]];
-		}
-
-		//技取り出し
-		for(var j=0;j<mSkillList.length;j++){
-			if(mSkillList[j].NUMBER==tSkill){
-				tSkill=mSkillList[j];
+		if(mAICardMark=="joker")		tSkill=mAIChara.deck[13];
+		else if(mAICardMark=="suka")	tSkill=mAIChara.deck[14];
+		else							tSkill=mAIChara.deck[mAICardNum];
+		for(var j=0;j<mAISkillList.length;j++){
+			if(mAISkillList[j].NUMBER==tSkill){
+				mAISkill=mAISkillList[j];
 				break;
 			}
 		}
-		// tSkill=mSkillList[tSkill];
-		let tRange=calcRange(tSkill.RANGE,{x:mMovable[i][0],y:mMovable[i][1]});
-		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
-			var tDamegeCharas = new Array();
-			if(mDelayChara[1]=="T"){
-				tDamegeCharas = mFalseTeam;
-			}
-			else{
-				tDamegeCharas = mTrueTeam;
-			}
-			if(tChara.MP>tSkill.MAGIC){
-				for(let i=0;i<tRange.length;i++){
-					for(var j=0;j<tDamegeCharas.length;j++){
-						if(tRange[i][0]==tDamegeCharas[j].x&&tRange[i][1]==tDamegeCharas[j].y){
-							var tDamage = calcDamage(tChara.ATK,tDamegeCharas[j].DEF,tSkill.POWER);
+		var tPriority = 0;
 
-							if(tCard[1]==tChara.TYPE){//属性補正
-								tDamage = Math.floor(tDamage*1.5);
-							}
+		let tRange=calcRange(mAISkill.RANGE,{x:tX,y:tY});
+		if(mAICardMark=="joker"||mAICardMark=="suka"){
+		}
+		else if(mAIChara.MP>mAISkill.MAGIC){
+		var tDamegeCharas = new Array();
+			for(let i=0;i<tRange.length;i++){
+				for(var j=0;j<mAIEnemyCharas.length;j++){
+					if(tRange[i][0]==mAIEnemyCharas[j].x&&tRange[i][1]==mAIEnemyCharas[j].y){
+						var tDamage = calcDamage(mAIChara.ATK,mAIEnemyCharas[j].DEF,mAISkill.POWER);
 
-							tPriority+=tDamage;
-						}
+						if(mAICardMark==mAIChara.TYPE)	tDamage = Math.floor(tDamage*1.5);
+						if(mAIEnemyCharas.HP<tDamage)	tPriority = Infinity;//倒せるなら決めに行く
+
+						tPriority+=tDamage;
 					}
 				}
-			}
-			if(tSkill.M_ATTACK!=0){
-				if(tChara.MP>tSkill.MAGIC){
-					var tDamage = calcDamage(tChara.ATK,tChara.DEF,tSkill.M_ATTACK);
-
-					if(tCard[1]==tChara.TYPE){//属性補正
-						tDamage = Math.floor(tDamage*1.5);
-					}
-					if(tChara.originalHP>tChara.HP-tDamage){
-						tPriority-=tDamage;
-					}
-					if(tChara.HP-tDamage<0){
-						tPriority = Infinity
-					}
-				}
-			}
-			tPriority*=100;
-			for(var m=0;m<tDamegeCharas.length;m++){
-				tPriority -= Math.abs(tChara.x-tDamegeCharas[m].x);
-				tPriority -= Math.abs(tChara.y-tDamegeCharas[m].y);
 			}
 		}
-		// console.log(tCard[0]+1,tCard[1],tPriority);
-		tPrioritys.push(tPriority);
+
+		if(mAISkill.M_ATTACK!=0&&mAIChara.MP>mAISkill.MAGIC){
+			var tDamage = calcDamage(mAIChara.ATK,mAIChara.DEF,mAISkill.M_ATTACK);
+
+			if(mAICardMark==mAIChara.TYPE)	tDamage = Math.floor(tDamage*1.5);
+			if(mAIChara.originalHP>mAIChara.HP-tDamage)	tPriority-=tDamage;//過剰回復防止
+			if(mAIChara.HP-tDamage<0)	tPriority = -Infinity;//自滅回避
+		}
+
+		tPriority*=100;
+		for(var m=0;m<mAIEnemyCharas.length;m++){//敵から遠くにはいかない
+			tPriority -= Math.abs(tX-mAIEnemyCharas[m].x);
+			tPriority -= Math.abs(tY-mAIEnemyCharas[m].y);
+		}
+		mAIPrioritys.push(tPriority);
 	}
-	// console.log(tPrioritys)
-	var tSelected=0;
+
+	var tSelected=0;//優先度最大を選択
 	var tMax = -Infinity;
-	for(var i=0;i<tPrioritys.length;i++){
-		if(tPrioritys[i]>tMax){
+	for(var i=0;i<mAIPrioritys.length;i++){
+		if(mAIPrioritys[i]>tMax){
 			tSelected=i;
-			tMax=tPrioritys[i];
+			tMax=mAIPrioritys[i];
 		}
 	}
-	move(mMovable[tSelected][0],mMovable[tSelected][1]);
+
+	//移動を実行
+	// move(mAIMovable[tSelected][0],mAIMovable[tSelected][1]);
+}
+
+function calcSupportPriority(){
+	return;
 }
