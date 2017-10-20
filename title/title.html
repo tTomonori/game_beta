@@ -23,24 +23,37 @@
 	</div>
 	<div id="menu" style="position: fixed; top:400px;left: 500px;text-align:center">
 		<input id="start" type="button" value="START" onclick="start()">
+		<div style="margin-top: -100px">
 		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none;">
 		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
 		<input class="member" type="button" value="通信対戦" onclick="member(-1)" style="display:none">
+		</div>
+		<div>
+		<input class="playernum" type="button" value="一対一" onclick="playernum(1)" style="display:none;">
+		<input class="playernum" type="button" value="二対二" onclick="playernum(2)" style="display:none;">
+		<input class="playernum" type="button" value="三対三" onclick="playernum(3)" style="display:none">
+		</div>
 	</div>
 </body>
 <script>
+	var mPlayerNum = -1;
 function start(){
 	console.log($(".member"))
 	$("#start")[0].style.display="none";
-	$(".member").css("display","block")
+	$(".member").css("display","block");
 }
 //2Pは 0:プレイヤー,他:AIの番号
 function member(aNum){
-	if(aNum==-1){
-		ipc.send("start",[aNum,2,0])
+	mPlayerNum = aNum;
+	$(".member").css("display","none");
+	$(".playernum").css("display","block");
+}
+function playernum(aNum){
+	if(mPlayerNum==-1){
+		ipc.send("start",[mPlayerNum,aNum,0]);
 		return;
 	}
-	ipc.send("start",[aNum,2,2]);
+	ipc.send("start",[mPlayerNum,aNum,aNum]);
 }
 </script>
 </html>
