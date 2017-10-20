@@ -174,7 +174,7 @@ function SupportPriorityPoint(aSupportNum){
 				break; 
 			case "delay"://delay
 				tPriority += 0.1 * aSupportNum[i][1];
-				if(aSupportNum[i][1]) tPriority = 0;
+				if(aSupportNum[i][1]==100) tPriority = 0;
 				break;
 			case "mov"://mov変化 +2
 				tPriority += 0.5;
