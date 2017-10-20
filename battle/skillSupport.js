@@ -14,9 +14,10 @@ function Support(aSupportnums,aChara){
 function SupportPlay(aSupportnums,aChara){
 	let tTurnChara=(mDelayChara[0][1]=="T")?mTrueTeam[mDelayChara[0][2]]:mFalseTeam[mDelayChara[0][2]];
 	let tMyselfFlag=(tTurnChara==aChara);//trueならスキル使用者と受け手が同じ
-	var tCard=mCard[aChara.x+aChara.y*8];//使用者がいるマス
+	let tCard=mCard[aChara.x+aChara.y*8];//使用者がいるマス
+	let tValue=aSupportnums[1];
 	if(aSupportnums[2]!=undefined){
-		if(aChara.TYPE==tCard[1])aSupportnums[1]+=aSupportnums[2];
+		if(aChara.TYPE==tCard[1]) tValue+=aSupportnums[2];
 	}
 	return new Promise((res,rej)=>{
 		switch (aSupportnums[0]) {
@@ -31,36 +32,36 @@ function SupportPlay(aSupportnums,aChara){
 				break;
 			case "mp"://MP
 				attackAnimate(tTurnChara,aChara,[15],()=>{
-					aChara.addMp(aSupportnums[1]);
+					aChara.addMp(tValue);
 					res()})
 				break;
 			case "delay"://delay
 				attackAnimate(tTurnChara,aChara,[9],()=>{
-					aChara.minusDelay(aSupportnums[1]);
+					aChara.minusDelay(tValue);
 					res()})
 				break;
 			case "type"://タイプ変更
 				attackAnimate(tTurnChara,aChara,[10],()=>{
-					aChara.changeType(aSupportnums[1])
+					aChara.changeType(tValue)
 					res()})
 				break;
 			case "atk"://at変化
 			case "def"://def変化
 			case "spd"://spd変化
 			case "mov"://mov変化
-				let tAnimation=(aSupportnums[1]>0)?[19]:[20];
+				let tAnimation=(tValue>0)?[19]:[20];
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
-					aChara.plusStatus(aSupportnums[0],aSupportnums[1]);
+					aChara.plusStatus(aSupportnums[0],tValue);
 					res()})
 				break;
 			case "resetStatus"://ステーテスを初期値に戻す
 			attackAnimate(tTurnChara,aChara,[20],()=>{
-				aChara.resetStatus(aSupportnums[1]);
+				aChara.resetStatus(tValue);
 				res()})
 				break;
 			case "transform"://変身する
 				attackAnimate(tTurnChara,aChara,[7],()=>{
-					aChara.transform(aSupportnums[1]);
+					aChara.transform(tValue);
 					res()})
 				break;
 			case "originalHP":
