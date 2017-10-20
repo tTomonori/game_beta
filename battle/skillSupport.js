@@ -19,6 +19,7 @@ function SupportPlay(aSupportnums,aChara){
 	if(aSupportnums[2]!=undefined){
 		if(aChara.TYPE==tCard[1]) tValue+=aSupportnums[2];
 	}
+	let tAnimation;
 	return new Promise((res,rej)=>{
 		switch (aSupportnums[0]) {
 			case "shuffle"://シャッフルする
@@ -49,7 +50,7 @@ function SupportPlay(aSupportnums,aChara){
 			case "def"://def変化
 			case "spd"://spd変化
 			case "mov"://mov変化
-				let tAnimation=(tValue>0)?[19]:[20];
+				tAnimation=(tValue>0)?[19]:[20];
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
 					aChara.plusStatus(aSupportnums[0],tValue);
 					res()})
@@ -66,12 +67,11 @@ function SupportPlay(aSupportnums,aChara){
 				break;
 			case "originalHP":
 			case "originalMP":
-				let tAnimation=(aSupportnums[1]>0)?[19]:[20];
+				tAnimation=(tValue>0)?[19]:[20];
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
-				aChara.plusOriginStatus(aSupportnums[0],aSupportnums[1]);
+				aChara.plusOriginStatus(aSupportnums[0],tValue);
 				res()})
 				break;
-			default:
 			case 6:
 
 				break;

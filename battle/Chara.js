@@ -157,6 +157,10 @@ class Chara{
 		this[aStatus]+=aValue;
 		(aValue>0)?freeLog(this,aStatus,aValue+"アップ"):freeLog(this,aStatus,-aValue+"ダウン");
 	}
+	plusOriginStatus(aStatus,aValue){
+		this[aStatus]+=aValue;
+		(aValue>0)?freeLog(this,aStatus,aValue+"最大値アップ"):freeLog(this,aStatus,-aValue+"最大値ダウン");
+	}
 	resetStatus(aStatus){
 		aStatus=aStatus.toUpperCase();
 		if(aStatus=="All"){
