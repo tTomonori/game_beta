@@ -27,18 +27,19 @@
 		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none;">
 		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
 		<input class="member" type="button" value="通信対戦" onclick="member(-1)" style="display:none">
+		<input class="member" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
 		</div>
 		<div>
 		<input class="playernum" type="button" value="一対一" onclick="playernum(1)" style="display:none;">
 		<input class="playernum" type="button" value="二対二" onclick="playernum(2)" style="display:none;">
 		<input class="playernum" type="button" value="三対三" onclick="playernum(3)" style="display:none">
+		<input class="playernum" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
 		</div>
 	</div>
 </body>
 <script>
 	var mPlayerNum = -1;
 function start(){
-	console.log($(".member"))
 	$("#start")[0].style.display="none";
 	$(".member").css("display","block");
 }
@@ -54,6 +55,11 @@ function playernum(aNum){
 		return;
 	}
 	ipc.send("start",[mPlayerNum,aNum,aNum]);
+}
+function Return(){
+	$("#start")[0].style.display="block";
+	$(".member").css("display","none");
+	$(".playernum").css("display","none");	
 }
 </script>
 </html>

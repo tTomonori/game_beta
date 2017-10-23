@@ -373,7 +373,6 @@ function freeLog(aChara,aStatus,aText){
 function shuffleAnimate(aCard){
 	return new Promise((res,rej)=>{
 		let tTimes=20;
-		console.log(aCard)
 		for(let i=0;i<tTimes;i++){
 			setTimeout(()=>{
 				shuffle(aCard);
