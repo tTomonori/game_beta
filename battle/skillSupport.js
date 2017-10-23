@@ -12,22 +12,27 @@ function Support(aSupportnums,aChara){
 	})
 }
 function SupportPlay(aSupportnums,aChara){
-	let tTurnChara=(mDelayChara[0][1]=="T")?mTrueTeam[mDelayChara[0][2]]:mFalseTeam[mDelayChara[0][2]];
+	let tTurnChara=mTurnChara;
 	let tMyselfFlag=(tTurnChara==aChara);//trueならスキル使用者と受け手が同じ
-	let tCard=mCard[aChara.x+aChara.y*8];//使用者がいるマス
+	let tCard=Feild.getCard(aChara.x,aChara.y);//使用者がいるマス
 	let tValue=aSupportnums[1];
 	if(aSupportnums[2]!=undefined){
-		if(aChara.TYPE==tCard[1]) tValue+=aSupportnums[2];
+		if(aChara.TYPE==tCard.getSoot()) tValue+=aSupportnums[2];
 	}
 	return new Promise((res,rej)=>{
 		switch (aSupportnums[0]) {
 			case "shuffle"://シャッフルする
 				addLog("シャッフル");
-				shuffleAnimate(mCard).then(()=>{
+				Feild.shuffleAnimate().then(()=>{
 					res();})
 					break;
 			case "revers"://裏カードを表に向ける
-				$("#cardTable")[0].getElementsByTagName("tr")[aChara.y].getElementsByTagName("td")[aChara.x].getElementsByTagName("img")[0].src="../image/card.png";
+				tCard.makeFace();
+				// $("#cardTable")[0].getElementsByTagName("tr")[aChara.y].getElementsByTagName("td")[aChara.x].getElementsByTagName("img")[0].src="../image/card.png";
+				res();
+				break;
+			case "getTurn"://ターン獲得(delay-100)
+				aChara.getTurn();
 				res();
 				break;
 			case "mp"://MP

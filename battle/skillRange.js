@@ -1,11 +1,5 @@
 function getAttackRange(aSkillRange) {
-	let tPosition;
-	if(mDelayChara[1]=="T"){
-		tPosition={x:mTrueTeam[mDelayChara[2]].x,y:mTrueTeam[mDelayChara[2]].y}
-	}
-	else{
-		tPosition={x:mFalseTeam[mDelayChara[2]].x,y:mFalseTeam[mDelayChara[2]].y}
-	}
+	let tPosition=mTurnChara.getPosition();
 
 	return calcRange(aSkillRange,tPosition);
 }
@@ -48,7 +42,7 @@ function calcRange(aSkillRange,aPosition){
 						}
 						break;
 			case "enemy"://敵全体
-				if(mDelayChara[1]=="T"){
+				if(mTurnChara.getTeam()=="T"){
 					for (var j=0;j<mFalseTeam.length;j++) {
 						tRange.push([mFalseTeam[j].x,mFalseTeam[j].y]);
 					}
@@ -60,15 +54,15 @@ function calcRange(aSkillRange,aPosition){
 				}
 				break;
 			case "ally"://自分以外の味方全体
-				if(mDelayChara[1]=="F"){
+				if(mTurnChara.getTeam()=="F"){
 					for (var j=0;j<mFalseTeam.length;j++) {
-						if(mDelayChara[2]!=j)
+						if(mTurnChara[2]!=j)
 						tRange.push([mFalseTeam[j].x,mFalseTeam[j].y]);
 					}
 				}
 				else{
 					for (var j=0;j<mTrueTeam.length;j++) {
-						if(mDelayChara[2]!=j)
+						if(mTurnChara[2]!=j)
 						tRange.push([mTrueTeam[j].x,mTrueTeam[j].y]);
 					}
 				}

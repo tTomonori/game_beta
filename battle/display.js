@@ -1,70 +1,70 @@
-//トランプを並べる（表示）
-function displayCard() {
-	let tTable="";
-	for(let i=0;i<7;i++){
-		tTable+="<tr>";
-		for(let j=0;j<8;j++){
-			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")' onmouseover='attackable("+j+","+i+")' onmouseout='if(mEventFlag)returnMoveable();else returnAttackable()'>";
-			let tCard=mCard[j+i*8];
-
-			// let tMark=mCard[i*8+j]/13;
-			let tNum=tCard[0];
-			// if(tMark>=4){
-			// 	if(tNum<=1){
-			// 		tNum="JOKER";
-			// 	}
-			// 	else{
-			// 		tNum="";
-			// 	}
-			// 	tMark="";
-			// }
-			// else {
-				//マーク
-				// if(tMark<=1){
-				// 	tMark="spade.png";
-				// }
-				// if(tMark<=2){
-				// 	tMark="club.png";
-				// }
-				// if(tMark<=3){
-				// 	tMark="diamond.png";
-				// }
-				// if(tMark<=4){
-				// 	tMark="heart.png";
-				// }
-				//数字
-				if(tNum==0){
-					tNum="A";
-				}
-				else if(tNum==10){
-					tNum="J";
-				}
-				else if(tNum==11){
-					tNum="Q";
-				}
-				else if(tNum==12){
-					tNum="K";
-				}
-				else {
-					tNum=tNum+1;
-				}
-
-			if(tCard[1]!="joker"&&tCard[1]!="suka"){
-				tTable+="<img src='../image/card.png' style='width:70px;height:70px;'>";
-				tTable+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
-				tTable+="<p style='position:absolute;margin-top:-63px;margin-left:12px'>"+tNum+"</p>";
-				// tTable+=mCard[i*7+j];
-			}
-			else if(tCard[1]=="joker"||tCard[1]=="suka"){
-				tTable+="<img src='../image/card_back.png' style='width:70px;height:70px;'>";
-			}
-
-			tTable+="</td>";
-		}
-		tTable+="</tr>";
-	}
-	$("#cardTable")[0].innerHTML=tTable;
-}
+// //トランプを並べる（表示）
+// function displayCard() {
+// 	let tTable="";
+// 	for(let i=0;i<7;i++){
+// 		tTable+="<tr>";
+// 		for(let j=0;j<8;j++){
+// 			tTable+="<td style='width:70px;height:20px:position:relative' onclick='move("+j+","+i+")' onmouseover='attackable("+j+","+i+")' onmouseout='if(mEventFlag)returnMoveable();else returnAttackable()'>";
+// 			let tCard=mCard[j+i*8];
+//
+// 			// let tMark=mCard[i*8+j]/13;
+// 			let tNum=tCard[0];
+// 			// if(tMark>=4){
+// 			// 	if(tNum<=1){
+// 			// 		tNum="JOKER";
+// 			// 	}
+// 			// 	else{
+// 			// 		tNum="";
+// 			// 	}
+// 			// 	tMark="";
+// 			// }
+// 			// else {
+// 				//マーク
+// 				// if(tMark<=1){
+// 				// 	tMark="spade.png";
+// 				// }
+// 				// if(tMark<=2){
+// 				// 	tMark="club.png";
+// 				// }
+// 				// if(tMark<=3){
+// 				// 	tMark="diamond.png";
+// 				// }
+// 				// if(tMark<=4){
+// 				// 	tMark="heart.png";
+// 				// }
+// 				//数字
+// 				if(tNum==0){
+// 					tNum="A";
+// 				}
+// 				else if(tNum==10){
+// 					tNum="J";
+// 				}
+// 				else if(tNum==11){
+// 					tNum="Q";
+// 				}
+// 				else if(tNum==12){
+// 					tNum="K";
+// 				}
+// 				else {
+// 					tNum=tNum+1;
+// 				}
+//
+// 			if(tCard[1]!="joker"&&tCard[1]!="suka"){
+// 				tTable+="<img src='../image/card.png' style='width:70px;height:70px;'>";
+// 				tTable+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
+// 				tTable+="<p style='position:absolute;margin-top:-63px;margin-left:12px'>"+tNum+"</p>";
+// 				// tTable+=mCard[i*7+j];
+// 			}
+// 			else if(tCard[1]=="joker"||tCard[1]=="suka"){
+// 				tTable+="<img src='../image/card_back.png' style='width:70px;height:70px;'>";
+// 			}
+//
+// 			tTable+="</td>";
+// 		}
+// 		tTable+="</tr>";
+// 	}
+// 	$("#cardTable")[0].innerHTML=tTable;
+// }
 
 //キャラの表示
 function initDisplay(){
@@ -101,12 +101,7 @@ function displayDelay(){
 	tOrder.innerHTML="";
 	for(let i=0;i<mDelayList.length;i++){
 		let tPickChara=mDelayList[i];
-		if(tPickChara[1]=="T"){
-			tOrder.innerHTML+="<img src='"+mTrueTeam[tPickChara[2]].getFaceUrl()+"' style='width:50%;border-radius:144px;border:solid 3px "+mTrueTeam[tPickChara[2]].teamColor+";background:"+mTrueTeam[tPickChara[2]].teamColor+"'>"
-		}
-		else if(tPickChara[1]=="F"){
-			tOrder.innerHTML+="<img src='"+mFalseTeam[tPickChara[2]].getFaceUrl()+"' style='width:50%;border-radius:144px;border:solid 3px "+mFalseTeam[tPickChara[2]].teamColor+";background:"+mFalseTeam[tPickChara[2]].teamColor+"'>"
-		}
+			tOrder.innerHTML+="<img src='"+tPickChara.getFaceUrl()+"' style='width:50%;border-radius:144px;border:solid 3px "+tPickChara.getTeamColor()+";background:"+tPickChara.getTeamColor()+"'>"
 		tOrder.innerHTML+="<br>";
 	}
 }
@@ -117,9 +112,10 @@ function displayMoveable(aMoveable) {
 		let tCard=document.createElement("img");
 		tCard.style.position="absolute";
 		tCard.style.pointerEvents="none";
-		tCard.style.marginLeft="-70px";
-		tCard.style.width="70px";
-		tCard.style.height="70px";
+		tCard.style.top="0";
+		tCard.style.left="0";
+		tCard.style.width="65px";
+		tCard.style.height="65px";
 		tCard.style.opacity="0.6";
 		tCard.src="../image/card_canMove.png";
 		tCardCell.appendChild(tCard);
@@ -144,9 +140,10 @@ function attackable(aX,aY){
 		returnMoveable();
 		return;
 	}
-		var tCard=mCard[aX+aY*8];
-		if(tCard[1]!="joker"&&tCard[1]!="suka"){
-			displayDeck(tCard[0]);
+		let tCard=Feild.getCard(aX,aY);
+		let tNumber=tCard.getNumber();
+		if(tNumber!="joker"&&tNumber!="suka"){
+			displayDeck(tNumber);
 		}
 
 	for(let i=0;i<mMovable.length;i++){
@@ -155,52 +152,37 @@ function attackable(aX,aY){
 		}
 
 
-		var tChara = new Object();
-		if(mDelayChara[1]=="T"){
-			tChara = mTrueTeam[mDelayChara[2]];
-		}
-		else{
-			tChara = mFalseTeam[mDelayChara[2]];
-		}
+		var tChara = mTurnChara;
 		//デッキの確認
-		var tSkill;
-		if(tCard[1]=="joker"){
-			tSkill=tChara.deck[13];
-		}
-		else if(tCard[1]=="suka"){
-			tSkill=tChara.deck[14];
-		}
-		else{
-			tSkill=tChara.deck[tCard[0]];
-		}
+		var tSkill=tChara.getSkill(tNumber);
 
 		//技取り出し
-		for(var j=0;j<mSkillList.length;j++){
-			if(mSkillList[j].NUMBER==tSkill){
-				tSkill=mSkillList[j];
-				break;
-			}
-		}
+		// for(var j=0;j<mSkillList.length;j++){
+		// 	if(mSkillList[j].NUMBER==tSkill){
+		// 		tSkill=mSkillList[j];
+		// 		break;
+		// 	}
+		// }
 		// tSkill=mSkillList[tSkill];
 		let tRange=calcRange(tSkill.RANGE,{x:aX,y:aY});
-		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
+		if(!tCard.revers){//裏返されているなら表示しない
 			if(tChara.MP<tSkill.MAGIC){
 				tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tChara.y].getElementsByTagName("td")[tChara.x];
 				var tPreDamage=document.createElement("div");
 				tPreDamage.style.position="absolute";
 				tPreDamage.style.pointerEvents="none";
-				tPreDamage.style.marginTop="-70px";
-				tPreDamage.style.marginLeft="-16px";
-				tPreDamage.style.width="70px";
-				tPreDamage.style.height="70px";
+				tPreDamage.style.top="-35px";
+				tPreDamage.style.left="-25px";
+				tPreDamage.style.width="120px";
+				tPreDamage.style.height="65px";
 				tPreDamage.style.textAlign="center"
 				tPreDamage.style.color="#f00";
-				tPreDamage.style.fontSize="15px";
+				tPreDamage.style.fontSize="30px";
 				tPreDamage.classList.add("predamege")
 				tPreDamage.style.webkitTextStrokeColor="#fff";
 				tPreDamage.style.webkitTextStrokeWidth="0.5px";
 				tPreDamage.style.zIndex="5";
-				tPreDamage.style.zoom="2";
+				// tPreDamage.style.zoom="2";
 				tPreDamage.style.pointerEvents="none";
 				tDamage="MP不足"
 				tPreDamage.textContent=tDamage;
@@ -209,8 +191,8 @@ function attackable(aX,aY){
 			}
 			let tDamageCharas;
 			let t;
-			let tMyTeam=(mDelayChara[1]=="T")?mTrueTeam:mFalseTeam;
-			let tEnemyTeam=(mDelayChara[1]=="T")?mFalseTeam:mTrueTeam;
+			let tMyTeam=(mTurnChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
+			let tEnemyTeam=(mTurnChara.getTeam()=="T")?mFalseTeam:mTrueTeam;
 			let tCardImage;
 			if(tSkill.F_ATTACK==true&&tSkill.E_ATTACK==true){
 				tDamageCharas=tMyTeam.concat(tEnemyTeam);
@@ -234,9 +216,10 @@ function attackable(aX,aY){
 				let tCardImg=document.createElement("img");
 				tCardImg.style.position="absolute";
 				tCardImg.style.pointerEvents="none";
-				tCardImg.style.marginLeft="-70px";
-				tCardImg.style.width="70px";
-				tCardImg.style.height="70px";
+				tCardImg.style.top="0";
+				tCardImg.style.left="0";
+				tCardImg.style.width="65px";
+				tCardImg.style.height="65px";
 				tCardImg.style.opacity="0.6";
 				tCardImg.src=tCardImage;
 				tCardCell.appendChild(tCardImg);
@@ -249,22 +232,23 @@ function attackable(aX,aY){
 						if(tCard[1]==tChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
+						//敵へのダメージ
 						let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tRange[i][1]].getElementsByTagName("td")[tRange[i][0]];
 						var tPreDamage=document.createElement("div");
 						tPreDamage.style.position="absolute";
 						tPreDamage.style.pointerEvents="none";
-						tPreDamage.style.marginTop="-70px";
-						tPreDamage.style.marginLeft="-16px";
+						tPreDamage.style.top="-40px";
+						tPreDamage.style.left="0";
 						tPreDamage.style.width="70px";
 						tPreDamage.style.height="70px";
 						tPreDamage.style.textAlign="center"
 						tPreDamage.style.color="#f00";
-						tPreDamage.style.fontSize="30px";
+						tPreDamage.style.fontSize="40px";
 						tPreDamage.classList.add("predamege")
 						tPreDamage.style.webkitTextStrokeColor="#fff";
 						tPreDamage.style.webkitTextStrokeWidth="0.5px";
 						tPreDamage.style.zIndex="5";
-						tPreDamage.style.zoom="2";
+						// tPreDamage.style.zoom="2";
 						tPreDamage.style.pointerEvents="none";
 						if(tDamage<0){
 							tPreDamage.style.color="#0f0";
@@ -294,22 +278,22 @@ function attackable(aX,aY){
 				if(tCard[1]==tChara.TYPE){//属性補正
 					tDamage = Math.floor(tDamage*1.5);
 				}
+				//自傷ダメージ
 				tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[tChara.y].getElementsByTagName("td")[tChara.x];
 				var tPreDamage=document.createElement("div");
 				tPreDamage.style.position="absolute";
 				tPreDamage.style.pointerEvents="none";
-				tPreDamage.style.marginTop="-70px";
-				tPreDamage.style.marginLeft="-16px";
+				tPreDamage.style.top="-40px";
+				tPreDamage.style.left="0";
 				tPreDamage.style.width="70px";
 				tPreDamage.style.height="70px";
 				tPreDamage.style.textAlign="center"
 				tPreDamage.style.color="#f00";
-				tPreDamage.style.fontSize="30px";
+				tPreDamage.style.fontSize="40px";
 				tPreDamage.classList.add("predamege")
 				tPreDamage.style.webkitTextStrokeColor="#fff";
 				tPreDamage.style.webkitTextStrokeWidth="0.5px";
 				tPreDamage.style.zIndex="5";
-				tPreDamage.style.zoom="2";
 				tPreDamage.style.pointerEvents="none";
 				if(tDamage<0){
 					tPreDamage.style.color="#0f0";
@@ -344,24 +328,11 @@ function returnAttackable() {
 	displayMoveable(mMovable);
 	returnDeck();
 }
-
+//スキルの説明を表示
 function displayDeck(aNum){
-	if(mDelayChara[1]=="T"){
-		for(var j=0;j<mSkillList.length;j++){
-			if(mSkillList[j].NUMBER==mTrueTeam[mDelayChara[2]].deck[aNum]){
-				$("#cardText")[0].textContent=mSkillList[j].TEXT;
-				break;
-			}
-		}
-	}
-	else if(mDelayChara[1]=="F"){
-		for(var j=0;j<mSkillList.length;j++){
-			if(mSkillList[j].NUMBER==mFalseTeam[mDelayChara[2]].deck[aNum]){
-				$("#cardText")[0].textContent=mSkillList[j].TEXT;
-				break;
-			}
-		}
-	}
+	if(mEventFlag) return;
+	let tSkill=mTurnChara.getSkill(aNum);
+	$("#cardText")[0].textContent=tSkill.TEXT;
 	$("#cardText").css("left",aNum*50+"px");
 	$("#cardText").css("display","inline-block");
 }

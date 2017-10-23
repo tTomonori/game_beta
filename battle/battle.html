@@ -44,7 +44,7 @@ color: white;
 	</div>
 </div>
 <div id="deckArea" style="width:100%;height:10%;"></div>
-<div id="cardText" style="background-color:#640bff;border:double;padding:5px;border-radius: 10px;position: absolute;top:550px;color:#fff;display: none;pointer-events: none"></div>
+<div id="cardText" style="background-color:#640bff;border:double;padding:5px;border-radius: 10px;position: absolute;bottom:65px;color:#fff;display: none;pointer-events: none;z-index:1"></div>
 <div id="order" style="position:fixed;width:15%;height:80%;top:5%;left:2%;padding:10px;pointer-events: none"></div>
 <input id="finishButton" type="button" style="display:none;position:fixed;left:1%;bottom:12%;fontSize:20px;" value="タイトルへ" onclick="location.href='../title/title.html'">
 </div>
@@ -66,22 +66,32 @@ color: white;
 <script src="./skillList.js"></script>
 <script src="./skillRange.js"></script>
 <script src="./skillSupport.js"></script>
+<script src="./feild/Card.js"></script>
+<script src="./feild/Feild.js"></script>
 <script src="./delay.js"></script>
 <script src="./attack.js"></script>
 <script src="./move.js"></script>
-<script src="./Chara.js"></script>
+<!-- <script src="./Chara.js"></script> -->
 <script src="../charaData/charaData.js"></script>
 <script src="../charaData/funnelData.js"></script>
 <script src="./display.js"></script>
 <script src="./AI.js"></script>
+
+<!-- キャラクター -->
+<script src="../charaData/Chara.js"></script>
+<script src="../charaData/charaData/Varukiri.js"></script>
+<script src="../charaData/charaData/Ransurotto.js"></script>
+<script src="../charaData/CharaList.js"></script>
+
+
 <script src="./battle.js"></script>
 <script src="./communicater.js"></script>
 <script>
 	var tDeck = "";
 	for(var i=0;i<15;i++){
+		tNum = i+1;
 		tDeck+="<img id='Card-"+i+"' src='../image/card.png' style='width:50px;height:50px;' onmouseover='displayDeck("+i+")' onmouseout='returnDeck()'>";
 		// tDeck+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
-		tNum = i+1;
 		if(tNum==1) {
 			tNum = "A"
 		}

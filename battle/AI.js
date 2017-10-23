@@ -17,11 +17,11 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 		var tCard=mCard[mMovable[i][0]+mMovable[i][1]*8];
 
 		var tChara = new Object();
-		if(mDelayChara[1]=="T"){
-			tChara = mTrueTeam[mDelayChara[2]];
+		if(mTurnChara[1]=="T"){
+			tChara = mTrueTeam[mTurnChara[2]];
 		}
 		else{
-			tChara = mFalseTeam[mDelayChara[2]];
+			tChara = mFalseTeam[mTurnChara[2]];
 		}
 		//デッキの確認
 		var tSkill;
@@ -46,7 +46,7 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 		let tRange=calcRange(tSkill.RANGE,{x:mMovable[i][0],y:mMovable[i][1]});
 		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
 			var tDamegeCharas = new Array();
-			if(mDelayChara[1]=="T"){
+			if(mTurnChara[1]=="T"){
 				tDamegeCharas = mFalseTeam;
 			}
 			else{
