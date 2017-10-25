@@ -79,15 +79,29 @@ class Card{
 			}
 		}
 	}
-	//マス効果追加
+	//マス効果追加(aEffect=[effect:効果,value:効果値,owner:設置したチーム,target:効果の影響を受けるチームの配列,remove:trueなら一回のみ発動])
 	setTrap(aEffect){
 		this.trapEffect.push(aEffect);
 	}
 	//マス効果発動
 	trap(aChara){
 		return new Promise((res,rej)=>{
-			Support(aEffect,aChara).then(()=>{
-
+			if(this.trapEffect.length==0){
+				res();
+				return;
+			}
+			//効果発動
+			Support(this.trapEffect.concat(),aChara).then(()=>{
+				let tNewEffect=new Array();
+				//一回制限の効果を削除する
+				console.log(this.trapEffect);
+				for(let i=0;i<this.trapEffect.length;i++){
+					console.log(this.trapEffect[i].target,aChara.getTeam());
+					if(!this.trapEffect[i].remove||this.trapEffect[i].target.indexOf(aChara.getTeam())==-1)
+						tNewEffect.push(this.trapEffect[i]);
+				}
+				this.trapEffect=tNewEffect;
+				res();
 			})
 		})
 	}

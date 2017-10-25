@@ -43,7 +43,7 @@ function SupportPlay(aSupportnums,aChara){
 				break;
 			case "delay"://delay
 				attackAnimate(tTurnChara,aChara,[9],()=>{
-					aChara.minusDelay(tValue);
+					aChara.effectDelay(tValue);
 					res()})
 				break;
 			case "type"://タイプ変更
@@ -74,13 +74,44 @@ function SupportPlay(aSupportnums,aChara){
 			case "originalMP":
 				tAnimation=(tValue>0)?[19]:[20];
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
-				aChara.plusOriginStatus(aSupportnums[0],tValue);
+				aChara.plusOriginStatus(aSupportnums.effect,tValue);
 				res()})
 				break;
-			case "mine"://地雷
-				tAnimation=[36];
-				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
+			case "setTrap"://トラップ設置
+				attackAnimate(tTurnChara,aChara,[18],()=>{
+					//効果対象のチーム確認
+					let tTarget=aSupportnums.target.concat();
+					for(let i=0;i<tTarget.length;i++){
+						if(tTarget[i]=="ally") tTarget[i]=(tTurnChara.getTeam()=="T")?"T":"F";
+						else if(tTarget[i]=="enemy") tTarget[i]=(tTurnChara.getTeam()=="T")?"F":"T";
+					}
+					let tRange=calcRange(aSupportnums.range,tTurnChara.getPosition());
+					for(let i=0;i<tRange.length;i++){
+						let tSettedCard=Feild.getCard(tRange[i][0],tRange[i][1]);
+						tSettedCard.setTrap({effect:"stepTrap",trapEffect:aSupportnums.trapEffect,value:tValue,owner:tTurnChara.getTeam(),target:tTarget,remove:aSupportnums.remove});
+					}
+					res();
 				})
+				break;
+			case "stepTrap"://トラップを踏んだ
+				if(aSupportnums.target.indexOf(aChara.getTeam())!=-1){
+					//効果対象のチームのキャラが効果を受ける
+					addLog("トラップを踏んだ")
+					SupportPlay({effect:aSupportnums.trapEffect,value:tValue},aChara).then(()=>{
+						res();
+					})
+				}
+				else{
+					//効果を受けるキャラが効果対象でなかった
+					res();
+				}
+				break;
+			case "mine"://地雷
+					tAnimation=[36];
+					attackAnimate(tTurnChara,aChara,tAnimation,()=>{
+						if(aChara.addDamage(tValue)!="down")
+							res();
+					})
 				break;
 			case 6:
 

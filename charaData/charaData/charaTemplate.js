@@ -4,7 +4,12 @@ class (キャラ名) extends Chara{
 		return "タイプ：<br>";
 	}
 	constructor(aX,aY,aTeam){
-		let tData={NAME:"",
+		let tData=(キャラ名).getDeck();
+		super(aX,aY,aTeam,tData);
+		this.data=tData;
+	}
+	static getCharaData(){
+		return {NAME:"",
 						HP:,
 						MP:,
 						ATK:,
@@ -15,8 +20,6 @@ class (キャラ名) extends Chara{
 						IMAGE:,
 						DECK:(キャラ名).getDeck()
 		}
-		super(aX,aY,aTeam,tData);
-		this.data=tData;
 	}
 	static getDeck(){
 		return [
@@ -123,10 +126,10 @@ class (キャラ名) extends Chara{
 				DELAY:0,
 				MAGIC:1,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[["getTurn"]],
+				SUPPORT_Af_Myself:[{effect:"getTurn"}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
-				SUPPORT_Otherwise:[["shuffle"]],
+				SUPPORT_Otherwise:[{effect:"shuffle"}],
 				M_ATTACK:0,
 				F_ATTACK:false,
 				E_ATTACK:true,
@@ -238,7 +241,7 @@ class (キャラ名) extends Chara{
 				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
-				SUPPORT_Otherwise:[["revers"],["shuffle"]],
+				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
@@ -254,7 +257,7 @@ class (キャラ名) extends Chara{
 					SUPPORT_Af_Myself:[],
 					SUPPORT_Be_Enemy:[],
 					SUPPORT_Af_Enemy:[],
-					SUPPORT_Otherwise:[["revers"]],
+					SUPPORT_Otherwise:[{effect:"revers"}],
 					M_ATTACK:0,
 					F_ATTACK:false,
 			    E_ATTACK:true,

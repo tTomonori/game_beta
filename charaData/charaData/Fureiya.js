@@ -206,7 +206,7 @@ class Fureiya extends Chara{
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect;"atk",value:2},{effect:"def",value:3}],
+				SUPPORT_Af_Myself:[{effect:"atk",value:2},{effect:"def",value:3}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],

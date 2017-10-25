@@ -143,7 +143,7 @@ class Chara{
 	//ディレイを減少,増加させる(引数は効果値)ログもだす
 	effectDelay(aDelay){
 		this.addDelay(aDelay);
-		(aDelay>0)?freeLog(this,"DELAY",aDelay+"下がった"):freeLog(this,"DELAY",-aDelay+"上がった");
+		(aDelay>0)?freeLog(this,"DELAY",aDelay+"上がった"):freeLog(this,"DELAY",-aDelay+"下がった");
 	}
 	//ディレイを変化させる(引数は効果値)
 	addDelay(aDelay){
@@ -160,6 +160,7 @@ class Chara{
 		this.Delay-=tDelay;
 		freeLog(this,"追加ターン","獲得された");
 	}
+	//タイプ変更
 	changeType(aType){
 		if(aType=="random"){
 			var tRandom = Math.floor(makeRandom()*4)
@@ -171,11 +172,20 @@ class Chara{
 		this.TYPE=aType;
 		freeLog(this,"タイプ",aType+"に変わった")
 	}
+	//ステータス増減
 	plusStatus(aStatus,aValue){
 		aStatus=aStatus.toUpperCase();
 		this[aStatus]+=aValue;
+		if(this[aStatus]<0) this[aStatus]=0;//0未満にはならない
 		(aValue>0)?freeLog(this,aStatus,aValue+"アップ"):freeLog(this,aStatus,-aValue+"ダウン");
 	}
+	//初期ステータス増減(現在はHPとMPのみ想定(=最大HP,MP変更))
+	plusOriginStatus(aStatus,tValue){
+		this[aStatus]+=aValue;
+		if(this[aStatus]<0) this[aStatus]=0;//0未満にはならない
+		(aValue>0)?freeLog(this,"最大"+aStatus,aValue+"アップ"):freeLog(this,"最大"+aStatus,-aValue+"ダウン");
+	}
+	//ステータスリセット
 	resetStatus(aStatus){
 		aStatus=aStatus.toUpperCase();
 		if(aStatus=="All"){

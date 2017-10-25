@@ -77,6 +77,18 @@ function calcRange(aSkillRange,aPosition){
 						tRange.push([j,7-tX]);
 					}
 				break;
+			case "random"://ランダムなマス
+				for(let j=0;j<tX;j++){
+					let tRX=Math.floor(makeRandom()*8);
+					let tRY=Math.floor(makeRandom()*7);
+					for(let k=0;k<tRange.length;k++){//重複削除
+						if(tRX==tRange[i][0]&&tRY==tRange[i][1]){
+							j--;
+							continue;
+						}
+					}
+					tRange.push([tRX,tRY]);
+				}
 			default:
 		}
 	}
