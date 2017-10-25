@@ -67,7 +67,7 @@ function SupportPlay(aSupportnums,aChara){
 				break;
 			case "transform"://変身する
 				attackAnimate(tTurnChara,aChara,[7],()=>{
-					aChara.transform(tValue);
+					aChara.transform(aChara.getTransformData(tValue));
 					res()})
 				break;
 			case "originalHP":

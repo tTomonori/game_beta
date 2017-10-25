@@ -15,7 +15,8 @@ var mDelayList = new Array();
 //トランプ
 // var mCard=new Array();
 
-var mMyTeam="T";
+var mMyTeam=["T"];
+if(mPlayerNum==0) mMyTeam=["T","F"];
 
 //チームのリスト
 var mTrueTeam=new Array();
@@ -167,7 +168,7 @@ function battleMain(){
 	displayStatus();
 
 	//操作
-	if(mPlayerNum!=0&&mTurnChara.getTeam()!=mMyTeam){
+	if(mPlayerNum!=0&&mMyTeam.indexOf(mTurnChara.getTeam())==-1){
 		if(!mCommunicationFlag)
 			com(mPlayerNum);
 	}

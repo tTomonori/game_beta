@@ -52,10 +52,16 @@ class Card{
 	//カードを裏返す
 	makeRevers(){
 		this.reversImage.style.display="block";
+		this.revers=true;
 	}
 	//カードを面にする
 	makeFace(){
 		this.reversImage.style.display="none";
+		this.revers=false;
+	}
+	//裏向きならtrue
+	isReverse(){
+		return this.revers;
 	}
 	//引数の座標のマスにカードを表示する
 	display(aX,aY){

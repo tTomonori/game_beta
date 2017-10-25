@@ -20,14 +20,14 @@ function movableSquares(aChara){
 }
 
 function move(aX,aY,aInfoFlag,aAiFlag){
-	if(mTurnChara.getTeam()!=mMyTeam&&!aAiFlag){//Aiのターンに操作
+	if(mMyTeam.indexOf(mTurnChara.getTeam())==-1&&!aAiFlag){//Aiのターンに操作
 		return;
 	}
-	if(mPlayerNum==0||mTurnChara.getTeam()==mMyTeam){//AIでない
+	if(mPlayerNum==0||mMyTeam.indexOf(mTurnChara.getTeam())>=0){//AIでない
 			if(mEventFlag)//イベント中
 			return;
 	}
-	if(mCommunicationFlag&&mTurnChara.getTeam()!=mMyTeam&&aInfoFlag!="receive_move"){//通信中
+	if(mCommunicationFlag&&mMyTeam.indexOf(mTurnChara.getTeam())==-1&&aInfoFlag!="receive_move"){//通信中
 		return;
 	}
 	//対戦相手に通知

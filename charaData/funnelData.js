@@ -1,4 +1,5 @@
-const mFunnel=[
+// const mFunnel=[
+const NotUse=[
 	{NAME:"育聖のロゼッタ",
 					HP:100,
 					MP:10,

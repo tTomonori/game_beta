@@ -8,26 +8,20 @@ var mAICard;
 var mAICardMark;
 var mAICardNum;
 var mAIPrioritys;
-var mReversCards=4;//裏向いてる数
+var mReversCards;//裏向いてる数
 
 
 function AIConstructor(){
 	mAIMovable=mMovable.concat();
-	mAICard=mCard.concat();
+	mAICard=Feild.getAllCard();
 	mAICardMark=new Array();
 	mAICardNum=new Array();
 	mAISkillList=mSkillList.concat();
 	mAISkill=new Object();
-	if(mDelayChara[1]=="T"){
-		mAIChara = mTrueTeam[mDelayChara[2]];
-		mAICharaTeam = mTrueTeam.concat();
-		mAIEnemyTeam = mFalseTeam.concat();
-	}
-	else{
-		mAIChara = mFalseTeam[mDelayChara[2]];
-		mAICharaTeam = mFalseTeam.concat();
-		mAIEnemyTeam = mTrueTeam.concat();
-	}
+	mAIChara=mTurnChara;
+	mAICharaTeam=(mAIChara.getTeam()=="T")?mTrueTeam.concat():mFalseTeam.concat();
+	mAIEnemyTeam=(mAIChara.getTeam()=="F")?mTrueTeam.concat():mFalseTeam.concat();
+	mReversCards=Feild.getReversCardNum();
 	mAIPrioritys=new Array();
 }
 
@@ -45,61 +39,30 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 	for(var i=0;i<mAIMovable.length;i++){
 		var tX = mAIMovable[i][0];
 		var tY = mAIMovable[i][1];
-		mAICardNum=mAICard[tX+tY*8][0]
-		mAICardMark=mAICard[tX+tY*8][1]
+		mAICardNum=mAICard[tX+tY*8].getNumber();
+		mAICardMark=mAICard[tX+tY*8].getSoot();
 
-<<<<<<< HEAD
 		var tPriority = 0;
 
-		var tCard=mCard[mMovable[i][0]+mMovable[i][1]*8];
+		var tCard=Feild.getCard(mMovable[i][0],mMovable[i][1]);
 
-		var tChara = new Object();
-		if(mTurnChara[1]=="T"){
-			tChara = mTrueTeam[mTurnChara[2]];
-		}
-		else{
-			tChara = mFalseTeam[mTurnChara[2]];
-		}
-=======
->>>>>>> 952e65e60148a5d0b53c4634c47b71a48e0f5d2e
 		//デッキの確認
 		var tSkill;
-		if(mAICardMark=="joker")		tSkill=mAIChara.deck[13];
-		else if(mAICardMark=="suka")	tSkill=mAIChara.deck[14];
-		else							tSkill=mAIChara.deck[mAICardNum];
-		for(var j=0;j<mAISkillList.length;j++){
-			if(mAISkillList[j].NUMBER==tSkill){
-				mAISkill=mAISkillList[j];
-				break;
-			}
-		}
-<<<<<<< HEAD
-		// tSkill=mSkillList[tSkill];
-		let tRange=calcRange(tSkill.RANGE,{x:mMovable[i][0],y:mMovable[i][1]});
-		if(tCard[1]!="joker"&&tCard[1]!="suka"){//jokerとsukaは攻撃範囲を表示しない
-			var tDamegeCharas = new Array();
-			if(mTurnChara[1]=="T"){
-				tDamegeCharas = mFalseTeam;
-=======
+		if(mAICardMark=="joker")		tSkill=mAIChara.getSkill(13);
+		else if(mAICardMark=="suka")	tSkill=mAIChara.getSkill(14);
+		else							tSkill=mAIChara.getSkill(mAICardNum);
+		mAISkill=tSkill;
+
 		var tPriority = 0;
 
 		let tRange=calcRange(mAISkill.RANGE,{x:tX,y:tY});
 		if(mAICardMark=="joker"||mAICardMark=="suka"/*||カードが裏向き*/){
-			var tJokerSkill;
-			for(var j=0;j<mAISkillList.length;j++){
-				if(mAISkillList[j].NUMBER==mAIChara.deck[13]){
-					tJokerSkill=mAISkillList[j];
-					break;
-				}
->>>>>>> 952e65e60148a5d0b53c4634c47b71a48e0f5d2e
-			}
+			var tJokerSkill=mAIChara.getSkill(13);
 			if(mAIChara.MP>tJokerSkill.MAGIC){
 				tPriority += tJokerSkill.POWER*mAIEnemyTeam.length;//今のところジョーカーは攻撃なら敵全体なので
 				tPriority += calcSupportPriority(tJokerSkill);
 				tPriority /= mReversCards;//期待値
-				//if(mAICardMark=="suka"&&表向いてたら){
-					// tPriority = -Infinity;
-				// }
+				if(mAICardMark=="suka"&&tCard.isReverse()) tPriority=-Infinity;
 			}
 		}
 		else if(mAIChara.MP>mAISkill.MAGIC){
@@ -118,7 +81,7 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 					}
 				}
 			}
-		
+
 
 			if(mAISkill.M_ATTACK!=0){
 				var tDamage = calcDamage(mAIChara.ATK,mAIChara.DEF,mAISkill.M_ATTACK);
@@ -169,13 +132,8 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 			tMax=mAIPrioritys[i];
 		}
 	}
-<<<<<<< HEAD
-	move(mMovable[tSelected][0],mMovable[tSelected][1]);
-}
-=======
-
 	//移動を実行
-	move(mAIMovable[tSelected][0],mAIMovable[tSelected][1]);
+	move(mAIMovable[tSelected][0],mAIMovable[tSelected][1],undefined,true);
 }
 
 function calcSupportPriority(aSkill){//作者のさじ加減
@@ -191,17 +149,16 @@ function SupportPriorityPoint(aSupportNum){
 	var tAddPriority = 0;
 	for (var i = 0; i < aSupportNum.length; i++) {
 		var tPriority = 0;
-		switch(aSupportNum[i][0]){	
+		switch(aSupportNum[i][0]){
 			case "resetStatus"://ステーテスを初期値に戻す
 				tPriority -= 1;
 			case "shuffle"://シャッフルする
 			case "revers"://裏カードを表に向ける
 			case "type"://タイプ変更
 				tPriority += 0;
-				break; 
+				break;
 			case "delay"://delay
 				tPriority += 0.1 * aSupportNum[i][1];
-				if(aSupportNum[i][1]==100) tPriority = 0;
 				break;
 			case "mov"://mov変化 +2
 				tPriority += 0.5;
@@ -230,4 +187,3 @@ function SupportPriorityPoint(aSupportNum){
 	tAddPriority = calcDamage(mAIChara.ATK,mAIChara.DEF,tAddPriority);
 	return tAddPriority;
 }
->>>>>>> 952e65e60148a5d0b53c4634c47b71a48e0f5d2e

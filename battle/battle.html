@@ -81,6 +81,16 @@ color: white;
 <script src="../charaData/Chara.js"></script>
 <script src="../charaData/charaData/Varukiri.js"></script>
 <script src="../charaData/charaData/Ransurotto.js"></script>
+<script src="../charaData/charaData/Ookuninusi.js"></script>
+<script src="../charaData/charaData/Sirufe.js"></script>
+<script src="../charaData/charaData/Fabuniru.js"></script>
+<script src="../charaData/charaData/Munin.js"></script>
+<script src="../charaData/charaData/Zero.js"></script>
+<script src="../charaData/charaData/Pathi.js"></script>
+<script src="../charaData/charaData/Rozetta.js"></script>
+<script src="../charaData/charaData/Gabera.js"></script>
+<script src="../charaData/charaData/Guren.js"></script>
+<script src="../charaData/charaData/Fureiya.js"></script>
 <script src="../charaData/CharaList.js"></script>
 
 
@@ -90,7 +100,7 @@ color: white;
 	var tDeck = "";
 	for(var i=0;i<15;i++){
 		tNum = i+1;
-		tDeck+="<img id='Card-"+i+"' src='../image/card.png' style='width:50px;height:50px;' onmouseover='displayDeck("+i+")' onmouseout='returnDeck()'>";
+		tDeck+="<img id='Card-"+tNum+"' src='../image/card.png' style='width:50px;height:50px;' onmouseover='displayDeck("+tNum+")' onmouseout='returnDeck()'>";
 		// tDeck+="<img src='../image/"+tCard[1]+".png' style='width:50px;height:50px;position:absolute;margin-left:-57px;margin-top:13px'>";
 		if(tNum==1) {
 			tNum = "A"
@@ -110,7 +120,10 @@ color: white;
 		else if(tNum==15){
 			tNum = ""
 		}
-		tDeck+="<p style='position:absolute;margin-top:-43px;margin-left:"+(12+i*50)+"px;pointer-events:none'>"+tNum+"</p>";
+		if(tNum=="JOKER")
+			tDeck+="<p style='position:absolute;margin-top:-43px;margin-left:"+(12+i*50-4)+"px;pointer-events:none;font-size:11px'>"+tNum+"</p>";
+		else
+			tDeck+="<p style='position:absolute;margin-top:-43px;margin-left:"+(12+i*50)+"px;pointer-events:none'>"+tNum+"</p>";
 	}
 	$("#deckArea")[0].innerHTML = tDeck;
 </script>

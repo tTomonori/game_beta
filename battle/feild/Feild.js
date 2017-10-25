@@ -32,6 +32,18 @@ class Feild{
 	static getCard(aX,aY){
 		return this.cardsLine[aY*8+aX];
 	}
+	static getAllCard(){
+		return this.cardsLine.concat();
+	}
+	//裏向きのカードの数
+	static getReversCardNum(){
+		let tNum=0;
+		for(let i=0;i<this.cardsLine.length;i++){
+			if(this.cardsLine[i].isReverse)
+				tNum++;
+		}
+		return tNum;
+	}
 	//テーブルを空にする
 	static resetTable(){
 		let tTable="";

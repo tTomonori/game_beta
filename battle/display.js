@@ -255,8 +255,7 @@ function attackable(aX,aY){
 							tDamage *= (-1);
 						}
 						else if(tDamage==0){//補助効果のみのスキル
-							tPreDamage.style.fontSize="17px";
-							tPreDamage.style.marginTop="-50px"
+							tPreDamage.style.fontSize="40px";
 							if(tChara.team==tDamageCharas[j].team){
 								//攻撃相手が味方でダメージが0
 								tDamage="↑";
@@ -333,7 +332,7 @@ function displayDeck(aNum){
 	if(mEventFlag) return;
 	let tSkill=mTurnChara.getSkill(aNum);
 	$("#cardText")[0].textContent=tSkill.TEXT;
-	$("#cardText").css("left",aNum*50+"px");
+	$("#cardText").css("left",(aNum-1)*50+"px");
 	$("#cardText").css("display","inline-block");
 }
 

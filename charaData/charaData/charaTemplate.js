@@ -1,25 +1,22 @@
-class Varukiri extends Chara{
+class (キャラ名) extends Chara{
 	static getText(){
 		//キャラ説明
-		return "ディフェンスタイプ：<br>標準的な能力とスキルを持っている";
+		return "タイプ：<br>";
 	}
 	constructor(aX,aY,aTeam){
-		let tData=Varukiri.getCharaData();
+		let tData={NAME:"",
+						HP:,
+						MP:,
+						ATK:,
+						DEF:,
+						SPD:,
+						MOV:,
+						TYPE:"",
+						IMAGE:,
+						DECK:(キャラ名).getDeck()
+		}
 		super(aX,aY,aTeam,tData);
 		this.data=tData;
-	}
-	static getCharaData(){
-		return {NAME:"ヴァルキリー",
-						HP:100,
-						MP:5,
-						ATK:20,
-						DEF:35,
-						SPD:20,
-						MOV:2,
-						TYPE:"spade",
-						IMAGE:1345010001,
-						DECK:Varukiri.getDeck()
-		}
 	}
 	static getDeck(){
 		return [

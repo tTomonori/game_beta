@@ -8,16 +8,16 @@ var mTeam="T";
 // var mTrueTeamNum=2;
 // var mFalseTeamNum=2;
 
-var charas=loadChara();
+// var charas=loadChara();
 var mSelectPointor=0;
-var mCharaMaxNum=charas.length
+var mCharaMaxNum=CharaList.classList.length;
 displayCharaData(mSelectPointor)
 displayDeckData(mSelectPointor)
 var mChangeChara = -1;
 
 for(var i=0;i<mCharaMaxNum;i++){
 	var tImg="";
-	tImg += "<img src='../image/chara/1_face/"+(charas[i].IMAGE+100)+".png' style='width:18%' onclick='list("+i+")';>";
+	tImg += "<img src='../image/chara/1_face/"+(CharaList.getCharaClass(i).getCharaData().IMAGE+100)+".png' style='width:18%' onclick='list("+i+")';>";
 	$("#Charalist")[0].innerHTML+=tImg;
 }
 
@@ -40,12 +40,15 @@ $("#changeList").on("click",function(){
 
 //キャラ表示
 function displayCharaData(aNum){
-	let tData=charas[aNum];
+	let tData=CharaList.getCharaClass(aNum).getCharaData();
 	let tStatus=$(".status");
 
 	for(let i=0;i<tStatus.length;i++){
 		if(mStatusList[i]=="TYPE"){
 			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:40px;'>"
+		}
+		else if(mStatusList[i]=="TEXT"){
+			tStatus[i].innerHTML=CharaList.getCharaClass(aNum).getText();
 		}
 		else{
 			tStatus[i].innerHTML=tData[mStatusList[i]];
@@ -80,6 +83,8 @@ $(".change").on("click",function(){
 	let tTable=document.createElement("table");
 	tTable.style.borderCollapse="collapse";
 	tTag.appendChild(tTable);
+	let tData=CharaList.getCharaClass(mSelectPointor).getTransformData(mChangeChara);
+	let tCharaSkill=tData.DECK;
 	let tContents="";
 	for(let i=0;i<15;i++){
 		let tCardNum=i+1;
@@ -95,13 +100,7 @@ $(".change").on("click",function(){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = "";
-			for(var j=0;j<mSkillList.length;j++){
-				if(mSkillList[j].NUMBER==mFunnel[mChangeChara].DECK[i]){
-					tSkillText=mSkillList[j].TEXT;
-					break;
-				}
-			}
+			var tSkillText = tCharaSkill[i].TEXT;
 			tContents+=tSkillText;
 			tContents+="</td>";
 		}
@@ -114,25 +113,21 @@ $(".change").on("click",function(){
 			else
 			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = "";
-			for(var j=0;j<mSkillList.length;j++){
-				if(mSkillList[j].NUMBER==mFunnel[mChangeChara].DECK[i]){
-					tSkillText=mSkillList[j].TEXT;
-					break;
-				}
-			}
+			var tSkillText = tCharaSkill[i].TEXT;
 			tContents+=tSkillText;
 			tContents+="</td></tr>";
 		}
 		tTable.innerHTML=tContents;
 	}
-	let tData=mFunnel[mChangeChara];
 	mChangeChara=tData.CHANGE;
 	let tStatus=$(".status");
 
 	for(let i=0;i<tStatus.length;i++){
 		if(mStatusList[i]=="TYPE"){
 			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:40px;'>"
+		}
+		else if(mStatusList[i]=="TEXT"){
+			tStatus[i].innerHTML=CharaList.getCharaClass(mSelectPointor).getText();
 		}
 		else{
 			tStatus[i].innerHTML=tData[mStatusList[i]];
@@ -148,7 +143,7 @@ $(".change").on("click",function(){
 	}
 	else if(tData.CHANGE==Infinity){
 		$(".change").css("display","none");
-		$(".return").css("display","block");	
+		$(".return").css("display","block");
 	}
 	else{
 		$(".change").css("display","block");
@@ -178,12 +173,12 @@ function selectChara() {
 	console.log(mTrueTeamNum,mFalseTeamNum)
 	if(mSelectedCharas.length<mTrueTeamNum){
 		mSelectedCharas.push([mSelectPointor,"T"]);
-		var tImag = "<img src='../image/chara/1_face/"+(charas[mSelectPointor].IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
+		var tImag = "<img src='../image/chara/1_face/"+(CharaList.getCharaClass(mSelectPointor).getCharaData().IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
 		$("#SelectedMember")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[mSelectedCharas.length].innerHTML = tImag;
 	}
 	else if(mSelectedCharas.length<mTrueTeamNum+mFalseTeamNum){
 		mSelectedCharas.push([mSelectPointor,"F"]);
-		var tImag = "<img src='../image/chara/1_face/"+(charas[mSelectPointor].IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
+		var tImag = "<img src='../image/chara/1_face/"+(CharaList.getCharaClass(mSelectPointor).getCharaData().IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
 		$("#SelectedMember")[0].getElementsByTagName("tr")[2].getElementsByTagName("td")[mSelectedCharas.length-mTrueTeamNum].innerHTML = tImag;
 	}
 	if(mSelectedCharas.length==mTrueTeamNum+mFalseTeamNum){
@@ -251,6 +246,7 @@ function displayDeckData(aNum){
 	let tTable=document.createElement("table");
 	tTable.style.borderCollapse="collapse";
 	tTag.appendChild(tTable);
+	let tCharaSkill=CharaList.getCharaClass(aNum).getCharaData().DECK;
 	let tContents="";
 	for(let i=0;i<15;i++){
 		let tCardNum=i+1;
@@ -266,13 +262,7 @@ function displayDeckData(aNum){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = "";
-			for(var j=0;j<mSkillList.length;j++){
-				if(mSkillList[j].NUMBER==charas[aNum].DECK[i]){
-					tSkillText=mSkillList[j].TEXT;
-					break;
-				}
-			}
+			var tSkillText = tCharaSkill[i].TEXT;
 			tContents+=tSkillText;
 			tContents+="</td>";
 		}
@@ -285,13 +275,7 @@ function displayDeckData(aNum){
 			else
 			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = "";
-			for(var j=0;j<mSkillList.length;j++){
-				if(mSkillList[j].NUMBER==charas[aNum].DECK[i]){
-					tSkillText=mSkillList[j].TEXT;
-					break;
-				}
-			}
+			var tSkillText = tCharaSkill[i].TEXT;
 			tContents+=tSkillText;
 			tContents+="</td></tr>";
 		}

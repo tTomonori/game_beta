@@ -6,5 +6,15 @@ class CharaList{
 
 CharaList.classList=[
 	Varukiri,
-	Ransurotto
+	Ransurotto,
+	Ookuninusi,
+	Sirufe,
+	Fabuniru,
+	Munin,
+	Zero,
+	Pathi,
+	Rozetta,
+	Gabera,
+	Guren,
+	Fureiya
 ]

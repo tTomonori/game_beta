@@ -105,6 +105,9 @@ class Chara{
 	getTeam(){
 		return this.team;
 	}
+	getDeck(){
+		return this.deck.concat();
+	}
 	getSkill(aNum){
 		if(aNum=="A") aNum=0;
 		else if(aNum=="J") aNum=10;
@@ -273,8 +276,8 @@ class Chara{
 		(aMp>0)?freeLog(this,"MP",aMp+"回復"):freeLog(this,"MP",-aMp+"減少");
 	}
 	//変身する
-	transform(aCharaNum){
-		let tChara=mFunnel[aCharaNum]
+	transform(aCharaData){
+		let tChara=aCharaData;
 		this.HP+=(tChara.HP-this.originalHP);
 		this.ATK+=(tChara.ATK-this.originalATK);
 		this.DEF+=(tChara.DEF-this.originalDEF);

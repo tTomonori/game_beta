@@ -33,7 +33,7 @@ function connectServer(aIpAdress){
 		}
 		else if(mMyPlayerNum==2){
 			$("#text")[0].textContent="あなたはFチームです"
-			mMyTeam="F";
+			mMyTeam=["F"];
 			for(let i=0;i<mMyCharas.length;i++)
 				if(mMyCharas[i]=="T") mMyCharas[i]="F";
 			mSelectedCharas=data.concat(mMyCharas);

@@ -1,62 +1,30 @@
-class Varukiri extends Chara{
+class Guren extends Chara{
 	static getText(){
 		//キャラ説明
-		return "ディフェンスタイプ：<br>標準的な能力とスキルを持っている";
+		return "アタックタイプ：<br>遠距離からの攻撃を得意とする";
 	}
 	constructor(aX,aY,aTeam){
-		let tData=Varukiri.getCharaData();
+		let tData=Guren.getCharaData();
 		super(aX,aY,aTeam,tData);
 		this.data=tData;
 	}
 	static getCharaData(){
-		return {NAME:"ヴァルキリー",
-						HP:100,
+		return {NAME:"グレン",
+						HP:80,
 						MP:5,
-						ATK:20,
-						DEF:35,
-						SPD:20,
+						ATK:27,
+						DEF:24,
+						SPD:24,
 						MOV:2,
-						TYPE:"spade",
-						IMAGE:1345010001,
-						DECK:Varukiri.getDeck()
+						TYPE:"club",
+						IMAGE:1023010001,
+						DECK:Guren.getDeck()
 		}
 	}
 	static getDeck(){
 		return [
-			{NUMBER:101,
-				TEXT:"隣のマスに威力５のダメージ",
-				RANGE:[["distance",1]],
-				POWER:5,
-				DELAY:0,
-				MAGIC:0,
-				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
-				SUPPORT_Be_Enemy:[],
-				SUPPORT_Af_Enemy:[],
-				SUPPORT_Otherwise:[],
-				M_ATTACK:0,
-				F_ATTACK:false,
-		    E_ATTACK:true,
-				ANIMATION:[4]
-			},
-			{NUMBER:102,
-				TEXT:"２マス隣に威力４のダメージ",
-				RANGE:[["distance",2]],
-				POWER:4,
-				DELAY:0,
-				MAGIC:0,
-				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
-				SUPPORT_Be_Enemy:[],
-				SUPPORT_Af_Enemy:[],
-				SUPPORT_Otherwise:[],
-				M_ATTACK:0,
-				F_ATTACK:false,
-		    E_ATTACK:true,
-				ANIMATION:[0]
-			},
-			{NUMBER:103,
-				TEXT:"３マス隣に威力４のダメージ",
+			{NUMBER:1101,
+				TEXT:"３マス隣のマスに威力４のダメージ",
 				RANGE:[["distance",3]],
 				POWER:4,
 				DELAY:0,
@@ -69,9 +37,41 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[0]
+				ANIMATION:[24]
 			},
-			{NUMBER:104,
+			{NUMBER:1102,
+				TEXT:"４マス隣に威力４のダメージ",
+				RANGE:[["distance",4]],
+				POWER:4,
+				DELAY:0,
+				MAGIC:0,
+				SUPPORT_Be_Myself:[],
+				SUPPORT_Af_Myself:[],
+				SUPPORT_Be_Enemy:[],
+				SUPPORT_Af_Enemy:[],
+				SUPPORT_Otherwise:[],
+				M_ATTACK:0,
+				F_ATTACK:false,
+		    E_ATTACK:true,
+				ANIMATION:[24]
+			},
+			{NUMBER:1103,
+				TEXT:"５マス隣に威力４のダメージ",
+				RANGE:[["distance",5]],
+				POWER:4,
+				DELAY:0,
+				MAGIC:0,
+				SUPPORT_Be_Myself:[],
+				SUPPORT_Af_Myself:[],
+				SUPPORT_Be_Enemy:[],
+				SUPPORT_Af_Enemy:[],
+				SUPPORT_Otherwise:[],
+				M_ATTACK:0,
+				F_ATTACK:false,
+		    E_ATTACK:true,
+				ANIMATION:[24]
+			},
+			{NUMBER:1104,
 				TEXT:"縦一列に威力３のダメージ",
 				RANGE:[["vertical",1]],
 				POWER:3,
@@ -85,9 +85,9 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[0]
+				ANIMATION:[24]
 			},
-			{NUMBER:105,
+			{NUMBER:1105,
 				TEXT:"横一列に威力３ダメージ",
 				RANGE:[["horizontal",1]],
 				POWER:3,
@@ -101,9 +101,9 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[0]
+				ANIMATION:[37]
 			},
-			{NUMBER:106,
+			{NUMBER:1106,
 				TEXT:"十字に威力２ダメージ",
 				RANGE:[["vertical",1],["horizontal",1]],
 				POWER:2,
@@ -117,7 +117,7 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[0]
+				ANIMATION:[37]
 			},
 			{NUMBER:7,
 				TEXT:"シャッフルしてもう一度行動",
@@ -135,11 +135,11 @@ class Varukiri extends Chara{
 				E_ATTACK:true,
 				ANIMATION:[0]
 			},
-			{NUMBER:108,
-				TEXT:"相手全体に威力２のダメージ（DELAY　１０）",
+			{NUMBER:1108,
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
-				DELAY:10,
+				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[],
@@ -149,11 +149,27 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[5]
+				ANIMATION:[37]
 			},
-			{NUMBER:109,
-				TEXT:"周囲８マスに威力３のダメージ",
-				RANGE:[["square",3]],
+			{NUMBER:1109,
+				TEXT:"外周マスに威力４のダメージ",
+				RANGE:[["around",1]],
+				POWER:4,
+				DELAY:0,
+				MAGIC:0,
+				SUPPORT_Be_Myself:[],
+				SUPPORT_Af_Myself:[],
+				SUPPORT_Be_Enemy:[],
+				SUPPORT_Af_Enemy:[],
+				SUPPORT_Otherwise:[],
+				M_ATTACK:0,
+				F_ATTACK:false,
+		    E_ATTACK:true,
+				ANIMATION:[37]
+			},
+			{NUMBER:1110,
+				TEXT:"外周から１マス内側のマスに威力３のダメージ",
+				RANGE:[["around",2]],
 				POWER:3,
 				DELAY:0,
 				MAGIC:0,
@@ -165,39 +181,23 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[3]
+				ANIMATION:[37]
 			},
-			{NUMBER:110,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ（DELAY　５）",
-				RANGE:[["distance",1]],
-				POWER:7,
-				DELAY:5,
-				MAGIC:0,
+			{NUMBER:1111,
+				TEXT:"敵全体に威力５のダメージ（消費MP５）",
+				RANGE:[["enemy"]],
+				POWER:5,
+				DELAY:0,
+				MAGIC:5,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
 				M_ATTACK:0,
-				F_ATTACK:true,
-		    E_ATTACK:true,
-				ANIMATION:[4,3]
-			},
-			{NUMBER:111,
-				TEXT:"周囲１２マスに威力５のダメージ（自傷　威力１）",
-				RANGE:[["circumference",2]],
-				POWER:5,
-				DELAY:0,
-				MAGIC:0,
-				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
-				SUPPORT_Be_Enemy:[],
-				SUPPORT_Af_Enemy:[],
-				SUPPORT_Otherwise:[],
-				M_ATTACK:1,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[3]
+				ANIMATION:[36]
 			},
 			{NUMBER:112,
 				TEXT:"自分に威力５の回復（消費MP３）",
@@ -231,7 +231,7 @@ class Varukiri extends Chara{
 		    E_ATTACK:false,
 				ANIMATION:[7]
 			},
-			{NUMBER:114,
+			{NUMBER:1114,
 				TEXT:"相手全体に威力5のダメージ その後シャッフル",
 				RANGE:[["enemy"]],
 				POWER:5,
@@ -245,7 +245,7 @@ class Varukiri extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[34]
+				ANIMATION:[36]
 			},
 			{NUMBER:0,
 					TEXT:"スカ　何も起こらない",
@@ -260,7 +260,7 @@ class Varukiri extends Chara{
 					SUPPORT_Otherwise:[["revers"]],
 					M_ATTACK:0,
 					F_ATTACK:false,
-			    E_ATTACK:true,
+					E_ATTACK:true,
 					ANIMATION:[0]
 				},]
 	}

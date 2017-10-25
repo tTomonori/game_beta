@@ -183,7 +183,6 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 							attackAnimate(aAttackChara,aDamagedTeam[aI],aSkill.ANIMATION,()=>{res();});
 						}).then(()=>{
 							if(aDamagedTeam[aI].addDamage(tDamage)=="down") return;
-							console.log("not down")
 							//サポート効果敵　後
 							Support(aSkill.SUPPORT_Af_Enemy.concat(),aDamagedTeam[aI]).then(()=>{
 								displayStatus();

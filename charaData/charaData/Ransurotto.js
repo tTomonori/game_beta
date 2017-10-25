@@ -1,9 +1,15 @@
 class Ransurotto extends Chara{
 	static getText(){
+		//キャラ説明
 		return "アタックタイプ：<br>標準的な能力とスキルを持っている";
 	}
 	constructor(aX,aY,aTeam){
-		let tData={NAME:"ランスロット",
+		let tData=Ransurotto.getCharaData();
+		super(aX,aY,aTeam,tData);
+		this.data=tData;
+	}
+	static getCharaData(){
+		return {NAME:"ランスロット",
 						HP:100,
 						MP:5,
 						ATK:30,
@@ -14,8 +20,6 @@ class Ransurotto extends Chara{
 						IMAGE:1055010001,
 						DECK:Ransurotto.getDeck()
 		}
-		super(aX,aY,aTeam,tData);
-		this.data=tData;
 	}
 	static getDeck(){
 		return [
