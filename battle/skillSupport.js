@@ -15,13 +15,13 @@ function SupportPlay(aSupportnums,aChara){
 	let tTurnChara=mTurnChara;
 	let tMyselfFlag=(tTurnChara==aChara);//trueならスキル使用者と受け手が同じ
 	let tCard=Feild.getCard(aChara.x,aChara.y);//使用者がいるマス
-	let tValue=aSupportnums[1];
-	if(aSupportnums[2]!=undefined){
-		if(aChara.TYPE==tCard.getSoot()) tValue+=aSupportnums[2];
+	let tValue=aSupportnums.value;
+	if(aSupportnums.additionOfMatchingType!=undefined){
+		if(aChara.TYPE==tCard.getSoot()) tValue+=aSupportnums.additionOfMatchingType;
 	}
 	let tAnimation;
 	return new Promise((res,rej)=>{
-		switch (aSupportnums[0]) {
+		switch (aSupportnums.effect) {
 			case "shuffle"://シャッフルする
 				addLog("シャッフル");
 				Feild.shuffleAnimate().then(()=>{
@@ -76,6 +76,11 @@ function SupportPlay(aSupportnums,aChara){
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
 				aChara.plusOriginStatus(aSupportnums[0],tValue);
 				res()})
+				break;
+			case "mine"://地雷
+				tAnimation=[36];
+				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
+				})
 				break;
 			case 6:
 

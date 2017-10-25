@@ -11,6 +11,7 @@ class Card{
 			this.shuffledFunction.push([()=>{this.makeRevers();},true])
 		}
 		this.createCardImage();
+		this.trapEffect=new Array();
 	}
 	//カードのタグを生成
 	createCardImage(){
@@ -77,5 +78,17 @@ class Card{
 				this.shuffledFunction.splice(i,1);
 			}
 		}
+	}
+	//マス効果追加
+	setTrap(aEffect){
+		this.trapEffect.push(aEffect);
+	}
+	//マス効果発動
+	trap(aChara){
+		return new Promise((res,rej)=>{
+			Support(aEffect,aChara).then(()=>{
+
+			})
+		})
 	}
 }
