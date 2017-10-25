@@ -22,7 +22,8 @@
 		<img src="../image/chara/2_stand/1345010201.png" style="margin-top: -22%;margin-left: -15%;width:70%">
 	</div>
 	<div id="menu" style="position: fixed; top:400px;left: 500px;text-align:center">
-		<input id="start" type="button" value="START" onclick="start()">
+		<input id="start" type="button" value="START" onclick="start()"><br>
+		<input id="start" type="button" value="遊び方" onclick="manual()">
 		<div style="margin-top: -100px">
 		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none;">
 		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
@@ -42,6 +43,9 @@
 function start(){
 	$("#start")[0].style.display="none";
 	$(".member").css("display","block");
+}
+function manual(){
+    location.href = "../manual/manual.html";
 }
 //2Pは 0:プレイヤー,他:AIの番号
 function member(aNum){

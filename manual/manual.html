@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>manual</title>
+</head>
+<script>
+	// You can also require other files to run in this process
+	require('../renderer.js')
+	const $=require("jquery");
+	const electron=require("electron");
+	const ipc=electron.ipcRenderer;
+</script>
+<body>
+	<img src="../image/manual/スライド1.PNG" id="manual" style="width:100%;height: 100%; overflow: hidden;">
+	<input type="button" value="進む" onclick="next()" style="position: absolute; top: 400px;left: 800px">
+	<input type="button" value="戻る" onclick="back()" style="position: absolute; top: 400px;left: 100px">
+</body>
+<script>
+	var thisPage = 1;
+	var slideNum = 11;
+	function next() {
+		thisPage++;
+		if(thisPage>slideNum) location.href = "../title/title.html";
+		else $("#manual")[0].src = '../image/manual/スライド'+thisPage+'.PNG';
+	}
+	function back(){
+		thisPage--;
+		if(thisPage==0) location.href = "../title/title.html";
+		else $("#manual")[0].src = '../image/manual/スライド'+thisPage+'.PNG';
+	}
+</script>
+</html>
