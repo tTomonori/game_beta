@@ -57,7 +57,7 @@ function SupportPlay(aSupportnums,aChara){
 			case "mov"://mov変化
 				tAnimation=(tValue>0)?[19]:[20];
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
-					aChara.plusStatus(aSupportnums[0],tValue);
+					aChara.plusStatus(aSupportnums.effect,tValue);
 					res()})
 				break;
 			case "resetStatus"://ステーテスを初期値に戻す
@@ -67,7 +67,7 @@ function SupportPlay(aSupportnums,aChara){
 				break;
 			case "transform"://変身する
 				attackAnimate(tTurnChara,aChara,[7],()=>{
-					aChara.transform(aChara.getTransformData(tValue));
+					aChara.transform(aChara.getTokenData(tValue));
 					res()})
 				break;
 			case "originalHP":
@@ -112,6 +112,15 @@ function SupportPlay(aSupportnums,aChara){
 						if(aChara.addDamage(tValue)!="down")
 							res();
 					})
+				break;
+			case "summon"://召喚
+				let tPosition=mTurnChara.getPosition();
+				let tSummonPosition=new Array();
+				//召喚位置決定
+				tSummonPosition.push({x:tPosition.x+aSupportnums.position[0],y:tPosition.y+aSupportnums.position[1]})
+					mTurnChara.summon(tValue,tSummonPosition,aSupportnums.operationNum,aSupportnums.delay).then(()=>{
+						res();
+				})
 				break;
 			case 6:
 

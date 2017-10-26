@@ -3,9 +3,9 @@ class Munin extends Chara{
 		//キャラ説明
 		return "エンハンスタイプ：<br>自分を強化しながら戦う";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Munin.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

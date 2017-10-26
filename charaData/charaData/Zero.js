@@ -3,9 +3,9 @@ class Zero extends Chara{
 		//キャラ説明
 		return "アタックタイプ：<br>高い攻撃力を持つが攻撃するには代償を払わなくてはならない";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Zero.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

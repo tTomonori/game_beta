@@ -1,9 +1,11 @@
 class Chara{
-	constructor(aX,aY,aTeam,aData){
+	constructor(aX,aY,aTeam,aData,aOperationNum){
 		this.x=aX;
 		this.y=aY;
 		this.team=aTeam;
 		this.teamColor=(this.team=="T")?"rgba(0, 136, 255,0.6)":"rgba(255, 90, 0, 0.6)";
+
+		this.operationNum=aOperationNum//操作法(AIか通信か...)
 
 		this.NAME=aData.NAME;
 		this.originalHP=aData.HP;
@@ -180,7 +182,7 @@ class Chara{
 		(aValue>0)?freeLog(this,aStatus,aValue+"アップ"):freeLog(this,aStatus,-aValue+"ダウン");
 	}
 	//初期ステータス増減(現在はHPとMPのみ想定(=最大HP,MP変更))
-	plusOriginStatus(aStatus,tValue){
+	plusOriginStatus(aStatus,aValue){
 		this[aStatus]+=aValue;
 		if(this[aStatus]<0) this[aStatus]=0;//0未満にはならない
 		(aValue>0)?freeLog(this,"最大"+aStatus,aValue+"アップ"):freeLog(this,"最大"+aStatus,-aValue+"ダウン");
@@ -304,6 +306,19 @@ class Chara{
 		this.image=tChara.IMAGE;
 		this.deck=tChara.DECK;
 		this.img.src=this.getActorUrl();
+	}
+	//召喚する
+	summon(aTokenNum,aSummonPosition,aOperationNum){
+		return new Promise((res,rej)=>{
+			let tTokenClass=this.getTokenClass(aTokenNum);
+			let tMyPosition=this.getPosition();
+			let tPosition=(this.getTeam()=="T")?
+				{x:tMyPosition.x+aSummonPosition.x,y:tMyPosition.y+aSummonPosition.y}:
+				{x:tMyPosition.x-aSummonPosition.x,y:tMyPosition.y+aSummonPosition.y};
+			let tChara=new tTokenClass(tPosition.x,tPosition.y,this.getTeam(),aOperationNum);
+			addChara(tChara);
+			res();
+		})
 	}
 	//マウスオーバーでステータス表示
 	setMouseOver(){

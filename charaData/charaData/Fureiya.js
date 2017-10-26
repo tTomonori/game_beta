@@ -3,9 +3,9 @@ class Fureiya extends Chara{
 		//キャラ説明
 		return "ディフェンスタイプ：<br>回復スキルを持たないが、毎ターンHPが微量回復する";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Fureiya.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

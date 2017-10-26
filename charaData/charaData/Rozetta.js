@@ -3,9 +3,9 @@ class Rozetta extends Chara{
 		//キャラ説明
 		return "エンハンスタイプ：<br>覚醒し変身を繰り返すことにより強力なスキルを放てるようになる";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Rozetta.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){
@@ -309,7 +309,7 @@ class Rozetta extends Chara{
 		if(aNum==undefined) return tData;
 		else return tData[aNum];
 	}
-	static getDeckTrans0(){
+	static getDeckTransform0(){
 		return [
 			{NUMBER:921,
 				TEXT:"隣のマスに威力3のダメージ(覚醒により威力強化)",
@@ -552,7 +552,7 @@ class Rozetta extends Chara{
 					ANIMATION:[0]
 				},]
 	}
-	static getDeckTrans1(){
+	static getDeckTransform1(){
 		return [
 			{NUMBER:941,
 				TEXT:"隣のマスに威力5のダメージ(覚醒により威力強化)",
@@ -795,7 +795,7 @@ class Rozetta extends Chara{
 					ANIMATION:[0]
 				},]
 	}
-	static getDeckTrans2(){
+	static getDeckTransform2(){
 		return [
 			{NUMBER:961,
 				TEXT:"隣のマスに威力8のダメージ(覚醒により威力強化)",

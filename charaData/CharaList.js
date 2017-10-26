@@ -17,5 +17,6 @@ CharaList.classList=[
 	Gabera,
 	Guren,
 	Fureiya,
-	Gureisu
+	Gureisu,
+	Seren
 ]

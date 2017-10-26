@@ -3,9 +3,9 @@ class Guren extends Chara{
 		//キャラ説明
 		return "アタックタイプ：<br>遠距離からの攻撃を得意とする";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Guren.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

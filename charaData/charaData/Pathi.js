@@ -3,9 +3,9 @@ class Pathi extends Chara{
 		//キャラ説明
 		return "ジャマ―タイプ：<br>敵の妨害をするのが得意";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Pathi.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

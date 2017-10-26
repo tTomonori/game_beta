@@ -3,9 +3,9 @@ class Ookuninusi extends Chara{
 		//キャラ説明
 		return "ディフェンスタイプ：<br>自分のタイプを変更しながら戦う";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Ookuninusi.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	// endTurn(aDelay){

@@ -3,9 +3,9 @@ class Gabera extends Chara{
 		//キャラ説明
 		return "スキルタイプ：<br>2種類の形態を切り替えて戦う";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Gabera.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){
@@ -127,10 +127,10 @@ class Gabera extends Chara{
 				DELAY:0,
 				MAGIC:1,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[["getTurn"]],
+				SUPPORT_Af_Myself:[{effect:"getTurn"}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
-				SUPPORT_Otherwise:[["shuffle"]],
+				SUPPORT_Otherwise:[{effect:"shuffle"}],
 				M_ATTACK:0,
 				F_ATTACK:false,
 				E_ATTACK:true,
@@ -287,7 +287,7 @@ class Gabera extends Chara{
 		if(aNum==undefined) return tData;
 		else return tData[aNum];
 	}
-	static getDeckTrans0(){
+	static getDeckTransform0(){
 		return [
 			{NUMBER:1021,
 				TEXT:"通常形態へ変身し、デッキを変更する　もう一度行動する",

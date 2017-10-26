@@ -3,9 +3,9 @@ class (キャラ名) extends Chara{
 		//キャラ説明
 		return "タイプ：<br>";
 	}
-	constructor(aX,aY,aTeam){
-		let tData=(キャラ名).getDeck();
-		super(aX,aY,aTeam,tData);
+	constructor(aX,aY,aTeam,aOperationNum){
+		let tData=(キャラ名).getCharaData();
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

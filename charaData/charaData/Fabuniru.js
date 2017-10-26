@@ -3,9 +3,9 @@ class Fabuniru extends Chara{
 		//キャラ説明
 		return "スキルタイプ：<br>ジョーカーで強力なスキルを発動できるが魔力を多く必要とする";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Fabuniru.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

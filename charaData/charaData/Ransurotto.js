@@ -3,9 +3,9 @@ class Ransurotto extends Chara{
 		//キャラ説明
 		return "アタックタイプ：<br>標準的な能力とスキルを持っている";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Ransurotto.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

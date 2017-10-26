@@ -3,9 +3,9 @@ class Varukiri extends Chara{
 		//キャラ説明
 		return "ディフェンスタイプ：<br>標準的な能力とスキルを持っている";
 	}
-	constructor(aX,aY,aTeam){
+	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Varukiri.getCharaData();
-		super(aX,aY,aTeam,tData);
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
 	static getCharaData(){

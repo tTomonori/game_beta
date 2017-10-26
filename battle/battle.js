@@ -90,12 +90,13 @@ else if(tFNum==3){
 //実際に配置
 for(let i=0;i<mSelectedCharas.length;i+=2){
 	let tCharaClass=CharaList.getCharaClass(mSelectedCharas[i]);
+	let tOperationNum=(mMyTeam.indexOf(mSelectedCharas[i+1])!=-1)?0:mPlayerNum;
 	if(mSelectedCharas[i+1]=="T"){
-		mTrueTeam.push(new tCharaClass(tTCharaPosition[0][0],tTCharaPosition[0][1],"T"))
+		mTrueTeam.push(new tCharaClass(tTCharaPosition[0][0],tTCharaPosition[0][1],"T",tOperationNum))
 		tTCharaPosition.shift()
 	}
 	else{
-		mFalseTeam.push(new tCharaClass(tFCharaPosition[0][0],tFCharaPosition[0][1],"F"))
+		mFalseTeam.push(new tCharaClass(tFCharaPosition[0][0],tFCharaPosition[0][1],"F",tOperationNum))
 		tFCharaPosition.shift()
 	}
 }
@@ -142,6 +143,26 @@ function changeText(aText){
 	$("#text")[0].innerHTML=aText;
 
 }
+
+function addChara(aChara){
+	let tTeam=(aChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
+	tTeam.push(aChara);
+	mDelayList.push(aChara);
+}
+function removeChara(aChara){
+	let tTeam=(aChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
+	for(let i=0;i<tTeam.length;i++){
+		if(tTeam[i]==aChara){
+			tTeam.splice(i,1);
+		}
+	}
+	for(let i=0;i<mDelayList.length;i++){
+		if(mDelayList[i]==aChara){
+			mDelayList.splice(i,1);
+		}
+	}
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
