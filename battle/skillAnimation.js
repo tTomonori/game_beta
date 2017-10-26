@@ -229,8 +229,11 @@ function getEffectFileName(aNum){
 	if(Number(aNum)<21){
 		tFolderName="戦闘エフェクトアニメ1";
 	}
-	else{
+	else if(Number(aNum)<43){
 		tFolderName="戦闘エフェクトアニメ２";
+	}
+	else if(Number(aNum)<72){
+		tFolderName="戦闘エフェクトアニメ８";
 	}
 	return "../image/animation/"+tFolderName+"/320×240/pipo-btleffect"+aNum+".png";
 }

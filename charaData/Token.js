@@ -8,9 +8,16 @@ class Token extends Chara{
 		this.Delay=0;
 		this.addDelay(aDelay);
 	}
+	setId(aId){
+		this.container.id=aId;
+	}
 	//倒された(オーバーライド)
 	down(){
-		this.container.remove();
-		removeChara(this);
+		return new Promise((res,rej)=>{
+			this.container.remove();
+			removeChara(this);
+			freeLog(this,"召喚","解除された")
+			res();
+		})
 	}
 }

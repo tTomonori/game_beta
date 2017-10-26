@@ -3,9 +3,9 @@ class Goremu extends Token{
 		//キャラ説明
 		return "トークン：<br>セレンのスキルによって召喚される";
 	}
-	constructor(aX,aY,aTeam,aOperationNum){
+	constructor(aX,aY,aTeam,aOperationNum,aDelay){
 		let tData=Goremu.getCharaData();
-		super(aX,aY,aTeam,tData,aOperationNum);
+		super(aX,aY,aTeam,tData,aOperationNum,aDelay);
 		this.data=tData;
 	}
 	static getCharaData(){

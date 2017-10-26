@@ -25,6 +25,8 @@ class Chara{
 		this.deck=aData.DECK
 		this.image=aData.IMAGE;
 		this.Delay=Math.floor(mSetDelay/(this.SPD*(makeRandom()*0.2+0.9)));
+
+		this.summonNum=0;//召喚した回数
 	}
 	initDisplay(){
 		//キャラ画像
@@ -204,71 +206,80 @@ class Chara{
 	}
 	//ダメージを与える(引数が負なら回復)
 	addDamage(aDamage){
-		if(aDamage==0) return;
-		let tBar=this.getHPBar();
-		this.HP-=aDamage;
-		//HP超過
-		if(this.HP>this.originalHP) this.HP=this.originalHP;
-		if(this.HP<=0){
-			//戦闘不能
-			this.HP=0
-		}
-		//ログ
-		damageLog(this,aDamage);
-		//HP変化アニメーション
-		let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[this.y].getElementsByTagName("td")[this.x];
-		let tPosition=tCardCell.getBoundingClientRect();
-		let tBarContainer=document.createElement("div");
-		tBarContainer.id=this.NAME+this.team+"HPBarAnimation";
-		tBarContainer.style.zIndex="1";
-		tBarContainer.style.position="absolute";
-		tBarContainer.style.pointerEvents="none";
-		tBarContainer.style.marginLeft=(tPosition.left+5)+"px";
-		tBarContainer.style.marginTop=(tPosition.top-5)+"px";
-		tBarContainer.style.top="0";
-		tBarContainer.style.left="0";
-		tBarContainer.style.width="64px";
-		tBarContainer.style.height="70px";
-		tBarContainer.innerHTML=tBar;
-		tBarContainer.firstChild.style.width="100%";
-		$("#field")[0].appendChild(tBarContainer);
-		let tBarId=tBarContainer.id+"CurrentHPBar";
-		tBarContainer.firstChild.firstChild.id=tBarId;
-		let tDamageChar=document.createElement("b");
-		tDamageChar.id=this.NAME+this.team+"DamageChar";
-		tDamageChar.innerHTML=-aDamage;
-		tDamageChar.style.position="absolute";
-		tDamageChar.style.top="0";
-		tDamageChar.style.left="0";
-		tDamageChar.style.width="100%";
-		tDamageChar.style.height="100%";
-		tDamageChar.style.fontSize="30px";
-		tDamageChar.style.textAlign="center";
-		tDamageChar.style.color=(aDamage>0)?"#f00":"#0f0";
-		tBarContainer.appendChild(tDamageChar);
-		//アニメーションの実行
-		(aDamage>0)?this.setImgaeNum(0,4):this.setImgaeNum(5,5);
-		$("#"+tDamageChar.id).animate({
-			top:"-20px"
-		},1000,"linear",()=>{
-			tDamageChar.remove();
-		});
-		$("#"+tBarId).animate({
-			width:(this.HP/this.originalHP*100)+"%"
-		},700,"linear",()=>{
-			if(this.HP>0)
+		return new Promise((res,rej)=>{
+			if(aDamage==0) return;
+			let tBar=this.getHPBar();
+			this.HP-=aDamage;
+			//HP超過
+			if(this.HP>this.originalHP) this.HP=this.originalHP;
+			if(this.HP<=0){
+				//戦闘不能
+				this.HP=0
+			}
+			//ログ
+			damageLog(this,aDamage);
+			//HP変化アニメーション
+			let tCardCell=$("#cardTable")[0].getElementsByTagName("tr")[this.y].getElementsByTagName("td")[this.x];
+			let tPosition=tCardCell.getBoundingClientRect();
+			let tBarContainer=document.createElement("div");
+			tBarContainer.id=this.NAME+this.team+"HPBarAnimation";
+			tBarContainer.style.zIndex="1";
+			tBarContainer.style.position="absolute";
+			tBarContainer.style.pointerEvents="none";
+			tBarContainer.style.marginLeft=(tPosition.left+5)+"px";
+			tBarContainer.style.marginTop=(tPosition.top-5)+"px";
+			tBarContainer.style.top="0";
+			tBarContainer.style.left="0";
+			tBarContainer.style.width="64px";
+			tBarContainer.style.height="70px";
+			tBarContainer.innerHTML=tBar;
+			tBarContainer.firstChild.style.width="100%";
+			$("#field")[0].appendChild(tBarContainer);
+			let tBarId=tBarContainer.id+"CurrentHPBar";
+			tBarContainer.firstChild.firstChild.id=tBarId;
+			let tDamageChar=document.createElement("b");
+			tDamageChar.id=this.NAME+this.team+"DamageChar";
+			tDamageChar.innerHTML=-aDamage;
+			tDamageChar.style.position="absolute";
+			tDamageChar.style.top="0";
+			tDamageChar.style.left="0";
+			tDamageChar.style.width="100%";
+			tDamageChar.style.height="100%";
+			tDamageChar.style.fontSize="30px";
+			tDamageChar.style.textAlign="center";
+			tDamageChar.style.color=(aDamage>0)?"#f00":"#0f0";
+			tBarContainer.appendChild(tDamageChar);
+			//アニメーションの実行
+			(aDamage>0)?this.setImgaeNum(0,4):this.setImgaeNum(5,5);
+			$("#"+tDamageChar.id).animate({
+				top:"-20px"
+			},1000,"linear",()=>{
+				tDamageChar.remove();
+			});
+			$("#"+tBarId).animate({
+				width:(this.HP/this.originalHP*100)+"%"
+			},700,"linear",()=>{
+				if(this.HP>0)
 				this.setImgaeNum(0,0);
-			setTimeout(()=>{tBarContainer.remove()},500);
+				setTimeout(()=>{tBarContainer.remove()},500);
+			})
+			if(this.HP<=0){
+				this.down().then(()=>{
+					res();
+				})
+			}
+			else{
+				res();
+			}
 		})
-		if(this.HP<=0){
-			this.down();
-			return "down";
-		}
 	}
 	//倒された
 	down(){
-		this.setImgaeNum(6,5);
-		this.team=="T"?winner("F"):winner("T");
+		new Promise((res,rej)=>{
+			this.setImgaeNum(6,5);
+			this.team=="T"?winner("F"):winner("T");
+			// res() //バトルの進行を止めるためresを返さない
+		})
 	}
 	//スキルを使用するためのMP消費(ログを出さない)
 	useMp(aMp){
@@ -308,16 +319,35 @@ class Chara{
 		this.img.src=this.getActorUrl();
 	}
 	//召喚する
-	summon(aTokenNum,aSummonPosition,aOperationNum){
+	summon(aTokenNum,aSummonPosition,aOperationNum,aDelay){
+		this.summonNum++;
 		return new Promise((res,rej)=>{
 			let tTokenClass=this.getTokenClass(aTokenNum);
 			let tMyPosition=this.getPosition();
-			let tPosition=(this.getTeam()=="T")?
+			let tSummonPosition=(this.getTeam()=="T")?
 				{x:tMyPosition.x+aSummonPosition.x,y:tMyPosition.y+aSummonPosition.y}:
 				{x:tMyPosition.x-aSummonPosition.x,y:tMyPosition.y+aSummonPosition.y};
-			let tChara=new tTokenClass(tPosition.x,tPosition.y,this.getTeam(),aOperationNum);
+			if(!(0<=tSummonPosition.x&&tSummonPosition.x<=7&&0<=tSummonPosition.y&&tSummonPosition.y<=6)){//フィールドの外に召喚しようとした
+				addLog("召喚に失敗した");
+				res();
+				return;
+			}
+			for(let i=0;i<mDelayList.length;i++){//他のキャラがいるマスに召喚しようとした
+				let tPosition=mDelayList[i].getPosition();
+				if(tSummonPosition.x==tPosition.x&&tSummonPosition.y==tPosition.y){
+					addLog("召喚に失敗した");
+					res();
+					return;
+				}
+			}
+			let tChara=new tTokenClass(tSummonPosition.x,tSummonPosition.y,this.getTeam(),aOperationNum,aDelay);
+			tChara.initDisplay();
+			tChara.setId(this.container.id+"summoned"+this.summonNum);
 			addChara(tChara);
-			res();
+			attackAnimate(this,tChara,[7],()=>{
+				freeLog(tChara,"召喚","成功した");
+				res();
+			})
 		})
 	}
 	//マウスオーバーでステータス表示

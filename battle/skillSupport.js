@@ -115,10 +115,8 @@ function SupportPlay(aSupportnums,aChara){
 				break;
 			case "summon"://召喚
 				let tPosition=mTurnChara.getPosition();
-				let tSummonPosition=new Array();
 				//召喚位置決定
-				tSummonPosition.push({x:tPosition.x+aSupportnums.position[0],y:tPosition.y+aSupportnums.position[1]})
-					mTurnChara.summon(tValue,tSummonPosition,aSupportnums.operationNum,aSupportnums.delay).then(()=>{
+					mTurnChara.summon(tValue,aSupportnums.position,aSupportnums.operationNum,aSupportnums.delay).then(()=>{
 						res();
 				})
 				break;

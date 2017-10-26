@@ -1,49 +1,27 @@
-class Seren extends Chara{
+class Satan extends Token{
 	static getText(){
 		//キャラ説明
-		return "タイプ：<br>";
+		return "トークン：<br>ザーウィンのスキルによって召喚される";
 	}
-	constructor(aX,aY,aTeam,aOperationNum){
-		let tData=Seren.getCharaData();
-		super(aX,aY,aTeam,tData,aOperationNum);
+	constructor(aX,aY,aTeam,aOperationNum,aDelay){
+		let tData=Satan.getCharaData();
+		super(aX,aY,aTeam,tData,aOperationNum,aDelay);
 		this.data=tData;
 	}
 	static getCharaData(){
-		return {NAME:"セレン",
-						HP:100,
-						MP:10,
-						ATK:20,
+		return {NAME:"サタン",
+						HP:30,
+						MP:5,
+						ATK:22,
 						DEF:20,
 						SPD:20,
 						MOV:2,
 						TYPE:"diamond",
-						IMAGE:1467010001,
-						DECK:Seren.getDeck()
+						IMAGE:1114010001,
+						DECK:Satan.getDeck()
 		}
 	}
-	getActorUrl(){
-		return '../image/chara/3_sv_actors/'+String(this.image+301)+'.png';
-	}
 	static getDeck(){
-		let t={NUMBER:114,
-						TEXT:"前方のマスにゴーレムを召喚する",
-						RANGE:[],
-						POWER:0,
-						DELAY:0,
-						MAGIC:0,
-						SUPPORT_Be_Myself:[],
-						SUPPORT_Af_Myself:[{effect:"summon",value:0,position:{x:1,y:0},operationNum:"player",delay:0}],
-						SUPPORT_Be_Enemy:[],
-						SUPPORT_Af_Enemy:[],
-						SUPPORT_Otherwise:[],
-						M_ATTACK:0,
-						F_ATTACK:false,
-				    E_ATTACK:true,
-						ANIMATION:[]
-					}
-		return [t,t,t,t,t,t,t,t,t,t,t,t,t,t,t]
-	}
-	static getDeck__(){
 		return [
 			{NUMBER:101,
 				TEXT:"隣のマスに威力５のダメージ",
@@ -222,7 +200,7 @@ class Seren extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:112,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力2の回復（消費MP３）",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -232,15 +210,15 @@ class Seren extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-5,
+				M_ATTACK:-2,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[7]
 			},
 			{NUMBER:113,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力2の回復（消費MP４）",
 				RANGE:[["ally"]],
-				POWER:-3,
+				POWER:-2,
 				DELAY:0,
 				MAGIC:4,
 				SUPPORT_Be_Myself:[],
@@ -254,20 +232,20 @@ class Seren extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:114,
-				TEXT:"前方のマスにゴーレムを召喚する",
-				RANGE:[],
-				POWER:0,
+				TEXT:"相手全体に威力5のダメージ その後シャッフル",
+				RANGE:[["enemy"]],
+				POWER:5,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"summon",value:0,position:{x:1,y:0},operationNum:"player",delay:0}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[]
+				ANIMATION:[34]
 			},
 			{NUMBER:0,
 					TEXT:"スカ　何も起こらない",
@@ -285,12 +263,5 @@ class Seren extends Chara{
 			    E_ATTACK:true,
 					ANIMATION:[0]
 				},]
-	}
-	getTokenClass(aNum){
-		return Seren.getTokenClass(aNum);
-	}
-	static getTokenClass(aNum){
-		let tTokenClass=[Goremu];
-		return tTokenClass[aNum];
 	}
 }

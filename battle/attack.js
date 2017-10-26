@@ -135,17 +135,18 @@ function attackMyself(aChara,aSkill,aCard){
 		new Promise((res,rej)=>{
 			attackAnimate(aChara,aChara,tAnimation,()=>{res();})
 		}).then(()=>{
-			if(aChara.addDamage(tDamage)=="down") return;
-			MAres();
+			aChara.addDamage(tDamage).then(()=>{
+				MAres();
+			})
 		})
 	})
 }
 function addDamage(aAttackChara,aMyTeam,aEnemyTeam,aSkill,aCard){
 	return new Promise((res,rej)=>{
 		if(aSkill.E_ATTACK==true){
-			damage(aAttackChara,aEnemyTeam,aSkill,aCard).then(()=>{
+			damage(aAttackChara,aEnemyTeam.concat(),aSkill,aCard).then(()=>{
 				if(aSkill.F_ATTACK==true)
-				damage(aAttackChara,aMyTeam,aSkill,aCard).then(()=>{
+				damage(aAttackChara,aMyTeam.concat(),aSkill,aCard).then(()=>{
 					res();
 				})
 				else res();
@@ -153,7 +154,7 @@ function addDamage(aAttackChara,aMyTeam,aEnemyTeam,aSkill,aCard){
 		}
 		else{
 			if(aSkill.F_ATTACK==true)
-			damage(aAttackChara,aMyTeam,aSkill,aCard).then(()=>{
+			damage(aAttackChara,aMyTeam.concat(),aSkill,aCard).then(()=>{
 				res();
 			})
 			else res();
@@ -167,6 +168,7 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 		//攻撃
 		let tRange=getAttackRange(aSkill.RANGE);
 		if(tRange.length==0) damageRes();
+		let tPromiseNum=aDamagedTeam.length*tRange.length;
 		for(var i=0;i<aDamagedTeam.length;i++){
 			for(var j=0;j<tRange.length;j++){
 				if(aDamagedTeam[i].x==tRange[j][0]&&aDamagedTeam[i].y==tRange[j][1]){
@@ -182,19 +184,24 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 						new Promise((res,rej)=>{
 							attackAnimate(aAttackChara,aDamagedTeam[aI],aSkill.ANIMATION,()=>{res();});
 						}).then(()=>{
-							if(aDamagedTeam[aI].addDamage(tDamage)=="down") return;
-							//サポート効果敵　後
-							Support(aSkill.SUPPORT_Af_Enemy.concat(),aDamagedTeam[aI]).then(()=>{
-								displayStatus();
-								damageRes();
+							aDamagedTeam[aI].addDamage(tDamage).then(()=>{
+								//サポート効果敵　後
+								Support(aSkill.SUPPORT_Af_Enemy.concat(),aDamagedTeam[aI]).then(()=>{
+									displayStatus();
+									tPromiseNum--;
+									if(tPromiseNum<=0)
+										damageRes();
+								})
 							})
 						})
 					})
 				}
 				else{
-					if(i==aDamagedTeam.length-1&&j==tRange.length-1&&!tAttackFlag){
-						damageRes();
-					}
+					// if(i==aDamagedTeam.length-1&&j==tRange.length-1&&!tAttackFlag){
+						tPromiseNum--;
+						if(tPromiseNum<=0)
+							damageRes();
+					// }
 				}
 			}
 		}
