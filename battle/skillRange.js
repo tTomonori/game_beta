@@ -54,18 +54,12 @@ function calcRange(aSkillRange,aPosition){
 				}
 				break;
 			case "ally"://自分以外の味方全体
-				if(mTurnChara.getTeam()=="F"){
-					for (var j=0;j<mFalseTeam.length;j++) {
-						if(mTurnChara[2]!=j)
-						tRange.push([mFalseTeam[j].x,mFalseTeam[j].y]);
-					}
-				}
-				else{
-					for (var j=0;j<mTrueTeam.length;j++) {
-						if(mTurnChara[2]!=j)
-						tRange.push([mTrueTeam[j].x,mTrueTeam[j].y]);
-					}
-				}
+			let tMyTeam=(mTurnChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
+			for(let j=0;j<tMyTeam.length;j++){
+				if(mTurnChara==tMyTeam[i]) continue;
+				let tPosition=tMyTeam[i].getPosition();
+				tRange.push([tPosition.x,tPosition.y]);
+			}
 				break;
 			case "around"://外周からx列目
 					for(var j=tX-1;j<8-tX;j++){

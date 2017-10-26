@@ -22,6 +22,9 @@ for(var i=0;i<mCharaMaxNum;i++){
 }
 
 function list(aNum){
+	if(mSelectPointor==aNum&&judSelectedChara(aNum)){
+		selectChara();
+	}
 	mSelectPointor=aNum;
 	displayCharaData(aNum);
 	displayDeckData(aNum);
@@ -293,7 +296,7 @@ function judSelectedChara(aNum){
 			if(mSelectedCharas[i][0]==aNum){
 				$("#decide")[0].value="選択済みです";
 				$("#decide").prop("disabled",true);
-				break;
+				return false;
 			}
 			else{
 				$("#decide")[0].value="このキャラにする";
@@ -306,7 +309,7 @@ function judSelectedChara(aNum){
 			if(mSelectedCharas[i][0]==aNum){
 				$("#decide")[0].value="選択済みです";
 				$("#decide").prop("disabled",true);
-				break;
+				return false;
 			}
 			else{
 				$("#decide")[0].value="このキャラにする";
@@ -314,4 +317,5 @@ function judSelectedChara(aNum){
 			}
 		}
 	}
+	return true;
 }
