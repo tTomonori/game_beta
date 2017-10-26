@@ -6,6 +6,15 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>manual</title>
 </head>
+<style type="text/css">
+	
+input[type="button"]{
+width: 120px;
+height: 60px;
+font-size: 30px;
+}
+
+</style>
 <script>
 	// You can also require other files to run in this process
 	require('../renderer.js')
@@ -15,8 +24,8 @@
 </script>
 <body>
 	<img src="../image/manual/スライド1.PNG" id="manual" style="width:100%;height: 100%; overflow: hidden;">
-	<input type="button" value="進む" onclick="next()" style="position: absolute; top: 400px;left: 800px">
-	<input type="button" value="戻る" onclick="back()" style="position: absolute; top: 400px;left: 100px">
+	<input type="button" value="進む" onclick="next()" style="position: absolute; top: 600px;left: 800px">
+	<input type="button" value="戻る" onclick="back()" style="position: absolute; top: 600px;left: 50px">
 </body>
 <script>
 	var thisPage = 1;
