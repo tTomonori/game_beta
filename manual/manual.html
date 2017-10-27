@@ -22,8 +22,8 @@ font-size: 30px;
 	const electron=require("electron");
 	const ipc=electron.ipcRenderer;
 </script>
-<body>
-	<img src="../image/manual/スライド1.PNG" id="manual" style="width:100%;height: 100%; overflow: hidden;">
+<body style="margin:0;overflow:hidden;width:100vw;height:100vh;">
+	<img src="../image/manual/スライド1.PNG" id="manual" style="min-width:calc(100% + 2px);min-height: 100%; overflow: hidden;background-size:cover;margin-left:-2px">
 	<button value="進む" onclick="next()" style="position: absolute; top: 600px;left: 800px">進む</button>
 	<button value="戻る" onclick="back()" style="position: absolute; top: 600px;left: 50px">戻る</button>
 </body>
