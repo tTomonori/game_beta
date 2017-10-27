@@ -161,7 +161,7 @@ function attackable(aX,aY){
 					if(tRange[i][0]==tDamageCharas[j].x&&tRange[i][1]==tDamageCharas[j].y){
 						var tDamage = calcDamage(tChara.ATK,tDamageCharas[j].DEF,tSkill.POWER);
 
-						if(tCard[1]==tChara.TYPE){//属性補正
+						if(tCard.getSoot()==tChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
 						//敵へのダメージ
@@ -206,7 +206,7 @@ function attackable(aX,aY){
 			if(tSkill.M_ATTACK!=0){
 				var tDamage = calcDamage(tChara.ATK,tChara.DEF,tSkill.M_ATTACK);
 
-				if(tCard[1]==tChara.TYPE){//属性補正
+				if(tCard.getSoot()==tChara.TYPE){//属性補正
 					tDamage = Math.floor(tDamage*1.5);
 				}
 				//自傷ダメージ
