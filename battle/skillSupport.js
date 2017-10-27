@@ -109,8 +109,9 @@ function SupportPlay(aSupportnums,aChara){
 			case "mine"://地雷
 					tAnimation=[36];
 					attackAnimate(tTurnChara,aChara,tAnimation,()=>{
-						if(aChara.addDamage(tValue)!="down")
+						aChara.addDamage(tValue).then(()=>{
 							res();
+						})
 					})
 				break;
 			case "summon"://召喚
