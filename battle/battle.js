@@ -1,57 +1,39 @@
 //URLから引数を取得
 //[[選択されたキャラクター,チーム],...]
 var mSelectedCharas=location.search.substring(1).split("&")[0].split("=")[1].split(",");
-const mPlayerNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
-var mCommunicationFlag=(mPlayerNum==-1)?true:false;
-var mTurnChara = new Array();//選択キャラ[[delay],[チーム],[番号]]
+var mTurnChara;
 var mMovable = new Array();//移動可能リスト
 //flag==trueのとき操作不能
 var mEventFlag=true;
-//キャラクターのデータを取得
-// var mCharaData=loadChara();
 //delayのリスト
 var mDelayList = new Array();
 
-//トランプ
-// var mCard=new Array();
-
 var mMyTeam=["T"];
-if(mPlayerNum==0) mMyTeam=["T","F"];
-
 //チームのリスト
 var mTrueTeam=new Array();
 var mFalseTeam=new Array();
 
+let start;//バトル開始関数
 
-// var mBattleBoard=new Array();
-//トランプ＋２枚生成
-// for(let i=0;i<56;i++){
-// 	let tMark;
-// 	//0から12がスペード
-// 	if(0<=i&&i<=12) tMark="spade";
-// 	//13から25がクラブ
-// 	if(13<=i&&i<=25) tMark="club";
-// 	//26から38がダイヤ
-// 	if(26<=i&&i<=38) tMark="diamond";
-// 	//39から51がハート
-// 	if(39<=i&&i<=51) tMark="heart";
-// 	//52,53がジョーカー
-// 	if(52<=i&&i<=53) tMark="joker";
-// 	//54,55がスカ
-// 	if(54<=i&&i<=55) tMark="suka";
-//
-// 	mCard.push([i%13,tMark]);
-// }
-// if(mCommunicationFlag){
-// 	connectServer("localhost");
-// }
-// else{
-// 	start();
-// }
+if(location.search.substring(1).split("&")[1].split("=")[0]=="num"){
+const mPlayerNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
+var mCommunicationFlag=(mPlayerNum==-1)?true:false;
+if(mPlayerNum==0) mMyTeam=["T","F"];
+start=()=>{normalStart()}
+}
+else if(location.search.substring(1).split("&")[1].split("=")[0]=="quest"){
+	start=()=>{};
+const mQuestNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
+let tQuestClass=QuestList.getQuestClass(mQuestNum);
+let tQuest=new tQuestClass();
+let tCharas=new Array();
+for(let i=0;i<mSelectedCharas.length;i+=2)
+	tQuest.addChoicedChara(mSelectedCharas[i][0])
+tQuest.init();
+}
 
-function start(){
-// //シャッフルする
-// mCard=shuffle(mCard);
+//バトル開始(quest以外)
+function normalStart(){
 // //トランプを並べる
 Feild.displayCard();
 //チームの人数を数える
@@ -65,7 +47,6 @@ for(let i=1;i<mSelectedCharas.length;i+=2){
 		tFNum++;
 	}
 }
-
 //初期配置
 let tTCharaPosition;
 let tFCharaPosition;
@@ -106,21 +87,13 @@ mDelayList = initDelay(mTrueTeam,mFalseTeam);
 initDisplay();
 displayStatus();
 displayDelay();
-//ここまでで初期設定が完了
-//バトルのメイン関数
-// shuffleAnimate(mCard).then(()=>{
-// 	flowBand("バトルスタート").then(()=>{
-// 			battleMain();
-// 	})
-// })
-// }
+
 Feild.shuffleAnimate().then(()=>{
 	flowBand("バトルスタート").then(()=>{
 		battleMain();
 	})
 })
 }
-
 
 // for(let i=0;i<7;i++){
 // 	mBattleBoard.push(mCard.slice(i*8,i*8+8));
@@ -189,9 +162,9 @@ function battleMain(){
 	displayStatus();
 
 	//操作
-	if(mPlayerNum!=0&&mMyTeam.indexOf(mTurnChara.getTeam())==-1){
+	if(mTurnChara.getOperationNum()!=0&&mMyTeam.indexOf(mTurnChara.getTeam())==-1){
 		if(!mCommunicationFlag)
-			com(mPlayerNum);
+			com(mTurnChara.getOperationNum());
 	}
 	else{
 		mEventFlag = false;//操作可能に

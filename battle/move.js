@@ -20,10 +20,10 @@ function movableSquares(aChara){
 }
 
 function move(aX,aY,aInfoFlag,aAiFlag){
-	if(mMyTeam.indexOf(mTurnChara.getTeam())==-1&&mPlayerNum>0&&!aAiFlag){//Aiのターンに操作
+	if(mMyTeam.indexOf(mTurnChara.getTeam())==-1&&mTurnChara.getOperationNum()>0&&!aAiFlag){//Aiのターンに操作
 		return;
 	}
-	if(mPlayerNum==0||mMyTeam.indexOf(mTurnChara.getTeam())>=0){//AIでない
+	if(mTurnChara.getOperationNum()==0||mMyTeam.indexOf(mTurnChara.getTeam())>=0){//AIでない
 			if(mEventFlag)//イベント中
 			return;
 	}

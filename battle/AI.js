@@ -149,7 +149,7 @@ function SupportPriorityPoint(aSupportNum){
 	var tAddPriority = 0;
 	for (var i = 0; i < aSupportNum.length; i++) {
 		var tPriority = 0;
-		switch(aSupportNum[i][0]){
+		switch(aSupportNum[i].effect){
 			case "resetStatus"://ステーテスを初期値に戻す
 				tPriority -= 1;
 			case "shuffle"://シャッフルする
@@ -158,7 +158,7 @@ function SupportPriorityPoint(aSupportNum){
 				tPriority += 0;
 				break;
 			case "delay"://delay
-				tPriority += 0.1 * aSupportNum[i][1];
+				tPriority += 0.1 * aSupportNum[i].value;
 				break;
 			case "mov"://mov変化 +2
 				tPriority += 0.5;
@@ -171,12 +171,34 @@ function SupportPriorityPoint(aSupportNum){
 			case "originalMP":
 			case "def"://def変化 +0.5
 				tPriority +=　0.5;
-				if(aSupportNum[i][2]!=undefined&&mAIChara.TYPE==mAICardMark) tPriority += aSupportNum[i][2];
+				if(aSupportNum[i].additionOfMatchingType!=undefined&&mAIChara.TYPE==mAICardMark)
+					tPriority += aSupportNum[i].additionOfMatchingType;
 				break;
 			case "transform"://変身する
-				if(aSupportNum[i][1]==0||aSupportNum[i][1]==1||aSupportNum[i][1]==2) tPriority+=10;
-				else if(aSupportNum[i][1]==3)	tPriority += ((mAIChara.originalMP - mAIChara.MP)/2)-mAIChara.originalMP/4;
-				else if(aSupportNum[i][1]==4)	tPriority += mAIChara.MP/2-mAIChara.originalMP/4;
+				switch (mTurnChara.getName()) {
+					case "ロゼッタ":
+						tPriority+=10;
+						break;
+					case "ガーベラ":
+						if(aSupportNum[i].value==0)	tPriority += ((mAIChara.originalMP - mAIChara.MP)/2)-mAIChara.originalMP/4;
+						else if(aSupportNum[i].value==1)	tPriority += mAIChara.MP/2-mAIChara.originalMP/4;
+						break;
+					default:
+				}
+				break;
+			case "setTrap":
+				let tNum=calcRange(aSupportnums[i].range,mTurnChara.getPosition());
+				tPriority+=tNum*0.5;
+				break;
+			case "summon":
+			switch (mTurnChara.getName()) {
+				case "ザーウィン":
+					if(aSupportnums[i].value==0) tPriority+=3;
+					else if(aSupportnums[i].value==1) tPriority+=5;
+					else if(aSupportnums[i].value==2) tPriority+=6;
+					break;
+				default:
+			}
 				break;
 			default:
 				tPriority +=0;

@@ -93,6 +93,6 @@ ipc.on("selected",function(e,aChara,aPlayerNum){//キャラ選択画面でキャ
   mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+aChara+'&num='+aPlayerNum);
 
 })
-ipc.on("questCharaselected",function(e,aChara,aQuestNum){//キャラ選択画面でキャラを選択後、バトル画面へ
+ipc.on("questCharaSelected",function(e,aChara,aQuestNum){//キャラ選択画面でキャラを選択後、バトル画面へ
   mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+aChara+'&quest='+aQuestNum);
 })

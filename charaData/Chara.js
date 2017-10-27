@@ -109,6 +109,9 @@ class Chara{
 	getTeam(){
 		return this.team;
 	}
+	getOperationNum(){
+		return this.operationNum;
+	}
 	getDeck(){
 		return this.deck.concat();
 	}

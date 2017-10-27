@@ -1,7 +1,7 @@
-const mPlayerNum;
-const mTrueTeamNum;
-const mFalseTeamNum;
-const mQuestNum;
+var mPlayerNum;
+var mTrueTeamNum;
+var mFalseTeamNum;
+var mQuestNum;
 if(location.search.substring(1).split("=")[0]=="quest"){
 	mPlayerNum="quest";
 	mQuestNum=Number(location.search.substring(1).split("=")[1])
@@ -185,7 +185,6 @@ $(".pointorRight").on("click",function(){
 
 //選択ボタン
 function selectChara() {
-	console.log(mTrueTeamNum,mFalseTeamNum)
 	if(mSelectedCharas.length<mTrueTeamNum){
 		mSelectedCharas.push([mSelectPointor,"T"]);
 		var tImag = "<img src='../image/chara/1_face/"+(CharaList.getCharaClass(mSelectPointor).getCharaData().IMAGE+100)+".png' style='width:48px;margin-bottom:-7px'>";
@@ -197,7 +196,7 @@ function selectChara() {
 		$("#SelectedMember")[0].getElementsByTagName("tr")[2].getElementsByTagName("td")[mSelectedCharas.length-mTrueTeamNum].innerHTML = tImag;
 	}
 	if(mSelectedCharas.length==mTrueTeamNum+mFalseTeamNum){
-		if(mPlayerNum="quest"){
+		if(mPlayerNum=="quest"){
 			ipc.send("questCharaSelected",mSelectedCharas,mQuestNum)
 		}
 		else{
