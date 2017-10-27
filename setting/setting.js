@@ -319,3 +319,13 @@ function judSelectedChara(aNum){
 	}
 	return true;
 }
+
+$("#randomChara").on("click",function(){
+	while(true){
+		mSelectPointor = Math.floor(Math.random()*mCharaMaxNum)
+		if(judSelectedChara(mSelectPointor)){
+			selectChara();
+			return;
+		}
+	}
+})
