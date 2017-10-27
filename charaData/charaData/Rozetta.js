@@ -279,7 +279,7 @@ class Rozetta extends Chara{
 						MOV:2,
 						TYPE:"heart",
 						IMAGE:1227010002,
-						DECK:Rozetta.getDeckTrans0(),
+						DECK:Rozetta.getDeckTransform0(),
 						CHANGE:1
 		},
 		{NAME:"聖樹のロゼッタ",
@@ -291,7 +291,7 @@ class Rozetta extends Chara{
 						MOV:2,
 						TYPE:"heart",
 						IMAGE:1227010003,
-						DECK:Rozetta.getDeckTrans1(),
+						DECK:Rozetta.getDeckTransform1(),
 						CHANGE:2
 		},
 		{NAME:"神樹のロゼッタ",
@@ -303,7 +303,7 @@ class Rozetta extends Chara{
 						MOV:3,
 						TYPE:"heart",
 						IMAGE:1227010004,
-						DECK:Rozetta.getDeckTrans2(),
+						DECK:Rozetta.getDeckTransform2(),
 						CHANGE:Infinity
 		},]
 		if(aNum==undefined) return tData;

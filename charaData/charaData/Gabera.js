@@ -280,7 +280,7 @@ class Gabera extends Chara{
 							MOV:2,
 							TYPE:"spade",
 							IMAGE:1392010001,
-							DECK:Gabera.getDeckTrans0(),
+							DECK:Gabera.getDeckTransform0(),
 							CHANGE:0
 			},
 		]

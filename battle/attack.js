@@ -30,7 +30,7 @@ function attack(aChara) {
 					tEnemyTeam=mTrueTeam;
 				}
 				attackMyself(aChara,tSkill,tCard).then(()=>{
-					addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard.getNumber()).then(()=>{
+					addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard).then(()=>{
 						//補助効果適用(A)
 						Support(tSkill.SUPPORT_Af_Myself.concat(),aChara).then(()=>{
 
@@ -178,7 +178,7 @@ function damage(aAttackChara,aDamagedTeam,aSkill,aCard){
 					Support(aSkill.SUPPORT_Be_Enemy.concat(),aDamagedTeam[i]).then(()=>{
 						//ダメージ計算
 						var tDamage = calcDamage(aAttackChara.ATK,aDamagedTeam[aI].DEF,aSkill.POWER);
-						if(aCard==aAttackChara.TYPE){//属性補正
+						if(aCard.getSoot()==aAttackChara.TYPE){//属性補正
 							tDamage = Math.floor(tDamage*1.5);
 						}
 						new Promise((res,rej)=>{
