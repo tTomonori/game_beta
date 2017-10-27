@@ -21,16 +21,26 @@
 	<div id="mainChara">
 		<img src="../image/chara/2_stand/1345010201.png" style="margin-top: -22%;margin-left: -15%;width:70%">
 	</div>
-	<div id="menu" style="position: fixed; top:200px;left: 400px;text-align:center;width:600px;height:460px;overflow: scroll;vertical-align: middle;">
-		<input class="start" type="button" value="START" onclick="start()"><br>
-		<input class="start" type="button" value="遊び方" onclick="manual()">
-		<div style="margin-top: -100px">
-		<input class="member" type="button" value="一人で遊ぶ" onclick="member(1)" style="display:none;">
+	<div id="menu" style="position: fixed; top:200px;left: 400px;width:600px;height:460px;overflow: scroll;vertical-align: middle;">
+		<div style="position: absolute; top: 100px">
+		<input class="start" type="button" value="START" onclick="start()" style="display: block;">
+		<input class="start" type="button" value="遊び方" onclick="manual()" style="display: block;">
+		</div>
+		<div style="position: absolute;top: 50px">
+		<input class="member" type="button" value="一人で遊ぶ" onclick="solo()" style="display:none">
 		<input class="member" type="button" value="二人で遊ぶ" onclick="member(0)" style="display:none">
 		<input class="member" type="button" value="通信対戦" onclick="member(-1)" style="display:none">
 		<input class="member" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
 		</div>
-		<div>
+		<div style="position: absolute;top: 100px">
+		<input class="mode" type="button" value="クエスト" onclick="selectQuest()" style="display:none">
+		<input class="mode" type="button" value="フリーマッチ" onclick="member(1)" style="display:none">
+		<input class="mode" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
+		<div style="position: absolute;top: 0px">
+		<input class="quest" type="button" value="クエスト1" onclick="quest(1)" style="display:none">
+		<input class="quest" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
+		</div>
+		<div style="position: absolute;top: -50px">
 		<input class="playernum" type="button" value="一対一" onclick="playernum(1)" style="display:none;">
 		<input class="playernum" type="button" value="二対二" onclick="playernum(2)" style="display:none;">
 		<input class="playernum" type="button" value="三対三" onclick="playernum(3)" style="display:none">
@@ -47,11 +57,21 @@ function start(){
 function manual(){
     location.href = "../manual/manual.html";
 }
+function solo(){
+	$(".member").css("display","none");
+	$(".mode").css("display","block");
+}
+function selectQuest(){
+	$(".mode").css("display","none");
+	$(".quest").css("display","block");
+}
 //2Pは 0:プレイヤー,他:AIの番号
 function member(aNum){
 	mPlayerNum = aNum;
 	$(".member").css("display","none");
 	$(".playernum").css("display","block");
+	$(".mode").css("display","none");
+	$(".quest").css("display","none");
 }
 function playernum(aNum){
 	if(mPlayerNum==-1){
@@ -64,6 +84,8 @@ function Return(){
 	$(".start").css("display","block");
 	$(".member").css("display","none");
 	$(".playernum").css("display","none");	
+	$(".mode").css("display","none");
+	$(".quest").css("display","none");
 }
 </script>
 </html>
