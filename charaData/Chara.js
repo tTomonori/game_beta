@@ -275,7 +275,7 @@ class Chara{
 	}
 	//倒された
 	down(){
-		new Promise((res,rej)=>{
+		return new Promise((res,rej)=>{
 			this.setImgaeNum(6,5);
 			this.team=="T"?winner("F"):winner("T");
 			// res() //バトルの進行を止めるためresを返さない
