@@ -38,6 +38,8 @@
 		<input class="mode" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
 		<div style="position: absolute;top: 0px">
 		<input class="quest" type="button" value="クエスト1" onclick="quest(1)" style="display:none">
+		<input class="quest" type="button" value="クエスト2" onclick="quest(2)" style="display:none">
+		<input class="quest" type="button" value="クエスト3" onclick="quest(3)" style="display:none">
 		<input class="quest" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">
 		</div>
 		<div style="position: absolute;top: -50px">
@@ -86,6 +88,9 @@ function Return(){
 	$(".playernum").css("display","none");	
 	$(".mode").css("display","none");
 	$(".quest").css("display","none");
+}
+function quest(aNum){
+	ipc.send("quest",aNum);
 }
 </script>
 </html>

@@ -86,7 +86,13 @@ ipc.on("start",function(e,aNum){//スタート画面でプレイヤーの人数�
   //   slashes: true
   // }))
 })
+ipc.on("quest",function(e,aNum){
+  mMainWindow.loadURL("file://"+__dirname+'/setting/setting.html?quest='+aNum)
+})
 ipc.on("selected",function(e,aChara,aPlayerNum){//キャラ選択画面でキャラを選択後、バトル画面へ
   mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+aChara+'&num='+aPlayerNum);
 
+})
+ipc.on("questCharaselected",function(e,aChara,aQuestNum){//キャラ選択画面でキャラを選択後、バトル画面へ
+  mMainWindow.loadURL("file://"+__dirname+'/battle/battle.html?chara='+aChara+'&quest='+aQuestNum);
 })

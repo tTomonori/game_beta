@@ -1,6 +1,18 @@
-const mPlayerNum=location.search.substring(1).split("=")[1].split(",")[0];
-const mTrueTeamNum=Number(location.search.substring(1).split("=")[1].split(",")[1]);
-const mFalseTeamNum=Number(location.search.substring(1).split("=")[1].split(",")[2]);
+const mPlayerNum;
+const mTrueTeamNum;
+const mFalseTeamNum;
+const mQuestNum;
+if(location.search.substring(1).split("=")[0]=="quest"){
+	mPlayerNum="quest";
+	mQuestNum=Number(location.search.substring(1).split("=")[1])
+	mTrueTeamNum=QuestList.getQuestClass(mQuestNum).getChoiceCharaNum();
+	mFalseTeamNum=0;
+}
+else{
+	mPlayerNum=location.search.substring(1).split("=")[1].split(",")[0];
+	mTrueTeamNum=Number(location.search.substring(1).split("=")[1].split(",")[1]);
+	mFalseTeamNum=Number(location.search.substring(1).split("=")[1].split(",")[2]);
+}
 var mSelectedCharas=new Array();
 var mStatusList=["TYPE","NAME","HP","MP","ATK","DEF","SPD","MOV","TEXT"];
 
@@ -185,7 +197,12 @@ function selectChara() {
 		$("#SelectedMember")[0].getElementsByTagName("tr")[2].getElementsByTagName("td")[mSelectedCharas.length-mTrueTeamNum].innerHTML = tImag;
 	}
 	if(mSelectedCharas.length==mTrueTeamNum+mFalseTeamNum){
-		ipc.send("selected",mSelectedCharas,mPlayerNum);
+		if(mPlayerNum="quest"){
+			ipc.send("questCharaSelected",mSelectedCharas,mQuestNum)
+		}
+		else{
+			ipc.send("selected",mSelectedCharas,mPlayerNum);
+		}
 		return;
 	}
 	mSelectPointor=0;
