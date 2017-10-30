@@ -193,14 +193,13 @@ function SupportPriorityPoint(aSupportNum){
 			case "summon":
 			switch (mTurnChara.getName()) {
 				case "ザーウィン":
-					if(aSupportnum[i].value==0) tPriority+=3;
+					if(aSupportNum[i].value==0) tPriority+=3;
 					else if(aSupportNum[i].value==1) tPriority+=5;
 					else if(aSupportNum[i].value==2) tPriority+=6;
 					break;
 				case "ウンディーネ":
-					if(aSupportnum[i].value==0) tPriority+=10;
+					if(aSupportNum[i].value==0) tPriority+=3;
 					else if(aSupportNum[i].value==1) tPriority+=5;
-					else if(aSupportNum[i].value==2) tPriority+=6;
 					break;
 				default:
 			}

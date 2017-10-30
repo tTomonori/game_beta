@@ -12,9 +12,9 @@ class Undhine extends Enemy{
 		return {NAME:"ウンディーネ",
 						HP:300,
 						MP:20,
-						ATK:20,
+						ATK:25,
 						DEF:20,
-						SPD:10,
+						SPD:20,
 						MOV:2,
 						TYPE:"spade",
 						IMAGE:1083010001,
@@ -152,13 +152,13 @@ class Undhine extends Enemy{
 				ANIMATION:[5]
 			},
 			{NUMBER:109,
-				TEXT:"ゴーストx3",
+				TEXT:"リザードx3",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
 				MAGIC:5,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"summon",value:1,position:{x:0,y:-1},operationNum:"player",delay:0},
+				SUPPORT_Af_Myself:[{effect:"summon",value:0,position:{x:0,y:-1},operationNum:"player",delay:0},
 														{effect:"summon",value:1,position:{x:0,y:1},operationNum:"player",delay:0},
 														{effect:"summon",value:1,position:{x:1,y:0},operationNum:"player",delay:0}],
 				SUPPORT_Be_Enemy:[],
@@ -170,13 +170,13 @@ class Undhine extends Enemy{
 				ANIMATION:[]
 			},
 			{NUMBER:110,
-				TEXT:"ゾンビx2",
+				TEXT:"ハイリザードx2",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"summon",value:0,position:{x:0,y:-1},operationNum:"player",delay:0},
+				SUPPORT_Af_Myself:[{effect:"summon",value:1,position:{x:0,y:-1},operationNum:"player",delay:0},
 														{effect:"summon",value:0,position:{x:0,y:1},operationNum:"player",delay:0}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
@@ -203,18 +203,18 @@ class Undhine extends Enemy{
 				ANIMATION:[]
 			},
 			{NUMBER:112,
-				TEXT:"サタンx1",
-				RANGE:[],
+				TEXT:"トークン強化",
+				RANGE:["ally"],
 				POWER:0,
 				DELAY:0,
 				MAGIC:3,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"summon",value:2,position:{x:1,y:0},operationNum:"player",delay:0}],
+				SUPPORT_Af_Myself:[{effect:"ATK",value:3},{effect:"DEF",value:3},{effect:"SPD",value:3}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
 				M_ATTACK:0,
-				F_ATTACK:false,
+				F_ATTACK:true,
 		    E_ATTACK:true,
 				ANIMATION:[]
 			},
@@ -272,9 +272,8 @@ class Undhine extends Enemy{
 	}
 	static getTokenClass(aNum){
 		let tTokens=[
-			Undhine,
-			Gosuto,
-			Satan
+			Rezard,
+			Hirezard
 		]
 		return tTokens[aNum];
 	}
