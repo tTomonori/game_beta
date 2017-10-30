@@ -187,20 +187,20 @@ function SupportPriorityPoint(aSupportNum){
 				}
 				break;
 			case "setTrap":
-				let tNum=calcRange(aSupportnums[i].range,mTurnChara.getPosition());
+				let tNum=calcRange(aSupportNum[i].range,mTurnChara.getPosition());
 				tPriority+=tNum*0.5;
 				break;
 			case "summon":
 			switch (mTurnChara.getName()) {
 				case "ザーウィン":
-					if(aSupportnums[i].value==0) tPriority+=3;
-					else if(aSupportnums[i].value==1) tPriority+=5;
-					else if(aSupportnums[i].value==2) tPriority+=6;
+					if(aSupportnum[i].value==0) tPriority+=3;
+					else if(aSupportNum[i].value==1) tPriority+=5;
+					else if(aSupportNum[i].value==2) tPriority+=6;
 					break;
 				case "ウンディーネ":
-					if(aSupportnums[i].value==0) tPriority+=10;
-					else if(aSupportnums[i].value==1) tPriority+=5;
-					else if(aSupportnums[i].value==2) tPriority+=6;
+					if(aSupportnum[i].value==0) tPriority+=10;
+					else if(aSupportNum[i].value==1) tPriority+=5;
+					else if(aSupportNum[i].value==2) tPriority+=6;
 					break;
 				default:
 			}
