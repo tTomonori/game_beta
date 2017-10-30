@@ -353,7 +353,7 @@ class Chara{
 			}
 			let tChara=new tTokenClass(tSummonPosition.x,tSummonPosition.y,this.getTeam(),aOperationNum,aDelay);
 			tChara.initDisplay();
-			tChara.setId(this.container.id+"summoned"+this.summonNum);
+			// tChara.setId(this.container.id+"summoned"+this.summonNum);
 			addChara(tChara);
 			attackAnimate(this,tChara,[7],()=>{
 				freeLog(tChara,"召喚","成功した");

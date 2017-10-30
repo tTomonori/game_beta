@@ -4,7 +4,7 @@ class Hirezard extends Enemy{
 		return "敵キャラ：<br>";
 	}
 	constructor(aX,aY,aTeam,aOperationNum){
-		let tData=Undhine.getCharaData();
+		let tData=Hirezard.getCharaData();
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
@@ -18,7 +18,7 @@ class Hirezard extends Enemy{
 						MOV:2,
 						TYPE:"spade",
 						IMAGE:1095010002,
-						DECK:Undhine.getDeck()
+						DECK:Hirezard.getDeck()
 		}
 	}
 

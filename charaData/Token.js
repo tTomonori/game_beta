@@ -10,9 +10,9 @@ class Token extends Chara{
 			this.addDelay(aDelay);
 		}
 	}
-	setId(aId){
-		this.container.id=aId;
-	}
+	// setId(aId){
+	// 	this.container.id=aId;
+	// }
 	//倒された(オーバーライド)
 	down(){
 		return new Promise((res,rej)=>{

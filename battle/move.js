@@ -21,13 +21,17 @@ function movableSquares(aChara){
 
 function move(aX,aY,aInfoFlag,aAiFlag){
 	if(mTurnChara.getOperationNum()>0&&!aAiFlag){//Aiのターンに操作
+		console.log("AIのターン中にプレイヤーが操作");
 		return;
 	}
 	if(mTurnChara.getOperationNum()==0){//AIでない
-			if(mEventFlag)//イベント中
+		if(mEventFlag){//イベント中
+			console.log("イベント中に操作");
 			return;
+		}
 	}
 	if(mCommunicationFlag&&mMyTeam.indexOf(mTurnChara.getTeam())==-1&&aInfoFlag!="receive_move"){//通信中
+		console.log("通信相手のターン");
 		return;
 	}
 	//対戦相手に通知

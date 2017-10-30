@@ -11,4 +11,13 @@ class Enemy extends Chara{
 	getActorUrl(){
 		return '../image/chara/3_sv_actors/'+String(this.image+300)+'.png';
 	}
+	//倒された(オーバーライド)
+	down(){
+		return new Promise((res,rej)=>{
+			this.container.remove();
+			removeChara(this);
+			newLog(this,"は倒れた")
+			res();
+		})
+	}
 }
