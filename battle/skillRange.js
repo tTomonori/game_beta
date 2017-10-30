@@ -56,8 +56,8 @@ function calcRange(aSkillRange,aPosition){
 			case "ally"://自分以外の味方全体
 			let tMyTeam=(mTurnChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
 			for(let j=0;j<tMyTeam.length;j++){
-				if(mTurnChara==tMyTeam[i]) continue;
-				let tPosition=tMyTeam[i].getPosition();
+				if(mTurnChara==tMyTeam[j]) continue;
+				let tPosition=tMyTeam[j].getPosition();
 				tRange.push([tPosition.x,tPosition.y]);
 			}
 				break;
