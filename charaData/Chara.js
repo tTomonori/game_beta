@@ -371,7 +371,7 @@ class Chara{
 			"SPD:"+this.SPD+"<br>"+
 			"TYPE:"+"<img src='../image/"+this.TYPE+".png' style='height:18px;margin-top:0px;position:absolute'>"+"<br>"+
 			"MOV:"+this.MOV+"<br>"+
-			"<img src="+this.getFaceUrl()+">"+
+			"<img src="+this.getFaceUrl()+" style='width:144px;height:144px;overflow:hidden'>"+
 			"</div>"
 		}
 		this.container.onmouseout=()=>{
