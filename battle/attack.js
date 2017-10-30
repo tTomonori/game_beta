@@ -33,7 +33,6 @@ function attack(aChara) {
 					addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard).then(()=>{
 						//補助効果適用(A)
 						Support(tSkill.SUPPORT_Af_Myself.concat(),aChara).then(()=>{
-
 							Support(tSkill.SUPPORT_Otherwise.concat(),aChara).then(()=>{
 								aChara.endTurn(tSkill.DELAY);
 								mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため

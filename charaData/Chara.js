@@ -215,7 +215,10 @@ class Chara{
 	//ダメージを与える(引数が負なら回復)
 	addDamage(aDamage){
 		return new Promise((res,rej)=>{
-			if(aDamage==0) return;
+			if(aDamage==0){
+				res()
+				return;
+			}
 			let tBar=this.getHPBar();
 			this.HP-=aDamage;
 			//HP超過

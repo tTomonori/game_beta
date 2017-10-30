@@ -12,7 +12,6 @@ function Support(aSupportnums,aChara){
 	})
 }
 function SupportPlay(aSupportnums,aChara){
-	console.log(aSupportnums);
 	let tTurnChara=mTurnChara;
 	let tMyselfFlag=(tTurnChara==aChara);//trueならスキル使用者と受け手が同じ
 	let tCard=Feild.getCard(aChara.x,aChara.y);//使用者がいるマス
