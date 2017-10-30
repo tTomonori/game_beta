@@ -18,7 +18,8 @@ class Zawin extends Chara{
 						MOV:2,
 						TYPE:"diamond",
 						IMAGE:1220010001,
-						DECK:Zawin.getDeck()
+						DECK:Zawin.getDeck(),
+						TOKEN:3
 		}
 	}
 	static getDeck(){
