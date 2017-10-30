@@ -15,8 +15,10 @@ var mFalseTeam=new Array();
 
 let start;//バトル開始関数
 
+var mPlayerNum;
+
 if(location.search.substring(1).split("&")[1].split("=")[0]=="num"){
-const mPlayerNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
+mPlayerNum=Number(location.search.substring(1).split("&")[1].split("=")[1].split(",")[0]);
 var mCommunicationFlag=(mPlayerNum==-1)?true:false;
 if(mPlayerNum==0) mMyTeam=["T","F"];
 start=()=>{normalStart()}
