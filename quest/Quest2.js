@@ -14,11 +14,11 @@ class Quest2 extends Quest{
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "相手を全員倒す";
+		return "敵の全滅";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
-		return "味方が全員倒される";
+		return "味方の全滅";
 	}
 	//自軍
 	static getMyTeam(){
