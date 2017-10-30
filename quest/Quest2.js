@@ -1,23 +1,24 @@
-class Quest1 extends Quest{
+class Quest2 extends Quest{
 	constructor(){
 		super();
 		this.setChoicedCharaData();
 		this.setChara();
+		this.renewDownFunction();
 	}
 	static getChoiceCharaNum(){
 		return 2;
 	}
 	//クエストの説明
 	static getText(){
-		return "ヴァルキリーを倒せ";
+		return "二人の騎士を倒せ";
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "ヴァルキリーを倒す";
+		return "相手を全員倒す";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
-		return "味方一人が倒される";
+		return "味方が全員倒される";
 	}
 	//自軍
 	static getMyTeam(){
@@ -25,7 +26,7 @@ class Quest1 extends Quest{
 	}
 	//敵軍
 	static getEnemyTeam(){
-		return ["ヴァルキリー"];
+		return ["ヴァルキリー","ランスロット"];
 	}
 	//友軍
 	static getFriendTeam(){
@@ -38,12 +39,31 @@ class Quest1 extends Quest{
 	//position:{x:,y:}
 	//operationNum:0ならuser,1以上ならAI番号
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:0},team:"F",position:{x:4,y:3},operationNum:1})
+		this.addChara({chara:{charaCategory:"hero",num:0},team:"F",position:{x:6,y:2},operationNum:1})
+		this.addChara({chara:{charaCategory:"hero",num:1},team:"F",position:{x:6,y:4},operationNum:1})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){
-		this.addChoicedCharaData({position:{x:2,y:2},operationNum:0})
-		this.addChoicedCharaData({position:{x:2,y:4},operationNum:0})
+		this.addChoicedCharaData({position:{x:1,y:2},operationNum:0})
+		this.addChoicedCharaData({position:{x:1,y:4},operationNum:0})
+	}
+	//キャラが倒された時に呼ぶ関数更新
+	renewDownFunction(){
+		//aChara:倒されたキャラ aPreFunction:元々呼ばれていた関数
+		this.setDownFunction((aChara,aPreFunction)=>{
+			newLog([aChara,"は倒れた"])
+			return new Promise((res,rej)=>{
+				let tMyTeam=(aChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
+				if(tMyTeam.length>1){
+					aChara.container.remove();
+					removeChara(aChara);
+					res();
+				}
+				else{
+					return aPreFunction();
+				}
+			})
+		})
 	}
 	//バトル開始前に呼ぶ
 	init(){

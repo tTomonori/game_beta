@@ -5,8 +5,10 @@ class Token extends Chara{
 			tOperationNum=(mMyTeam.indexOf(aTeam)!=-1)?0:mPlayerNum;
 		}
 		super(aX,aY,aTeam,aData,tOperationNum);
-		this.Delay=0;
-		this.addDelay(aDelay);
+		if(aDelay!=undefined){
+			this.Delay=0;
+			this.addDelay(aDelay);
+		}
 	}
 	setId(aId){
 		this.container.id=aId;

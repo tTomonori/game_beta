@@ -2,9 +2,14 @@ class Chara{
 	constructor(aX,aY,aTeam,aData,aOperationNum){
 		this.x=aX;
 		this.y=aY;
-		this.team=aTeam;
-		this.teamColor=(this.team=="T")?"rgba(0, 136, 255,0.6)":"rgba(255, 90, 0, 0.6)";
-
+		if(aTeam=="friend"){//友軍(クエスト用)
+			this.team="T";
+			this.teamColor="rgba(0,200,0,0.6)"
+		}
+		else{
+			this.team=aTeam;
+			this.teamColor=(this.team=="T")?"rgba(0, 136, 255,0.6)":"rgba(255, 90, 0, 0.6)";
+		}
 		this.operationNum=aOperationNum//操作法(AIか通信か...)
 
 		this.NAME=aData.NAME;
@@ -36,7 +41,7 @@ class Chara{
 			this.img.style.transform="scale(-1, 1)"
 		}
 		this.container=document.createElement("div");
-		this.container.id=this.NAME+this.team;
+		this.container.id=(mCharaNumber++)+this.NAME+this.team;
 		this.container.style.position="absolute";
 		this.container.style.top="-5px";
 		this.container.style.left="-4px";
@@ -380,3 +385,4 @@ class Chara{
 		return "<div style='width:100%;height:5px;background:#cf03d4;'><div style='width:"+(this.MP/this.originalMP*100)+"%;height:100%;background:#30d4ff;'></div></div>"
 	}
 }
+var mCharaNumber=0;

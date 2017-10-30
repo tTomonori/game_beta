@@ -1,5 +1,6 @@
 class Quest{
 	constructor(){
+		this.downFunction=undefined;
 		this.charas=new Array();
 		this.choicedCharas=new Array();
 	}
@@ -18,10 +19,13 @@ class Quest{
 	//ユーザが選択したキャラを追加
 	addChoicedChara(aNum){
 		let tData=this.choicedCharas.shift();
-		console.log(aNum);
 		tData.chara={charaCategory:"hero",num:aNum};
 		tData.team="T";
 		this.addChara(tData)
+	}
+	//キャラが倒された時の関数 aFunction(aChara:倒されたキャラ,aPreFunction:元々呼ばれていた関数)
+	setDownFunction(aFunction){
+		this.downFunction=aFunction
 	}
 	//バトル開始前に呼ぶ
 	init(aShuffle){
@@ -55,8 +59,21 @@ class Quest{
 			else if(tCharaData.chara.charaCategory=="token") tCharaClass=TokenList.getTokenClass(tCharaData.chara.num);
 			else if(tCharaData.chara.charaCategory=="enemy") tCharaClass=EnemyList.getEnemyClass(tCharaData.chara.num);
 
-			let tTeam=(tCharaData.team=="T")?mTrueTeam:mFalseTeam;
-			tTeam.push(new tCharaClass(tCharaData.position.x,tCharaData.position.y,tCharaData.team,tCharaData.operationNum))
+			let tTeam=(tCharaData.team=="F")?mFalseTeam:mTrueTeam;
+			let tChara=new tCharaClass(tCharaData.position.x,tCharaData.position.y,tCharaData.team,tCharaData.operationNum)
+			if(tCharaData.status!=undefined){//ステータス変更
+				for(let i=0;i<tCharaData.status.length;i++){
+					if(tChara["original"+tCharaData.status[i][0]]!=undefined)
+						tChara["original"+tCharaData.status[i][0]]=tCharaData.status[i][1]
+					tChara[tCharaData.status[i][0]]=tCharaData.status[i][1]
+				}
+			}
+			if(this.downFunction!=undefined){//倒された時に呼ぶ関数更新
+				tChara.preDown=tChara.down
+				let tPreDownFunction=()=>{return tChara.preDown()}
+				tChara.down=()=>{return this.downFunction(tChara,tPreDownFunction)}
+			}
+			tTeam.push(tChara)
 		}
 	}
 	//バトル開始

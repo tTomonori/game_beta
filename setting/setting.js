@@ -7,6 +7,7 @@ if(location.search.substring(1).split("=")[0]=="quest"){
 	mQuestNum=Number(location.search.substring(1).split("=")[1])
 	mTrueTeamNum=QuestList.getQuestClass(mQuestNum).getChoiceCharaNum();
 	mFalseTeamNum=0;
+	if(mTrueTeamNum==0) ipc.send("questCharaSelected",[],mQuestNum)
 }
 else{
 	mPlayerNum=location.search.substring(1).split("=")[1].split(",")[0];

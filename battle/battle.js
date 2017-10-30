@@ -27,8 +27,10 @@ const mQuestNum=Number(location.search.substring(1).split("&")[1].split("=")[1].
 let tQuestClass=QuestList.getQuestClass(mQuestNum);
 let tQuest=new tQuestClass();
 let tCharas=new Array();
-for(let i=0;i<mSelectedCharas.length;i+=2)
-	tQuest.addChoicedChara(mSelectedCharas[i][0])
+if(mSelectedCharas[0]!=""){
+	for(let i=0;i<mSelectedCharas.length;i+=2)
+		tQuest.addChoicedChara(mSelectedCharas[i])
+}
 tQuest.init();
 }
 
@@ -162,9 +164,10 @@ function battleMain(){
 	displayStatus();
 
 	//操作
-	if(mTurnChara.getOperationNum()!=0&&mMyTeam.indexOf(mTurnChara.getTeam())==-1){
-		if(!mCommunicationFlag)
+	if(mTurnChara.getOperationNum()!=0/*&&mMyTeam.indexOf(mTurnChara.getTeam())==-1*/){
+		if(!mCommunicationFlag){
 			com(mTurnChara.getOperationNum());
+		}
 	}
 	else{
 		mEventFlag = false;//操作可能に

@@ -5,5 +5,8 @@ class QuestList{
 }
 
 QuestList.classList=[
-	Quest1
+	Quest1,
+	Quest2,
+	Quest3,
+	Quest4
 ]

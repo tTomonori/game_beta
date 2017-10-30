@@ -94,9 +94,7 @@ class Card{
 			Support(this.trapEffect.concat(),aChara).then(()=>{
 				let tNewEffect=new Array();
 				//一回制限の効果を削除する
-				console.log(this.trapEffect);
 				for(let i=0;i<this.trapEffect.length;i++){
-					console.log(this.trapEffect[i].target,aChara.getTeam());
 					if(!this.trapEffect[i].remove||this.trapEffect[i].target.indexOf(aChara.getTeam())==-1)
 						tNewEffect.push(this.trapEffect[i]);
 				}

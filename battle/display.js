@@ -301,6 +301,20 @@ function freeLog(aChara,aStatus,aText){
 	addLog(tLog);
 }
 
+function newLog(aLog){
+	let tLog="";
+	for(let i=0;i<aLog.length;i++){
+		let tComment=aLog[i]
+		if((typeof tComment)=="string"){
+			tLog+=tComment;
+		}
+		else{
+			tLog+="<b style='color:"+tComment.teamColor+"'>"+tComment.NAME+"</b>";
+		}
+	}
+	addLog(tLog)
+}
+
 function shuffleAnimate(aCard){
 	return new Promise((res,rej)=>{
 		let tTimes=20;
