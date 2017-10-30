@@ -56,7 +56,7 @@ class Quest4 extends Quest{
 		this.setDownFunction((aChara,aPreFunction)=>{
 			return new Promise((res,rej)=>{
 				if(aChara.getTeam()=="T"){
-					if(aChara.getName!="妖精"){
+					if(aChara.getName()!="妖精"){
 						aChara.container.remove();
 						removeChara(aChara);
 						res();
