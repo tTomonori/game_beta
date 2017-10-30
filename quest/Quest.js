@@ -90,4 +90,14 @@ class Quest{
 	judge(){
 
 	}
+	//クエストクリア
+	clear(){
+		flowBand("ミッション達成")
+		//データベースに記録
+		saveQuestClear(this.questNum);
+	}
+	//クエスト失敗
+	lose(){
+		flowBand("ミッション失敗")
+	}
 }

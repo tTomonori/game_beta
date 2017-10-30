@@ -1,5 +1,6 @@
 class Quest(番号) extends Quest{
 	constructor(){
+		this.questNum=(番号);
 		super();
 		this.setChoicedCharaData();
 		this.setChara();

@@ -69,16 +69,31 @@
 <script src="../quest/Quest4.js"></script>
 <script src="../quest/Quest5.js"></script>
 <script src="../quest/QuestList.js"></script>
+
+<!-- データベース -->
+<script src="../database/database.js"></script>
 </body>
 <script>
 var mPlayerNum = -1;
 
 var QuestListHTML = "";
 for(var i=1;i<=QuestList.getQuestNum();i++){
-	QuestListHTML += '<input class="quest" type="button" value="クエスト'+i+'" onclick="quest('+i+')" onmouseover="displayQuest('+i+')" style="display:none">';
+	QuestListHTML += '<input id="quest'+i+'" class="quest" type="button" value="クエスト'+i+'" onclick="quest('+i+')" onmouseover="displayQuest('+i+')" style="display:none">';
 }
 QuestListHTML += '<input class="quest" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">';
 $("#QuestList")[0].innerHTML = QuestListHTML;
+
+//クエストクリア状況確認
+for(var i=1;i<=QuestList.getQuestNum();i++){
+	let tQuestNum=i;
+	isQuestCrelar(tQuestNum,(tClear)=>{
+		if(tClear){
+			//クリアしていた場合
+			let tText=document.getElementById("quest"+tQuestNum).value
+			document.getElementById("quest"+tQuestNum).value="○"+tText;
+		}
+	})
+}
 
 function start(){
 	$(".start").css("display","none");
