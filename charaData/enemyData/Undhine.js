@@ -18,7 +18,8 @@ class Undhine extends Enemy{
 						MOV:2,
 						TYPE:"spade",
 						IMAGE:1083010001,
-						DECK:Undhine.getDeck()
+						DECK:Undhine.getDeck(),
+						TOKEN:3
 		}
 	}
 	static getDeck(){
