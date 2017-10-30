@@ -174,10 +174,10 @@ class Undhine extends Enemy{
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
-				MAGIC:4,
+				MAGIC:0,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[{effect:"summon",value:0,position:{x:0,y:-1},operationNum:"player",delay:0},
-														{effect:"summon",value:0,position:{x:0,y:1},operationNum:"player",delay:0},],
+														{effect:"summon",value:0,position:{x:0,y:1},operationNum:"player",delay:0}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -272,7 +272,7 @@ class Undhine extends Enemy{
 	}
 	static getTokenClass(aNum){
 		let tTokens=[
-			Zonbi,
+			Undhine,
 			Gosuto,
 			Satan
 		]
