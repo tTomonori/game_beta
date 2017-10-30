@@ -1,6 +1,6 @@
 class Quest3 extends Quest{
 	constructor(){
-		super();
+		super(3);
 		this.setChoicedCharaData();
 		this.setChara();
 		this.renewDownFunction();
@@ -69,6 +69,13 @@ class Quest3 extends Quest{
 				}
 			})
 		})
+	}
+	//キャラが倒された時に呼ぶ関数更新
+	renewDownFunction(){
+		//味方
+		this.setAllyDownFunction("all")//全員倒れたら
+		//敵
+		this.setEnemyDownFunction("all")//全員倒れたら
 	}
 	//バトル開始前に呼ぶ
 	init(){

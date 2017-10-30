@@ -1,10 +1,9 @@
 class Quest(番号) extends Quest{
 	constructor(){
-		this.questNum=(番号);
-		super();
+		super((番号));
 		this.setChoicedCharaData();
 		this.setChara();
-		// this.renewDownFunction();
+		this.renewDownFunction();
 	}
 	static getChoiceCharaNum(){
 		return (選択するキャラの数);
@@ -49,12 +48,17 @@ class Quest(番号) extends Quest{
 	}
 	//キャラが倒された時に呼ぶ関数更新
 	renewDownFunction(){
-		//aChara:倒されたキャラ aPreFunction:元々呼ばれていた関数
-		this.setDownFunction((aChara,aPreFunction)=>{
-			return new Promise((res,rej)=>{
-
-				res();
-			})
+		//味方
+		this.setAllyDownFunction("one")//一人倒れたら
+		this.setAllyDownFunction("all")//全員倒れたら
+		this.setAllyDownFunction((aChara)=>{//その他
+			return "win"or"lose"or"";
+		})
+		//敵
+		this.setEnemyDownFunction("one")//一人倒れたら
+		this.setEnemyDownFunction("all")//全員倒れたら
+		this.setEnemyDownFunction((aChara)=>{//その他
+			return "win"or"lose"or"";
 		})
 	}
 	//バトル開始前に呼ぶ

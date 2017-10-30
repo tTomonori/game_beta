@@ -1,6 +1,6 @@
 class Quest4 extends Quest{
 	constructor(){
-		super();
+		super(4);
 		this.setChoicedCharaData();
 		this.setChara();
 		this.renewDownFunction();
@@ -52,32 +52,17 @@ class Quest4 extends Quest{
 	}
 	//キャラが倒された時に呼ぶ関数更新
 	renewDownFunction(){
-		//aChara:倒されたキャラ aPreFunction:元々呼ばれていた関数
-		this.setDownFunction((aChara,aPreFunction)=>{
-			return new Promise((res,rej)=>{
-				if(aChara.getTeam()=="T"){
-					if(aChara.getName()!="妖精"){
-						aChara.container.remove();
-						removeChara(aChara);
-						res();
-					}
-					else{
-						return aPreFunction();
-					}
-				}
-				else{
-					if(mFalseTeam.length>1){
-						aChara.container.remove();
-						removeChara(aChara);
-						res();
-					}
-					else{
-						return aPreFunction();
-					}
-				}
-				res();
-			})
+		//味方
+		this.setAllyDownFunction((aChara)=>{//その他
+			if(aChara.getName()=="妖精"){
+				return "lose";
+			}
+			else{
+				return "";
+			}
 		})
+		//敵
+		this.setEnemyDownFunction("all")//全員倒れたら
 	}
 	//バトル開始前に呼ぶ
 	init(){

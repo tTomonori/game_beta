@@ -126,7 +126,9 @@ function addChara(aChara){
 	tTeam.push(aChara);
 	mDelayList.push(aChara);
 }
+//キャラを消す
 function removeChara(aChara){
+	aChara.container.remove();
 	let tTeam=(aChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
 	for(let i=0;i<tTeam.length;i++){
 		if(tTeam[i]==aChara){

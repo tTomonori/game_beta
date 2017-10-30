@@ -1,6 +1,6 @@
 class Quest5 extends Quest{
 	constructor(){
-		super();
+		super(5);
 		this.setChoicedCharaData();
 		this.setChara();
 		this.renewDownFunction();
@@ -50,20 +50,10 @@ class Quest5 extends Quest{
 	}
 	//キャラが倒された時に呼ぶ関数更新
 	renewDownFunction(){
-		//aChara:倒されたキャラ aPreFunction:元々呼ばれていた関数
-		this.setDownFunction((aChara,aPreFunction)=>{
-			return new Promise((res,rej)=>{
-				let tMyTeam=(aChara.getTeam()=="T")?mTrueTeam:mFalseTeam;
-				if(tMyTeam.length>1){
-					aChara.container.remove();
-					removeChara(aChara);
-					res();
-				}
-				else{
-					aPreFunction();
-				}
-			})
-		})
+		//味方
+		this.setAllyDownFunction("all")//全員倒れたら
+		//敵
+		this.setEnemyDownFunction("one")//一人倒れたら
 	}
 	//バトル開始前に呼ぶ
 	init(){

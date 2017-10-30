@@ -1,6 +1,8 @@
 class Quest{
-	constructor(){
-		this.downFunction=undefined;
+	constructor(aNum){
+		this.questNum=aNum;
+		this.allyDownFunction=undefined;
+		this.enemyDownFunction=undefined;
 		this.charas=new Array();
 		this.choicedCharas=new Array();
 	}
@@ -68,11 +70,11 @@ class Quest{
 					tChara[tCharaData.status[i][0]]=tCharaData.status[i][1]
 				}
 			}
-			if(this.downFunction!=undefined){//倒された時に呼ぶ関数更新
-				tChara.preDown=tChara.down
-				let tPreDownFunction=()=>{return tChara.preDown()}
-				tChara.down=()=>{return this.downFunction(tChara,tPreDownFunction)}
-			}
+			//倒れた時の関数更新
+			tChara.down=(tChara.getTeam()=="T")?
+				()=>{return this.allyDownFunction(tChara)}:
+				()=>{return this.enemyDownFunction(tChara)};
+
 			tTeam.push(tChara)
 		}
 	}
@@ -82,22 +84,116 @@ class Quest{
 			battleMain();
 		})
 	}
-	//終了条件の[キャラが一人倒れたら]を取り除く
-	removeWinCondition(){
-
+	//味方キャラが倒された時の勝敗判定(aFunction:"one" or "ally" or function(aChara){return ("win"or"lose)})
+	setAllyDownFunction(aFunction){
+		if(aFunction=="one"){//一人倒れたら
+			this.allyDownFunction=(aChara)=>{
+				newLog([aChara,"は倒れた"])
+				return new Promise((res,rej)=>{
+					aChara.setImgaeNum(6,5);
+					this.loseQuest()
+				})
+			}
+		}
+		else if(aFunction=="all"){//全員倒れたら
+			this.allyDownFunction=(aChara)=>{
+				newLog([aChara,"は倒れた"])
+				return new Promise((res,rej)=>{
+					if(mTrueTeam.length>1){
+						removeChara(aChara)
+						res();
+					}
+					else{
+						aChara.setImgaeNum(6,5);
+						this.loseQuest()
+					}
+				})
+			}
+		}
+		else{//その他
+			this.allyDownFunction=(aChara)=>{
+				newLog([aChara,"は倒れた"])
+				return new Promise((res,rej)=>{
+					switch(aFunction(aChara,res)){
+						case "win":
+							aChara.setImgaeNum(6,5);
+							this.clearQuest();
+							break;
+						case "lose":
+							aChara.setImgaeNum(6,5);
+							this.loseQuest();
+							break;
+						default:
+							removeChara(aChara)
+							res();
+					}
+				})
+			}
+		}
+	}
+	//敵キャラが倒された時の勝敗判定(aFunction:"one" or "ally" or function(aChara){return ("win"or"lose)})
+	setEnemyDownFunction(aFunction){
+		if(aFunction=="one"){//一人倒れたら
+			this.enemyDownFunction=(aChara)=>{
+				newLog([aChara,"は倒れた"])
+				return new Promise((res,rej)=>{
+					aChara.setImgaeNum(6,5);
+					this.clearQuest()
+				})
+			}
+		}
+		else if(aFunction=="all"){//全員倒れたら
+			this.enemyDownFunction=(aChara)=>{
+				newLog([aChara,"は倒れた"])
+				return new Promise((res,rej)=>{
+					if(mFalseTeam.length>1){
+						removeChara(aChara)
+						res();
+					}
+					else{
+						aChara.setImgaeNum(6,5);
+						this.clearQuest()
+					}
+				})
+			}
+		}
+		else{//その他
+			this.enemyDownFunction=(aChara)=>{
+				newLog([aChara,"は倒れた"])
+				return new Promise((res,rej)=>{
+					switch(aFunction(aChara,res)){
+						case "win":
+							aChara.setImgaeNum(6,5);
+							this.clearQuest();
+							break;
+						case "lose":
+							aChara.setImgaeNum(6,5);
+							this.loseQuest();
+							break;
+						default:
+							removeChara(aChara)
+							res();
+					}
+				})
+			}
+		}
 	}
 	//勝利or敗北判定(ターン終了時に呼ぶ)
 	judge(){
 
 	}
 	//クエストクリア
-	clear(){
+	clearQuest(){
 		flowBand("ミッション達成")
 		//データベースに記録
 		saveQuestClear(this.questNum);
+		document.getElementById("text").innerHTML="ミッション達成";
+		$("#finishButton")[0].style.display="block"
 	}
 	//クエスト失敗
-	lose(){
+	loseQuest(){
 		flowBand("ミッション失敗")
+		document.getElementById("text").innerHTML="ミッション失敗";
+		$("#finishButton")[0].style.display="block"
 	}
 }
