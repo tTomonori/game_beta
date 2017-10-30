@@ -5,5 +5,7 @@ class EnemyList{
 }
 
 EnemyList.classList=[
-	Undhine
+	Undhine,
+	Rezard,
+	Hirezard
 ]
