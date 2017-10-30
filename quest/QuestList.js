@@ -2,6 +2,9 @@ class QuestList{
 	static getQuestClass(aNum){
 		return QuestList.classList[aNum-1];
 	}
+	static getQuestNum(){
+		return QuestList.classList.length;
+	}
 }
 
 QuestList.classList=[
