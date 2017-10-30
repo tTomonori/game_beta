@@ -197,6 +197,11 @@ function SupportPriorityPoint(aSupportNum){
 					else if(aSupportnums[i].value==1) tPriority+=5;
 					else if(aSupportnums[i].value==2) tPriority+=6;
 					break;
+				case "ウンディーネ":
+					if(aSupportnums[i].value==0) tPriority+=3;
+					else if(aSupportnums[i].value==1) tPriority+=5;
+					else if(aSupportnums[i].value==2) tPriority+=6;
+					break;
 				default:
 			}
 				break;
