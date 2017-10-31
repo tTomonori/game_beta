@@ -121,6 +121,11 @@ function SupportPlay(aSupportnums,aChara){
 						res();
 				})
 				break;
+			case "Retrofits":
+				attackAnimate(tTurnChara,aChara,[7],()=>{
+					mTurnChara.changeClothes("up");
+				res()})
+				break;
 			case 6:
 
 				break;

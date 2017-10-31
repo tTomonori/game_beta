@@ -1,7 +1,7 @@
 class Hirudo extends Chara{
 	static getText(){
 		//キャラ説明
-		return "エンハンスタイプ：<br>衣装を強化（最大５段階）すると、ATKとDEFが上がるが、速さが下がる。攻撃されると元に戻る";
+		return "エンハンスタイプ：<br>衣装を強化（最大５段階）すると、ATKとDEFが4上がるが、速さが2下がる。攻撃されると元に戻る";
 	}
 	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Hirudo.getCharaData();
@@ -18,19 +18,20 @@ class Hirudo extends Chara{
 						MOV:3,
 						TYPE:"spade",
 						IMAGE:1058010001,
-						DECK:Hirudo.getDeck()
+						DECK:Hirudo.getDeck(),
+						CHANGECLOTH:0
 		}
 	}
 	static getDeck(){
 		return [
 			{NUMBER:101,
-				TEXT:"隣のマスに威力５のダメージ",
+				TEXT:"隣のマスに威力４のダメージ　衣装を強化",
 				RANGE:[["distance",1]],
-				POWER:5,
+				POWER:4,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
+				SUPPORT_Af_Myself:[{effect:"Retrofits"}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -40,13 +41,13 @@ class Hirudo extends Chara{
 				ANIMATION:[4]
 			},
 			{NUMBER:102,
-				TEXT:"２マス隣に威力４のダメージ",
+				TEXT:"２マス隣に威力３のダメージ　衣装を強化",
 				RANGE:[["distance",2]],
-				POWER:4,
+				POWER:3,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
+				SUPPORT_Af_Myself:[{effect:"Retrofits"}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -56,13 +57,13 @@ class Hirudo extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:103,
-				TEXT:"３マス隣に威力４のダメージ",
+				TEXT:"３マス隣に威力３のダメージ　衣装を強化",
 				RANGE:[["distance",3]],
-				POWER:4,
+				POWER:3,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
+				SUPPORT_Af_Myself:[{effect:"Retrofits"}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -184,17 +185,17 @@ class Hirudo extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:111,
-				TEXT:"周囲１２マスに威力５のダメージ（自傷　威力１）",
-				RANGE:[["circumference",2]],
-				POWER:5,
+				TEXT:"衣装を強化しDelayを５０下げる",
+				RANGE:[],
+				POWER:0,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
+				SUPPORT_Af_Myself:[{effect:"Retrofits"},{effect:"delay",value:-50}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[3]
@@ -232,13 +233,13 @@ class Hirudo extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:114,
-				TEXT:"相手全体に威力5のダメージ その後シャッフル",
-				RANGE:[["enemy"]],
-				POWER:5,
+				TEXT:"衣装を２段階強化してDelayを50下げる その後シャッフル",
+				RANGE:[],
+				POWER:0,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
+				SUPPORT_Af_Myself:[{effect:"Retrofits"},{effect:"Retrofits"},{effect:"delay",value:-50}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],
@@ -265,9 +266,43 @@ class Hirudo extends Chara{
 				},]
 	}
 	addDamage(aDamage){
-		let tPromise=super.addDamage(aDamage);
-		//ステータス変化
-
-		return tPromise;
+		return new Promise((res,rej)=>{
+			super.addDamage(aDamage).then(()=>{
+			//ステータス変化
+				attackAnimate(this,this,[10],()=>{
+					this.changeClothes("down");
+				res()})
+			})
+		})
 	}
+	changeClothes(tChange){
+		console.log("in");
+		if(tChange=="down"){
+			console.log("indown");
+			if(this.data.CHANGECLOTH>0){
+				this.data.CHANGECLOTH--;
+				this.plusStatus("ATK",-4);
+				this.plusStatus("DEF",-4);
+				this.plusStatus("SPD",2);
+				addlog((this.data.CHANGECLOTH+1)+"段階の衣装に弱化");
+			}
+			else addlog("これ以上変化しない")
+		}
+		else if(tChange=="up"){
+			console.log("inup");
+			if(this.data.CHANGECLOTH<5){
+				this.data.CHANGECLOTH++;
+				this.plusStatus("ATK",4);
+				this.plusStatus("DEF",4);
+				this.plusStatus("SPD",-2);
+				addlog((this.data.CHANGECLOTH+1)+"段階の衣装に強化");
+			}
+			else addlog("これ以上変化しない")
+		}
+		this.img.src=this.getActorUrl();
+	}
+	getActorUrl(){
+		return '../image/chara/3_sv_actors/'+String(this.image+300+(10000-10000*Math.floor(this.data.CHANGECLOTH/3))+(this.data.CHANGECLOTH%3))+'.png';
+	}
+
 }
