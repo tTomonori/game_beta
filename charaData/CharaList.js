@@ -18,5 +18,6 @@ CharaList.classList=[
 	Guren,
 	Fureiya,
 	Gureisu,
-	Zawin
+	Zawin,
+	Hirudo
 ]
