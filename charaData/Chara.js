@@ -29,9 +29,13 @@ class Chara{
 		this.MOV=this.originalMOV;
 		this.deck=aData.DECK
 		this.image=aData.IMAGE;
-		this.Delay=Math.floor(mSetDelay/(this.SPD*(makeRandom()*0.2+0.9)));
+		this.Delay;
+		this.initDelay();
 
 		this.summonNum=0;//召喚した回数
+	}
+	initDelay(){
+		this.Delay=Math.floor(mSetDelay/(this.SPD*(makeRandom()*0.2+0.9)));
 	}
 	initDisplay(){
 		//キャラ画像

@@ -40,8 +40,8 @@ class Quest4 extends Quest{
 	//operationNum:0ならuser,1以上ならAI番号
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:0},team:"T",position:{x:1,y:2},operationNum:0,status:[]})
-		this.addChara({chara:{charaCategory:"hero",num:1},team:"T",position:{x:1,y:4},operationNum:0,status:[]})
+		this.addChara({chara:{charaCategory:"hero",num:0},team:"T",position:{x:2,y:2},operationNum:0,status:[]})
+		this.addChara({chara:{charaCategory:"hero",num:1},team:"T",position:{x:2,y:4},operationNum:0,status:[]})
 		this.addChara({chara:{charaCategory:"hero",num:8},team:"friend",position:{x:0,y:3},operationNum:1,status:[["NAME","妖精"],["HP",60],["MP",0],["MOV",1],["SPD",3]]})
 		this.addChara({chara:{charaCategory:"hero",num:10},team:"F",position:{x:6,y:2},operationNum:1,status:[["NAME","ハンター"],["ATK",20],["DEF",10],["SPD",20]]})
 		this.addChara({chara:{charaCategory:"hero",num:10},team:"F",position:{x:6,y:4},operationNum:1,status:[["NAME","ハンター"],["ATK",20],["DEF",10],["SPD",20]]})

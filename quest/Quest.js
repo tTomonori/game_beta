@@ -69,6 +69,7 @@ class Quest{
 						tChara["original"+tCharaData.status[i][0]]=tCharaData.status[i][1]
 					tChara[tCharaData.status[i][0]]=tCharaData.status[i][1]
 				}
+				tChara.initDelay();
 			}
 			//倒れた時の関数更新
 			tChara.down=(tChara.getTeam()=="T")?
