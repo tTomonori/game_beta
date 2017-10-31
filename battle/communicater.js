@@ -6,6 +6,7 @@ var mSocketId;
 var mBattleNum;
 var mMyPlayerNum;
 var mMyCharas=mSelectedCharas;
+var mTimer;
 
 function getRandom(){
 	mSocket.emit("get_random",{battleNum:mBattleNum,id:mSocketId});
@@ -15,8 +16,10 @@ function getRandom(){
 function connectServer(aIpAdress){
 	mSocket=socketClient("http://"+aIpAdress+":"+(10010));
 	mSocket.on("inform_id",(data)=>{//id通知
+		window.clearTimeout(mTimer)//接続タイムアウト関数を削除
 		$("#text")[0].textContent="マッチング中です"
 		mSocketId=data.id;
+		data.charaNum=mSelectedCharas.length;
 		mSocket.emit("inform_version",version.version,data);
 	})
 	mSocket.on("not_match_version",(data)=>{//バージョンが合わない
@@ -77,6 +80,11 @@ function connect(){
 	$("#adressForm")[0].style.display="none";
 	let tAdress=$("#adressText")[0].value;
 	connectServer(tAdress);
+	mTimer=setTimeout(()=>{//接続タイムアウト
+		mSocket=mSocket.disconnect();
+		$("#text")[0].textContent="サーバが見つかりません"
+		$("#adressForm")[0].style.display="block";
+	},5000)
 }
 //バトルが終わったことをサーバに通知
 function informFinish(){

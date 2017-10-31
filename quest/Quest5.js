@@ -18,7 +18,7 @@ class Quest5 extends Quest{
 	}
 	//敗北条件説明
 	static getLoseCondition(){
-		return "味方が全員倒される";
+		return "味方の全滅";
 	}
 	//自軍
 	static getMyTeam(){

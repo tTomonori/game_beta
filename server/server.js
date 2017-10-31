@@ -8,7 +8,8 @@ var server = http.createServer(function(req, res) {
 }).listen(10010);
 var io = socketio.listen(server);
 
-var mMatchingUser=null;//マッチングのユーザの情報
+//マッチング中のユーザの情報
+var mMatchingUser=[null,null,null,null];
 var mBattleNum=0;
 //{user1Socket,user1Id,user2Socket,user2Id,battleNum,randoms1,randoms2,user1Charas,user2Charas}
 var mBattles=new Map();//対戦中の試合の情報
@@ -21,13 +22,15 @@ io.sockets.on('connection', function(socket) {
       io.to(aSocket.id).emit("not_match_version");
       return;
     }
+    //選択したキャラの数を確認し,マッチングさせる
+    let tCharaNum=aSocket.charaNum;//キャラクターの数
     let tUserData={id:aSocket.id}
-    if(mMatchingUser==null){//一人目
-      mMatchingUser=tUserData;
+    if(mMatchingUser[tCharaNum]==null){//一人目
+      mMatchingUser[tCharaNum]=tUserData;
     }
-    else if(mMatchingUser!=null){//二人目
-      let tPartnerData=mMatchingUser;
-      mMatchingUser=null;
+    else if(mMatchingUser[tCharaNum]!=null){//二人目
+      let tPartnerData=mMatchingUser[tCharaNum];
+      mMatchingUser[tCharaNum]=null;
       matching(tUserData,tPartnerData);
     }
   })
