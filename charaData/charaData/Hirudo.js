@@ -264,4 +264,10 @@ class Hirudo extends Chara{
 					ANIMATION:[0]
 				},]
 	}
+	addDamage(aDamage){
+		let tPromise=super.addDamage(aDamage);
+		//ステータス変化
+
+		return tPromise;
+	}
 }
