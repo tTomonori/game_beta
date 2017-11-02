@@ -198,12 +198,15 @@ function winner(aWinner){
 	$("#finishButton")[0].style.display="block"
 }
 
-function makeRandom(){
+//0からaNumまでのランダムな整数値を返す(引数を設定していないなら0から1未満の実数)
+function makeRandom(aNum){
 	if(mCommunicationFlag){
 		//通信対戦時
+		if(aNum!=undefined) return Math.floor(getRandom()*(aNum+1))
 		return getRandom();
 	}
 	else{
+		if(aNum!=undefined) return Math.floor(Math.random()*(aNum+1))
 		return Math.random();
 	}
 }

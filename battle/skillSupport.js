@@ -20,6 +20,7 @@ function SupportPlay(aSupportnums,aChara){
 		if(aChara.TYPE==tCard.getSoot()) tValue+=aSupportnums.additionOfMatchingType;
 	}
 	let tAnimation;
+	let tRange;
 	return new Promise((res,rej)=>{
 		switch (aSupportnums.effect) {
 			case "shuffle"://シャッフルする
@@ -85,7 +86,7 @@ function SupportPlay(aSupportnums,aChara){
 						if(tTarget[i]=="ally") tTarget[i]=(tTurnChara.getTeam()=="T")?"T":"F";
 						else if(tTarget[i]=="enemy") tTarget[i]=(tTurnChara.getTeam()=="T")?"F":"T";
 					}
-					let tRange=calcRange(aSupportnums.range,tTurnChara.getPosition());
+					tRange=calcRange(aSupportnums.range,tTurnChara.getPosition());
 					for(let i=0;i<tRange.length;i++){
 						let tSettedCard=Feild.getCard(tRange[i][0],tRange[i][1]);
 						tSettedCard.setTrap({effect:"stepTrap",trapEffect:aSupportnums.trapEffect,value:tValue,owner:tTurnChara.getTeam(),target:tTarget,remove:aSupportnums.remove});
@@ -124,6 +125,60 @@ function SupportPlay(aSupportnums,aChara){
 			case "Retrofits":
 				attackAnimate(tTurnChara,aChara,[7],()=>{
 					mTurnChara.changeClothes("up");
+				res()})
+				break;
+			case "changeCardType"://カードのタイプを変更
+				//変更後タイプ
+				let tSoot;
+				switch (aSupportnums.value) {
+					case "ally"://ランダムな自分以外の味方のタイプ(味方がいないなら自分のタイプ)
+						let tMyTeam=(mTurnChara.getTeam()=="T")?mTrueTeam.concat():mFalseTeam.concat();
+						if(tMyTeam.length>1){
+							//配列から自分を削除する
+							for(let i=0;i<tMyTeam.length;i++){
+								if(tMyTeam[i]==mTurnChara){
+									tMyTeam.splice(i,1);
+									break;
+								}
+							}
+							//味方一人をランダムに選択
+							tSoot=tMyTeam[makeRandom(tMyTeam.length-1)].getType();
+						}
+						else{//味方がいない
+							tSoot=mTurnChara.getType();
+						}
+						break;
+					default:
+				}
+				//変更する座標
+				tRange=calcRange(aSupportnums.range,mTurnChara.getPosition());
+				//アニメーション実行
+				attackAnimate(tTurnChara,aChara,[7],()=>{
+					//変更する
+					newLog("カードのタイプが変更された")
+					for(let i=0;i<tRange.length;i++){
+						Feild.getCard(tRange[i][0],tRange[i][1]).setSoot(tSoot);
+					}
+				res()})
+				break;
+			case "changeCardSkill"://特殊な効果を持ったカードに変える
+				tRange=calcRange(aSupportnums.range,mTurnChara.getPosition());
+				//アニメーション実行
+				attackAnimate(tTurnChara,aChara,[7],()=>{
+					//変更する
+					for(let i=0;i<tRange.length;i++){
+						Feild.getCard(tRange[i][0],tRange[i][1]).changeSpecial(aSupportnums.img,aSupportnums.skill,mTurnChara,aSupportnums.style);
+					}
+				res()})
+				break;
+			case "changeCardNumber"://カードの番号を変える
+				tRange=calcRange(aSupportnums.range,mTurnChara.getPosition());
+				//アニメーション実行
+				attackAnimate(tTurnChara,aChara,[7],()=>{
+					//変更する
+					for(let i=0;i<tRange.length;i++){
+						Feild.getCard(tRange[i][0],tRange[i][1]).setNumber(tValue);
+					}
 				res()})
 				break;
 			case 6:

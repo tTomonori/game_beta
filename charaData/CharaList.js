@@ -19,5 +19,6 @@ CharaList.classList=[
 	Fureiya,
 	Gureisu,
 	Zawin,
-	Hirudo
+	Hirudo,
+	Rumi
 ]

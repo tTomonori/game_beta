@@ -6,6 +6,7 @@ function getAttackRange(aSkillRange) {
 
 function calcRange(aSkillRange,aPosition){
 	let tRange=new Array();
+	let tAcceptMyPositionFlag=false;//falseなら自分がいるマス(=aPosition)を含めない
 	for(let i=0;i<aSkillRange.length;i++){
 		let tX=aSkillRange[i][1];
 		switch (aSkillRange[i][0]) {
@@ -61,6 +62,10 @@ function calcRange(aSkillRange,aPosition){
 				tRange.push([tPosition.x,tPosition.y]);
 			}
 				break;
+			case "my"://自分がいるマス
+				tRange.push([aPosition.x,aPosition.y]);
+				tAcceptMyPositionFlag=true;
+				break;
 			case "around"://外周からx列目
 					for(var j=tX-1;j<8-tX;j++){
 						tRange.push([tX-1,j]);
@@ -83,13 +88,26 @@ function calcRange(aSkillRange,aPosition){
 					}
 					tRange.push([tRX,tRY]);
 				}
+			case "function"://関数に渡してtrueが返されるcard
+				let tCards=Feild.getAllCard();
+				for(let j=0;j<tCards.length;j++){
+					if(aSkillRange[i][1](tCards[j],mTurnChara)){
+						tRange.push([j%8,Math.floor(j/8)])
+					}
+				}
+				console.log(tRange);
+				break;
 			default:
 		}
 	}
 	let tRgihtRange=new Array();
 	for(let i=0;i<tRange.length;i++){
 		//フィールドの外は入れない
-		if(tRange[i][0]<0||7<tRange[i][0]||tRange[i][1]<0||6<tRange[i][1]||(tRange[i][0]==aPosition.x&&tRange[i][1]==aPosition.y)){
+		if(tRange[i][0]<0||7<tRange[i][0]||tRange[i][1]<0||6<tRange[i][1]){
+			continue;
+		}
+		//自分がいるマス
+		if(!tAcceptMyPositionFlag&&tRange[i][0]==aPosition.x&&tRange[i][1]==aPosition.y){
 			continue;
 		}
 		for(let j=0;j<tRgihtRange.length;j++){//被り削除

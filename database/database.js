@@ -1,8 +1,9 @@
 var db;
-var NeDB=require("nedb")
+// var NeDB=require("nedb")
+var NeDB=require(__dirname+"/../node_modules/nedb")
 
 //ファイルを開く
-loadDB("database/questData.db")
+loadDB(__dirname+"/../database/questData.db")
 function loadDB(aFilePath){
 	let fileName=aFilePath;
 	db=new NeDB({
@@ -13,7 +14,6 @@ function loadDB(aFilePath){
 
 //引数の番号のクエストがクリア済みならCallBackの引数にtrue
 function isQuestCrelar(aNum,aCallBack){
-	console.log(aNum);
 	db.find({Data:"quest",Num:aNum},(err,doc)=>{
 		let tIsClear;
 		if(doc.length==0) tIsClear=false;
@@ -25,5 +25,6 @@ function isQuestCrelar(aNum,aCallBack){
 }
 //引数の番号のクエストをクリアしたことをセーブ
 function saveQuestClear(aNum){
+	console.log(aNum);
 	db.insert({Data:"quest",Num:aNum,Value:"clear",_id:"q"+aNum})
 }

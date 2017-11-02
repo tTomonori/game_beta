@@ -11,7 +11,12 @@ class Card{
 			this.shuffledFunction.push([()=>{this.makeRevers();},true])
 		}
 		this.createCardImage();
+		this.setCardImage();
 		this.trapEffect=new Array();
+
+		//特殊なカードに変更するためのメンバ
+		this.specialCardOner=null;
+		this.specialSkill=()=>{};
 	}
 	//カードのタグを生成
 	createCardImage(){
@@ -23,8 +28,9 @@ class Card{
 		this.cardImage.style="position:absolute;top:0;left:0;width:65px;height:65px;"
 		this.sootImage=document.createElement("img");
 		this.sootImage.style="position:absolute;top:0;left:0;width:50px;height:50px;position:absolute;margin-left:10px;margin-top:10px"
-		if(this.soot!="joker"&&this.soot!="suka"){this.sootImage.src="../image/"+this.soot+".png";}
-		else {this.sootImage.src="";this.sootImage.style.display="none";}
+		this.specialImage=document.createElement("img");
+		this.specialImage.style="position:absolute;top:0;left:0;width:50px;height:50px;position:absolute;margin-left:10px;margin-top:10px;display:none;"
+		this.specialSrc="";
 		this.reversImage=document.createElement("img");
 		this.reversImage.src="../image/card_back.png";
 		this.reversImage.style="position:absolute;top:0;left:0;width:65px;height:65px;"
@@ -35,8 +41,34 @@ class Card{
 
 		this.cardContainer.appendChild(this.cardImage);
 		this.cardContainer.appendChild(this.sootImage);
+		this.cardContainer.appendChild(this.specialImage);
 		this.cardContainer.appendChild(this.numberImage);
 		this.cardContainer.appendChild(this.reversImage);
+	}
+	//カード表示を更新する
+	setCardImage(){
+		//マーク
+		if(["spade","club","diamond","heart"].indexOf(this.getSoot())!=-1){
+			this.sootImage.src="../image/"+this.soot+".png";
+			this.sootImage.style.display="block";
+		}
+		else {
+			this.sootImage.src="";
+			this.sootImage.style.display="none";
+		}
+		//数字
+		this.specialImage.src="";
+		this.specialImage.style.display="none";
+		if(this.number!="suka"&&this.number!="special"){
+			this.numberImage.textContent=this.number;
+		}
+		else{
+			this.numberImage.textContent="";
+			if(this.number=="special"){//特殊なカード
+				this.specialImage.style.display="block";
+				this.specialImage.src=this.specialSrc;
+			}
+		}
 	}
 	//カードのタグを返す
 	getCardImage(){
@@ -49,6 +81,20 @@ class Card{
 	//カードのスート(マーク)を返す
 	getSoot(){
 		return this.soot;
+	}
+	//カード番号を変更
+	setNumber(aNum){
+		this.number=aNum;
+		if(aNum=="joker"||aNum=="suka"){
+			this.soot="";
+			this.resetSpecial();
+		}
+		this.setCardImage();
+	}
+	//カードのスートを変更
+	setSoot(aSoot){
+		this.soot=aSoot;
+		this.setCardImage();
 	}
 	//カードを裏返す
 	makeRevers(){
@@ -103,4 +149,41 @@ class Card{
 			})
 		})
 	}
+	//カードを特殊な効果をもつカードに変える
+	changeSpecial(aImage,aSkill,aChara,aStyle){
+		this.number="special";
+		this.specialSrc="../image/chara/material/"+aImage;
+		this.specialImage.style="position:absolute;top:0;left:0;width:50px;height:50px;position:absolute;margin-left:10px;margin-top:10px;display:none;"
+		for(let i=0;i<aStyle.length;i++){
+			this.specialImage.style[aStyle[i][0]]=aStyle[i][1];
+		}
+		this.soot="";
+		this.specialCardOner=aChara;//このカードを変えたキャラ
+		this.specialSkill=(aOrner,aChara)=>{return aSkill(aOrner,aChara)};
+		this.setCardImage();
+	}
+	resetSpecial(){
+		this.specialSrc="";
+		this.specialImage.style="display:none;";
+		this.specialCardOner=null;
+		this.specialSkill=()=>{}
+	}
+	getSpecialSkill(aChara){
+		return this.specialSkill(this.specialCardOner,aChara);
+	}
+	//このカードを特殊な効果に変えたキャラを返す
+	getOrner(){
+		return this.specialCardOner;
+	}
+}
+
+function cardNumberToInt(aNum){
+	if(aNum=="A") return 1;
+	if(aNum=="J") return 11;
+	if(aNum=="Q") return 12;
+	if(aNum=="K") return 13;
+	if(aNum=="joker") return 14;
+	if(aNum=="suka") return 15;
+	if(aNum=="special") return 16;
+	return aNum;
 }

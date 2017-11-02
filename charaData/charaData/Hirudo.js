@@ -15,7 +15,7 @@ class Hirudo extends Chara{
 						ATK:20,
 						DEF:20,
 						SPD:30,
-						MOV:3,
+						MOV:2,
 						TYPE:"spade",
 						IMAGE:1058010001,
 						DECK:Hirudo.getDeck(),
@@ -284,9 +284,9 @@ class Hirudo extends Chara{
 				this.plusStatus("ATK",-4);
 				this.plusStatus("DEF",-4);
 				this.plusStatus("SPD",2);
-				addlog((this.data.CHANGECLOTH+1)+"段階の衣装に弱化");
+				addLog((this.data.CHANGECLOTH+1)+"段階の衣装に弱化");
 			}
-			else addlog("これ以上変化しない")
+			else addLog("これ以上変化しない")
 		}
 		else if(tChange=="up"){
 			console.log("inup");
@@ -295,9 +295,9 @@ class Hirudo extends Chara{
 				this.plusStatus("ATK",4);
 				this.plusStatus("DEF",4);
 				this.plusStatus("SPD",-2);
-				addlog((this.data.CHANGECLOTH+1)+"段階の衣装に強化");
+				addLog((this.data.CHANGECLOTH+1)+"段階の衣装に強化");
 			}
-			else addlog("これ以上変化しない")
+			else addLog("これ以上変化しない")
 		}
 		this.img.src=this.getActorUrl();
 	}

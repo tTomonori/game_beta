@@ -7,7 +7,7 @@ function attack(aChara) {
 		var tCard=Feild.getCard(tPosition.x,tPosition.y);
 
 		//デッキの確認
-		var tSkill=aChara.getSkill(tCard.getNumber());
+		var tSkill=aChara.getSkill(tCard);
 
 		// //技取り出し
 		// for(var j=0;j<mSkillList.length;j++){

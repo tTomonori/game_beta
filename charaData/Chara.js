@@ -106,6 +106,9 @@ class Chara{
 	getName(){
 		return this.NAME;
 	}
+	getType(){
+		return this.TYPE;
+	}
 	getMov(){
 		return this.MOV;
 	}
@@ -124,15 +127,21 @@ class Chara{
 	getDeck(){
 		return this.deck.concat();
 	}
-	getSkill(aNum){
-		if(aNum=="A") aNum=0;
-		else if(aNum=="J") aNum=10;
-		else if(aNum=="Q") aNum=11;
-		else if(aNum=="K") aNum=12;
-		else if(aNum=="joker") aNum=13;
-		else if(aNum=="suka") aNum=14;
-		else aNum-=1;
-		return this.deck[aNum];
+	getSkill(aCard){
+		let tNum=(typeof(aCard)=="number")?aCard:aCard.getNumber();
+		if(tNum!="special"){
+			if(tNum=="A") tNum=0;
+			else if(tNum=="J") tNum=10;
+			else if(tNum=="Q") tNum=11;
+			else if(tNum=="K") tNum=12;
+			else if(tNum=="joker") tNum=13;
+			else if(tNum=="suka") tNum=14;
+			else tNum-=1;
+			return this.deck[tNum];
+		}
+		else{//特殊なカードだった場合
+			return aCard.getSpecialSkill(this);
+		}
 	}
 	move(aX,aY,aCallback){
 		$("#"+this.container.id).animate({

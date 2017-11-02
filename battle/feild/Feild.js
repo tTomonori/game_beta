@@ -18,14 +18,14 @@ class Feild{
 			this.cardsLine.push(new Card(tNum,"diamond"));
 			this.cardsLine.push(new Card(tNum,"heart"));
 		}
-		this.cards.push(new Card("joker","joker"));
-		this.cards.push(new Card("joker","joker"));
-		this.cards.push(new Card("suka","suka"));
-		this.cards.push(new Card("suka","suka"));
-		this.cardsLine.push(new Card("joker","joker"));
-		this.cardsLine.push(new Card("joker","joker"));
-		this.cardsLine.push(new Card("suka","suka"));
-		this.cardsLine.push(new Card("suka","suka"));
+		this.cards.push(new Card("joker",""));
+		this.cards.push(new Card("joker",""));
+		this.cards.push(new Card("suka",""));
+		this.cards.push(new Card("suka",""));
+		this.cardsLine.push(new Card("joker",""));
+		this.cardsLine.push(new Card("joker",""));
+		this.cardsLine.push(new Card("suka",""));
+		this.cardsLine.push(new Card("suka",""));
 
 		this.resetTable();
 	}

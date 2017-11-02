@@ -75,7 +75,7 @@ function attackable(aX,aY){
 		let tCard=Feild.getCard(aX,aY);
 		let tNumber=tCard.getNumber();
 		if(tNumber!="joker"&&tNumber!="suka"){
-			displayDeck(tNumber);
+			displayDeck(tCard);
 		}
 
 	for(let i=0;i<mMovable.length;i++){
@@ -86,7 +86,7 @@ function attackable(aX,aY){
 
 		var tChara = mTurnChara;
 		//デッキの確認
-		var tSkill=tChara.getSkill(tNumber);
+		var tSkill=tChara.getSkill(tCard);
 
 		//技取り出し
 		// for(var j=0;j<mSkillList.length;j++){
@@ -260,11 +260,13 @@ function returnAttackable() {
 	returnDeck();
 }
 //スキルの説明を表示
-function displayDeck(aNum){
+function displayDeck(aCard){
 	if(mEventFlag) return;
-	let tSkill=mTurnChara.getSkill(aNum);
+	let tSkill=mTurnChara.getSkill(aCard);
+	let tNum=(typeof(aCard)=="number"||typeof(aCard)=="string")?aCard:aCard.getNumber();
+	tNum=cardNumberToInt(tNum);
 	$("#cardText")[0].textContent=tSkill.TEXT;
-	$("#cardText").css("left",(aNum-1)*50+"px");
+	$("#cardText").css("left",(tNum-1)*50+"px");
 	$("#cardText").css("display","inline-block");
 }
 
