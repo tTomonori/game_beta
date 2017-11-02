@@ -16,7 +16,7 @@ class Rumi extends Chara{
 						DEF:22,
 						SPD:22,
 						MOV:2,
-						TYPE:"diamond",
+						TYPE:"heart",
 						IMAGE:1448010001,
 						DECK:Rumi.getDeck()
 		}
