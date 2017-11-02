@@ -13,14 +13,16 @@ class Chara{
 		this.operationNum=aOperationNum//操作法(AIか通信か...)
 		this.originalName=aData.NAME;
 		this.NAME=aData.NAME;
-		this.originalHP=aData.HP;
-		this.originalMP=aData.MP;
+		this.maxHP=aData.HP;
+		this.maxMP=aData.MP;
 		this.originalATK=aData.ATK;
 		this.originalDEF=aData.DEF;
 		this.originalSPD=aData.SPD;
 		this.originalTYPE=aData.TYPE;
 		this.originalMOV=aData.MOV;
-		this.HP=this.originalHP;
+		this.maxHP=this.maxHP;
+		this.maxMP=this.maxMP
+		this.HP=this.maxHP;
 		this.MP=0;
 		this.ATK=this.originalATK;
 		this.DEF=this.originalDEF;
@@ -33,6 +35,10 @@ class Chara{
 		this.initDelay();
 
 		this.summonNum=0;//召喚した回数
+		this.natureSkillFlag;//特性用
+		//追加ターン確認用
+		this.getTurnFlag=false;//このターンに追加ターンを獲得していたらtrue
+		this.additionalTurnFlag=false;//このターンが追加ターンならtrue
 	}
 	initDelay(){
 		this.Delay=Math.floor(mSetDelay/(this.SPD*(makeRandom()*0.2+0.9)));
@@ -162,11 +168,16 @@ class Chara{
 	startTurn(){
 		//mp回復
 		this.useMp(-1);
+		//getTurnFlag
+		this.additionalTurnFlag=this.getTurnFlag;
+		this.getTurnFlag=false;
 	}
 	//ターン終了
 	endTurn(aDelay){
 		//ディレイ増加
 		this.addDelay(100+aDelay);
+		//getTurnFlag
+		this.additionalTurnFlag=false;
 	}
 	//ディレイを減少,増加させる(引数は効果値)ログもだす
 	effectDelay(aDelay){
@@ -186,7 +197,8 @@ class Chara{
 	getTurn(){
 		let tDelay = Math.floor((100*1000)/this.SPD);
 		this.Delay-=tDelay;
-		freeLog(this,"追加ターン","獲得された");
+		this.getTurnFlag=true;
+		newLog(this,"は追加ターンを獲得した")
 	}
 	//タイプ変更
 	changeType(aType){
@@ -229,7 +241,7 @@ class Chara{
 		}
 	}
 	//ダメージを与える(引数が負なら回復)
-	addDamage(aDamage){
+	addDamage(aDamage,aNotAnimationFlag){
 		return new Promise((res,rej)=>{
 			if(aDamage==0){
 				res()
@@ -238,7 +250,7 @@ class Chara{
 			let tBar=this.getHPBar();
 			this.HP-=aDamage;
 			//HP超過
-			if(this.HP>this.originalHP) this.HP=this.originalHP;
+			if(this.HP>this.maxHP) this.HP=this.maxHP;
 			if(this.HP<=0){
 				//戦闘不能
 				this.HP=0
@@ -277,14 +289,15 @@ class Chara{
 			tDamageChar.style.color=(aDamage>0)?"#f00":"#0f0";
 			tBarContainer.appendChild(tDamageChar);
 			//アニメーションの実行
-			(aDamage>0)?this.setImgaeNum(0,4):this.setImgaeNum(5,5);
+			if(aNotAnimationFlag==undefined)
+				(aDamage>0)?this.setImgaeNum(0,4):this.setImgaeNum(5,5);
 			$("#"+tDamageChar.id).animate({
 				top:"-20px"
 			},1000,"linear",()=>{
 				tDamageChar.remove();
 			});
 			$("#"+tBarId).animate({
-				width:(this.HP/this.originalHP*100)+"%"
+				width:(this.HP/this.maxHP*100)+"%"
 			},700,"linear",()=>{
 				if(this.HP>0)
 				this.setImgaeNum(0,0);
@@ -313,7 +326,7 @@ class Chara{
 		if(this.MP<aMp) return false;
 		else{
 			this.MP-=aMp;
-			if(this.MP>this.originalMP) this.MP=this.originalMP;
+			if(this.MP>this.maxMP) this.MP=this.maxMP;
 			return true;
 		}
 	}
@@ -321,7 +334,7 @@ class Chara{
 	addMp(aMp){
 		if(aMp==0) return;
 		this.MP+=aMp;
-		if(this.MP>this.originalMP) this.MP=this.originalMP;
+		if(this.MP>this.maxMP) this.MP=this.maxMP;
 		if(this.MP<0) this.MP=0;
 		(aMp>0)?freeLog(this,"MP",aMp+"回復"):freeLog(this,"MP",-aMp+"減少");
 	}
@@ -334,7 +347,8 @@ class Chara{
 		this.SPD+=(tChara.SPD-this.originalSPD);
 		this.MOV+=(tChara.MOV-this.originalMOV);
 		this.TYPE=tChara.TYPE;
-		this.originalHP=tChara.HP;
+		this.maxHP+=(tChara.HP-this.originalHP);
+		this.maxMP+=(tChara.MP-this.originalMP);
 		this.originalMP=tChara.MP;
 		this.originalATK=tChara.ATK;
 		this.originalDEF=tChara.DEF;
@@ -383,8 +397,8 @@ class Chara{
 			$("#status")[0].innerHTML=
 			"<div style='background:"+this.teamColor+";color:#ffffff;width:85%;border-radius:10px;padding:5px'>"+
 			this.NAME+"<br>"+
-			"HP:"+this.HP+"/"+this.originalHP+"<br>"+this.getHPBar()+
-			"MP:"+this.MP+"/"+this.originalMP+"<br>"+this.getMPBar()+
+			"HP:"+this.HP+"/"+this.maxHP+"<br>"+this.getHPBar()+
+			"MP:"+this.MP+"/"+this.maxMP+"<br>"+this.getMPBar()+
 			"ATK:"+this.ATK+"<br>"+
 			"DEF:"+this.DEF+"<br>"+
 			"SPD:"+this.SPD+"<br>"+
@@ -398,10 +412,10 @@ class Chara{
 		}
 	}
 	getHPBar(){
-		return "<div style='width:100%;height:5px;background:#ff0000;'><div style='width:"+(this.HP/this.originalHP*100)+"%;height:100%;background:#00ff22;'></div></div>"
+		return "<div style='width:100%;height:5px;background:#ff0000;'><div style='width:"+(this.HP/this.maxHP*100)+"%;height:100%;background:#00ff22;'></div></div>"
 	}
 	getMPBar(){
-		return "<div style='width:100%;height:5px;background:#cf03d4;'><div style='width:"+(this.MP/this.originalMP*100)+"%;height:100%;background:#30d4ff;'></div></div>"
+		return "<div style='width:100%;height:5px;background:#cf03d4;'><div style='width:"+(this.MP/this.maxMP*100)+"%;height:100%;background:#30d4ff;'></div></div>"
 	}
 }
 var mCharaNumber=0;
@@ -409,7 +423,15 @@ var mCharaNumber=0;
 function createSkillText(aSkill){
 	var tText = "";
 	tText += aSkill.TEXT;
-	if(aSkill.MAGIC>0&&aSkill.SUPPORT_Af_Myself.indexOf({effect:"getTurn"})==-1){
+	let tGetTurnFlag=false;
+	//getTurn効果があるか
+	for(let i=0;i<aSkill.SUPPORT_Af_Myself.length;i++){
+		if(aSkill.SUPPORT_Af_Myself[i].effect=="getTurn"){
+			tGetTurnFlag=true;
+			break;
+		}
+	}
+	if(aSkill.MAGIC>0&&!tGetTurnFlag){
 		tText += " (消費MP"+aSkill.MAGIC+")";
 	}
 	if(aSkill.DELAY>0){
@@ -418,5 +440,6 @@ function createSkillText(aSkill){
 	if(aSkill.M_ATTACK>0){
 		tText += " (自傷 威力"+aSkill.M_ATTACK+")";
 	}
+	console.log(aSkill.SUPPORT_Af_Myself,tText);
 	return tText;
 }

@@ -21,6 +21,9 @@ class akurahairu extends Chara{
 						DECK:akurahairu.getDeck()
 		}
 	}
+	getActorUrl(){
+		return '../image/chara/3_sv_actors/'+String(this.image+10300)+'.png';
+	}
 	static getDeck(){
 		return [
 			{NUMBER:101,

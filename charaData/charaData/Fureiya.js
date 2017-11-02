@@ -264,4 +264,10 @@ class Fureiya extends Chara{
 					ANIMATION:[0]
 				},]
 	}
+	startTurn(){
+		super.startTurn();
+		if(!this.additionalTurnFlag){
+			this.addDamage(Math.floor(-this.maxHP*0.05),true);
+		}
+	}
 }

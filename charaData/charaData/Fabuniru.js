@@ -101,8 +101,16 @@ class Fabuniru extends Chara{
 				}]
 	}
 	startTurn(){
-		if(this.MP==this.originalMP) this.MOV++;
-		//mp回復
-		this.useMp(-1);
+		super.startTurn();
+		if(this.MP==this.originalMP){
+			this.MOV++;
+			this.natureSkillFlag=true;
+		}
+	}
+	endTurn(){
+		if(this.natureSkillFlag){
+			thi.MOV--;
+		}
+		super.endTurn();
 	}
 }
