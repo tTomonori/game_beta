@@ -13,7 +13,7 @@ class Fureiya extends Chara{
 						HP:90,
 						MP:1,
 						ATK:21,
-						DEF:30,
+						DEF:28,
 						SPD:21,
 						MOV:2,
 						TYPE:"heart",

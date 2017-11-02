@@ -38,22 +38,6 @@ class Fabuniru extends Chara{
 			E_ATTACK:true,
 			ANIMATION:[15]
 		};
-		let tSkill2={NUMBER:613,
-			TEXT:"移動力１アップ　その後DELAYを50下げる",
-			RANGE:[],
-			POWER:0,
-			DELAY:0,
-			MAGIC:5,
-			SUPPORT_Be_Myself:[],
-			SUPPORT_Af_Myself:[{effect:"mov",value:1},{effect:"delay",value:50}],
-			SUPPORT_Be_Enemy:[],
-			SUPPORT_Af_Enemy:[],
-			SUPPORT_Otherwise:[],
-			M_ATTACK:0,
-			F_ATTACK:false,
-	    E_ATTACK:true,
-			ANIMATION:[0]
-		};
 		return [
 			tSkill,
 			tSkill,
@@ -81,8 +65,8 @@ class Fabuniru extends Chara{
 			tSkill,
 			tSkill,
 			tSkill,
-			tSkill2,
-			tSkill2,
+			tSkill,
+			tSkill,
 			{NUMBER:514,
 				TEXT:"相手全体に威力２０のダメージ その後シャッフル",
 				RANGE:[["enemy"]],
@@ -115,5 +99,10 @@ class Fabuniru extends Chara{
 					E_ATTACK:true,
 					ANIMATION:[0]
 				}]
+	}
+	startTurn(){
+		if(this.MP==this.originalMP) this.MOV++;
+		//mp回復
+		this.useMp(-1);
 	}
 }
