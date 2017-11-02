@@ -8,6 +8,10 @@ class akurahairu extends Chara{
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
+	static getCharaNatureSkill(){
+		//特性の説明
+		return "なし";
+	}
 	static getCharaData(){
 		return {NAME:"アクラハイル",
 						HP:85,
@@ -20,6 +24,9 @@ class akurahairu extends Chara{
 						IMAGE:1434010001,
 						DECK:akurahairu.getDeck()
 		}
+	}
+	getActorUrl(){
+		return '../image/chara/3_sv_actors/'+String(this.image+10300)+'.png';
 	}
 	static getDeck(){
 		return [

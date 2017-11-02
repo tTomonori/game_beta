@@ -20,8 +20,8 @@ function displayTeamStatus(aTag,aTeam){
 		aTag.innerHTML+="<div style='background:"+aTeam[i].teamColor+";margin:2px;width:90%;border-radius:10px;margin-bottom:10px;padding-bottom:5px'>"
 		+"<table style='width:100%;color:#ffffff'><tr><td rowspan='3' style='width:64px'><div style='width:64px;height:64px;overflow:hidden;'><img src='"+aTeam[i].getActorUrl()+"' style=''></div><img src='../image/"+aTeam[i].TYPE+".png' style='width:20px;margin-top:-20px;position:relative'></td>"
 		+"<td>"+aTeam[i].NAME+"</td></tr>"
-		+"<tr><td>HP:"+aTeam[i].HP+"/"+aTeam[i].originalHP
-		+"</td><tr><td>"+"MP:"+aTeam[i].MP+"/"+aTeam[i].originalMP+"</td></tr>"
+		+"<tr><td>HP:"+aTeam[i].HP+"/"+aTeam[i].maxHP
+		+"</td><tr><td>"+"MP:"+aTeam[i].MP+"/"+aTeam[i].maxMP+"</td></tr>"
 		+"<tr><td colspan='2'>"+aTeam[i].getHPBar()+"</td></tr>"
 		+"<tr><td colspan='2'>"+aTeam[i].getMPBar()+"</td></tr>"
 		+"</div>"

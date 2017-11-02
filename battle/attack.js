@@ -34,10 +34,11 @@ function attack(aChara) {
 						//補助効果適用(A)
 						Support(tSkill.SUPPORT_Af_Myself.concat(),aChara).then(()=>{
 							Support(tSkill.SUPPORT_Otherwise.concat(),aChara).then(()=>{
-								aChara.endTurn(tSkill.DELAY);
-								mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
-								displayDelay();
-								attacRes();
+								aChara.endTurn(tSkill.DELAY).then(()=>{
+									mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
+									displayDelay();
+									attacRes();
+								})
 							})
 						})
 					})
@@ -47,64 +48,12 @@ function attack(aChara) {
 		else{
 			//MPが足りない
 			freeLog(aChara,"MP","足りない")
-			aChara.endTurn(0);
-			mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
-			displayDelay();
-			attacRes();
+			aChara.endTurn(0).then(()=>{
+				mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
+				displayDelay();
+				attacRes();
+			})
 		}
-		// if(aChara.MP<tSkill.MAGIC){
-		// 	//delay計算
-		// 	var tDelay = Math.floor(100000/aChara.SPD);//初期値
-		// 	// tDelay+=Math.floor(tSkill.DELAY/aChara.SPD)//追加delay
-		//
-		// 	aChara.addDelay(tDelay);
-		// 	// mDelayList=sortDelay(mDelayList);
-		// 	mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
-		// 	displayDelay();
-		// 	freeLog(aChara,"MP","足りない")
-		// 	attacRes();
-		// 	// return;
-		// }
-		// else{
-		// 	aChara.MpMinus(tSkill.MAGIC).then(()=>{
-		// 		//補助効果適用(B)
-		// 		Support(tSkill.SUPPORT_Be_Myself.concat(),aChara).then(()=>{
-		// 			let tMyTeam;
-		// 			let tEnemyTeam;
-		// 			if(aChara.team=="T"){
-		// 				tMyTeam=mTrueTeam;
-		// 				tEnemyTeam=mFalseTeam;
-		// 			}
-		// 			else{
-		// 				tMyTeam=mFalseTeam;
-		// 				tEnemyTeam=mTrueTeam;
-		// 			}
-		// 			attackMyself(aChara,tSkill,tCard).then(()=>{
-		// 				addDamage(aChara,tMyTeam,tEnemyTeam,tSkill,tCard[1]).then(()=>{
-		// 					//補助効果適用(A)
-		// 					Support(tSkill.SUPPORT_Af_Myself.concat(),aChara).then(()=>{
-		//
-		// 						Support(tSkill.SUPPORT_Otherwise.concat(),aChara).then(()=>{
-		//
-		// 							//delay計算
-		// 							var tDelay = Math.floor(100000/aChara.SPD);//初期値
-		// 							tDelay+=Math.floor(tSkill.DELAY/aChara.SPD)//追加delay
-		//
-		// 							aChara.addDelay(tDelay);
-		// 							// mDelayList=sortDelay(mDelayList);
-		// 							mDelayList = initDelay(mTrueTeam,mFalseTeam);//mDelayListのdelay値が変わってなかったため
-		// 							displayDelay();
-		// 							attacRes();
-		// 						})
-		// 					})
-		// 				})
-		// 			})
-		// 		})
-		// 	})
-		// }
-		// return new Promise((res,rej)=>{
-		// 	attackAnimate(aChara,tDamagedCharas,tSkill.ANIMATION,()=>{res();});
-		// })
 	})
 }
 

@@ -8,6 +8,10 @@ class Fabuniru extends Chara{
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
+	static getCharaNatureSkill(){
+		//特性の説明
+		return "MPが最大まで溜まっているならMOV+1";
+	}
 	static getCharaData(){
 		return {NAME:"ファーブニル",
 						HP:200,
@@ -101,8 +105,20 @@ class Fabuniru extends Chara{
 				}]
 	}
 	startTurn(){
-		if(this.MP==this.originalMP) this.MOV++;
-		//mp回復
-		this.useMp(-1);
+		return new Promise((res,rej)=>{
+			super.startTurn().then(()=>{
+				if(this.MP==this.maxMP){
+					this.MOV++;
+					this.natureSkillFlag=true;
+				}
+				res();
+			})
+		})
+	}
+	endTurn(aDelay){
+		if(this.natureSkillFlag){
+			this.MOV--;
+		}
+		return super.endTurn(aDelay);
 	}
 }
