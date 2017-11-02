@@ -306,7 +306,7 @@ class Gabera extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1022,
-				TEXT:"隣のマスに威力７のダメージ (消費MP5)",
+				TEXT:"隣のマスに威力７のダメージ",
 				RANGE:[["distance",1]],
 				POWER:7,
 				DELAY:0,
@@ -322,7 +322,7 @@ class Gabera extends Chara{
 				ANIMATION:[4]
 			},
 			{NUMBER:1023,
-				TEXT:"２マス隣に威力６のダメージ (消費MP5)",
+				TEXT:"２マス隣に威力６のダメージ",
 				RANGE:[["distance",2]],
 				POWER:6,
 				DELAY:0,
@@ -338,7 +338,7 @@ class Gabera extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1024,
-				TEXT:"３マス隣に威力６のダメージ (消費MP5)",
+				TEXT:"３マス隣に威力６のダメージ",
 				RANGE:[["distance",3]],
 				POWER:6,
 				DELAY:0,
@@ -354,7 +354,7 @@ class Gabera extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1025,
-				TEXT:"縦三列に威力４のダメージ (消費MP6)",
+				TEXT:"縦三列に威力４のダメージ",
 				RANGE:[["vertical",3]],
 				POWER:4,
 				DELAY:0,
@@ -370,7 +370,7 @@ class Gabera extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1026,
-				TEXT:"横三列に威力４のダメージ (消費MP6)",
+				TEXT:"横三列に威力４のダメージ",
 				RANGE:[["horizontal",3]],
 				POWER:4,
 				DELAY:0,
@@ -402,7 +402,7 @@ class Gabera extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1028,
-				TEXT:"相手全体に威力３のダメージ (消費MP7)",
+				TEXT:"相手全体に威力３のダメージ",
 				RANGE:[["enemy"]],
 				POWER:3,
 				DELAY:0,
@@ -418,7 +418,7 @@ class Gabera extends Chara{
 				ANIMATION:[5]
 			},
 			{NUMBER:1029,
-				TEXT:"周囲８マスに威力４のダメージ (消費MP5)",
+				TEXT:"周囲８マスに威力４のダメージ",
 				RANGE:[["square",3]],
 				POWER:4,
 				DELAY:0,
@@ -434,7 +434,7 @@ class Gabera extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:1030,
-				TEXT:"隣のマスに敵味方無視の威力9のダメージ (消費MP5)",
+				TEXT:"隣のマスに敵味方無視の威力9のダメージ",
 				RANGE:[["distance",1]],
 				POWER:9,
 				DELAY:0,
@@ -450,7 +450,7 @@ class Gabera extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:1031,
-				TEXT:"周囲１２マスに威力５のダメージ (消費MP6)",
+				TEXT:"周囲１２マスに威力５のダメージ",
 				RANGE:[["circumference",2]],
 				POWER:5,
 				DELAY:0,
@@ -466,7 +466,7 @@ class Gabera extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:1032,
-				TEXT:"自分に威力８の回復（消費MP5）",
+				TEXT:"自分に威力８の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -482,7 +482,7 @@ class Gabera extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:1033,
-				TEXT:"味方に威力7の回復（消費MP5）",
+				TEXT:"味方に威力7の回復",
 				RANGE:[["ally"]],
 				POWER:-7,
 				DELAY:0,
