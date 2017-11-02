@@ -88,7 +88,7 @@ class Pathi extends Chara{
 				ANIMATION:[17]
 			},
 			{NUMBER:805,
-				TEXT:"隣のマスにいる相手のDELAYを５０上げ、威力２のダメージ（消費MP２）",
+				TEXT:"隣のマスにいる相手のDELAYを５０上げ、威力２のダメージ",
 				RANGE:[["distance",1]],
 				POWER:2,
 				DELAY:0,
@@ -184,7 +184,7 @@ class Pathi extends Chara{
 				ANIMATION:[15]
 			},
 			{NUMBER:612,
-				TEXT:"スピード4アップ　その後DELAYを50下げる（タイプ一致時6アップ）（消費MP２）",
+				TEXT:"スピード4アップ　その後DELAYを50下げる（タイプ一致時6アップ）",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -200,7 +200,7 @@ class Pathi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:112,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -216,7 +216,7 @@ class Pathi extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:113,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,

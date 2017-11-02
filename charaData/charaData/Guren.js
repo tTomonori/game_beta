@@ -184,7 +184,7 @@ class Guren extends Chara{
 				ANIMATION:[37]
 			},
 			{NUMBER:1111,
-				TEXT:"敵全体に威力５のダメージ（消費MP５）",
+				TEXT:"敵全体に威力５のダメージ",
 				RANGE:[["enemy"]],
 				POWER:5,
 				DELAY:0,
@@ -200,7 +200,7 @@ class Guren extends Chara{
 				ANIMATION:[36]
 			},
 			{NUMBER:112,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -216,7 +216,7 @@ class Guren extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:113,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,

@@ -24,7 +24,7 @@ class Zero extends Chara{
 	static getDeck(){
 		return [
 			{NUMBER:701,
-				TEXT:"隣のマスに威力５のダメージ（自傷　威力１）",
+				TEXT:"隣のマスに威力５のダメージ",
 				RANGE:[["distance",1]],
 				POWER:6,
 				DELAY:0,
@@ -40,7 +40,7 @@ class Zero extends Chara{
 				ANIMATION:[4]
 			},
 			{NUMBER:702,
-				TEXT:"２マス隣に威力５のダメージ（自傷　威力１）",
+				TEXT:"２マス隣に威力５のダメージ",
 				RANGE:[["distance",2]],
 				POWER:5,
 				DELAY:0,
@@ -56,7 +56,7 @@ class Zero extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:703,
-				TEXT:"３マス隣に威力５のダメージ（自傷　威力１）",
+				TEXT:"３マス隣に威力５のダメージ",
 				RANGE:[["distance",3]],
 				POWER:5,
 				DELAY:0,
@@ -72,7 +72,7 @@ class Zero extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:704,
-				TEXT:"縦一列に威力４のダメージ（自傷　威力１）",
+				TEXT:"縦一列に威力４のダメージ",
 				RANGE:[["vertical",1]],
 				POWER:4,
 				DELAY:0,
@@ -88,7 +88,7 @@ class Zero extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:705,
-				TEXT:"横一列に威力４ダメージ（自傷　威力１）",
+				TEXT:"横一列に威力４ダメージ",
 				RANGE:[["horizontal",1]],
 				POWER:4,
 				DELAY:0,
@@ -104,8 +104,8 @@ class Zero extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:706,
-				TEXT:"十字に威力３ダメージ（自傷　威力１）",
-				RANGE:[["vertical",1]["horizontal",1]],
+				TEXT:"十字に威力３ダメージ",
+				RANGE:[["vertical",1],["horizontal",1]],
 				POWER:3,
 				DELAY:0,
 				MAGIC:0,
@@ -136,7 +136,7 @@ class Zero extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:708,
-				TEXT:"相手全体に威力３のダメージ（自傷　威力１）（DELAY　１０）",
+				TEXT:"相手全体に威力３のダメージ",
 				RANGE:[["enemy"]],
 				POWER:3,
 				DELAY:10,
@@ -152,7 +152,7 @@ class Zero extends Chara{
 				ANIMATION:[5]
 			},
 			{NUMBER:709,
-				TEXT:"周囲８マスに威力４のダメージ（自傷　威力１）",
+				TEXT:"周囲８マスに威力４のダメージ",
 				RANGE:[["square"]],
 				POWER:4,
 				DELAY:0,
@@ -168,7 +168,7 @@ class Zero extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:710,
-				TEXT:"隣のマスに敵味方無視の威力８のダメージ（自傷　威力１）（DELAY　５）",
+				TEXT:"隣のマスに敵味方無視の威力８のダメージ",
 				RANGE:[["distance",1]],
 				POWER:8,
 				DELAY:5,
@@ -184,7 +184,7 @@ class Zero extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:711,
-				TEXT:"周囲１２マスに威力６のダメージ（自傷　威力２）",
+				TEXT:"周囲１２マスに威力６のダメージ",
 				RANGE:[["circumference",2]],
 				POWER:6,
 				DELAY:0,
@@ -200,7 +200,7 @@ class Zero extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:112,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -216,7 +216,7 @@ class Zero extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:113,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,

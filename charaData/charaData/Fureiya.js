@@ -136,7 +136,7 @@ class Fureiya extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1208,
-				TEXT:"相手全体に威力２のダメージ 威力１の回復（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ 威力１の回復",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -168,7 +168,7 @@ class Fureiya extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:1210,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ 威力１の回復（DELAY　５）",
+				TEXT:"隣のマスに敵味方無視の威力７のダメージ 威力１の回復",
 				RANGE:[["distance",1]],
 				POWER:7,
 				DELAY:5,

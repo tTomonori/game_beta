@@ -201,7 +201,7 @@ class Gabera extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:1012,
-				TEXT:"自分に威力３の回復（消費MP３）",
+				TEXT:"自分に威力３の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -217,7 +217,7 @@ class Gabera extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:1013,
-				TEXT:"味方に威力２の回復（消費MP3）",
+				TEXT:"味方に威力２の回復",
 				RANGE:[["ally"]],
 				POWER:-2,
 				DELAY:0,

@@ -137,7 +137,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:908,
-				TEXT:"相手全体に威力1のダメージ（DELAY　１０）(覚醒により威力強化)",
+				TEXT:"相手全体に威力1のダメージ(覚醒により威力強化)",
 				RANGE:[["enemy"]],
 				POWER:1,
 				DELAY:10,
@@ -201,7 +201,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:912,
-				TEXT:"自分に威力1の回復（消費MP３）(覚醒により威力強化)",
+				TEXT:"自分に威力1の回復(覚醒により威力強化)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -217,7 +217,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:913,
-				TEXT:"味方に威力1の回復（消費MP４）(覚醒により威力強化)",
+				TEXT:"味方に威力1の回復(覚醒により威力強化)",
 				RANGE:[["ally"]],
 				POWER:-1,
 				DELAY:0,
@@ -233,7 +233,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:914,
-				TEXT:"覚醒し育聖の姿に変身する(消費MP1)(最大まで覚醒する事により,相手全体へ大ダメージを与えるスキルに変化する)",
+				TEXT:"覚醒し育聖の姿に変身する(最大まで覚醒する事により,相手全体へ大ダメージを与えるスキルに変化する)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -424,7 +424,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:928,
-				TEXT:"相手全体に威力2のダメージ（DELAY　１０）(覚醒により威力強化)",
+				TEXT:"相手全体に威力2のダメージ(覚醒により威力強化)",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -488,7 +488,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:932,
-				TEXT:"自分に威力2の回復（消費MP３）(覚醒により威力強化)",
+				TEXT:"自分に威力2の回復(覚醒により威力強化)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -504,7 +504,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:933,
-				TEXT:"味方に威力2の回復（消費MP４）(覚醒により威力強化)",
+				TEXT:"味方に威力2の回復(覚醒により威力強化)",
 				RANGE:[["ally"]],
 				POWER:-2,
 				DELAY:0,
@@ -520,7 +520,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:934,
-				TEXT:"覚醒し聖樹の姿に変身する(消費MP2)(最大まで覚醒する事により,相手全体へ大ダメージを与えるスキルに変化する)",
+				TEXT:"覚醒し聖樹の姿に変身する(最大まで覚醒する事により,相手全体へ大ダメージを与えるスキルに変化する)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -603,7 +603,7 @@ class Rozetta extends Chara{
 				ANIMATION:[6]
 			},
 			{NUMBER:944,
-				TEXT:"縦三列に威力4のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+				TEXT:"縦三列に威力4のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["vertical",3]],
 				POWER:4,
 				DELAY:0,
@@ -619,7 +619,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:945,
-				TEXT:"横三列に威力4のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+				TEXT:"横三列に威力4のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["horizontal",3]],
 				POWER:4,
 				DELAY:0,
@@ -635,7 +635,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:946,
-				TEXT:"縦三列横三列の十字に4のダメージ(消費MP2)(覚醒により威力,範囲強化)",
+				TEXT:"縦三列横三列の十字に4のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["vertical",3],["horizontal",3]],
 				POWER:4,
 				DELAY:0,
@@ -667,7 +667,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:948,
-				TEXT:"相手全体に威力4のダメージ（DELAY　2０）(消費MP2)(覚醒により威力強化)",
+				TEXT:"相手全体に威力4のダメージ(覚醒により威力強化)",
 				RANGE:[["enemy"]],
 				POWER:4,
 				DELAY:20,
@@ -683,7 +683,7 @@ class Rozetta extends Chara{
 				ANIMATION:[6]
 			},
 			{NUMBER:949,
-				TEXT:"周囲12マスに威力3のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+				TEXT:"周囲12マスに威力3のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["circumference",2]],
 				POWER:3,
 				DELAY:0,
@@ -699,7 +699,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:950,
-				TEXT:"周囲8マスに威力4のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+				TEXT:"周囲8マスに威力4のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["square",3]],
 				POWER:4,
 				DELAY:0,
@@ -731,7 +731,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:952,
-				TEXT:"自分に威力2の回復（消費MP３）(覚醒により威力強化)",
+				TEXT:"自分に威力2の回復(覚醒により威力強化)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -747,7 +747,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:953,
-				TEXT:"味方に威力2の回復（消費MP４）(覚醒により威力強化)",
+				TEXT:"味方に威力2の回復(覚醒により威力強化)",
 				RANGE:[["ally"]],
 				POWER:-2,
 				DELAY:0,
@@ -763,7 +763,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:954,
-				TEXT:"覚醒し神樹の姿に変身する(消費MP3)(最大まで覚醒する事により,相手全体へ大ダメージを与えるスキルに変化する)",
+				TEXT:"覚醒し神樹の姿に変身する(最大まで覚醒する事により,相手全体へ大ダメージを与えるスキルに変化する)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -846,7 +846,7 @@ class Rozetta extends Chara{
 				ANIMATION:[6]
 			},
 			{NUMBER:964,
-				TEXT:"縦三列に威力6のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+				TEXT:"縦三列に威力6のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["vertical",3]],
 				POWER:6,
 				DELAY:0,
@@ -862,7 +862,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:965,
-				TEXT:"横三列に威力6のダメージ(消費MP1)(覚醒により威力,範囲強化)",
+				TEXT:"横三列に威力6のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["horizontal",3]],
 				POWER:6,
 				DELAY:0,
@@ -878,7 +878,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:966,
-				TEXT:"縦三列横三列の十字に6のダメージ(消費MP2)(覚醒により威力,範囲強化)",
+				TEXT:"縦三列横三列の十字に6のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["vertical",3],["horizontal",3]],
 				POWER:6,
 				DELAY:0,
@@ -910,7 +910,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:968,
-				TEXT:"相手全体に威力6のダメージ（DELAY　2０）(消費MP2)(覚醒により威力強化)",
+				TEXT:"相手全体に威力6のダメージ(覚醒により威力強化)",
 				RANGE:[["enemy"]],
 				POWER:6,
 				DELAY:20,
@@ -926,7 +926,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:969,
-				TEXT:"周囲16マスに威力4のダメージ(消費MP2)(覚醒により威力,範囲強化)",
+				TEXT:"周囲16マスに威力4のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["square",4]],
 				POWER:4,
 				DELAY:0,
@@ -942,7 +942,7 @@ class Rozetta extends Chara{
 				ANIMATION:[39]
 			},
 			{NUMBER:970,
-				TEXT:"周囲12マスに威力5のダメージ(消費MP2)(覚醒により威力,範囲強化)",
+				TEXT:"周囲12マスに威力5のダメージ(覚醒により威力,範囲強化)",
 				RANGE:[["circumference",2]],
 				POWER:5,
 				DELAY:0,
@@ -974,7 +974,7 @@ class Rozetta extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:972,
-				TEXT:"自分に威力2の回復（消費MP３）(覚醒により威力強化)",
+				TEXT:"自分に威力2の回復(覚醒により威力強化)",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -990,7 +990,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:973,
-				TEXT:"味方に威力2の回復（消費MP４）(覚醒により威力強化)",
+				TEXT:"味方に威力2の回復(覚醒により威力強化)",
 				RANGE:[["ally"]],
 				POWER:-2,
 				DELAY:0,
@@ -1006,7 +1006,7 @@ class Rozetta extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:974,
-				TEXT:"相手全体に威力10のダメージ(消費MP2)(現在覚醒最大)",
+				TEXT:"相手全体に威力10のダメージ(現在覚醒最大)",
 				RANGE:[["enemy"]],
 				POWER:10,
 				DELAY:0,

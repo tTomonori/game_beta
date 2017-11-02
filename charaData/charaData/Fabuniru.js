@@ -39,7 +39,7 @@ class Fabuniru extends Chara{
 			ANIMATION:[15]
 		};
 		let tSkill2={NUMBER:613,
-			TEXT:"移動力１アップ　その後DELAYを50下げる（消費MP５）",
+			TEXT:"移動力１アップ　その後DELAYを50下げる",
 			RANGE:[],
 			POWER:0,
 			DELAY:0,
@@ -84,7 +84,7 @@ class Fabuniru extends Chara{
 			tSkill2,
 			tSkill2,
 			{NUMBER:514,
-				TEXT:"相手全体に威力２０のダメージ その後シャッフル 消費MP２０",
+				TEXT:"相手全体に威力２０のダメージ その後シャッフル",
 				RANGE:[["enemy"]],
 				POWER:20,
 				DELAY:0,

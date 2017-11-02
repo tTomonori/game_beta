@@ -25,7 +25,7 @@ class Zawin extends Chara{
 	static getDeck(){
 		return [
 			{NUMBER:1401,
-				TEXT:"上下2マスにゴーストを召喚する（消費MP3）",
+				TEXT:"上下2マスにゴーストを召喚する",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -41,7 +41,7 @@ class Zawin extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1402,
-				TEXT:"正面のマスにゴーストを召喚する（消費MP1）",
+				TEXT:"正面のマスにゴーストを召喚する",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -57,7 +57,7 @@ class Zawin extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1403,
-				TEXT:"正面のマスにゴーストを召喚する（消費MP1）",
+				TEXT:"正面のマスにゴーストを召喚する",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -137,7 +137,7 @@ class Zawin extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1408,
-				TEXT:"相手全体に威力1のダメージ（DELAY　5）",
+				TEXT:"相手全体に威力1のダメージ",
 				RANGE:[["enemy"]],
 				POWER:1,
 				DELAY:5,
@@ -153,7 +153,7 @@ class Zawin extends Chara{
 				ANIMATION:[5]
 			},
 			{NUMBER:1409,
-				TEXT:"周囲24マスに威力2のダメージ（DELAY　10）",
+				TEXT:"周囲24マスに威力2のダメージ",
 				RANGE:[["square",5]],
 				POWER:2,
 				DELAY:10,
@@ -169,7 +169,7 @@ class Zawin extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1410,
-				TEXT:"周囲24マスに威力2のダメージ（DELAY　10）",
+				TEXT:"周囲24マスに威力2のダメージ",
 				RANGE:[["square",5]],
 				POWER:2,
 				DELAY:10,
@@ -185,7 +185,7 @@ class Zawin extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1411,
-				TEXT:"正面のマスにゾンビを召喚する（消費MP2）",
+				TEXT:"正面のマスにゾンビを召喚する",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -201,7 +201,7 @@ class Zawin extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1412,
-				TEXT:"正面のマスにゾンビを召喚する（消費MP2）",
+				TEXT:"正面のマスにゾンビを召喚する",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -217,7 +217,7 @@ class Zawin extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1413,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,
@@ -233,7 +233,7 @@ class Zawin extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:1414,
-				TEXT:"正面のマスにサタンを召喚する その後シャッフル（消費MP3）",
+				TEXT:"正面のマスにサタンを召喚する その後シャッフル",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,

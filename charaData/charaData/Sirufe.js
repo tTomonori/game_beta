@@ -24,7 +24,7 @@ class Sirufe extends Chara{
 	static getDeck(){
 		return [
 			{NUMBER:401,
-				TEXT:"周囲8マスの味方のMPを2回復（消費MP1）",
+				TEXT:"周囲8マスの味方のMPを2回復",
 				RANGE:[["square",3]],
 				POWER:0,
 				DELAY:0,
@@ -136,7 +136,7 @@ class Sirufe extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:408,
-				TEXT:"相手全体に威力２のダメージ（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -168,7 +168,7 @@ class Sirufe extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:410,
-				TEXT:"味方のMPを2回復（消費MP2）",
+				TEXT:"味方のMPを2回復",
 				RANGE:[["ally"]],
 				POWER:0,
 				DELAY:0,
@@ -184,7 +184,7 @@ class Sirufe extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:411,
-				TEXT:"味方のDELAYを50下げる（消費MP2）",
+				TEXT:"味方のDELAYを50下げる",
 				RANGE:[["ally"]],
 				POWER:0,
 				DELAY:0,
@@ -200,7 +200,7 @@ class Sirufe extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:412,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -216,7 +216,7 @@ class Sirufe extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:413,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,
@@ -232,7 +232,7 @@ class Sirufe extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:414,
-				TEXT:"味方のDELAYを100下げる（消費MP1）",
+				TEXT:"味方のDELAYを100下げる",
 				RANGE:[["ally"]],
 				POWER:0,
 				DELAY:0,

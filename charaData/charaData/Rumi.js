@@ -27,7 +27,7 @@ class Rumi extends Chara{
 	static getDeck(){
 		return [
 			{NUMBER:101,
-				TEXT:"周囲8マスに威力3のダメージ,周囲9マスをランダムな味方のタイプと同じマークに変更する(味方がいないなら自分と同じタイプにする)(消費MP2)",
+				TEXT:"周囲8マスに威力3のダメージ,周囲9マスをランダムな味方のタイプと同じマークに変更する(味方がいないなら自分と同じタイプにする)",
 				RANGE:[["square",3]],
 				POWER:3,
 				DELAY:0,
@@ -43,7 +43,7 @@ class Rumi extends Chara{
 				ANIMATION:[6]
 			},
 			{NUMBER:102,
-				TEXT:"横1列に威力3のダメージ,横1列をランダムな味方のタイプと同じマークに変更する(味方がいないなら自分と同じタイプにする)(消費MP2)",
+				TEXT:"横1列に威力3のダメージ,横1列をランダムな味方のタイプと同じマークに変更する(味方がいないなら自分と同じタイプにする)",
 				RANGE:[["horizontal",1]],
 				POWER:3,
 				DELAY:0,
@@ -59,7 +59,7 @@ class Rumi extends Chara{
 				ANIMATION:[6]
 			},
 			{NUMBER:103,
-				TEXT:"縦1列に威力3のダメージ,縦1列をランダムな味方のタイプと同じマークに変更する(味方がいないなら自分と同じタイプにする)(消費MP2)",
+				TEXT:"縦1列に威力3のダメージ,縦1列をランダムな味方のタイプと同じマークに変更する(味方がいないなら自分と同じタイプにする)",
 				RANGE:[["vertical",1]],
 				POWER:3,
 				DELAY:0,
@@ -139,7 +139,7 @@ class Rumi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:108,
-				TEXT:"相手全体に威力２のダメージ（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -155,7 +155,7 @@ class Rumi extends Chara{
 				ANIMATION:[5]
 			},
 			{NUMBER:109,
-				TEXT:"味方に威力2の回復（消費MP2）",
+				TEXT:"味方に威力2の回復",
 				RANGE:[["ally"]],
 				POWER:-2,
 				DELAY:0,
@@ -171,7 +171,7 @@ class Rumi extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:110,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,
@@ -187,7 +187,7 @@ class Rumi extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:111,
-				TEXT:"このマスをパンプキンカード(味方が止まったなら[相手全体に威力3のダメージ],相手が止まったら[何も起きない])に変える(消費MP2)",
+				TEXT:"このマスをパンプキンカード(味方が止まったなら[相手全体に威力3のダメージ],相手が止まったら[何も起きない])に変える",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -246,7 +246,7 @@ class Rumi extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:112,
-				TEXT:"このマスをスケルトンカード(味方が止まったなら[ATK+2,DEF+2],相手が止まったら[ATK-2,DEF-2])に変える(消費MP1)",
+				TEXT:"このマスをスケルトンカード(味方が止まったなら[ATK+2,DEF+2],相手が止まったら[ATK-2,DEF-2])に変える",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -305,7 +305,7 @@ class Rumi extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:113,
-				TEXT:"このマスをバットカード(味方が止まったなら[相手全体に威力1のダメージ,自分のdelayを70下げる],相手が止まったら[自分のdelyを30上げる])に変える(消費MP1)",
+				TEXT:"このマスをバットカード(味方が止まったなら[相手全体に威力1のダメージ,自分のdelayを70下げる],相手が止まったら[自分のdelyを30上げる])に変える",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,

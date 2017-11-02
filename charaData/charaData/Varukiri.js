@@ -136,7 +136,7 @@ class Varukiri extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:108,
-				TEXT:"相手全体に威力２のダメージ（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -168,7 +168,7 @@ class Varukiri extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:110,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ（DELAY　５）",
+				TEXT:"隣のマスに敵味方無視の威力７のダメージ",
 				RANGE:[["distance",1]],
 				POWER:7,
 				DELAY:5,
@@ -184,7 +184,7 @@ class Varukiri extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:111,
-				TEXT:"周囲１２マスに威力５のダメージ（自傷　威力１）",
+				TEXT:"周囲１２マスに威力５のダメージ",
 				RANGE:[["circumference",2]],
 				POWER:5,
 				DELAY:0,
@@ -200,7 +200,7 @@ class Varukiri extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:112,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -216,7 +216,7 @@ class Varukiri extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:113,
-				TEXT:"味方に威力３の回復（消費MP４）",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,

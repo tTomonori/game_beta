@@ -139,7 +139,7 @@ class Gureisu extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1308,
-				TEXT:"相手全体に威力２のダメージ（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -171,7 +171,7 @@ class Gureisu extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:1310,
-				TEXT:"周囲8マスに、相手が踏むとDELAYが50増加するトラップを設置（消費MP2）",
+				TEXT:"周囲8マスに、相手が踏むとDELAYが50増加するトラップを設置",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -187,7 +187,7 @@ class Gureisu extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1311,
-				TEXT:"周囲8マスに、相手が踏むと15ダメージを与えるトラップを設置（消費MP1）",
+				TEXT:"周囲8マスに、相手が踏むと15ダメージを与えるトラップを設置",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -203,7 +203,7 @@ class Gureisu extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1312,
-				TEXT:"周囲8マスに、相手が踏むと15ダメージを与えるトラップを設置（消費MP1）",
+				TEXT:"周囲8マスに、相手が踏むと15ダメージを与えるトラップを設置",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -219,7 +219,7 @@ class Gureisu extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:1313,
-				TEXT:"周囲24マスに、相手が踏むと20ダメージを与えるトラップを設置（消費MP5）",
+				TEXT:"周囲24マスに、相手が踏むと20ダメージを与えるトラップを設置",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,

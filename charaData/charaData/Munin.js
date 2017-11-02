@@ -12,9 +12,9 @@ class Munin extends Chara{
 		return {NAME:"ムニン",
 						HP:110,
 						MP:10,
-						ATK:21,
-						DEF:21,
-						SPD:21,
+						ATK:23,
+						DEF:23,
+						SPD:23
 						MOV:2,
 						TYPE:"diamond",
 						IMAGE:1075010001,
@@ -136,7 +136,7 @@ class Munin extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:108,
-				TEXT:"相手全体に威力２のダメージ（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -168,7 +168,7 @@ class Munin extends Chara{
 				ANIMATION:[15]
 			},
 			{NUMBER:112,
-				TEXT:"自分に威力５の回復（消費MP３）",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -200,7 +200,7 @@ class Munin extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:612,
-				TEXT:"スピード4アップ　その後DELAYを50下げる（タイプ一致時6アップ）（消費MP２）",
+				TEXT:"スピード4アップ　その後DELAYを50下げる（タイプ一致時6アップ）",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -216,7 +216,7 @@ class Munin extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:613,
-				TEXT:"移動力１アップ　その後DELAYを50下げる（消費MP５）",
+				TEXT:"移動力１アップ　その後DELAYを50下げる",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,

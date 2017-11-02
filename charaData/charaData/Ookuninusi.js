@@ -140,7 +140,7 @@ class Ookuninusi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:308,
-				TEXT:"相手全体に威力２のダメージ その後自分のタイプをランダムに変更する（DELAY　１０）",
+				TEXT:"相手全体に威力２のダメージ その後自分のタイプをランダムに変更する",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -172,7 +172,7 @@ class Ookuninusi extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:310,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ その後自分のタイプをランダムに変更する（DELAY　５）",
+				TEXT:"隣のマスに敵味方無視の威力７のダメージ その後自分のタイプをランダムに変更する",
 				RANGE:[["distance",1]],
 				POWER:7,
 				DELAY:5,
@@ -188,7 +188,7 @@ class Ookuninusi extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:311,
-				TEXT:"周囲１２マスに威力５のダメージ その後自分のタイプをランダムに変更する（自傷　威力１）",
+				TEXT:"周囲１２マスに威力５のダメージ その後自分のタイプをランダムに変更する",
 				RANGE:[["circumference",2]],
 				POWER:5,
 				DELAY:0,
@@ -204,7 +204,7 @@ class Ookuninusi extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:312,
-				TEXT:"自分に威力５の回復 その後自分のタイプをランダムに変更する（消費MP３）",
+				TEXT:"自分に威力５の回復 その後自分のタイプをランダムに変更する",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -220,7 +220,7 @@ class Ookuninusi extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:313,
-				TEXT:"味方に威力３の回復 その後自分のタイプをランダムに変更する（消費MP４）",
+				TEXT:"味方に威力３の回復 その後自分のタイプをランダムに変更する",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,
