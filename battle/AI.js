@@ -175,7 +175,7 @@ function SupportPriorityPoint(aSupportNum){
 					tPriority += aSupportNum[i].additionOfMatchingType;
 				break;
 			case "transform"://変身する
-				switch (mTurnChara.getName()) {
+				switch (mTurnChara.getOriginalName()) {
 					case "ロゼッタ":
 						tPriority+=10;
 						break;
@@ -191,7 +191,7 @@ function SupportPriorityPoint(aSupportNum){
 				tPriority+=tNum*0.5;
 				break;
 			case "summon":
-			switch (mTurnChara.getName()) {
+			switch (mTurnChara.getOriginalName()) {
 				case "ザーウィン":
 					if(aSupportNum[i].value==0) tPriority+=3;
 					else if(aSupportNum[i].value==1) tPriority+=5;

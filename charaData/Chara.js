@@ -11,7 +11,7 @@ class Chara{
 			this.teamColor=(this.team=="T")?"rgba(0, 136, 255,0.6)":"rgba(255, 90, 0, 0.6)";
 		}
 		this.operationNum=aOperationNum//操作法(AIか通信か...)
-
+		this.originalName=aData.NAME;
 		this.NAME=aData.NAME;
 		this.originalHP=aData.HP;
 		this.originalMP=aData.MP;
@@ -103,6 +103,9 @@ class Chara{
 	getDelay(){
 		return this.Delay;
 	}
+	getOriginalName(){
+		return this.originalName;
+	}
 	getName(){
 		return this.NAME;
 	}
@@ -128,7 +131,7 @@ class Chara{
 		return this.deck.concat();
 	}
 	getSkill(aCard){
-		let tNum=(typeof(aCard)=="number")?aCard:aCard.getNumber();
+		let tNum=(typeof(aCard)=="number"||typeof(aCard)=="string")?aCard:aCard.getNumber();
 		if(tNum!="special"){
 			if(tNum=="A") tNum=0;
 			else if(tNum=="J") tNum=10;
