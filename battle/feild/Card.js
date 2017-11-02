@@ -8,7 +8,7 @@ class Card{
 		this.revers=false;//裏返しならtrue
 		if(aNumber=="joker"||aNumber=="suka"){
 			this.revers=true;
-			this.shuffledFunction.push([()=>{this.makeRevers();},true])
+			this.shuffledFunction.push({function:(aCard)=>{aCard.makeRevers();},infinity:true,name:"revers"})
 		}
 		this.createCardImage();
 		this.setCardImage();
@@ -119,9 +119,22 @@ class Card{
 	//シャッフル時に実行する関数
 	shuffled(){
 		for(let i=0;i<this.shuffledFunction.length;i++){
-			this.shuffledFunction[i][0]();
-			if(this.shuffledFunction[i][1]==false){
+			this.shuffledFunction[i].function(this);
+			if(this.shuffledFunction[i].infinity==false){
 				this.shuffledFunction.splice(i,1);
+			}
+		}
+	}
+	//シャッフル時に実行する関数セット
+	setShuffledFunction(aFunction){
+		this.shuffledFunction.push(aFunction);
+	}
+	//シャッフル時に実行する関数リセット
+	resetShuffledFunction(aName){
+		for(let i=0;i<this.shuffledFunction.length;i++){
+			if(this.shuffledFunction[i].name==aName){
+				this.shuffledFunction.splice(i,1);
+				return;
 			}
 		}
 	}

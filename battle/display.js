@@ -263,7 +263,14 @@ function returnAttackable() {
 function displayDeck(aCard){
 	if(mEventFlag) return;
 	let tSkill=mTurnChara.getSkill(aCard);
-	let tNum=(typeof(aCard)=="number"||typeof(aCard)=="string")?aCard:aCard.getNumber();
+	let tNum;
+	if(typeof(aCard)=="number"||typeof(aCard)=="string"){
+		tNum=aCard;
+	}
+	else{
+		if(aCard.isReverse())return;
+		tNum=aCard.getNumber();
+	}
 	tNum=cardNumberToInt(tNum);
 	$("#cardText")[0].textContent=createSkillText(tSkill);
 	$("#cardText").css("left",(tNum-1)*50+"px");

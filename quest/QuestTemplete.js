@@ -32,6 +32,10 @@ class Quest(番号) extends Quest{
 	static getFriendTeam(){
 		return [""];
 	}
+	//特殊条件
+	static getCondition(){
+		return "なし";
+	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
 	//chra:{charaCategory:,num:}  (charaCategory:"hero"プレイヤーキャラ,"token"トークン,"enemy"的専用キャラ)(num:キャラ番号)

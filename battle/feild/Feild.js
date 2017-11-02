@@ -35,6 +35,9 @@ class Feild{
 	static getAllCard(){
 		return this.cardsLine.concat();
 	}
+	static getArrangeCard(){
+		return this.cards;
+	}
 	//裏向きのカードの数
 	static getReversCardNum(){
 		let tNum=0;

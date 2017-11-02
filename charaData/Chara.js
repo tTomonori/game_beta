@@ -161,6 +161,7 @@ class Chara{
 			this.x=aX;
 			this.y=aY;
 			this.display();
+			Feild.getCard(this.x,this.y).makeFace();
 			aCallback();
 		})
 	}
@@ -453,6 +454,5 @@ function createSkillText(aSkill){
 	if(aSkill.M_ATTACK>0){
 		tText += " (自傷 威力"+aSkill.M_ATTACK+")";
 	}
-	console.log(aSkill.SUPPORT_Af_Myself,tText);
 	return tText;
 }

@@ -32,6 +32,10 @@ class Quest6 extends Quest{
 	static getFriendTeam(){
 		return ["なし"];
 	}
+	//特殊条件
+	static getCondition(){
+		return "なし";
+	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
 	//chra:{charaCategory:,num:}  (charaCategory:"hero"プレイヤーキャラ,"token"トークン,"enemy"的専用キャラ)(num:キャラ番号)
@@ -41,7 +45,7 @@ class Quest6 extends Quest{
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
 		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:2},operationNum:1,status:[["NAME","王女"],["SPD",15],["HP",30]]})
-		this.addChara({chara:{charaCategory:"hero",num:13},team:"F",position:{x:6,y:4},operationNum:1,status:[["NAME","呪術師"],["MP",20]]})
+		this.addChara({chara:{charaCategory:"hero",num:13},team:"F",position:{x:6,y:4},operationNum:1,status:[["NAME","呪術師"],["nowMP",20]]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){

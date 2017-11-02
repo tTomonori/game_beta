@@ -185,7 +185,8 @@ function SupportPlay(aSupportnums,aChara){
 
 				break;
 			default:
-
+				console.log("存在しない効果");
+				res();
 		}
 	})
 }

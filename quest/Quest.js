@@ -5,6 +5,7 @@ class Quest{
 		this.enemyDownFunction=undefined;
 		this.charas=new Array();
 		this.choicedCharas=new Array();
+		this.endFlag=false;
 	}
 	//選択するキャラの数を返す(オーバーライドする)
 	// getChoiceCharaNum(){
@@ -65,17 +66,40 @@ class Quest{
 			let tChara=new tCharaClass(tCharaData.position.x,tCharaData.position.y,tCharaData.team,tCharaData.operationNum)
 			if(tCharaData.status!=undefined){//ステータス変更
 				for(let i=0;i<tCharaData.status.length;i++){
-					if(tChara["original"+tCharaData.status[i][0]]!=undefined)
-						tChara["original"+tCharaData.status[i][0]]=tCharaData.status[i][1]
-					tChara[tCharaData.status[i][0]]=tCharaData.status[i][1]
-				}
+					switch (tCharaData.status[i][0]) {
+						case "ATK":
+						case "DEF":
+						case "SPD":
+						case "MOV":
+							tChara[tCharaData.status[i][0]]=tCharaData.status[i][1]
+							tChara["original"+tCharaData.status[i][0]]=tCharaData.status[i][1]
+							break;
+						case "HP":
+							tChara.HP=tCharaData.status[i][1];
+							tChara.originalHP=tCharaData.status[i][1];
+							tChara.maxHP=tCharaData.status[i][1];
+							break;
+						case "MP":
+							tChara.originalMP=tCharaData.status[i][1];
+							tChara.maxMP=tCharaData.status[i][1];
+							break;
+						case "nowMP":
+							tChara.MP=tCharaData.status[i][1];
+							if(tChara.originalMP<tChara.MP){
+								tChara.originalMP=tCharaData.status[i][1];
+								tChara.maxMP=tCharaData.status[i][1];
+							}
+							break;
+						default:
+							tChara[tCharaData.status[i][0]]=tCharaData.status[i][1]
+					}
 				tChara.initDelay();
 			}
+		}
 			//倒れた時の関数更新
 			tChara.down=(tChara.getTeam()=="T")?
 				()=>{return this.allyDownFunction(tChara)}:
 				()=>{return this.enemyDownFunction(tChara)};
-
 			tTeam.push(tChara)
 		}
 	}
@@ -179,13 +203,47 @@ class Quest{
 			}
 		}
 	}
-	//勝利or敗北判定(ターン終了時に呼ぶ)
-	judge(){
-
+	//勝利or敗北判定(ターン開始時に呼ぶ)
+	judge(aJudge){
+		let tPreBattleMain=battleMain;
+		battleMain=()=>{
+			switch (aJudge()) {
+				case "win":
+						this.clearQuest();
+					break;
+				case "lose":
+					this.loseQuest();
+					break;
+				default:
+					tPreBattleMain();
+			}
+		}
+	}
+	//指定した効果を向こうにする
+	disabledSupport(aSupport){
+		let tPreSupportPlay=SupportPlay;
+		SupportPlay=(aSupportnums,aChara)=>{
+			if(aSupport.indexOf(aSupportnums.effect)!=-1){
+				aSupportnums.effect="";
+			}
+			return tPreSupportPlay(aSupportnums,aChara);
+		}
+	}
+	//全てのスキルに指定した効果をつける
+	addSupport(aSupport){
+		let tPreSupport=Support;
+		Support=(aSupportnums,aChara)=>{
+			for(let i=0;i<aSupport.length;i++)
+				aSupportnums.push({effect:aSupport[i]});
+			return tPreSupport(aSupportnums,aChara);
+		}
 	}
 	//クエストクリア
 	clearQuest(){
+		if(this.endFlag)return;
+		this.endFlag=true;
 		flowBand("ミッション達成")
+		addLog("ミッション達成")
 		//データベースに記録
 		saveQuestClear(this.questNum);
 		document.getElementById("text").innerHTML="ミッション達成";
@@ -193,7 +251,10 @@ class Quest{
 	}
 	//クエスト失敗
 	loseQuest(){
+		if(this.endFlag)return;
+		this.endFlag=true;
 		flowBand("ミッション失敗")
+		addLog("ミッション失敗")
 		document.getElementById("text").innerHTML="ミッション失敗";
 		$("#finishButton")[0].style.display="block"
 	}
