@@ -20,5 +20,6 @@ CharaList.classList=[
 	Gureisu,
 	Zawin,
 	Hirudo,
-	Rumi
+	Rumi,
+	akurahairu
 ]
