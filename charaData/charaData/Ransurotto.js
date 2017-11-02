@@ -8,6 +8,10 @@ class Ransurotto extends Chara{
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
+	static getCharaNatureSkill(){
+		//特性の説明
+		return "なし";
+	}
 	static getCharaData(){
 		return {NAME:"ランスロット",
 						HP:100,

@@ -13,15 +13,15 @@ class Chara{
 		this.operationNum=aOperationNum//操作法(AIか通信か...)
 		this.originalName=aData.NAME;
 		this.NAME=aData.NAME;
-		this.maxHP=aData.HP;
-		this.maxMP=aData.MP;
+		this.originalHP=aData.HP;
+		this.originalMP=aData.MP;
 		this.originalATK=aData.ATK;
 		this.originalDEF=aData.DEF;
 		this.originalSPD=aData.SPD;
 		this.originalTYPE=aData.TYPE;
 		this.originalMOV=aData.MOV;
-		this.maxHP=this.maxHP;
-		this.maxMP=this.maxMP
+		this.maxHP=this.originalHP;
+		this.maxMP=this.originalMP
 		this.HP=this.maxHP;
 		this.MP=0;
 		this.ATK=this.originalATK;
@@ -166,18 +166,24 @@ class Chara{
 	}
 	//ターン開始時
 	startTurn(){
-		//mp回復
-		this.useMp(-1);
-		//getTurnFlag
-		this.additionalTurnFlag=this.getTurnFlag;
-		this.getTurnFlag=false;
+		return new Promise((res,rej)=>{
+			//mp回復
+			this.useMp(-1);
+			//getTurnFlag
+			this.additionalTurnFlag=this.getTurnFlag;
+			this.getTurnFlag=false;
+			res();
+		})
 	}
 	//ターン終了
 	endTurn(aDelay){
-		//ディレイ増加
-		this.addDelay(100+aDelay);
-		//getTurnFlag
-		this.additionalTurnFlag=false;
+		return new Promise((res,rej)=>{
+			//ディレイ増加
+			this.addDelay(100+aDelay);
+			//getTurnFlag
+			this.additionalTurnFlag=false;
+			res();
+		})
 	}
 	//ディレイを減少,増加させる(引数は効果値)ログもだす
 	effectDelay(aDelay){
@@ -198,7 +204,7 @@ class Chara{
 		let tDelay = Math.floor((100*1000)/this.SPD);
 		this.Delay-=tDelay;
 		this.getTurnFlag=true;
-		newLog(this,"は追加ターンを獲得した")
+		newLog([this,"は追加ターンを獲得した"])
 	}
 	//タイプ変更
 	changeType(aType){
@@ -299,18 +305,25 @@ class Chara{
 			$("#"+tBarId).animate({
 				width:(this.HP/this.maxHP*100)+"%"
 			},700,"linear",()=>{
-				if(this.HP>0)
-				this.setImgaeNum(0,0);
 				setTimeout(()=>{tBarContainer.remove()},500);
-			})
-			if(this.HP<=0){
-				this.down().then(()=>{
+				if(this.HP>0){
+					this.setImgaeNum(0,0);
 					res();
-				})
-			}
-			else{
-				res();
-			}
+				}
+				else{
+					this.down().then(()=>{
+						res();
+					})
+				}
+			})
+			// if(this.HP<=0){
+			// 	this.down().then(()=>{
+			// 		res();
+			// 	})
+			// }
+			// else{
+			// 	res();
+			// }
 		})
 	}
 	//倒された

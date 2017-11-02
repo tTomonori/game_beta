@@ -160,23 +160,24 @@ function battleMain(){
 	changeText("<strong style='color:"+mTurnChara.getTeamColor()+";-webkit-text-stroke-color: #fff;-webkit-text-stroke-width: 0.5px;'>"+mTurnChara.getName()+"</strong>"+"のターン")
 
 	//MPの回復
-	mTurnChara.startTurn();
-	//移動
-	mMovable = movableSquares(mTurnChara);//移動先のリスト
-	//移動先のトランプの色を変えたい
+	mTurnChara.startTurn().then(()=>{
+		//移動
+		mMovable = movableSquares(mTurnChara);//移動先のリスト
+		//移動先のトランプの色を変えたい
 
-	displayStatus();
+		displayStatus();
 
-	//操作
-	if(mTurnChara.getOperationNum()!=0/*&&mMyTeam.indexOf(mTurnChara.getTeam())==-1*/){
-		if(!mCommunicationFlag){
-			com(mTurnChara.getOperationNum());
+		//操作
+		if(mTurnChara.getOperationNum()!=0/*&&mMyTeam.indexOf(mTurnChara.getTeam())==-1*/){
+			if(!mCommunicationFlag){
+				com(mTurnChara.getOperationNum());
+			}
 		}
-	}
-	else{
-		mEventFlag = false;//操作可能に
-		displayMoveable(mMovable);
-	}
+		else{
+			mEventFlag = false;//操作可能に
+			displayMoveable(mMovable);
+		}
+	})
 }
 
 function winner(aWinner){

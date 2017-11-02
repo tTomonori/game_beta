@@ -8,10 +8,10 @@ class Ookuninusi extends Chara{
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
-	// endTurn(aDelay){
-	// 	Support([["type","random"]],this)
-	// 	super.endTurn(aDelay);
-	// }
+	static getCharaNatureSkill(){
+		//特性の説明
+		return "なし";
+	}
 	static getCharaData(){
 		return {NAME:"オオクニヌシ",
 						HP:120,

@@ -8,6 +8,10 @@ class Fureiya extends Chara{
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
+	static getCharaNatureSkill(){
+		//特性の説明
+		return "毎ターン開始時に最大HPの10%回復";
+	}
 	static getCharaData(){
 		return {NAME:"フレイヤ",
 						HP:90,
@@ -24,7 +28,7 @@ class Fureiya extends Chara{
 	static getDeck(){
 		return [
 			{NUMBER:1201,
-				TEXT:"隣のマスに威力５のダメージ 威力１の回復",
+				TEXT:"隣のマスに威力５のダメージ",
 				RANGE:[["distance",1]],
 				POWER:5,
 				DELAY:0,
@@ -34,13 +38,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[4]
 			},
 			{NUMBER:1202,
-				TEXT:"２マス隣に威力４のダメージ 威力１の回復",
+				TEXT:"２マス隣に威力４のダメージ",
 				RANGE:[["distance",2]],
 				POWER:4,
 				DELAY:0,
@@ -50,13 +54,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[0]
 			},
 			{NUMBER:1203,
-				TEXT:"３マス隣に威力４のダメージ 威力１の回復",
+				TEXT:"３マス隣に威力４のダメージ",
 				RANGE:[["distance",3]],
 				POWER:4,
 				DELAY:0,
@@ -66,13 +70,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[0]
 			},
 			{NUMBER:1204,
-				TEXT:"縦一列に威力３のダメージ 威力１の回復",
+				TEXT:"縦一列に威力３のダメージ",
 				RANGE:[["vertical",1]],
 				POWER:3,
 				DELAY:0,
@@ -82,13 +86,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[0]
 			},
 			{NUMBER:1205,
-				TEXT:"横一列に威力３ダメージ 威力１の回復",
+				TEXT:"横一列に威力３ダメージ",
 				RANGE:[["horizontal",1]],
 				POWER:3,
 				DELAY:0,
@@ -98,13 +102,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[0]
 			},
 			{NUMBER:1206,
-				TEXT:"十字に威力２ダメージ 威力１の回復",
+				TEXT:"十字に威力２ダメージ",
 				RANGE:[["vertical",1],["horizontal",1]],
 				POWER:2,
 				DELAY:0,
@@ -114,7 +118,7 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[0]
@@ -136,7 +140,7 @@ class Fureiya extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:1208,
-				TEXT:"相手全体に威力２のダメージ 威力１の回復",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
@@ -146,13 +150,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[5]
 			},
 			{NUMBER:1209,
-				TEXT:"周囲８マスに威力３のダメージ 威力１の回復",
+				TEXT:"周囲８マスに威力３のダメージ",
 				RANGE:[["square",3]],
 				POWER:3,
 				DELAY:0,
@@ -162,13 +166,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[3]
 			},
 			{NUMBER:1210,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ 威力１の回復",
+				TEXT:"隣のマスに敵味方無視の威力７のダメージ",
 				RANGE:[["distance",1]],
 				POWER:7,
 				DELAY:5,
@@ -178,13 +182,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:true,
 		    E_ATTACK:true,
 				ANIMATION:[4,3]
 			},
 			{NUMBER:1211,
-				TEXT:"周囲１２マスに威力３のダメージ 威力１の回復",
+				TEXT:"周囲１２マスに威力３のダメージ",
 				RANGE:[["circumference",2]],
 				POWER:3,
 				DELAY:0,
@@ -194,13 +198,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[3]
 			},
 			{NUMBER:1212,
-				TEXT:"攻撃が2アップ 防御が3アップ 威力１の回復",
+				TEXT:"攻撃が2アップ 防御が3アップ",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -210,13 +214,13 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
 				ANIMATION:[7]
 			},
 			{NUMBER:1213,
-				TEXT:"味方に威力２の回復 威力１の回復",
+				TEXT:"味方に威力２の回復",
 				RANGE:[["ally"]],
 				POWER:-2,
 				DELAY:0,
@@ -226,7 +230,7 @@ class Fureiya extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:-1,
+				M_ATTACK:0,
 				F_ATTACK:true,
 		    E_ATTACK:false,
 				ANIMATION:[7]
@@ -265,9 +269,17 @@ class Fureiya extends Chara{
 				},]
 	}
 	startTurn(){
-		super.startTurn();
-		if(!this.additionalTurnFlag){
-			this.addDamage(Math.floor(-this.maxHP*0.05),true);
-		}
+		return new Promise((res,rej)=>{
+			super.startTurn().then(()=>{
+				if(!this.additionalTurnFlag){
+					this.addDamage(Math.floor(-this.maxHP*0.1),true).then(()=>{
+						res();
+					});
+				}
+				else{
+					res();
+				}
+			})
+		})
 	}
 }
