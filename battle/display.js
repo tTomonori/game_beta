@@ -265,7 +265,7 @@ function displayDeck(aCard){
 	let tSkill=mTurnChara.getSkill(aCard);
 	let tNum=(typeof(aCard)=="number"||typeof(aCard)=="string")?aCard:aCard.getNumber();
 	tNum=cardNumberToInt(tNum);
-	$("#cardText")[0].textContent=tSkill.TEXT;
+	$("#cardText")[0].textContent=createSkillText(tSkill);
 	$("#cardText").css("left",(tNum-1)*50+"px");
 	$("#cardText").css("display","inline-block");
 }

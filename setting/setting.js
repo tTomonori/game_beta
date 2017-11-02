@@ -122,7 +122,7 @@ $(".token").on("click",function(){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = tCharaSkill[i].TEXT;
+			var tSkillText = createSkillText(tCharaSkill[i]);
 			tContents+=tSkillText;
 			tContents+="</td>";
 		}
@@ -135,7 +135,7 @@ $(".token").on("click",function(){
 			else
 			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = tCharaSkill[i].TEXT;
+			var tSkillText = createSkillText(tCharaSkill[i]);
 			tContents+=tSkillText;
 			tContents+="</td></tr>";
 		}
@@ -175,7 +175,12 @@ $(".token").on("click",function(){
 	judSelectedChara(mSelectPointor);
 
 	mDisplayToken++;
-	if(mTokenChara==mDisplayToken) mDisplayToken=0;
+	if(mTokenChara==mDisplayToken) {
+
+		$(".token").css("display","none");
+		$(".return").css("display","block");
+		mDisplayToken = 0;
+	}
 });
 $(".return").on("click",function(){
 	displayCharaData(mSelectPointor);
@@ -207,7 +212,7 @@ $(".change").on("click",function(){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = tCharaSkill[i].TEXT;
+			var tSkillText = createSkillText(tCharaSkill[i]);
 			tContents+=tSkillText;
 			tContents+="</td>";
 		}
@@ -220,7 +225,7 @@ $(".change").on("click",function(){
 			else
 			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = tCharaSkill[i].TEXT;
+			var tSkillText = createSkillText(tCharaSkill[i]);
 			tContents+=tSkillText;
 			tContents+="</td></tr>";
 		}
@@ -373,7 +378,7 @@ function displayDeckData(aNum){
 			tContents+="<img src='../image/card.png' style='width:35px;'>";
 			tContents+="<span style='color:#000;position:absolute;margin-left:-25px;margin-top:10px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = tCharaSkill[i].TEXT;
+			var tSkillText = createSkillText(tCharaSkill[i]);
 			tContents+=tSkillText;
 			tContents+="</td>";
 		}
@@ -386,7 +391,7 @@ function displayDeckData(aNum){
 			else
 			tContents+="<span style='color:#000; position:absolute;margin-left:-29px;margin-top:10px;font-size:13px'>"+tCardNum+"</span>";
 			tContents+="</td><td>";
-			var tSkillText = tCharaSkill[i].TEXT;
+			var tSkillText = createSkillText(tCharaSkill[i]);
 			tContents+=tSkillText;
 			tContents+="</td></tr>";
 		}

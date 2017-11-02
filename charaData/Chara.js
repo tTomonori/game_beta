@@ -27,7 +27,7 @@ class Chara{
 		this.SPD=this.originalSPD;
 		this.TYPE=this.originalTYPE;
 		this.MOV=this.originalMOV;
-		this.deck=aData.DECK
+		this.deck=aData.DECK;
 		this.image=aData.IMAGE;
 		this.Delay;
 		this.initDelay();
@@ -402,3 +402,20 @@ class Chara{
 	}
 }
 var mCharaNumber=0;
+
+function createSkillText(aSkill){
+	console.log("in");
+	var tText = "";
+	tText += aSkill.TEXT;
+	if(aSkill.MAGIC>0&&aSkill.SUPPORT_Af_Myself.indexOf({effect:"getTurn"})==-1){
+		tText += " (消費MP"+aSkill.MAGIC+")";
+	}
+	if(aSkill.DELAY>0){
+		tText += " (DELAY "+aSkill.DELAY+")";
+	}
+	if(aSkill.M_ATTACK>0){
+		tText += " (自傷 威力"+aSkill.M_ATTACK+")";
+	}
+	console.log(tText)
+	return tText;
+}
