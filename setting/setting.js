@@ -62,6 +62,12 @@ function displayCharaData(aNum){
 	let tChara = CharaList.getCharaClass(aNum);
 	let tStatus=$(".status");
 
+	if(tChara.getCharaNatureSkill()!="なし"){
+		$(".natureSkill").css("display","block");
+	}
+	else $(".natureSkill").css("display","none");
+	$(".returnNatureSkill").css("display","none");
+
 	for(let i=0;i<tStatus.length;i++){
 		if(mStatusList[i]=="TYPE"){
 			tStatus[i].innerHTML="<img src='../image/"+tData[mStatusList[i]]+".png' style='width:40px;'>"
@@ -442,3 +448,15 @@ $("#randomChara").on("click",function(){
 		}
 	}
 })
+
+$(".natureSkill").on("click",function(){
+	$(".status")[8].innerHTML="特性：<br>"+CharaList.getCharaClass(mSelectPointor).getCharaNatureSkill();
+
+	$(".returnNatureSkill").css("display","block");
+	$(".natureSkill").css("display","none");
+});
+$(".returnNatureSkill").on("click",function(){
+	$(".status")[8].innerHTML=CharaList.getCharaClass(mSelectPointor).getText();
+	$(".returnNatureSkill").css("display","none");
+	$(".natureSkill").css("display","block");
+});

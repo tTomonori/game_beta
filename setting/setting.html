@@ -77,6 +77,20 @@
 	line-height: 1;
 	transition: .2s;
 }
+.natureSkill,.returnNatureSkill{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 60px;
+	margin: 0;
+	padding: 10px;
+	background: #BB00BB;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
 .information_button label:first-of-type{
 	border-radius: 3px 0 0 3px;
 }
@@ -166,11 +180,13 @@ color: white;
 	<tr><td colspan="3" style="border-bottom:solid 1px #bbf"></td></tr>
 	<!-- <tr><td>TYPE</td><td>:</td><td class="status"></td></tr> -->
 </table>
+<input type="button" class="natureSkill" value="特性" style="position: absolute;right: 70px;top: 260px">
+<input type="button" class="returnNatureSkill" value="戻る" style="position: absolute;right: 70px;top: 260px">
 </div>
 <div class="information_tab" id="deck_information" style="width:100%;height:100%;display:none;">
 <div id="card_status" style="overflow:scroll;border:solid 1px #bbf;height:520px;position:relative"></div>
 </div>
-<div style="position:absolute;bottom:20px;left:10px;">
+<div style="position:absolute;bottom:5px;left:10px;">
 <input class="square_btn" type="button" id="decide" value="このキャラにする" onclick="selectChara()" style="font-size:25px">
 <input class="square_btn" type="button" name="" value="戻る" onclick="back()" style="font-size:25px">
 </div>
