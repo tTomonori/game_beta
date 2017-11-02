@@ -14,7 +14,7 @@ class Munin extends Chara{
 						MP:10,
 						ATK:23,
 						DEF:23,
-						SPD:23
+						SPD:23,
 						MOV:2,
 						TYPE:"diamond",
 						IMAGE:1075010001,
