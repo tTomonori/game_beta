@@ -50,7 +50,7 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 		var tSkill;
 		if(mAICardMark=="joker")		tSkill=mAIChara.getSkill(13);
 		else if(mAICardMark=="suka")	tSkill=mAIChara.getSkill(14);
-		else							tSkill=mAIChara.getSkill(mAICardNum);
+		else							tSkill=mAIChara.getSkill(tCard);
 		mAISkill=tSkill;
 
 		var tPriority = 0;
