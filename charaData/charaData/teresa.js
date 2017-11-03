@@ -409,7 +409,7 @@ class teresa extends Chara{
 			},
 			{NUMBER:106,
 				TEXT:"３列の十字に威力２ダメージ",
-				RANGE:[["vertical",2],["horizontal",2]],
+				RANGE:[["vertical",3],["horizontal",3]],
 				POWER:2,
 				DELAY:0,
 				MAGIC:0,
