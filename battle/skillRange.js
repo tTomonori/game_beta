@@ -88,6 +88,7 @@ function calcRange(aSkillRange,aPosition){
 					}
 					tRange.push([tRX,tRY]);
 				}
+				break;
 			case "function"://関数に渡してtrueが返されるcard
 				let tCards=Feild.getAllCard();
 				for(let j=0;j<tCards.length;j++){

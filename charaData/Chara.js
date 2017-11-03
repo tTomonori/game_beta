@@ -39,6 +39,7 @@ class Chara{
 		//追加ターン確認用
 		this.getTurnFlag=false;//このターンに追加ターンを獲得していたらtrue
 		this.additionalTurnFlag=false;//このターンが追加ターンならtrue
+		this.downFlag=false;
 	}
 	initDelay(){
 		this.Delay=Math.floor(mSetDelay/(this.SPD*(makeRandom()*0.2+0.9)));
@@ -151,6 +152,9 @@ class Chara{
 		else{//特殊なカードだった場合
 			return aCard.getSpecialSkill(this);
 		}
+	}
+	getDownFlag(){
+		return this.downFlag;
 	}
 	move(aX,aY,aCallback){
 		$("#"+this.container.id).animate({
@@ -312,19 +316,12 @@ class Chara{
 					res();
 				}
 				else{
+					this.downFlag=true;
 					this.down().then(()=>{
 						res();
 					})
 				}
 			})
-			// if(this.HP<=0){
-			// 	this.down().then(()=>{
-			// 		res();
-			// 	})
-			// }
-			// else{
-			// 	res();
-			// }
 		})
 	}
 	//倒された

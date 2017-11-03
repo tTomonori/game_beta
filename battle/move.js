@@ -50,9 +50,14 @@ function move(aX,aY,aInfoFlag,aAiFlag){
 		returnMoveable();
 		mTurnChara.move(aX,aY,()=>{
 			Feild.getCard(aX,aY).trap(mTurnChara).then(()=>{
-				attack(mTurnChara).then(()=>{
+				if(!mTurnChara.getDownFlag()){
+					attack(mTurnChara).then(()=>{
+						battleMain();
+					})
+				}
+				else{
 					battleMain();
-				})
+				}
 			})
 		});
 		return;

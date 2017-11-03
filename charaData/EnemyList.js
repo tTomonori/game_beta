@@ -7,5 +7,6 @@ class EnemyList{
 EnemyList.classList=[
 	Undhine,
 	Rezard,
-	Hirezard
+	Hirezard,
+	Inbiziburu
 ]
