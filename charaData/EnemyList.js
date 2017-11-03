@@ -8,5 +8,6 @@ EnemyList.classList=[
 	Undhine,
 	Rezard,
 	Hirezard,
-	Inbiziburu
+	Inbiziburu,
+	Yunikon
 ]
