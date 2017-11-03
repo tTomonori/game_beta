@@ -21,5 +21,6 @@ CharaList.classList=[
 	Zawin,
 	Hirudo,
 	Rumi,
-	akurahairu
+	akurahairu,
+	teresa
 ]

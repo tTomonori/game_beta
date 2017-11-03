@@ -1,24 +1,28 @@
-class Goremu extends Token{
+class teresa extends Chara{
 	static getText(){
 		//キャラ説明
-		return "トークン：<br>セレンのスキルによって召喚される";
+		return "サポートタイプ：<br>チームの回復が得意。";
 	}
-	constructor(aX,aY,aTeam,aOperationNum,aDelay){
-		let tData=Goremu.getCharaData();
-		super(aX,aY,aTeam,tData,aOperationNum,aDelay);
+	constructor(aX,aY,aTeam,aOperationNum){
+		let tData=teresa.getCharaData();
+		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
 	}
+	static getCharaNatureSkill(){
+		//特性の説明
+		return "なし";
+	}
 	static getCharaData(){
-		return {NAME:"ゴーレム",
-						HP:10,
-						MP:0,
-						ATK:20,
+		return {NAME:"テレサ",
+						HP:70,
+						MP:10,
+						ATK:15,
 						DEF:30,
-						SPD:15,
+						SPD:25,
 						MOV:2,
-						TYPE:"spade",
-						IMAGE:1036010001,
-						DECK:Goremu.getDeck()
+						TYPE:"club",
+						IMAGE:1098010001,
+						DECK:teresa.getDeck()
 		}
 	}
 	static getDeck(){
