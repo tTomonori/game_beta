@@ -450,7 +450,7 @@ $("#randomChara").on("click",function(){
 })
 
 $(".natureSkill").on("click",function(){
-	$(".status")[8].innerHTML="特性：<br>"+CharaList.getCharaClass(mSelectPointor).getCharaNatureSkill();
+	$(".status")[8].innerHTML="特性："+CharaList.getCharaClass(mSelectPointor).getCharaNatureSkill();
 
 	$(".returnNatureSkill").css("display","block");
 	$(".natureSkill").css("display","none");

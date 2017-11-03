@@ -7,22 +7,24 @@ class teresa extends Chara{
 		let tData=teresa.getCharaData();
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
+		this.MP=10;
 	}
 	static getCharaNatureSkill(){
 		//特性の説明
-		return "なし";
+		return "MPが10溜まった状態でゲームが始まる。ターン開始時HPが満タンかどうかで服装と性能が変化する。";
 	}
 	static getCharaData(){
 		return {NAME:"テレサ",
-						HP:70,
-						MP:10,
-						ATK:15,
-						DEF:30,
+						HP:80,
+						MP:15,
+						ATK:20,
+						DEF:27,
 						SPD:25,
 						MOV:2,
 						TYPE:"club",
 						IMAGE:1098010001,
-						DECK:teresa.getDeck()
+						DECK:teresa.getDeck(),
+						CHANGE:1
 		}
 	}
 	static getDeck(){
@@ -172,13 +174,13 @@ class teresa extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:110,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ",
-				RANGE:[["distance",1]],
-				POWER:7,
-				DELAY:5,
-				MAGIC:0,
+				TEXT:"ランダムな８マスに味方が踏むと２０回復する地雷を設置",
+				RANGE:[],
+				POWER:0,
+				DELAY:0,
+				MAGIC:2,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[],
+				SUPPORT_Af_Myself:[{effect:"setTrap",trapEffect:"mine",value:-20,target:["enemy"],remove:true,range:[["random",10]]}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -188,20 +190,20 @@ class teresa extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:111,
-				TEXT:"周囲１２マスに威力５のダメージ",
-				RANGE:[["circumference",2]],
-				POWER:5,
+				TEXT:"味方全体に威力４の回復",
+				RANGE:[["ally"]],
+				POWER:-4,
 				DELAY:0,
-				MAGIC:0,
+				MAGIC:6,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
-				M_ATTACK:1,
-				F_ATTACK:false,
-		    E_ATTACK:true,
-				ANIMATION:[3]
+				M_ATTACK:-4,
+				F_ATTACK:true,
+		    E_ATTACK:false,
+				ANIMATION:[7]
 			},
 			{NUMBER:112,
 				TEXT:"自分に威力５の回復",
@@ -224,7 +226,7 @@ class teresa extends Chara{
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,
-				MAGIC:4,
+				MAGIC:3,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
@@ -236,9 +238,9 @@ class teresa extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:114,
-				TEXT:"相手全体に威力5のダメージ その後シャッフル",
+				TEXT:"味方全体に威力４の回復 その後シャッフル",
 				RANGE:[["enemy"]],
-				POWER:5,
+				POWER:-4,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
@@ -246,10 +248,10 @@ class teresa extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],
-				M_ATTACK:0,
-				F_ATTACK:false,
-		    E_ATTACK:true,
-				ANIMATION:[34]
+				M_ATTACK:-4,
+				F_ATTACK:true,
+		    E_ATTACK:false,
+				ANIMATION:[7]
 			},
 			{NUMBER:0,
 					TEXT:"スカ　何も起こらない",
@@ -267,5 +269,15 @@ class teresa extends Chara{
 			    E_ATTACK:true,
 					ANIMATION:[0]
 				},]
+	}	//ターン開始時
+	startTurn(){
+		return new Promise((res,rej)=>{
+			//mp回復
+			this.useMp(-1);
+			//getTurnFlag
+			this.additionalTurnFlag=this.getTurnFlag;
+			this.getTurnFlag=false;
+			res();
+		})
 	}
 }

@@ -108,7 +108,8 @@ function SupportPlay(aSupportnums,aChara){
 				}
 				break;
 			case "mine"://地雷
-					tAnimation=[36];
+				if(tValue>0) tAnimation=[36];
+				else tAnimation=[7];
 					attackAnimate(tTurnChara,aChara,tAnimation,()=>{
 						aChara.addDamage(tValue).then(()=>{
 							res();
