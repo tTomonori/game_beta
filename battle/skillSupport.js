@@ -182,6 +182,34 @@ function SupportPlay(aSupportnums,aChara){
 					}
 				res()})
 				break;
+			case "changeDeck":
+				attackAnimate(tTurnChara,aChara,[10],()=>{
+					switch(tValue){
+						case "akurahairu":
+							aChara.deck[14] = {NUMBER:0,
+								TEXT:"スカ　相手に威力２のダメージ",
+								RANGE:["enemy"],
+								POWER:2,
+								DELAY:0,
+								MAGIC:0,
+								SUPPORT_Be_Myself:[],
+								SUPPORT_Af_Myself:[],
+								SUPPORT_Be_Enemy:[],
+								SUPPORT_Af_Enemy:[],
+								SUPPORT_Otherwise:[],
+								M_ATTACK:0,
+								F_ATTACK:false,
+						    E_ATTACK:true,
+								ANIMATION:[0]
+							}
+							break;
+						default:
+						console.log("デッキ書き換え失敗")
+					}
+
+
+				res()})
+				break;
 			case 6:
 
 				break;

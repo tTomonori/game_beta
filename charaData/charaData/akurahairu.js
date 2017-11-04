@@ -255,20 +255,20 @@ class akurahairu extends Chara{
 				ANIMATION:[34]
 			},
 			{NUMBER:0,
-					TEXT:"スカ　何も起こらない",
-					RANGE:[],
+					TEXT:"スカ　相手のマスをスカカードに変えて、味方のスカカードのスキルを変更する",
+					RANGE:[["ally"]],
 					POWER:0,
 					DELAY:0,
 					MAGIC:0,
 					SUPPORT_Be_Myself:[],
 					SUPPORT_Af_Myself:[],
 					SUPPORT_Be_Enemy:[],
-					SUPPORT_Af_Enemy:[],
-					SUPPORT_Otherwise:[{effect:"revers"}],
+					SUPPORT_Af_Enemy:[{effect:"changeDeck",value:"akurahairu"}],
+					SUPPORT_Otherwise:[{effect:"changeCardNumber",value:"suka",range:[["enemy"]]},{effect:"revers"},{effect:"shuffle"}],
 					M_ATTACK:0,
-					F_ATTACK:false,
-			    E_ATTACK:true,
-					ANIMATION:[0]
+					F_ATTACK:true,
+			    E_ATTACK:false,
+					ANIMATION:[10]
 				},]
 	}
 }
