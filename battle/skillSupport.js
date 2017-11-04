@@ -173,7 +173,8 @@ function SupportPlay(aSupportnums,aChara){
 				res()})
 				break;
 			case "changeCardNumber"://カードの番号を変える
-				tRange=calcRange(aSupportnums.range,mTurnChara.getPosition());
+				if(aSupportnums.range==undefined) tRange=[[mTurnChara.x,mTurnChara.y]];
+				else	tRange=calcRange(aSupportnums.range,mTurnChara.getPosition());
 				//アニメーション実行
 				attackAnimate(tTurnChara,aChara,[7],()=>{
 					//変更する
@@ -188,7 +189,7 @@ function SupportPlay(aSupportnums,aChara){
 						case "akurahairu":
 							aChara.deck[14] = {NUMBER:0,
 								TEXT:"スカ　相手に威力２のダメージ",
-								RANGE:["enemy"],
+								RANGE:[["enemy"]],
 								POWER:2,
 								DELAY:0,
 								MAGIC:0,
