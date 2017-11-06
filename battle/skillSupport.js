@@ -180,6 +180,7 @@ function SupportPlay(aSupportnums,aChara){
 					//変更する
 					for(let i=0;i<tRange.length;i++){
 						Feild.getCard(tRange[i][0],tRange[i][1]).setNumber(tValue);
+						Feild.getCard(tRange[i][0],tRange[i][1]).shuffledFunction.push({function:(aCard)=>{aCard.makeRevers();},infinity:true,name:"revers"})
 					}
 				res()})
 				break;

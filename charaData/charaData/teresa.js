@@ -169,7 +169,7 @@ class teresa extends Chara{
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
 				M_ATTACK:0,
-				F_ATTACK:false,
+				F_ATTACK:true,
 		    E_ATTACK:true,
 				ANIMATION:[7]
 			},
