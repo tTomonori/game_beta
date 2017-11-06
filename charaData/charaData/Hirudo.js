@@ -272,10 +272,12 @@ class Hirudo extends Chara{
 	addDamage(aDamage){
 		return new Promise((res,rej)=>{
 			super.addDamage(aDamage).then(()=>{
-			//ステータス変化
-				attackAnimate(this,this,[10],()=>{
-					this.changeClothes("down");
-				res()})
+				if (aDamage<0) res();
+				else{
+					attackAnimate(this,this,[10],()=>{
+						this.changeClothes("down");
+					res()})
+				}
 			})
 		})
 	}
