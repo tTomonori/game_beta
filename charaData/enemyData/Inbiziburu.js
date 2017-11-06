@@ -1,5 +1,5 @@
 class Inbiziburu extends Enemy{
-	static getText(){
+	getText(){
 		//キャラ説明
 		return "攻撃力は高くないが,毎ターン2体のゴーストを召喚する";
 	}

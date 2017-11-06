@@ -31,9 +31,12 @@ class Quest{
 		this.downFunction=aFunction
 	}
 	//バトル開始前に呼ぶ
+	questStart(){
+		this.displayChara();
+		this.init();
+	}
 	init(aShuffle){
 		this.arrangeCard();
-		this.displayChara();
 		//初期delayを設定
 		mDelayList = initDelay(mTrueTeam,mFalseTeam);
 		initDisplay();

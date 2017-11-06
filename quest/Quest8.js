@@ -34,7 +34,7 @@ class Quest8 extends Quest{
 	}
 	//特殊条件
 	static getCondition(){
-		return "全カード裏向き,ダイヤカード一枚のみで他のカードはタイプなし,jokerなし,カードのタイプを変える効果無効";
+		return ["全カード裏向き","ダイヤカード一枚のみで他のカードはタイプなし","jokerなし","カードのタイプを変える効果無効"];
 	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}

@@ -9,5 +9,6 @@ EnemyList.classList=[
 	Rezard,
 	Hirezard,
 	Inbiziburu,
-	Yunikon
+	Yunikon,
+	Kyoukisi
 ]

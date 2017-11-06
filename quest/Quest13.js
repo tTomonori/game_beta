@@ -1,32 +1,32 @@
-class Quest6 extends Quest{
+class Quest13 extends Quest{
 	constructor(){
-		super(6);
+		super(13);
 		this.setChoicedCharaData();
 		this.setChara();
 		this.renewDownFunction();
 	}
 	static getChoiceCharaNum(){
-		return 2;
+		return 1;
 	}
 	//クエストの説明
 	static getText(){
-		return "洗脳された王女を救出せよ";
+		return "力比べ:ランスロット";
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "呪術師を倒す";
+		return "ランスロットを倒す";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
-		return "味方の全滅,王女が倒される";
+		return "味方一人が倒される";
 	}
 	//自軍
 	static getMyTeam(){
-		return ["選択1","選択2"];
+		return ["選択1"];
 	}
 	//敵軍
 	static getEnemyTeam(){
-		return ["呪術師(ザーウィン)","王女(ガーベラ)"];
+		return ["ランスロット"];
 	}
 	//友軍
 	static getFriendTeam(){
@@ -34,7 +34,7 @@ class Quest6 extends Quest{
 	}
 	//特殊条件
 	static getCondition(){
-		return ["なし"];
+		return ["マス全てクラブ"];
 	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
@@ -44,34 +44,28 @@ class Quest6 extends Quest{
 	//operationNum:0ならuser,1以上ならAI番号
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:2},operationNum:1,status:[["NAME","王女"],["SPD",15],["HP",30]]})
-		this.addChara({chara:{charaCategory:"hero",num:13},team:"F",position:{x:6,y:4},operationNum:1,status:[["NAME","呪術師"],["nowMP",20]]})
+		this.addChara({chara:{charaCategory:"hero",num:1},team:"F",position:{x:6,y:3},operationNum:1,status:[["HP",120]]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){
-		this.addChoicedCharaData({position:{x:1,y:2},operationNum:0})
-		this.addChoicedCharaData({position:{x:1,y:4},operationNum:0})
+		this.addChoicedCharaData({position:{x:1,y:3},operationNum:0})
 	}
 	//キャラが倒された時に呼ぶ関数更新
 	renewDownFunction(){
 		//味方
-		this.setAllyDownFunction("all")//全員倒れたら
+		this.setAllyDownFunction("one")//一人倒れたら
 		//敵
-		this.setEnemyDownFunction((aChara)=>{//その他
-			if(aChara.getName()=="王女") return "lose";
-			if(aChara.getName()=="呪術師"){
-				for(let i=0;i<mFalseTeam.length;i++){
-					let tChara=mFalseTeam[i];
-					if(tChara.getName()=="王女"){
-						if(tChara.HP>0) return "win";
-					}
-				}
-				return ""
-			}
-		})
+		this.setEnemyDownFunction("one")//一人倒れたら
 	}
 	//バトル開始前に呼ぶ
 	init(){
+		//全てのマスをクラブに
+		let tCards=Feild.getArrangeCard();
+		for(let i=0;i<tCards.length;i++){
+			let tCard=tCards[i];
+			if(tCard.getNumber()=="joker"||tCard.getNumber()=="suka")continue;
+			tCard.setSoot("club");
+		}
 		//trueならカードをシャッフルする
 		super.init(true);
 	}

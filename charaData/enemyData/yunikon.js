@@ -1,5 +1,5 @@
 class Yunikon extends Enemy{
-	static getText(){
+	getText(){
 		//キャラ説明
 		return "味方の回復を得意とする";
 	}

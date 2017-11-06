@@ -1,6 +1,6 @@
-class Quest6 extends Quest{
+class Quest10 extends Quest{
 	constructor(){
-		super(6);
+		super(10);
 		this.setChoicedCharaData();
 		this.setChara();
 		this.renewDownFunction();
@@ -10,15 +10,15 @@ class Quest6 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "洗脳された王女を救出せよ";
+		return "荒れ狂う騎士";
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "呪術師を倒す";
+		return "ランスロットを倒す";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
-		return "味方の全滅,王女が倒される";
+		return "味方の全滅";
 	}
 	//自軍
 	static getMyTeam(){
@@ -26,7 +26,7 @@ class Quest6 extends Quest{
 	}
 	//敵軍
 	static getEnemyTeam(){
-		return ["呪術師(ザーウィン)","王女(ガーベラ)"];
+		return ["ランスロット","狂騎士x2"];
 	}
 	//友軍
 	static getFriendTeam(){
@@ -44,8 +44,9 @@ class Quest6 extends Quest{
 	//operationNum:0ならuser,1以上ならAI番号
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:2},operationNum:1,status:[["NAME","王女"],["SPD",15],["HP",30]]})
-		this.addChara({chara:{charaCategory:"hero",num:13},team:"F",position:{x:6,y:4},operationNum:1,status:[["NAME","呪術師"],["nowMP",20]]})
+		this.addChara({chara:{charaCategory:"hero",num:1},team:"F",position:{x:6,y:3},operationNum:1,status:[["HP",150]]})
+		this.addChara({chara:{charaCategory:"enemy",num:5},team:"F",position:{x:5,y:1},operationNum:1,status:[]})
+		this.addChara({chara:{charaCategory:"enemy",num:5},team:"F",position:{x:5,y:5},operationNum:1,status:[]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){
@@ -58,16 +59,8 @@ class Quest6 extends Quest{
 		this.setAllyDownFunction("all")//全員倒れたら
 		//敵
 		this.setEnemyDownFunction((aChara)=>{//その他
-			if(aChara.getName()=="王女") return "lose";
-			if(aChara.getName()=="呪術師"){
-				for(let i=0;i<mFalseTeam.length;i++){
-					let tChara=mFalseTeam[i];
-					if(tChara.getName()=="王女"){
-						if(tChara.HP>0) return "win";
-					}
-				}
-				return ""
-			}
+			if(aChara.getName()=="ランスロット") return "win"
+			else return "";
 		})
 	}
 	//バトル開始前に呼ぶ

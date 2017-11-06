@@ -2,6 +2,7 @@ class Feild{
 	static init(){
 		this.cards=new Array();//スート,番号順
 		this.cardsLine=new Array();//現在の配置
+		let tCard
 		for(let i=1;i<=13;i++){
 			let tNum;
 			if(i==1) tNum="A";
@@ -9,23 +10,31 @@ class Feild{
 			else if(i==12) tNum="Q";
 			else if(i==13) tNum="K";
 			else tNum=i;
-			this.cards.push(new Card(tNum,"spade"));
-			this.cards.push(new Card(tNum,"club"));
-			this.cards.push(new Card(tNum,"diamond"));
-			this.cards.push(new Card(tNum,"heart"));
-			this.cardsLine.push(new Card(tNum,"spade"));
-			this.cardsLine.push(new Card(tNum,"club"));
-			this.cardsLine.push(new Card(tNum,"diamond"));
-			this.cardsLine.push(new Card(tNum,"heart"));
+			tCard=new Card(tNum,"spade")
+			this.cards.push(tCard);
+			this.cardsLine.push(tCard);
+			tCard=new Card(tNum,"club")
+			this.cards.push(tCard);
+			this.cardsLine.push(tCard);
+			tCard=new Card(tNum,"diamond")
+			this.cards.push(tCard);
+			this.cardsLine.push(tCard);
+			tCard=new Card(tNum,"heart")
+			this.cards.push(tCard);
+			this.cardsLine.push(tCard);
 		}
-		this.cards.push(new Card("joker",""));
-		this.cards.push(new Card("joker",""));
-		this.cards.push(new Card("suka",""));
-		this.cards.push(new Card("suka",""));
-		this.cardsLine.push(new Card("joker",""));
-		this.cardsLine.push(new Card("joker",""));
-		this.cardsLine.push(new Card("suka",""));
-		this.cardsLine.push(new Card("suka",""));
+		tCard=new Card("joker","")
+		this.cards.push(tCard);
+		this.cardsLine.push(tCard);
+		tCard=new Card("joker","")
+		this.cards.push(tCard);
+		this.cardsLine.push(tCard);
+		tCard=new Card("suka","")
+		this.cards.push(tCard);
+		this.cardsLine.push(tCard);
+		tCard=new Card("suka","")
+		this.cards.push(tCard);
+		this.cardsLine.push(tCard);
 
 		this.resetTable();
 	}

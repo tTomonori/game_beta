@@ -15,7 +15,7 @@ CharaList.classList=[
 	Pathi,
 	Rozetta,
 	Gabera,
-	Guren,
+	Guren,//10
 	Fureiya,
 	Gureisu,
 	Zawin,

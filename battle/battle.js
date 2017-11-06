@@ -33,7 +33,7 @@ if(mSelectedCharas[0]!=""){
 	for(let i=0;i<mSelectedCharas.length;i+=2)
 		tQuest.addChoicedChara(mSelectedCharas[i])
 }
-tQuest.init();
+tQuest.questStart();
 }
 
 //バトル開始(quest以外)
