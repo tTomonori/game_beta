@@ -48,7 +48,7 @@
 
 
 	</div>
-			<div class="detail" style="background-color: #640bff;position: absolute;top: 20px;left: 700px;width: 250px;height: 600px;display: none;color: #fff;border-radius: 5px;border:solid ;font-size: 20px">
+			<div class="detail" style="background-color: #640bff;position: absolute;top: 20px;left: 700px;width: 290px;height: 640px;display: none;color: #fff;border-radius: 5px;border:solid ;font-size: 20px">
 			<b id="ditailTitle" ></b>
 			<hr>
 			<div id="winCondition"></div>
@@ -60,6 +60,10 @@
 			<div id="EnemyTeam"></div>
 			<u style="color: #0f0">友軍</u>
 			<div id="FriendTeam"></div>
+			<hr>
+			<u style="color: #fff">特殊条件</u>
+			<div id="specialCondition">
+			</div>
 		</div>
 	<!-- クエスト -->
 <script src="../quest/Quest.js"></script>
@@ -164,6 +168,11 @@ function displayQuest(aNum){
 	for(var i=0;i<tQuest.getFriendTeam().length;i++){
 		if(i>0) 		$("#FriendTeam")[0].innerHTML += "<br>";
 		$("#FriendTeam")[0].innerHTML += tQuest.getFriendTeam();
+	}
+		$("#specialCondition")[0].innerHTML = "";
+	for(var i=0;i<tQuest.getCondition().length;i++){
+		if(i>0) 		$("#specialCondition")[0].innerHTML += "<br>";
+		$("#specialCondition")[0].innerHTML += tQuest.getCondition()[i];
 	}
 }
 $(".quest").mouseout(function(){

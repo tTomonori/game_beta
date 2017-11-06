@@ -14,7 +14,7 @@ class Kyoukisi extends Enemy{
 						MP:0,
 						ATK:50,
 						DEF:35,
-						SPD:5,
+						SPD:10,
 						MOV:1,
 						TYPE:"spade",
 						IMAGE:1084010003,
