@@ -21,7 +21,7 @@
 	<div id="mainChara">
 		<img src="../image/chara/2_stand/1345010201.png" style="margin-top: -22%;margin-left: -15%;width:70%">
 	</div>
-	<div id="menu" style="position: fixed; top:200px;left: 400px;width:600px;height:460px;overflow: scroll;vertical-align: middle;">
+	<div id="menu" style="position: fixed; top:200px;left: 380px;width:600px;height:460px;overflow: scroll;vertical-align: middle;padding-left:20px">
 		<div style="position: absolute; top: 100px">
 		<input class="start" type="button" value="START" onclick="start()" style="display: block;">
 		<input class="start" type="button" value="遊び方" onclick="manual()" style="display: block;">
@@ -48,9 +48,9 @@
 
 
 	</div>
-			<div class="detail" style="background-color: #640bff;position: absolute;top: 20px;left: 700px;width: 290px;height: 640px;display: none;color: #fff;border-radius: 5px;border:solid ;font-size: 20px">
-			<b id="ditailTitle" ></b>
-			<hr>
+			<div class="detail" style="background-color: #640bff;position: absolute;top: 20px;left: 10px;width: 350px;height: 600px;display: none;color: #fff;border-radius: 5px;border:solid ;font-size: 20px">
+			<!-- <b id="ditailTitle" ></b> -->
+			<!-- <hr> -->
 			<div id="winCondition"></div>
 			<div id="LoseCondition"></div>
 			<hr>
@@ -88,9 +88,12 @@
 <script>
 var mPlayerNum = -1;
 
-var QuestListHTML = "";
+var QuestListHTML = "<br>";
 for(var i=1;i<=QuestList.getQuestNum();i++){
-	QuestListHTML += '<input id="quest'+i+'" class="quest" type="button" value="クエスト'+i+'" onclick="quest('+i+')" onmouseover="displayQuest('+i+')" style="display:none">';
+	QuestListHTML += "<span id='quest"+i+"clear' class='quest'"+
+	"style='position:absolute;font-size:30px;color:#ff0;transform:rotate(-30deg);margin-left:-20px'"+
+	"></span>"
+	QuestListHTML += '<input id="quest'+i+'" class="quest" type="button" value="'+QuestList.getQuestClass(i).getText()+'" onclick="quest('+i+')" onmouseover="displayQuest('+i+')" style="display:none">';
 }
 QuestListHTML += '<input class="quest" type="button" value="戻る" onclick="Return()" style="display:none;font-size:20px;background-color: #a00">';
 $("#QuestList")[0].innerHTML = QuestListHTML;
@@ -101,8 +104,8 @@ for(var i=1;i<=QuestList.getQuestNum();i++){
 	isQuestCrelar(tQuestNum,(tClear)=>{
 		if(tClear){
 			//クリアしていた場合
-			let tText=document.getElementById("quest"+tQuestNum).value
-			document.getElementById("quest"+tQuestNum).value="○"+tText;
+			let tText=document.getElementById("quest"+tQuestNum+"clear").textContent="★clear"
+			document.getElementById("quest"+tQuestNum+"clear").style.display="none";
 		}
 	})
 }
@@ -151,22 +154,22 @@ function quest(aNum){
 function displayQuest(aNum){
 	var tQuest = QuestList.getQuestClass(aNum);
 	$(".detail").css("display","block");
-	$("#ditailTitle")[0].innerHTML = tQuest.getText();
+	// $("#ditailTitle")[0].innerHTML = tQuest.getText();
 	$("#winCondition")[0].innerHTML = "勝利条件:"+tQuest.getWinCondition();
 	$("#LoseCondition")[0].innerHTML = "敗北条件:"+tQuest.getLoseCondition();
 		$("#MyTeam")[0].innerHTML = "";
 	for(var i=0;i<tQuest.getMyTeam().length;i++){
-		if(i>0) 		$("#MyTeam")[0].innerHTML += "<br>";
+		if(i>0) 		$("#MyTeam")[0].innerHTML += "　";
 		$("#MyTeam")[0].innerHTML += tQuest.getMyTeam()[i];
 	}
 		$("#EnemyTeam")[0].innerHTML = "";
 	for(var i=0;i<tQuest.getEnemyTeam().length;i++){
-		if(i>0) 		$("#EnemyTeam")[0].innerHTML += "<br>";
+		if(i>0) 		$("#EnemyTeam")[0].innerHTML += "　";
 		$("#EnemyTeam")[0].innerHTML += tQuest.getEnemyTeam()[i];
 	}
 		$("#FriendTeam")[0].innerHTML = "";
 	for(var i=0;i<tQuest.getFriendTeam().length;i++){
-		if(i>0) 		$("#FriendTeam")[0].innerHTML += "<br>";
+		if(i>0) 		$("#FriendTeam")[0].innerHTML += "　";
 		$("#FriendTeam")[0].innerHTML += tQuest.getFriendTeam();
 	}
 		$("#specialCondition")[0].innerHTML = "";
