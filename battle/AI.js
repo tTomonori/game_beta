@@ -57,20 +57,13 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 
 		let tRange=calcRange(mAISkill.RANGE,{x:tX,y:tY});
 		if(tCard.isReverse()/*カードが裏向き*/){
-			console.log(mAIChara.NAME)
-			console.log("x:"+tX+"|y:"+tY)
-			console.log("revarse")
 			var tJokerSkill=mAIChara.getSkill(14);
-			console.log(tJokerSkill)
 			if(mAIChara.MP>=tJokerSkill.MAGIC){
-				console.log("MP")
 				tPriority += calcDamage(mAIChara.ATK,mAIChara.DEF,tJokerSkill.POWER)*mAIEnemyTeam.length;//今のところジョーカーは攻撃なら敵全体なので
 				tPriority += calcSupportPriority(tJokerSkill);
 				tPriority /= mReversCards;//期待値
 				tPriority *= 2;
-				console.log(tPriority)
 				if(mAICardMark=="suka"&&!tCard.isReverse()) tPriority=-Infinity;
-				console.log(tPriority)
 			}
 		}
 		else if(mAIChara.MP>mAISkill.MAGIC){
