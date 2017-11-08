@@ -362,6 +362,7 @@ class Chara{
 		this.TYPE=tChara.TYPE;
 		this.maxHP+=(tChara.HP-this.originalHP);
 		this.maxMP+=(tChara.MP-this.originalMP);
+		this.originalHP=tChara.HP;
 		this.originalMP=tChara.MP;
 		this.originalATK=tChara.ATK;
 		this.originalDEF=tChara.DEF;
