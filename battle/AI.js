@@ -56,7 +56,7 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 		var tPriority = 0;
 
 		let tRange=calcRange(mAISkill.RANGE,{x:tX,y:tY});
-		if(mAICardMark=="joker"||mAICardMark=="suka"/*||カードが裏向き*/){
+		if(tCard.isReverse()/*||カードが裏向き*/){
 			var tJokerSkill=mAIChara.getSkill(13);
 			if(mAIChara.MP>tJokerSkill.MAGIC){
 				tPriority += tJokerSkill.POWER*mAIEnemyTeam.length;//今のところジョーカーは攻撃なら敵全体なので
