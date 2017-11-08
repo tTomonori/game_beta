@@ -10,7 +10,7 @@ class Quest15 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "覚醒";
+		return "覚醒少女";
 	}
 	//勝利条件説明
 	static getWinCondition(){
