@@ -37,7 +37,7 @@ class Quest15 extends Quest{
 	}
 	//特殊条件
 	static getCondition(){
-		return ["なし"];
+		return ["ガーベラが常に変身状態でMPが毎ターン回復する","ガーベラの変身効果を持ったカードのスキルを変更"];
 	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
@@ -47,7 +47,7 @@ class Quest15 extends Quest{
 	//operationNum:0ならuser,1以上ならAI番号
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:3},operationNum:1,status:[["HP",150],["ATK",28],["DEF",25],["SPD",35]]})
+		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:3},operationNum:1,status:[["HP",150],["ATK",28],["DEF",25],["SPD",35],["NAME","覚醒ガーベラ"]]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){
@@ -93,7 +93,7 @@ class Quest15 extends Quest{
 			tChara.deck=tChara.getTransformData(1).DECK;
 
 			tChara.deck[0].SUPPORT_Af_Myself=[{effect:"getTurn"}];
-			tChara.deck[14]=			{NUMBER:114,
+			tChara.deck[13]=			{NUMBER:114,
 				TEXT:"相手全体に威力5のダメージ その後シャッフル",
 				RANGE:[["enemy"]],
 				POWER:5,
