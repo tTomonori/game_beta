@@ -101,12 +101,11 @@ $("#QuestList")[0].innerHTML = QuestListHTML;
 
 //クエストクリア状況確認
 for(var i=1;i<=QuestList.getQuestNum();i++){
-	let tQuestNum=i;
-	isQuestCrelar(tQuestNum,(tClear)=>{
+	isQuestCrelar(QuestList.getQuestClass(i).getNumber(),(tClear)=>{
 		if(tClear){
 			//クリアしていた場合
-			let tText=document.getElementById("quest"+tQuestNum+"clear").textContent="★clear"
-			document.getElementById("quest"+tQuestNum+"clear").style.display="none";
+			let tText=document.getElementById("quest"+i+"clear").textContent="★clear"
+			document.getElementById("quest"+i+"clear").style.display="none";
 		}
 	})
 }

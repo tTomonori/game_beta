@@ -10,7 +10,7 @@ class Ookuninusi extends Chara{
 	}
 	static getCharaNatureSkill(){
 		//特性の説明
-		return "なし";
+		return "ターン終了時に移動可能範囲内に最も多いタイプに変わる(最も数が多いタイプが複数あるならその中からランダム)";
 	}
 	static getCharaData(){
 		return {NAME:"オオクニヌシ",
@@ -18,7 +18,7 @@ class Ookuninusi extends Chara{
 						MP:5,
 						ATK:25,
 						DEF:30,
-						SPD:15,
+						SPD:17,
 						MOV:2,
 						TYPE:"diamond",
 						IMAGE:1464010001,
@@ -28,13 +28,13 @@ class Ookuninusi extends Chara{
 	static getDeck(){
 		return [
 			{NUMBER:301,
-				TEXT:"隣のマスに威力５のダメージ　その後自分のタイプをランダムに変更する",
+				TEXT:"隣のマスに威力５のダメージ",
 				RANGE:[["distance",1]],
 				POWER:5,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -44,13 +44,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[4]
 			},
 			{NUMBER:302,
-				TEXT:"２マス隣に威力４のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"２マス隣に威力４のダメージ",
 				RANGE:[["distance",2]],
 				POWER:4,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -60,13 +60,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:303,
-				TEXT:"３マス隣に威力４のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"３マス隣に威力４のダメージ",
 				RANGE:[["distance",3]],
 				POWER:4,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -76,13 +76,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:304,
-				TEXT:"縦一列に威力３のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"縦一列に威力３のダメージ",
 				RANGE:["vertical",1],
 				POWER:3,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -92,13 +92,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:305,
-				TEXT:"横一列に威力３ダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"横一列に威力３ダメージ",
 				RANGE:[["horizontal",1]],
 				POWER:3,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -108,13 +108,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:306,
-				TEXT:"十字に威力２ダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"十字に威力２ダメージ",
 				RANGE:[["vertical",1],["horizontal",1]],
 				POWER:2,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -140,13 +140,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:308,
-				TEXT:"相手全体に威力２のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"相手全体に威力２のダメージ",
 				RANGE:[["enemy"]],
 				POWER:2,
 				DELAY:10,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -156,13 +156,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[5]
 			},
 			{NUMBER:309,
-				TEXT:"周囲８マスに威力３のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"周囲８マスに威力３のダメージ",
 				RANGE:[["square",3]],
 				POWER:3,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -172,13 +172,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:310,
-				TEXT:"隣のマスに敵味方無視の威力７のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"隣のマスに敵味方無視の威力７のダメージ",
 				RANGE:[["distance",1]],
 				POWER:7,
 				DELAY:5,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -188,13 +188,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[4,3]
 			},
 			{NUMBER:311,
-				TEXT:"周囲１２マスに威力５のダメージ その後自分のタイプをランダムに変更する",
+				TEXT:"周囲１２マスに威力５のダメージ",
 				RANGE:[["circumference",2]],
 				POWER:5,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -204,13 +204,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[3]
 			},
 			{NUMBER:312,
-				TEXT:"自分に威力５の回復 その後自分のタイプをランダムに変更する",
+				TEXT:"自分に威力５の回復",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
 				MAGIC:3,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -220,13 +220,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:313,
-				TEXT:"味方に威力３の回復 その後自分のタイプをランダムに変更する",
+				TEXT:"味方に威力３の回復",
 				RANGE:[["ally"]],
 				POWER:-3,
 				DELAY:0,
 				MAGIC:4,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[],
@@ -236,13 +236,13 @@ class Ookuninusi extends Chara{
 				ANIMATION:[7]
 			},
 			{NUMBER:314,
-				TEXT:"相手全体に威力5のダメージ その後自分のタイプをランダムに変更する その後シャッフル",
+				TEXT:"相手全体に威力5のダメージ その後シャッフル",
 				RANGE:[["enemy"]],
 				POWER:5,
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"type",value:"random"}],
+				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],
@@ -267,5 +267,48 @@ class Ookuninusi extends Chara{
 					E_ATTACK:true,
 					ANIMATION:[0]
 				},]
+	}
+	endTurn(aDelay){
+		return new Promise((res,rej)=>{
+		if(!this.getTurnFlag){
+			let mMovable = movableSquares(mTurnChara);
+			let tType=["spade","club","diamond","heart"];
+			let tTypeNum={spade:0,club:0,diamond:0,heart:0};
+			//タイプの数をカウント
+			for(let i=0;i<mMovable.length;i++){
+				let tPosition=mMovable[i];
+				let tCard=Feild.getCard(tPosition[0],tPosition[1]);
+				if(tType.indexOf(tCard.getSoot())==-1){continue};
+				tTypeNum[tCard.getSoot()]++;
+			}
+			let tMaximumType=[{type:tType[0],num:tTypeNum[tType[0]]}]
+			//最も数が多いタイプを探す
+			for(let i=1;i<tType.length;i++){
+				if(tMaximumType[0].num>tTypeNum[tType[i]]){
+					continue;
+				}
+				if(tMaximumType[0].num==tTypeNum[tType[i]]){
+					tMaximumType.push({type:tType[i],num:tTypeNum[tType[i]]})
+					continue;
+				}
+				if(tMaximumType[0].num<tTypeNum[tType[i]]){
+					tMaximumType=[{type:tType[i],num:tTypeNum[tType[i]]}]
+					continue;
+				}
+			}
+			//ランダムに決定
+			let tNextType=tMaximumType[makeRandom(tMaximumType.length-1)].type;
+			Support([{effect:"type",value:tNextType}],this).then(()=>{
+				super.endTurn(aDelay).then(()=>{
+					res();
+				})
+			})
+		}
+		else{
+			super.endTurn(aDelay).then(()=>{
+				res();
+			})
+		}
+	})
 	}
 }
