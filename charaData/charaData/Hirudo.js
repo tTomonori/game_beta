@@ -282,9 +282,7 @@ class Hirudo extends Chara{
 		})
 	}
 	changeClothes(tChange){
-		console.log("in");
 		if(tChange=="down"){
-			console.log("indown");
 			if(this.data.CHANGECLOTH>0){
 				this.data.CHANGECLOTH--;
 				this.plusStatus("ATK",-4);
@@ -295,7 +293,6 @@ class Hirudo extends Chara{
 			else addLog("これ以上変化しない")
 		}
 		else if(tChange=="up"){
-			console.log("inup");
 			if(this.data.CHANGECLOTH<5){
 				this.data.CHANGECLOTH++;
 				this.plusStatus("ATK",4);

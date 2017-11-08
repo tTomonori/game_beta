@@ -63,7 +63,7 @@ function calcDamage(aATK,aDEF,aPOWER){
 
 	var FixedValueAttack = 40;//ここの値が大きいほど能力値の恩恵が減る
 	var FixedValueDefense = 40;
-	var FixedMagnification = 5;//ここの値が大きいほどゲームの長さが短くなる
+	var FixedMagnification = 4;//ここの値が大きいほどゲームの長さが短くなる
 	if(mTrueTeam.length==3) FixedMagnification = 3;
 
 	var tDamage = Math.floor((aATK+FixedValueAttack)*FixedMagnification/(aDEF+FixedValueDefense)*aPOWER);

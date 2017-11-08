@@ -279,27 +279,19 @@ class teresa extends Chara{
 			this.additionalTurnFlag=this.getTurnFlag;
 			this.getTurnFlag=false;
 
-			console.log(this)
-			console.log(this.image,1098010001)
-			console.log(this.HP,this.originalHP)
-			console.log(this.IMAGE==1098010001)
-			console.log(this.HP==this.originalHP)
+
 			if(this.image==1098010001&&this.HP==this.originalHP){
-				console.log("in");
 				attackAnimate(this,this,[7],()=>{
 					freeLog(this,"服装","変化した");
 				this.transform(this.getTransformData(1));
 				res()})
 			}
 			else if(this.image==1098020001&&this.HP!=this.originalHP){
-				console.log("in2");
 				attackAnimate(this,this,[7],()=>{
 					freeLog(this,"服装","元に戻った");
 				this.transform(this.getTransformData(0));
 				res()})	
 			}
-
-				console.log("out");
 			res();
 		})
 	}

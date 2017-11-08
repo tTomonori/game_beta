@@ -48,21 +48,29 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 
 		//デッキの確認
 		var tSkill;
-		if(mAICardMark=="joker")		tSkill=mAIChara.getSkill(13);
-		else if(mAICardMark=="suka")	tSkill=mAIChara.getSkill(14);
+		if(mAICardMark=="joker")		tSkill=mAIChara.getSkill(14);
+		else if(mAICardMark=="suka")	tSkill=mAIChara.getSkill(15);
 		else							tSkill=mAIChara.getSkill(tCard);
 		mAISkill=tSkill;
 
 		var tPriority = 0;
 
 		let tRange=calcRange(mAISkill.RANGE,{x:tX,y:tY});
-		if(tCard.isReverse()/*||カードが裏向き*/){
-			var tJokerSkill=mAIChara.getSkill(13);
-			if(mAIChara.MP>tJokerSkill.MAGIC){
-				tPriority += tJokerSkill.POWER*mAIEnemyTeam.length;//今のところジョーカーは攻撃なら敵全体なので
+		if(tCard.isReverse()/*カードが裏向き*/){
+			console.log(mAIChara.NAME)
+			console.log("x:"+tX+"|y:"+tY)
+			console.log("revarse")
+			var tJokerSkill=mAIChara.getSkill(14);
+			console.log(tJokerSkill)
+			if(mAIChara.MP>=tJokerSkill.MAGIC){
+				console.log("MP")
+				tPriority += calcDamage(mAIChara.ATK,mAIChara.DEF,tJokerSkill.POWER)*mAIEnemyTeam.length;//今のところジョーカーは攻撃なら敵全体なので
 				tPriority += calcSupportPriority(tJokerSkill);
 				tPriority /= mReversCards;//期待値
-				if(mAICardMark=="suka"&&tCard.isReverse()) tPriority=-Infinity;
+				tPriority *= 2;
+				console.log(tPriority)
+				if(mAICardMark=="suka"&&!tCard.isReverse()) tPriority=-Infinity;
+				console.log(tPriority)
 			}
 		}
 		else if(mAIChara.MP>mAISkill.MAGIC){
@@ -153,6 +161,14 @@ function SupportPriorityPoint(aSupportNum){
 			case "resetStatus"://ステーテスを初期値に戻す
 				tPriority -= 1;
 			case "shuffle"://シャッフルする
+				tPriority +=0.3;
+				switch (mTurnChara.getOriginalName()) {
+					case "ロゼッタ":
+						tPriority+=1;
+						break;
+					default:
+				}
+				break;
 			case "revers"://裏カードを表に向ける
 			case "type"://タイプ変更
 				tPriority += 0;
@@ -160,11 +176,13 @@ function SupportPriorityPoint(aSupportNum){
 			case "delay"://delay
 				tPriority -= 0.1 * aSupportNum[i].value;
 				break;
+			case "mp"://MP +1
+				if(mAIChara.MP==mAIChara.originalMP) tPriority=-Infinity;
+				tPriority -= 1.0;
 			case "mov"://mov変化 +2
 				tPriority += 0.5;
 			case "spd"://spd変化 +1.5
 				tPriority += 0.5;
-			case "mp"://MP +1
 			case "atk"://at変化
 				tPriority += 0.5;
 			case "originalHP":
@@ -204,6 +222,32 @@ function SupportPriorityPoint(aSupportNum){
 				default:
 			}
 				break;
+			case "Retrofits":
+				tPriority+=3;
+				break;
+			case "changeCardType":
+				tPriority+=1;
+				break;
+			case "changeCardSkill":
+				switch(aSupportNum[i].img){
+					case "pipo-enemy44set/120x120/pipo-enemy038.png"://パンプキン
+						tPriority+=4;
+						break;
+					case "pipo-enemy44set/120x120/pipo-enemy039.png"://スケルトン
+						tPriority+=2;
+						break;
+					case "pipo-enemy44set/120x120/pipo-enemy040b.png"://バット
+						tPriority+=5;
+						break;
+					case "pipo-enemy44set/120x120/pipo-boss001.png"://ヴァンパイア
+						//変更カードを数える
+						//固定値*変更カード数
+						break;
+					default:
+						tPriority+=0;
+				}
+				break;
+
 			default:
 				tPriority +=0;
 		}

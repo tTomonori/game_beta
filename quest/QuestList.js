@@ -8,6 +8,7 @@ class QuestList{
 }
 
 QuestList.classList=[
+	QuestDebug,
 	Quest1,
 	Quest2,
 	Quest3,

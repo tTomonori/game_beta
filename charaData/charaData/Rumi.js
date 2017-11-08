@@ -18,7 +18,7 @@ class Rumi extends Chara{
 						MP:15,
 						ATK:20,
 						DEF:22,
-						SPD:22,
+						SPD:25,
 						MOV:2,
 						TYPE:"heart",
 						IMAGE:1448010001,

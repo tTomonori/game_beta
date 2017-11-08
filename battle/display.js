@@ -290,7 +290,7 @@ function addLog(aLog){
 	// tLogTag.scrollTop="";
 	$("#log").delay(100).animate({
 		scrollTop: $("#log")[0].scrollHeight
-	},1500)
+	},500)
 }
 //ダメージのログ
 function damageLog(aChara,aDamage){
