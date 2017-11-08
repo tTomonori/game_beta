@@ -508,7 +508,7 @@ class Gabera extends Chara{
 				DELAY:0,
 				MAGIC:0,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"mp",value:10},{effect:"delay",value:100}],
+				SUPPORT_Af_Myself:[{effect:"mp",value:10},{effect:"getTurn"}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],

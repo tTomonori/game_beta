@@ -37,7 +37,7 @@ class Quest18 extends Quest{
 	}
 	//特殊条件
 	static getCondition(){
-		return [];
+		return ["味方のMPが10の状態で開始する"];
 	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
@@ -51,8 +51,8 @@ class Quest18 extends Quest{
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){
-		this.addChoicedCharaData({position:{x:2,y:2},operationNum:0})
-		this.addChoicedCharaData({position:{x:2,y:4},operationNum:0})
+		this.addChoicedCharaData({position:{x:2,y:2},operationNum:0,status:[["nowMP",10]]})
+		this.addChoicedCharaData({position:{x:2,y:4},operationNum:0,status:[["nowMP",10]]})
 	}
 	//キャラが倒された時に呼ぶ関数更新
 	renewDownFunction(){
