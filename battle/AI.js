@@ -116,6 +116,7 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 			tPriority += SupportPriorityPoint(mAISkill.SUPPORT_Af_Myself);
 			tPriority += SupportPriorityPoint(mAISkill.SUPPORT_Be_Myself);
 		}
+		tPriority += SupportPriorityPoint(mAISkill.SUPPORT_Otherwise);
 
 		tPriority*=100;
 		for(var m=0;m<mAIEnemyTeam.length;m++){//敵から遠くにはいかない
@@ -219,27 +220,25 @@ function SupportPriorityPoint(aSupportNum){
 				tPriority+=3;
 				break;
 			case "changeCardType":
-				tPriority+=1;
+				if(mAICharaTeam.length>1)tPriority+=3;
+				else tPriority+=1;
 				break;
 			case "changeCardSkill":
-			console.log(aSupportNum[i].name);
-
 				switch(aSupportNum[i].name){
 					case "パンプキン"://パンプキン
-						tPriority+=15;
+						tPriority+=4;
 						break;
 					case "スケルトン"://スケルトン
-						tPriority+=15
+						tPriority+=3;
 						break;
 					case "バット"://バット
-						tPriority+=13;
+						tPriority+=4;
 						break;
-					case "バンパイヤ"://ヴァンパイア
+					case "ヴァンパイア"://ヴァンパイア
 						//変更できるカードを数える
 						let tNum=calcRange(aSupportNum[i].range,mTurnChara.getPosition());
-						console.log(tNum);
 						//固定値*変更カード数
-						tPriority+=tNum*15;
+						tPriority+=tNum*3;
 						break;
 					default:
 						tPriority+=0;

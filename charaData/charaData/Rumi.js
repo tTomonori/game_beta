@@ -252,7 +252,7 @@ class Rumi extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:112,
-				TEXT:"このマスをスケルトンカード(味方が止まったなら[ATK+2,DEF+2],相手が止まったら[ATK-2,DEF-2])に変える",
+				TEXT:"このマスをスケルトンカード(味方が止まったなら[ATK+5,DEF+5],相手が止まったら[ATK-10,DEF-10])に変える",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -270,13 +270,13 @@ class Rumi extends Chara{
 															if(aChara.getTeam()==tMyTeamName){
 																//味方が止まったとき
 																return 	{NUMBER:116,
-																				TEXT:"自分のATKとDEFを2上げる",
+																				TEXT:"自分のATKとDEFを5上げる",
 																				RANGE:[],
 																				POWER:0,
 																				DELAY:0,
 																				MAGIC:0,
 																				SUPPORT_Be_Myself:[],
-																				SUPPORT_Af_Myself:[{effect:"atk",value:2},{effect:"def",value:2}],
+																				SUPPORT_Af_Myself:[{effect:"atk",value:5},{effect:"def",value:5}],
 																				SUPPORT_Be_Enemy:[],
 																				SUPPORT_Af_Enemy:[],
 																				SUPPORT_Otherwise:[],
@@ -295,7 +295,7 @@ class Rumi extends Chara{
 																				DELAY:0,
 																				MAGIC:0,
 																				SUPPORT_Be_Myself:[],
-																				SUPPORT_Af_Myself:[{effect:"atk",value:-2},{effect:"def",value:-2}],
+																				SUPPORT_Af_Myself:[{effect:"atk",value:-10},{effect:"def",value:-10}],
 																				SUPPORT_Be_Enemy:[],
 																				SUPPORT_Af_Enemy:[],
 																				SUPPORT_Otherwise:[],
@@ -312,11 +312,11 @@ class Rumi extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:113,
-				TEXT:"このマスをバットカード(味方が止まったなら[相手全体に威力1のダメージ,自分のdelayを70下げる],相手が止まったら[自分のdelyを30上げる])に変える",
+				TEXT:"このマスをバットカード(味方が止まったなら[相手全体に威力2のダメージ,自分のdelayを70下げる],相手が止まったら[自分のdelyを50上げる])に変える",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
-				MAGIC:1,
+				MAGIC:2,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[],
 				SUPPORT_Be_Enemy:[],
@@ -330,9 +330,9 @@ class Rumi extends Chara{
 															if(aChara.getTeam()==tMyTeamName){
 																//味方が止まったとき
 																return 	{NUMBER:117,
-																				TEXT:"相手全体に威力1のダメージ,自分のdelayを70下げる",
+																				TEXT:"相手全体に威力2のダメージ,自分のdelayを70下げる",
 																				RANGE:[["enemy"]],
-																				POWER:1,
+																				POWER:2,
 																				DELAY:0,
 																				MAGIC:0,
 																				SUPPORT_Be_Myself:[],
@@ -349,13 +349,13 @@ class Rumi extends Chara{
 															else{
 																//敵が止まったとき
 																return 	{NUMBER:117,
-																				TEXT:"自分のdelayを30上げる",
+																				TEXT:"自分のdelayを50上げる",
 																				RANGE:[],
 																				POWER:0,
 																				DELAY:0,
 																				MAGIC:0,
 																				SUPPORT_Be_Myself:[],
-																				SUPPORT_Af_Myself:[{effect:"delay",value:30}],
+																				SUPPORT_Af_Myself:[{effect:"delay",value:50}],
 																				SUPPORT_Be_Enemy:[],
 																				SUPPORT_Af_Enemy:[],
 																				SUPPORT_Otherwise:[],
@@ -372,7 +372,7 @@ class Rumi extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:114,
-				TEXT:"自分が生成したパンプキン,スケルトン,バットカードをバンパイヤカード"+
+				TEXT:"自分が生成したパンプキン,スケルトン,バットカードをヴァンパイアカード"+
 				"(自分が止まったら[相手全体に威力4のダメージ],自分以外の味方が止まったなら[jokerスキルが発動する],相手が止まったら[何も起きない])に変える　その後シャッフル",
 				RANGE:[],
 				POWER:0,
@@ -389,7 +389,7 @@ class Rumi extends Chara{
 					if(tInfo.name!="パンプキン"&&tInfo.name!="スケルトン"&&tInfo.name!="バット") return false;
 					return true;
 				}]],
-														name:"バンパイヤ",
+														name:"ヴァンパイア",
 														img:"pipo-enemy44set/120x120/pipo-boss001.png",
 														style:[["top","4px"],["left","-16px"],["width","79px"],["height","35px"]],
 														skill:(aSelf,aChara)=>{
