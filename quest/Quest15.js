@@ -5,6 +5,9 @@ class Quest15 extends Quest{
 		this.setChara();
 		this.renewDownFunction();
 	}
+	static getNumber(){
+		return 15;
+	}
 	static getChoiceCharaNum(){
 		return 3;
 	}
@@ -68,7 +71,7 @@ class Quest15 extends Quest{
 		// })
 	}
 	//バトル開始前に呼ぶ
-	init(){	
+	init(){
 		let tChara=mFalseTeam[0]
 		let tStart=tChara.startTurn
 		tChara.preStart=tStart
