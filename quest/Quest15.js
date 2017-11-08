@@ -37,7 +37,7 @@ class Quest15 extends Quest{
 	}
 	//特殊条件
 	static getCondition(){
-		return ["なし"];
+		return ["ガーベラが常に変身状態でMPが毎ターン回復する","ガーベラの変身効果を持ったカードのスキルを変更"];
 	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
@@ -47,13 +47,13 @@ class Quest15 extends Quest{
 	//operationNum:0ならuser,1以上ならAI番号
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:3},operationNum:,status:[["HP",150],["DEF",25],["SPD",35]]})
+		this.addChara({chara:{charaCategory:"hero",num:9},team:"F",position:{x:5,y:3},operationNum:1,status:[["HP",150],["ATK",28],["DEF",25],["SPD",35],["NAME","覚醒ガーベラ"]]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){
-		this.addChoicedCharaData({position:{x:2,y:2},operationNum:0})
-		this.addChoicedCharaData({position:{x:1,y:4},operationNum:0})
-		this.addChoicedCharaData({position:{x:2,y:6},operationNum:0})
+		this.addChoicedCharaData({position:{x:2,y:1},operationNum:0})
+		this.addChoicedCharaData({position:{x:1,y:3},operationNum:0})
+		this.addChoicedCharaData({position:{x:2,y:5},operationNum:0})
 	}
 	//キャラが倒された時に呼ぶ関数更新
 	renewDownFunction(){
@@ -78,7 +78,7 @@ class Quest15 extends Quest{
 		tChara.startTurn=()=>{
 			return new Promise((res,rej)=>{
 				if(!tChara.additionalTurnFlag){
-					tChara.support({effect:"mp",tValue:20},tChara).then(()=>{
+					Support([{effect:"mp",value:20}],tChara).then(()=>{
 						tChara.preStart().then(()=>{
 							res();
 						})
@@ -89,10 +89,11 @@ class Quest15 extends Quest{
 				}
 			})
 		}
-		attackAnimate(tChara,tChara,[10],()=>{
-			tChara.transform(tChara.getTransformData(tValue));
+			tChara.image=tChara.getTransformData(1).IMAGE;
+			tChara.deck=tChara.getTransformData(1).DECK;
+
 			tChara.deck[0].SUPPORT_Af_Myself=[{effect:"getTurn"}];
-			tChara.deck[14]=			{NUMBER:114,
+			tChara.deck[13]=			{NUMBER:114,
 				TEXT:"相手全体に威力5のダメージ その後シャッフル",
 				RANGE:[["enemy"]],
 				POWER:5,
@@ -110,6 +111,6 @@ class Quest15 extends Quest{
 			}
 			//trueならカードをシャッフルする
 			super.init(true);
-		})
+
 	}
 }
