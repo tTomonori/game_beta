@@ -72,10 +72,10 @@ class Quest14 extends Quest{
 	//バトル開始前に呼ぶ
 	init(){
 		let tChara=mFalseTeam[0];
-		let tChara.preAddDamage=tChara.addDamage;
+		tChara.preAddDamage=tChara.addDamage;
 		tChara.addDamage=(aDamage)=>{
-			let tDamage=(aDamage>=0):1:-1;
-			tChara.preAddDamage(tDamage);
+			let tDamage=(aDamage>=0)?1:-1;
+			return tChara.preAddDamage(tDamage);
 		}
 		//trueならカードをシャッフルする
 		super.init(true);

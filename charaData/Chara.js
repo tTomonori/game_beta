@@ -317,6 +317,7 @@ class Chara{
 					res();
 				}
 				else{
+					displayStatus();
 					this.downFlag=true;
 					this.down().then(()=>{
 						res();
