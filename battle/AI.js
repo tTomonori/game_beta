@@ -116,6 +116,7 @@ function AI_1(){//最大火力のマスを選択する簡単なAI
 			tPriority += SupportPriorityPoint(mAISkill.SUPPORT_Af_Myself);
 			tPriority += SupportPriorityPoint(mAISkill.SUPPORT_Be_Myself);
 		}
+		tPriority += SupportPriorityPoint(mAISkill.SUPPORT_Otherwise);
 
 		tPriority*=100;
 		for(var m=0;m<mAIEnemyTeam.length;m++){//敵から遠くにはいかない
