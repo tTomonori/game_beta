@@ -12,7 +12,7 @@ class Gosuto extends Token{
 		return {NAME:"ゴースト",
 						HP:5,
 						MP:0,
-						ATK:18,
+						ATK:19,
 						DEF:15,
 						SPD:25,
 						MOV:3,

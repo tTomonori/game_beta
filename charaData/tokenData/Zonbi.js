@@ -13,7 +13,7 @@ class Zonbi extends Token{
 						HP:20,
 						MP:0,
 						ATK:22,
-						DEF:20,
+						DEF:22,
 						SPD:18,
 						MOV:2,
 						TYPE:"diamond",
