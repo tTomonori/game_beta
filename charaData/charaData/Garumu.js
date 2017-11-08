@@ -273,7 +273,6 @@ class Garumu extends Chara{
 	}
 	startTurn(){
 		if(this.doubleTurnFlag){
-			console.log("double");
 			this.getTurnFlag=true;
 		}
 		return super.startTurn();
@@ -292,6 +291,7 @@ class Garumu extends Chara{
 			else{
 				this.additionalDelayTemp+=aDelay;
 				this.doubleTurnFlag=true;
+				newLog([mTurnChara,"は特性によって連続で行動"])
 				return new Promise((res,rej)=>{res();});
 			}
 		}
