@@ -129,7 +129,7 @@ class Zawin extends Chara{
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
-				MAGIC:1,
+				MAGIC:0,
 				SUPPORT_Be_Myself:[],
 				SUPPORT_Af_Myself:[{effect:"getTurn"}],
 				SUPPORT_Be_Enemy:[],

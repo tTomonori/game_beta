@@ -22,5 +22,6 @@ CharaList.classList=[
 	Hirudo,
 	Rumi,
 	akurahairu,
-	teresa
+	teresa,
+	Garumu
 ]
