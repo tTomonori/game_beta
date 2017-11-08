@@ -163,7 +163,20 @@ function battleMain(){
 	mTurnChara.startTurn().then(()=>{
 		//移動
 		mMovable = movableSquares(mTurnChara);//移動先のリスト
-		//移動先のトランプの色を変えたい
+		if(mMovable.length==0){
+			if(mTurnChara.getMov>0){
+				addLog("移動できない");
+				mTurnChara.endTurn(0).then(()=>{
+					battleMain();
+				})
+			}
+			else{
+				attack(mTurnChara).then(()=>{
+					battleMain();
+				})
+			}
+			return;
+		}
 
 		displayStatus();
 
