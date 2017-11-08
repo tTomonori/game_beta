@@ -7,10 +7,11 @@ class Rumi extends Chara{
 		let tData=Rumi.getCharaData();
 		super(aX,aY,aTeam,tData,aOperationNum);
 		this.data=tData;
+		this.MP=3;
 	}
 	static getCharaNatureSkill(){
 		//特性の説明
-		return "なし";
+		return "MPが3溜まった状態でゲームが始まる";
 	}
 	static getCharaData(){
 		return {NAME:"ルーミィ",
