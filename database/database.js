@@ -3,7 +3,7 @@ var db;
 var NeDB=require(__dirname+"/../node_modules/nedb")
 
 //ファイルを開く
-loadDB(__dirname+"/../database/questData.db")
+loadDB(__dirname+"/../savedata/questData.db")
 function loadDB(aFilePath){
 	let fileName=aFilePath;
 	db=new NeDB({
@@ -25,6 +25,5 @@ function isQuestCrelar(aNum,aCallBack){
 }
 //引数の番号のクエストをクリアしたことをセーブ
 function saveQuestClear(aNum){
-	console.log(aNum);
 	db.insert({Data:"quest",Num:aNum,Value:"clear",_id:"q"+aNum})
 }

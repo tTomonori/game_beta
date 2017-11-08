@@ -26,7 +26,7 @@ class Quest11 extends Quest{
 	}
 	//敵軍
 	static getEnemyTeam(){
-		return ["維持神(フレイヤ)"];
+		return ["維持神(フレイヤ)"];
 	}
 	//友軍
 	static getFriendTeam(){
