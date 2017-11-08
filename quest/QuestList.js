@@ -23,5 +23,7 @@ QuestList.classList=[
 	Quest12,
 	Quest13,
 	Quest14,
-	Quest15
+	Quest15,
+	Quest16,
+	Quest17
 ]

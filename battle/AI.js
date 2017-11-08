@@ -241,6 +241,12 @@ function SupportPriorityPoint(aSupportNum){
 						break;
 					case "pipo-enemy44set/120x120/pipo-boss001.png"://ヴァンパイア
 						//変更カードを数える
+						let tNum=0;
+						let tCards=Feild.getAllCard();
+						for(let i=0;i<tCards.length;i++){
+							let tCard=tCards[i];
+
+						}
 						//固定値*変更カード数
 						break;
 					default:
