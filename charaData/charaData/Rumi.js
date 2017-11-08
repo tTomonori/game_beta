@@ -202,6 +202,7 @@ class Rumi extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"changeCardSkill",range:[["my"]],
+														name:"パンプキン",
 														img:"pipo-enemy44set/120x120/pipo-enemy038.png",
 														style:[["top","-3px"]],
 														skill:(aSelf,aChara)=>{
@@ -261,6 +262,7 @@ class Rumi extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"changeCardSkill",range:[["my"]],
+														name:"スケルトン",
 														img:"pipo-enemy44set/120x120/pipo-enemy039.png",
 														style:[["top","-10px"],["left","-2px"]],
 														skill:(aSelf,aChara)=>{
@@ -320,6 +322,7 @@ class Rumi extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"changeCardSkill",range:[["my"]],
+														name:"バット",
 														img:"pipo-enemy44set/120x120/pipo-enemy040b.png",
 														style:[["top","-5px"],["left","-2px"]],
 														skill:(aSelf,aChara)=>{
@@ -370,7 +373,7 @@ class Rumi extends Chara{
 			},
 			{NUMBER:114,
 				TEXT:"自分が生成したパンプキン,スケルトン,バットカードをバンパイヤカード"+
-				"(味方が止まったなら[jokerスキルが発動する],相手が止まったら[何も起きない])に変える　その後シャッフル",
+				"(自分が止まったら[相手全体に威力4のダメージ],自分以外の味方が止まったなら[jokerスキルが発動する],相手が止まったら[何も起きない])に変える　その後シャッフル",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -380,14 +383,35 @@ class Rumi extends Chara{
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"changeCardSkill",range:[["function",(aCard,aSelf)=>{
-					if(aCard.getNumber()!="special") return false;
-					if(aCard.getOrner()!=aSelf) return false;
+					let tInfo=aCard.getSpecialInfo();
+					if(tInfo==null) return false;
+					if(tInfo.orner!=aSelf) return false;
+					if(tInfo.name!="パンプキン"&&tInfo.name!="スケルトン"&&tInfo.name!="バット") return false;
 					return true;
 				}]],
+														name:"バンパイヤ",
 														img:"pipo-enemy44set/120x120/pipo-boss001.png",
 														style:[["top","4px"],["left","-16px"],["width","79px"],["height","35px"]],
 														skill:(aSelf,aChara)=>{
 															let tMyTeamName=aSelf.getTeam();
+															if(aSelf==aChara){
+																return {NUMBER:115,
+																				TEXT:"相手全体に威力4のダメージ",
+																				RANGE:[["enemy"]],
+																				POWER:4,
+																				DELAY:0,
+																				MAGIC:0,
+																				SUPPORT_Be_Myself:[],
+																				SUPPORT_Af_Myself:[],
+																				SUPPORT_Be_Enemy:[],
+																				SUPPORT_Af_Enemy:[],
+																				SUPPORT_Otherwise:[],
+																				M_ATTACK:0,
+																				F_ATTACK:false,
+																		    E_ATTACK:true,
+																				ANIMATION:[6]
+																			}
+															}
 															if(aChara.getTeam()==tMyTeamName){
 																//味方が止まったとき
 																return 	aChara.getSkill(14);

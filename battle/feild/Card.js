@@ -15,7 +15,7 @@ class Card{
 		this.trapEffect=new Array();
 
 		//特殊なカードに変更するためのメンバ
-		this.specialCardOner=null;
+		this.specialInfo=null;
 		this.specialSkill=()=>{};
 	}
 	//カードのタグを生成
@@ -163,7 +163,7 @@ class Card{
 		})
 	}
 	//カードを特殊な効果をもつカードに変える
-	changeSpecial(aImage,aSkill,aChara,aStyle){
+	changeSpecial(aName,aImage,aSkill,aChara,aStyle){
 		this.number="special";
 		this.specialSrc="../image/chara/material/"+aImage;
 		this.specialImage.style="position:absolute;top:0;left:0;width:50px;height:50px;position:absolute;margin-left:10px;margin-top:10px;display:none;"
@@ -171,22 +171,25 @@ class Card{
 			this.specialImage.style[aStyle[i][0]]=aStyle[i][1];
 		}
 		this.soot="";
-		this.specialCardOner=aChara;//このカードを変えたキャラ
+		this.specialInfo={}
+		this.specialInfo.name=aName;
+		this.specialInfo.orner=aChara;//このカードを変えたキャラ
 		this.specialSkill=(aOrner,aChara)=>{return aSkill(aOrner,aChara)};
 		this.setCardImage();
 	}
 	resetSpecial(){
 		this.specialSrc="";
 		this.specialImage.style="display:none;";
-		this.specialCardOner=null;
+		this.specialInfo={};
 		this.specialSkill=()=>{}
 	}
 	getSpecialSkill(aChara){
-		return this.specialSkill(this.specialCardOner,aChara);
+		return this.specialSkill(this.specialInfo.orner,aChara);
 	}
-	//このカードを特殊な効果に変えたキャラを返す
-	getOrner(){
-		return this.specialCardOner;
+	//このカードが特殊なカードならカード情報({name:カード名,orner:このカードを変えたキャラ})を返す
+	getSpecialInfo(){
+		if(this.getNumber()=="special")return this.specialInfo;
+		else return null;
 	}
 }
 

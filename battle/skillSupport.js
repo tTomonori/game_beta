@@ -168,7 +168,7 @@ function SupportPlay(aSupportnums,aChara){
 				attackAnimate(tTurnChara,aChara,[7],()=>{
 					//変更する
 					for(let i=0;i<tRange.length;i++){
-						Feild.getCard(tRange[i][0],tRange[i][1]).changeSpecial(aSupportnums.img,aSupportnums.skill,mTurnChara,aSupportnums.style);
+						Feild.getCard(tRange[i][0],tRange[i][1]).changeSpecial(aSupportnums.name,aSupportnums.img,aSupportnums.skill,mTurnChara,aSupportnums.style);
 					}
 				res()})
 				break;

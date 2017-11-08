@@ -222,25 +222,24 @@ function SupportPriorityPoint(aSupportNum){
 				tPriority+=1;
 				break;
 			case "changeCardSkill":
-				switch(aSupportNum[i].img){
-					case "pipo-enemy44set/120x120/pipo-enemy038.png"://パンプキン
-						tPriority+=4;
-						break;
-					case "pipo-enemy44set/120x120/pipo-enemy039.png"://スケルトン
-						tPriority+=2;
-						break;
-					case "pipo-enemy44set/120x120/pipo-enemy040b.png"://バット
-						tPriority+=5;
-						break;
-					case "pipo-enemy44set/120x120/pipo-boss001.png"://ヴァンパイア
-						//変更カードを数える
-						let tNum=0;
-						let tCards=Feild.getAllCard();
-						for(let i=0;i<tCards.length;i++){
-							let tCard=tCards[i];
+			console.log(aSupportNum[i].name);
 
-						}
+				switch(aSupportNum[i].name){
+					case "パンプキン"://パンプキン
+						tPriority+=15;
+						break;
+					case "スケルトン"://スケルトン
+						tPriority+=15
+						break;
+					case "バット"://バット
+						tPriority+=13;
+						break;
+					case "バンパイヤ"://ヴァンパイア
+						//変更できるカードを数える
+						let tNum=calcRange(aSupportNum[i].range,mTurnChara.getPosition());
+						console.log(tNum);
 						//固定値*変更カード数
+						tPriority+=tNum*15;
 						break;
 					default:
 						tPriority+=0;
