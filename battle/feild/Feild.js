@@ -51,7 +51,7 @@ class Feild{
 	static getReversCardNum(){
 		let tNum=0;
 		for(let i=0;i<this.cardsLine.length;i++){
-			if(this.cardsLine[i].isReverse)
+			if(this.cardsLine[i].isReverse())
 				tNum++;
 		}
 		return tNum;

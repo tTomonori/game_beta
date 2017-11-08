@@ -173,7 +173,8 @@ class Chara{
 	startTurn(){
 		return new Promise((res,rej)=>{
 			//mp回復
-			this.useMp(-1);
+			if(!this.getTurnFlag)
+				this.useMp(-1);
 			//getTurnFlag
 			this.additionalTurnFlag=this.getTurnFlag;
 			this.getTurnFlag=false;
@@ -435,13 +436,13 @@ function createSkillText(aSkill){
 	var tText = "";
 	tText += aSkill.TEXT;
 	let tGetTurnFlag=false;
-	//getTurn効果があるか
-	for(let i=0;i<aSkill.SUPPORT_Af_Myself.length;i++){
-		if(aSkill.SUPPORT_Af_Myself[i].effect=="getTurn"){
-			tGetTurnFlag=true;
-			break;
-		}
-	}
+	// //getTurn効果があるか
+	// for(let i=0;i<aSkill.SUPPORT_Af_Myself.length;i++){
+	// 	if(aSkill.SUPPORT_Af_Myself[i].effect=="getTurn"){
+	// 		tGetTurnFlag=true;
+	// 		break;
+	// 	}
+	// }
 	if(aSkill.MAGIC>0&&!tGetTurnFlag){
 		tText += " (消費MP"+aSkill.MAGIC+")";
 	}
