@@ -245,7 +245,7 @@ class Garumu extends Chara{
 				DELAY:0,
 				MAGIC:3,
 				SUPPORT_Be_Myself:[],
-				SUPPORT_Af_Myself:[{effect:"getTurn"}],
+				SUPPORT_Af_Myself:[{effect:"delay",value:-100}],
 				SUPPORT_Be_Enemy:[],
 				SUPPORT_Af_Enemy:[],
 				SUPPORT_Otherwise:[{effect:"revers"},{effect:"shuffle"}],
