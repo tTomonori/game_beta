@@ -119,6 +119,7 @@ class Fabuniru extends Chara{
 		if(this.natureSkillFlag){
 			this.MOV--;
 		}
+		this.natureSkillFlag=false;
 		return super.endTurn(aDelay);
 	}
 }
