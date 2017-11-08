@@ -10,11 +10,11 @@ class Quest14 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "";
+		return "鉄壁のヴァルキリー";
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "";
+		return "鉄壁ヴァルキリーを倒す";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
@@ -26,7 +26,7 @@ class Quest14 extends Quest{
 	}
 	//敵軍
 	static getEnemyTeam(){
-		return [""];
+		return ["鉄壁のヴァルキリー"];
 	}
 	//友軍
 	static getFriendTeam(){
@@ -44,7 +44,7 @@ class Quest14 extends Quest{
 	//operationNum:0ならuser,1以上ならAI番号
 	//status:[[変更するステータス名:変更後の値]]
 	setChara(){
-		this.addChara({chara:{charaCategory:"hero",num:0},team:"F",position:{x:6,y:3},operationNum:1,status:["HP",20]})
+		this.addChara({chara:{charaCategory:"hero",num:0},team:"F",position:{x:6,y:3},operationNum:1,status:[["HP",20],["DEF",Infinity],["NAME","鉄壁のヴァルキリー"]]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){

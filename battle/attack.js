@@ -58,6 +58,9 @@ function attack(aChara) {
 }
 
 function calcDamage(aATK,aDEF,aPOWER){
+	if(aDEF==Infinity&&aPOWER>0) return 1;
+	else if(aDEF==Infinity&&aPOWER<0) return -1;
+
 	var FixedValueAttack = 40;//ここの値が大きいほど能力値の恩恵が減る
 	var FixedValueDefense = 40;
 	var FixedMagnification = 5;//ここの値が大きいほどゲームの長さが短くなる
@@ -67,6 +70,7 @@ function calcDamage(aATK,aDEF,aPOWER){
 
 	return tDamage
 }
+
 //自傷,自己回復
 function attackMyself(aChara,aSkill,aCard){
 	return new Promise((MAres,MArej)=>{
