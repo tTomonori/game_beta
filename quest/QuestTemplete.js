@@ -5,6 +5,9 @@ class Quest(番号) extends Quest{
 		this.setChara();
 		this.renewDownFunction();
 	}
+	static getNumber(){
+		return (番号);
+	}
 	static getChoiceCharaNum(){
 		return (選択するキャラの数);
 	}

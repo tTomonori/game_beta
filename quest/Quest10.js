@@ -5,6 +5,9 @@ class Quest10 extends Quest{
 		this.setChara();
 		this.renewDownFunction();
 	}
+	static getNumber(){
+		return 10;
+	}
 	static getChoiceCharaNum(){
 		return 2;
 	}
