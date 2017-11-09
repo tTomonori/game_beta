@@ -10,5 +10,6 @@ EnemyList.classList=[
 	Hirezard,
 	Inbiziburu,
 	Yunikon,
-	Kyoukisi
+	Kyoukisi,//5
+	Goburin
 ]
