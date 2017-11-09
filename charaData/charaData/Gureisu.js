@@ -1,7 +1,7 @@
 class Gureisu extends Chara{
 	static getText(){
 		//キャラ説明
-		return "ジャマータイプ：<br>相手が踏むと不利な効果が発動するトラップを設置できる";
+		return "トリックタイプ：<br>相手が踏むと不利な効果が発動するトラップを設置できる";
 	}
 	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Gureisu.getCharaData();

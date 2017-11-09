@@ -26,9 +26,9 @@ class Yunikon extends Enemy{
 
 	static getDeck(){
 		let tSkill={NUMBER:1,
-			TEXT:"味方に威力3の回復",
+			TEXT:"味方に威力7の回復",
 			RANGE:[["ally"]],
-			POWER:-3,
+			POWER:-7,
 			DELAY:0,
 			MAGIC:2,
 			SUPPORT_Be_Myself:[],
@@ -42,9 +42,9 @@ class Yunikon extends Enemy{
 			ANIMATION:[7]
 		};
 		let tSkill2={NUMBER:1,
-			TEXT:"周囲8マスの味方に威力7の回復",
+			TEXT:"周囲8マスの味方に威力10の回復",
 			RANGE:[["square",3]],
-			POWER:-7,
+			POWER:-10,
 			DELAY:0,
 			MAGIC:2,
 			SUPPORT_Be_Myself:[],

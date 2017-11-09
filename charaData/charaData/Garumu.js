@@ -1,7 +1,7 @@
 class Garumu extends Chara{
 	static getText(){
 		//キャラ説明
-		return "アタッカータイプ：<br>素早く動いて手数で相手を攻める";
+		return "アタックタイプ：<br>素早く動いて手数で相手を攻める";
 	}
 	constructor(aX,aY,aTeam,aOperationNum){
 		let tData=Garumu.getCharaData();
@@ -239,7 +239,7 @@ class Garumu extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:114,
-				TEXT:"相手全体に威力3のダメージ その後シャッフルしもう一度行動（消費MP３）",
+				TEXT:"相手全体に威力3のダメージを与え,自分のDELAYを100下げる その後シャッフル（消費MP３）",
 				RANGE:[["enemy"]],
 				POWER:3,
 				DELAY:0,
