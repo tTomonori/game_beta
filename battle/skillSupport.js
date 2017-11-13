@@ -87,6 +87,7 @@ function SupportPlay(aSupportnums,aChara){
 						else if(tTarget[i]=="enemy") tTarget[i]=(tTurnChara.getTeam()=="T")?"F":"T";
 					}
 					tRange=calcRange(aSupportnums.range,tTurnChara.getPosition());
+					newLog([mTurnChara,"はトラップを設置した"])
 					for(let i=0;i<tRange.length;i++){
 						let tSettedCard=Feild.getCard(tRange[i][0],tRange[i][1]);
 						tSettedCard.setTrap({effect:"stepTrap",trapEffect:aSupportnums.trapEffect,value:tValue,owner:tTurnChara.getTeam(),target:tTarget,remove:aSupportnums.remove});
@@ -97,7 +98,7 @@ function SupportPlay(aSupportnums,aChara){
 			case "stepTrap"://トラップを踏んだ
 				if(aSupportnums.target.indexOf(aChara.getTeam())!=-1){
 					//効果対象のチームのキャラが効果を受ける
-					addLog("トラップを踏んだ")
+					newLog([mTurnChara,"はトラップを踏んだ"])
 					SupportPlay({effect:aSupportnums.trapEffect,value:tValue},aChara).then(()=>{
 						res();
 					})
@@ -156,7 +157,7 @@ function SupportPlay(aSupportnums,aChara){
 				//アニメーション実行
 				attackAnimate(tTurnChara,aChara,[7],()=>{
 					//変更する
-					newLog("カードのタイプが変更された")
+					freeLog("カードのタイプが変更された")
 					for(let i=0;i<tRange.length;i++){
 						Feild.getCard(tRange[i][0],tRange[i][1]).setSoot(tSoot);
 					}
@@ -166,6 +167,7 @@ function SupportPlay(aSupportnums,aChara){
 				tRange=calcRange(aSupportnums.range,mTurnChara.getPosition());
 				//アニメーション実行
 				attackAnimate(tTurnChara,aChara,[7],()=>{
+					newLog([mTurnChara,"は"+aSupportnums.name+"カードを生成した"])
 					//変更する
 					for(let i=0;i<tRange.length;i++){
 						Feild.getCard(tRange[i][0],tRange[i][1]).changeSpecial(aSupportnums.name,aSupportnums.img,aSupportnums.skill,mTurnChara,aSupportnums.style);
