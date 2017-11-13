@@ -158,7 +158,7 @@ function SupportPriorityPoint(aSupportNum){
 				tPriority +=0.3;
 				switch (mTurnChara.getOriginalName()) {
 					case "ロゼッタ":
-						tPriority+=1;
+						tPriority+=2;
 						break;
 					default:
 				}
@@ -189,7 +189,7 @@ function SupportPriorityPoint(aSupportNum){
 			case "transform"://変身する
 				switch (mTurnChara.getOriginalName()) {
 					case "ロゼッタ":
-						tPriority+=10;
+						tPriority+=15;
 						break;
 					case "ガーベラ":
 						if(aSupportNum[i].value==0)	tPriority += ((mAIChara.originalMP - mAIChara.MP)/2)-mAIChara.originalMP/4;

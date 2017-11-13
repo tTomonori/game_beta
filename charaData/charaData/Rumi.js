@@ -312,7 +312,7 @@ class Rumi extends Chara{
 				ANIMATION:[]
 			},
 			{NUMBER:113,
-				TEXT:"このマスをバットカード(味方が止まったなら[相手全体に威力2のダメージ,自分のdelayを70下げる],相手が止まったら[自分のdelyを50上げる])に変える",
+				TEXT:"このマスをバットカード(味方が止まったなら[相手全体に威力2のダメージ,自分のdelayを60下げる],相手が止まったら[自分のdelyを50上げる])に変える",
 				RANGE:[],
 				POWER:0,
 				DELAY:0,
@@ -330,13 +330,13 @@ class Rumi extends Chara{
 															if(aChara.getTeam()==tMyTeamName){
 																//味方が止まったとき
 																return 	{NUMBER:117,
-																				TEXT:"相手全体に威力2のダメージ,自分のdelayを70下げる",
+																				TEXT:"相手全体に威力2のダメージ,自分のdelayを60下げる",
 																				RANGE:[["enemy"]],
 																				POWER:2,
 																				DELAY:0,
 																				MAGIC:0,
 																				SUPPORT_Be_Myself:[],
-																				SUPPORT_Af_Myself:[{effect:"delay",value:-70}],
+																				SUPPORT_Af_Myself:[{effect:"delay",value:-60}],
 																				SUPPORT_Be_Enemy:[],
 																				SUPPORT_Af_Enemy:[],
 																				SUPPORT_Otherwise:[],

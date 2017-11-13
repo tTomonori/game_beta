@@ -31,6 +31,9 @@ class Card{
 		this.specialImage=document.createElement("img");
 		this.specialImage.style="position:absolute;top:0;left:0;width:50px;height:50px;position:absolute;margin-left:10px;margin-top:10px;display:none;"
 		this.specialSrc="";
+		this.specialOnerColorBack=document.createElement("div");
+		this.specialOnerColorBack.style="position:absolute;top:10px;left:10px;width:38px;height:38px;border-radius:5px;display:none;";
+		// this.specialOnerColorBack.style="position:absolute;top:10px;left:10px;width:46px;height:46px;border-radius:5px;display:none;";
 		this.reversImage=document.createElement("img");
 		this.reversImage.src="../image/card_back.png";
 		this.reversImage.style="position:absolute;top:0;left:0;width:65px;height:65px;"
@@ -40,6 +43,7 @@ class Card{
 		this.numberImage.style="position:absolute;top:-5px;left:12px;"
 
 		this.cardContainer.appendChild(this.cardImage);
+		this.cardContainer.appendChild(this.specialOnerColorBack);
 		this.cardContainer.appendChild(this.sootImage);
 		this.cardContainer.appendChild(this.specialImage);
 		this.cardContainer.appendChild(this.numberImage);
@@ -56,9 +60,10 @@ class Card{
 			this.sootImage.src="";
 			this.sootImage.style.display="none";
 		}
-		//数字
 		this.specialImage.src="";
 		this.specialImage.style.display="none";
+		this.specialOnerColorBack.style.display="none";
+		//数字
 		if(this.number!="suka"&&this.number!="special"){
 			this.numberImage.textContent=this.number;
 		}
@@ -67,6 +72,9 @@ class Card{
 			if(this.number=="special"){//特殊なカード
 				this.specialImage.style.display="block";
 				this.specialImage.src=this.specialSrc;
+				this.specialOnerColorBack.style.display="block";
+				this.specialOnerColorBack.style.border="solid 4px "+this.specialInfo.orner.getTeamColor();
+				// this.specialOnerColorBack.style.background=this.specialInfo.orner.getTeamColor();
 			}
 		}
 	}

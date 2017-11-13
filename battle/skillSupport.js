@@ -157,7 +157,7 @@ function SupportPlay(aSupportnums,aChara){
 				//アニメーション実行
 				attackAnimate(tTurnChara,aChara,[7],()=>{
 					//変更する
-					freeLog("カードのタイプが変更された")
+					addLog("カードのタイプが変更された")
 					for(let i=0;i<tRange.length;i++){
 						Feild.getCard(tRange[i][0],tRange[i][1]).setSoot(tSoot);
 					}
