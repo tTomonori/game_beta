@@ -13,7 +13,7 @@ class Quest5 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "ボス:ウンディーネを討伐せよ";
+		return "ボス:ウンディーネの討伐";
 	}
 	//勝利条件説明
 	static getWinCondition(){
