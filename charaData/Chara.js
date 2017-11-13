@@ -233,8 +233,8 @@ class Chara{
 	}
 	//初期ステータス増減(現在はHPとMPのみ想定(=最大HP,MP変更))
 	plusOriginStatus(aStatus,aValue){
-		this[aStatus]+=aValue;
-		if(this[aStatus]<0) this[aStatus]=0;//0未満にはならない
+		this["max"+aStatus]+=aValue;
+		if(this["max"+aStatus]<0) this["max"+aStatus]=0;//0未満にはならない
 		(aValue>0)?freeLog(this,"最大"+aStatus,aValue+"アップ"):freeLog(this,"最大"+aStatus,-aValue+"ダウン");
 	}
 	//ステータスリセット

@@ -13,7 +13,7 @@ class Quest11 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "強敵維持神";
+		return "強敵 維持神";
 	}
 	//勝利条件説明
 	static getWinCondition(){

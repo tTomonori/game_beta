@@ -25,7 +25,7 @@ class QuestDebug extends Quest{
 	}
 	//自軍
 	static getMyTeam(){
-		return ["選択"];
+		return ["選択1"];
 	}
 	//敵軍
 	static getEnemyTeam(){
@@ -33,11 +33,11 @@ class QuestDebug extends Quest{
 	}
 	//友軍
 	static getFriendTeam(){
-		return ["ランダム"];
+		return ["ランダム1"];
 	}
 	//特殊条件
 	static getCondition(){
-		return ["なし"];
+		return ["自軍AIによる自動操作","観戦クエスト"];
 	}
 	//登場させるキャラを配列に追加
 	//{chara:キャラ番号,team:チーム名,position:初期位置,operationNum:操作方法,status:ステータス}
@@ -49,7 +49,7 @@ class QuestDebug extends Quest{
 	setChara(){
 		this.addChara({chara:{charaCategory:"hero",num:Math.floor(Math.random()*CharaList.classList.length)},team:"F",position:{x:6,y:2},operationNum:1,status:[]})
 		this.addChara({chara:{charaCategory:"hero",num:Math.floor(Math.random()*CharaList.classList.length)},team:"F",position:{x:6,y:4},operationNum:1,status:[]})
-		this.addChara({chara:{charaCategory:"hero",num:Math.floor(Math.random()*CharaList.classList.length)},team:"T",position:{x:1,y:4},operationNum:1,status:[]})
+		this.addChara({chara:{charaCategory:"hero",num:Math.floor(Math.random()*CharaList.classList.length)},team:"friend",position:{x:1,y:4},operationNum:1,status:[]})
 	}
 	//ユーザが選択したキャラの配置などの情報セット
 	setChoicedCharaData(){

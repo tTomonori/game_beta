@@ -13,7 +13,7 @@ class Quest9 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "強敵インビジブル";
+		return "強敵 インビジブル";
 	}
 	//勝利条件説明
 	static getWinCondition(){

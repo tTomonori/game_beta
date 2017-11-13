@@ -13,7 +13,7 @@ class Quest2 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "二人の騎士を倒せ";
+		return "二人の騎士との決闘";
 	}
 	//勝利条件説明
 	static getWinCondition(){

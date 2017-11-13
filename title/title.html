@@ -181,7 +181,7 @@ function displayQuest(aNum){
 		$("#FriendTeam")[0].innerHTML = "";
 	for(var i=0;i<tQuest.getFriendTeam().length;i++){
 		if(i>0) 		$("#FriendTeam")[0].innerHTML += "　";
-		$("#FriendTeam")[0].innerHTML += tQuest.getFriendTeam();
+		$("#FriendTeam")[0].innerHTML += tQuest.getFriendTeam()[i];
 	}
 		$("#specialCondition")[0].innerHTML = "";
 	for(var i=0;i<tQuest.getCondition().length;i++){

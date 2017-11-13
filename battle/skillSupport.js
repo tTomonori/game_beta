@@ -75,7 +75,7 @@ function SupportPlay(aSupportnums,aChara){
 			case "originalMP":
 				tAnimation=(tValue>0)?[19]:[20];
 				attackAnimate(tTurnChara,aChara,tAnimation,()=>{
-				aChara.plusOriginStatus(aSupportnums.effect,tValue);
+				aChara.plusOriginStatus(aSupportnums.effect.slice(-2),tValue);
 				res()})
 				break;
 			case "setTrap"://トラップ設置

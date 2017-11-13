@@ -13,7 +13,7 @@ class Quest1 extends Quest{
 	}
 	//クエストの説明
 	static getText(){
-		return "ヴァルキリーを倒せ";
+		return "小手調べ";
 	}
 	//勝利条件説明
 	static getWinCondition(){
