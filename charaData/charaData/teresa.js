@@ -155,7 +155,7 @@ class teresa extends Chara{
 				M_ATTACK:0,
 				F_ATTACK:false,
 		    E_ATTACK:true,
-				ANIMATION:[5]
+				ANIMATION:[7]
 			},
 			{NUMBER:109,
 				TEXT:"キャラクター全体に敵味方無視の威力３の回復",
@@ -292,8 +292,18 @@ class teresa extends Chara{
 				this.transform(this.getTransformData(0));
 				res()})
 			}
-			res();
+			else{
+				res()
+			}
 		})
+	}
+	getActorUrl(){
+		if(this.image==1098020001){
+			return '../image/chara/3_sv_actors/'+String(this.image+302)+'.png';
+		}
+		else{
+			return '../image/chara/3_sv_actors/'+String(this.image+300)+'.png';
+		}
 	}
 	getTransformData(aNum){
 		return teresa.getTransformData(aNum);

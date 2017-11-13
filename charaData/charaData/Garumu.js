@@ -222,7 +222,7 @@ class Garumu extends Chara{
 		    E_ATTACK:true,
 				ANIMATION:[0,3]
 			},
-			{NUMBER:612,
+			{NUMBER:613,
 				TEXT:"スピード6アップ　その後DELAYを50下げる（タイプ一致時8アップ）",
 				RANGE:[],
 				POWER:0,
@@ -239,7 +239,7 @@ class Garumu extends Chara{
 				ANIMATION:[0]
 			},
 			{NUMBER:114,
-				TEXT:"相手全体に威力3のダメージを与え,自分のDELAYを100下げる その後シャッフル（消費MP３）",
+				TEXT:"相手全体に威力3のダメージを与え,自分のDELAYを100下げる その後シャッフル",
 				RANGE:[["enemy"]],
 				POWER:3,
 				DELAY:0,

@@ -372,6 +372,9 @@ class Chara{
 		this.image=tChara.IMAGE;
 		this.deck=tChara.DECK;
 		this.img.src=this.getActorUrl();
+
+		//delayリストの画像を更新
+		displayDelay();
 	}
 	//召喚する
 	summon(aTokenNum,aSummonPosition,aOperationNum,aDelay){
