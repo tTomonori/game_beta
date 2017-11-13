@@ -3,6 +3,9 @@ var db;
 var NeDB=require(__dirname+"/../node_modules/nedb")
 
 //ファイルを開く
+//パッケージ化の時用
+// loadDB(__dirname+"/../../../../../savedata/questData.db")
+//開発中の時用
 loadDB(__dirname+"/../savedata/questData.db")
 function loadDB(aFilePath){
 	let fileName=aFilePath;
