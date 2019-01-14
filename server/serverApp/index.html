@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tread Joker Server</title>
+  </head>
+  <body style="text-align:center;background:#ccc;">
+    <h1>Tread Joker Server</h1>
+    Tread Joker 通信対戦用 Local Server <br>
+    <br>
+    IPアドレス &nbsp : &nbsp <span id="ipaddress"></span><br>
+    <br>
+    <span style="font-size:12px">※サーバを停止する場合はウィンドウを閉じるか，アプリを強制終了してください</span>
+
+    <img src="./icon_s.png" width="50px" style="position:fixed;right:50px;top:10px;">
+    <div style="-webkit-app-region: drag;width:100vw;height:15vh;position:fixed;top:0;left:0;">
+
+    </div>
+  </body>
+
+  <script>
+  // You can also require other files to run in this process
+  require('./renderer.js')
+    // You can also require other files to run in this process
+    const renderer=require('electron').ipcRenderer
+
+    //ipアドレス取得
+    function getIpAddress(){
+      return getLocalAddress().ipv4[0].address;
+    }
+    var os = require('os');
+    function getLocalAddress() {
+      var ifacesObj = {}
+      ifacesObj.ipv4 = [];
+      ifacesObj.ipv6 = [];
+      var interfaces = os.networkInterfaces();
+
+      for (var dev in interfaces) {
+        interfaces[dev].forEach(function(details){
+          if (!details.internal){
+            switch(details.family){
+              case "IPv4":
+              ifacesObj.ipv4.push({name:dev, address:details.address});
+              break;
+              case "IPv6":
+              ifacesObj.ipv6.push({name:dev, address:details.address});
+              break;
+            }
+          }
+        });
+      }
+      return ifacesObj;
+    };
+    //ipアドレス表示
+    document.getElementById("ipaddress").textContent=getIpAddress();
+  </script>
+  <script type="text/javascript" src="./server.js"></script>
+</html>

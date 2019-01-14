@@ -1,5 +1,6 @@
 const socketClient=require("socket.io-client");
 const version=require("../version.js");
+const os = require('os');
 var mSocketServer;
 var mRandoms;
 var mSocketId;
@@ -69,6 +70,9 @@ function informMove(aPosition){
 if(mCommunicationFlag){
 	$("#text")[0].textContent="サーバのIPアドレスを入力してください"
 	$("#adressForm")[0].style.display="block";
+	let tIp=getIpAddress()
+	$("#adressText")[0].value=tIp
+	$("#adressOption")[0].value=tIp
 	// connectServer("localhost");
 }
 else{
@@ -90,3 +94,31 @@ function connect(){
 function informFinish(){
 	mSocket.emit("finish",{battleNum:mBattleNum});
 }
+
+//ipアドレス取得
+function getIpAddress(){
+	return getLocalAddress().ipv4[0].address;
+}
+
+function getLocalAddress() {
+	var ifacesObj = {}
+	ifacesObj.ipv4 = [];
+	ifacesObj.ipv6 = [];
+	var interfaces = os.networkInterfaces();
+
+	for (var dev in interfaces) {
+		interfaces[dev].forEach(function(details){
+			if (!details.internal){
+				switch(details.family){
+					case "IPv4":
+					ifacesObj.ipv4.push({name:dev, address:details.address});
+					break;
+					case "IPv6":
+					ifacesObj.ipv6.push({name:dev, address:details.address});
+					break;
+				}
+			}
+		});
+	}
+	return ifacesObj;
+};
