@@ -1,4 +1,4 @@
-![TreadJoker](./image/cooltext262030964255809.png "TreadJoker")
+![TreadJoker](./gameLogo.png "TreadJoker")
 
 ***
 
