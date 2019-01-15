@@ -17,11 +17,11 @@ class Quest23 extends Quest{
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "A〜K(13種類)のマスにそれぞれ1回以上止まる";
+		return "味方がA〜K(13種類)のマスにそれぞれ1回以上移動する";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
-		return "A〜K(13種類)のマスにそれぞれ1回以上止まる,味方の全滅";
+		return "敵がA〜K(13種類)のマスにそれぞれ1回以上移動する,味方の全滅";
 	}
 	//自軍
 	static getMyTeam(){

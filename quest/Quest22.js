@@ -17,7 +17,7 @@ class Quest22 extends Quest{
 	}
 	//勝利条件説明
 	static getWinCondition(){
-		return "トークン(ゴースト，ゾンビ，魔王)を5対以上召喚している状態にする";
+		return "トークン(ゴースト，ゾンビ，サタン)を合計で5対以上召喚している状態にする";
 	}
 	//敗北条件説明
 	static getLoseCondition(){
